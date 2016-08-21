@@ -1,0 +1,21 @@
+database:
+  image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
+  ports:
+    - "5401:5432"
+  environment:
+    POSTGRES_DB: bgt
+    POSTGRES_USER: bgt
+    POSTGRES_PASSWORD: insecure
+
+download:
+  build: .
+  command: /app/start_bgt.sh
+  volumes:
+    - /tmp/bgt:/tmp/
+  links:
+    - database:database
+  environment:
+    SECRET_KEY: hoi
+    DB_NAME: bgt
+    DB_USER: bgt
+    DB_PASSWORD: insecure
