@@ -51,7 +51,7 @@
 
 -- DROP SCHEMA imgeo;
 
-CREATE SCHEMA imgeo
+CREATE SCHEMA IF NOT EXISTS imgeo
   AUTHORIZATION bgt;
 --
 --

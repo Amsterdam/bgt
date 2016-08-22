@@ -11,7 +11,7 @@ download:
   build: .
   command: /app/start_bgt.sh
   volumes:
-    - /tmp/bgt:/tmp/
+    - /tmp/bgt:/tmp/bgt
   links:
     - database:database
   environment:

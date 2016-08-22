@@ -52,7 +52,7 @@
 
 -- DROP SCHEMA imgeo_controle;
 
-CREATE SCHEMA imgeo_controle
+CREATE SCHEMA IF NOT EXISTS imgeo_controle
   AUTHORIZATION bgt;
 --
 --

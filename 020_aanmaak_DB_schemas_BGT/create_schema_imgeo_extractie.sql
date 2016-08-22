@@ -51,7 +51,7 @@
 
 -- DROP SCHEMA imgeo_extractie;
 
-CREATE SCHEMA imgeo_extractie
+CREATE SCHEMA IF NOT EXISTS imgeo_extractie
   AUTHORIZATION bgt;
 --
 --

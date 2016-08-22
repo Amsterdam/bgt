@@ -44,7 +44,7 @@
 
 -- DROP SCHEMA imgeo_gml;
 
-CREATE SCHEMA imgeo_gml
+CREATE SCHEMA IF NOT EXISTS imgeo_gml
   AUTHORIZATION bgt;
 --
 --
