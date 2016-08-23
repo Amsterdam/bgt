@@ -1,0 +1,32 @@
+database:
+  image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
+  environment:
+    POSTGRES_DB: bgt
+    POSTGRES_USER: bgt
+    POSTGRES_PASSWORD: insecure
+
+importer:
+  build: /app/import_bgt.sh
+  links:
+    - database:database
+  volumes:
+    - /tmp/bgt:/tmp/bgt
+  environment:
+    DB_NAME: bgt
+    DB_USER: bgt
+    DB_PASSWORD: insecure
+
+db-backup:
+  image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
+  links:
+    - database:db
+  volumes:
+    - ./backups:/tmp/backups
+  command: >
+    bash -c "echo db:5432:bgt:bgt:insecure > ~/.pgpass \
+            && chmod 600 ~/.pgpass \
+            && pg_dump --clean \
+                        -Fc \
+                        -U bgt \
+                        -h db -p 5432 \
+                        bgt > /tmp/backups/database.dump"

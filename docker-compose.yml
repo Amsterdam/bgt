@@ -7,15 +7,14 @@ database:
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
 
-download:
+import:
   build: .
-  command: /app/start_bgt.sh
+  command: /app/import_bgt.sh
   volumes:
     - /tmp/bgt:/tmp/bgt
   links:
     - database:database
   environment:
-    SECRET_KEY: hoi
     DB_NAME: bgt
     DB_USER: bgt
     DB_PASSWORD: insecure
