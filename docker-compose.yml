@@ -7,12 +7,12 @@ database:
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
 
-import:
+importer:
   build: .
-  volumes:
-    - /tmp/bgt:/tmp/bgt
   links:
     - database:database
+  volumes:
+    - /tmp/bgt:/tmp/bgt
   environment:
     DB_NAME: bgt
     DB_USER: bgt
