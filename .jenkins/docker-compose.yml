@@ -6,7 +6,7 @@ database:
     POSTGRES_PASSWORD: insecure
 
 importer:
-  build: /app/import_bgt.sh
+  build: ..
   links:
     - database:database
   volumes:
@@ -15,6 +15,9 @@ importer:
     DB_NAME: bgt
     DB_USER: bgt
     DB_PASSWORD: insecure
+  command: >
+    bash -c "/app/docker-wait.sh \
+            && /app/import_bgt.sh"
 
 db-backup:
   image: admin.datapunt.amsterdam.nl:5000/atlas/postgres

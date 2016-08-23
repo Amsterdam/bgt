@@ -9,7 +9,6 @@ database:
 
 import:
   build: .
-  command: /app/import_bgt.sh
   volumes:
     - /tmp/bgt:/tmp/bgt
   links:
@@ -18,3 +17,6 @@ import:
     DB_NAME: bgt
     DB_USER: bgt
     DB_PASSWORD: insecure
+  command: >
+    bash -c "/app/docker-wait.sh \
+            && /app/import_bgt.sh"
