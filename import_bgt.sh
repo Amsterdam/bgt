@@ -2,20 +2,20 @@
 
 bash -c "echo database:5432:bgt:bgt:insecure" > ~/.pgpass && chmod 600 ~/.pgpass
 
-#cd /app/010_download_BGT
-#sh download_alle_BGT.sh
-#
-#cd /app/070_import_gml_FV_cntrl_BGT
-#sh import_gml2db.sh /tmp/bgt/ database bgt 5432 bgt
-#
-#cd /app/020_aanmaak_DB_schemas_BGT
-#sh aanmaak_schemas_BGT.sh database bgt 5432 bgt
-#
-#cd /app/060_aanmaak_tabel_FV_cntrl_BGT
-#sh aanmaak_tabellen_BGT.sh database bgt 5432 bgt
-#
-#cd /app/075_import_csv_FV_cntrl_BGT
-#sh import_mapping_GML_DB_CSV.sh CSV database bgt 5432 bgt
+cd /app/010_download_BGT
+sh download_alle_BGT.sh
+
+cd /app/070_import_gml_FV_cntrl_BGT
+sh import_gml2db.sh /tmp/bgt/ database bgt 5432 bgt
+
+cd /app/020_aanmaak_DB_schemas_BGT
+sh aanmaak_schemas_BGT.sh database bgt 5432 bgt
+
+cd /app/060_aanmaak_tabel_FV_cntrl_BGT
+sh aanmaak_tabellen_BGT.sh database bgt 5432 bgt
+
+cd /app/075_import_csv_FV_cntrl_BGT
+sh import_mapping_GML_DB_CSV.sh CSV database bgt 5432 bgt
 
 cd /app/080_controle_frequentieverdeling_BGT
 mkdir log
