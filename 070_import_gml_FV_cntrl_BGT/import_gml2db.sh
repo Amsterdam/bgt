@@ -173,34 +173,25 @@ echo
 
 # Bovenstaande voert bovenstaand gegenereerd SQL-bestand uit
 
-echo
-echo Maak nu de GML-tabellen aan en importeer daarin de gegevens uit de GML-bestanden ...
-echo
+echo "Maak nu de GML-tabellen aan en importeer daarin de gegevens uit de GML-bestanden ..."
 
-for d in ${locatie_GML}; do
-    cd $d
-    SRC_GML_FILES=`find *.gml -type f`
+cd ${locatie_GML}
+SRC_GML_FILES=`find *.gml -type f`
 
-    if [ "${SRC_GML_FILES}" ]; then
+if [ "${SRC_GML_FILES}" ]; then
 
-        PG="host=${db_server} port=${db_port} ACTIVE_SCHEMA=${db_schema} user=${db_user} dbname=${database}"
-        CONFIG="--config PG_USE_COPY YES"
+    PG="host=${db_server} port=${db_port} ACTIVE_SCHEMA=${db_schema} user=${db_user} dbname=${database}" CONFIG="--config PG_USE_COPY YES"
 
-        export PGCLIENTENCODING=UTF8;
+    export PGCLIENTENCODING=UTF8;
 
-        for SRC_GML_FILE in ${SRC_GML_FILES}; do
+    for SRC_GML_FILE in ${SRC_GML_FILES}; do
+        # Load data into database
+        echo "Importing: " ${SRC_GML_FILE};
+        ogr2ogr -progress -skipfailures -overwrite -f "PostgreSQL" PG:"${PG}" ${CONFIG} ${SRC_GML_FILE}
+    done
+fi
 
-			# Load data into database
-            echo "Importing: " ${SRC_GML_FILE};
-            ogr2ogr -progress -skipfailures -overwrite -f "PostgreSQL" PG:"${PG}" ${CONFIG} ${SRC_GML_FILE}
-
-        done
-    fi
-done
-
-echo
 echo "*******************************************************************************"
 echo "* Klaar met script $0."
 echo "* Klaar met importeren GML-bestanden in BGT-database.                         *"
 echo "*******************************************************************************"
-echo

@@ -43,7 +43,7 @@ echo ""
 
 # Instellen downloadparameters
 einddatum=$(date +"%d-%m-%Y")
-uitvoer=/tmp/bgt/extract_BGT_$datum_tijd.zip
+uitvoer=/app/data/extract_BGT_$datum_tijd.zip
 
 echo "einddatum : " $einddatum
 echo "uitvoer   : " $uitvoer
@@ -64,7 +64,7 @@ rm -f $uitvoer
 
 echo ""
 echo "*******************************************************************************"
-echo "* Klaar met downloaden en uitpakken alle BGT-gegevens.                                     *"
+echo "* Klaar met downloaden en uitpakken alle BGT-gegevens.                        *"
 echo "*******************************************************************************"
 echo "" 
 #read -p "pauze, tik wat dan ook om verder te gaan ... : " willekeurige_toets

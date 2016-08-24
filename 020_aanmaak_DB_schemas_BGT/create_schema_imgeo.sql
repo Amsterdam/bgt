@@ -49,7 +49,7 @@
 
 -- Schema: imgeo
 
-DROP SCHEMA imgeo;
+--DROP SCHEMA imgeo;
 
 CREATE SCHEMA IF NOT EXISTS imgeo
   AUTHORIZATION bgt;

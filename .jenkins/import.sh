@@ -6,7 +6,7 @@ set -u
 DIR="$(dirname $0)"
 
 dc() {
-	docker-compose -p bgt-import -f ${DIR}/docker-compose.yml $*
+	docker-compose -p bgt_import -f ${DIR}/docker-compose.yml $*
 }
 
 trap 'dc kill ; dc rm -f' EXIT

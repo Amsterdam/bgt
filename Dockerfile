@@ -5,7 +5,7 @@ RUN apt-get update \
     && apt-get install -y wget postgresql-client-common postgresql-client-9.5 unzip gdal-bin netcat \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && mkdir /app
+    && mkdir -p /app/data
 
 ENV PGCLIENTENCODING='UTF-8'
 

@@ -9,8 +9,6 @@ importer:
   build: ..
   links:
     - database:database
-  volumes:
-    - /tmp/bgt:/tmp/bgt
   environment:
     DB_NAME: bgt
     DB_USER: bgt
