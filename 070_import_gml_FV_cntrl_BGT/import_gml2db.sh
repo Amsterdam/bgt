@@ -180,14 +180,16 @@ SRC_GML_FILES=`find *.gml -type f`
 
 if [ "${SRC_GML_FILES}" ]; then
 
-    PG="host=${db_server} port=${db_port} ACTIVE_SCHEMA=${db_schema} user=${db_user} dbname=${database}" CONFIG="--config PG_USE_COPY YES"
+    PG="host=${db_server} port=${db_port} ACTIVE_SCHEMA=${db_schema} user=${db_user} dbname=${database}"
+    LCO="-lco SPATIAL_INDEX=OFF"
+    CONFIG="--config PG_USE_COPY YES"
 
     export PGCLIENTENCODING=UTF8;
 
     for SRC_GML_FILE in ${SRC_GML_FILES}; do
         # Load data into database
         echo "Importing: " ${SRC_GML_FILE};
-        ogr2ogr -progress -skipfailures -overwrite -f "PostgreSQL" PG:"${PG}" ${CONFIG} ${SRC_GML_FILE}
+        ogr2ogr -progress -skipfailures -overwrite -f "PostgreSQL" PG:"${PG}" -gt 65536 ${LCO} ${CONFIG} ${SRC_GML_FILE}
     done
 fi
 

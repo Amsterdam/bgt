@@ -138,11 +138,11 @@ echo "Parameter5: db_user     = ${db_user}"
 echo "-------------------------------------------------------------------------------"
 echo
 
-echo
-echo "Leeg mapping-tabel in BGT-database ..."
-echo
-
-psql -h ${db_server} -d ${database} -p ${db_port} -U ${db_user} -c "TRUNCATE TABLE imgeo_controle.mapping_gml_db;"
+#echo
+#echo "Leeg mapping-tabel in BGT-database ..."
+#echo
+#
+#psql -h ${db_server} -d ${database} -p ${db_port} -U ${db_user} -c "TRUNCATE TABLE imgeo_controle.mapping_gml_db;"
 
 echo
 echo "Importeer CSV-mapping-bestand in mapping-tabel in BGT-database ..."

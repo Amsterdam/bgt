@@ -2,8 +2,8 @@
 
 bash -c "echo database:5432:bgt:bgt:insecure" > ~/.pgpass && chmod 600 ~/.pgpass
 
-cd /app/010_download_BGT
-sh download_alle_BGT.sh
+#cd /app/010_download_BGT
+#sh download_alle_BGT.sh
 
 cd /app/020_aanmaak_DB_schemas_BGT
 sh aanmaak_schemas_BGT.sh database bgt 5432 bgt
