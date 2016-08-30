@@ -7,7 +7,6 @@ database:
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
 
-# TODO: Perhaps volume is not needed? Download and import within docker
 importer:
   build: .
   links:
