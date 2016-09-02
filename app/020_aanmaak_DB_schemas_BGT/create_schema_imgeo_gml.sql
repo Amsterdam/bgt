@@ -1,20 +1,20 @@
---
+-- "*
 -- "*******************************************************************************"
 -- "*                                                                             *"
--- "* Naam :                    create_schema_imgeo.sql                           *"
+-- "* Naam :                    create_schema_imgeo_gml.sql                       *"
 -- "*                                                                             *"
 -- "* Systeem :                 DATAPUNT                                          *"
 -- "*                                                                             *"
 -- "* Module :                  BGT (Verwerving)                                  *"
 -- "*                                                                             *"
--- "* Schema / Gegevensstroom : imgeo / BGT                                       *"
+-- "* Schema / Gegevensstroom : imgeo_gml / BGT                                   *"
 -- "*                                                                             *"
--- "* Aangeroepen vanuit :      create_schema_imgeo.sh                            *"
+-- "* Aangeroepen vanuit :      START_SQL_schema.sql                              *"
 -- "*                                                                             *"
 -- "*******************************************************************************"
 -- "*                                                                             *"
--- "* Doel :                    SQL-scripts voor aanmaken schema: imgeo           *"
--- "*                           ten behoeve van BGT imgeo-tabellen                *"
+-- "* Doel :                    Aanmaak schema imgeo_gml                          *"
+-- "*                           ten behoeve van inlezen GML-gegevens BGT.         *"
 -- "*                                                                             *"
 -- "*******************************************************************************"
 -- "*                                                                             *"
@@ -26,37 +26,30 @@
 -- "*                                                                             *"
 -- "* auteur                    datum        versie   wijziging                   *"
 -- "* -----------------------   ----------   ------   --------------------------- "*
--- "* Nico de Graaff, BI        06-06-2016   1.00.0   RC1: initiële aanmaak       *"
+-- "* Nico de Graaff, BI        04-04-2016   1.00.0   RC1: initiële aanmaak       *"
 -- "* Ron van Barneveld, IV-BI  22-07-2016   1.00.0   RC1: ombouwen voor aanmaak  *"
 -- "*                                                 schemas                     *"
 -- "*                                                                             *"
 -- "*******************************************************************************"
--- "*                                                                             *"
--- "* Parameter 1 :             server                database-server BGT-gegevs  *"
--- "* Parameter 2 :             database              database BGT-gegevens       *"
--- "* Parameter 3 :             port                  poort naar database-server  *"
--- "* Parameter 4 :             username              gebruiker t.b.v. BGT        *"
--- "*                                                                             *"
--- "*******************************************************************************"
+
+
+\qecho 
+\qecho "*******************************************************************************"
+\qecho "* Aanmaken schema imgeo_gml ten behoeve van inlezen GML-gegevens BGT ...      *"
+\qecho "*******************************************************************************"
+\qecho
 --
+--
+-- Schema: imgeo_gml
 
+DROP SCHEMA IF EXISTS imgeo_gml CASCADE;
 
-\qecho
-\qecho "*******************************************************************************"
-\qecho "* Aanmaken schema imgeo tbv BGT_tabellen ...                                  *"
-\qecho "*******************************************************************************"
-\qecho
-
--- Schema: imgeo
-
---DROP SCHEMA imgeo;
-
-CREATE SCHEMA IF NOT EXISTS imgeo
+CREATE SCHEMA IF NOT EXISTS imgeo_gml
   AUTHORIZATION bgt;
 --
 --
 \qecho
 \qecho "*******************************************************************************"
-\qecho "* Klaar met aanmaken schema imgeo.                                            *"
+\qecho "* Klaar met aanmaken schema imgeo_gml.                                        *"
 \qecho "*******************************************************************************"
 \qecho

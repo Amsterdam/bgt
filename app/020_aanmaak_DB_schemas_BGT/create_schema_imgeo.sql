@@ -1,20 +1,20 @@
 --
 -- "*******************************************************************************"
 -- "*                                                                             *"
--- "* Naam :                    create_schema_imgeo_extractie.sql                 *"
+-- "* Naam :                    create_schema_imgeo.sql                           *"
 -- "*                                                                             *"
 -- "* Systeem :                 DATAPUNT                                          *"
 -- "*                                                                             *"
 -- "* Module :                  BGT (Verwerving)                                  *"
 -- "*                                                                             *"
--- "* Schema / Gegevensstroom : imgeo_extractie / BGT                             *"
+-- "* Schema / Gegevensstroom : imgeo / BGT                                       *"
 -- "*                                                                             *"
--- "* Aangeroepen vanuit :      START_SQL_schema.sql                              *"
+-- "* Aangeroepen vanuit :      create_schema_imgeo.sh                            *"
 -- "*                                                                             *"
 -- "*******************************************************************************"
 -- "*                                                                             *"
--- "* Doel :                    SQL-scripts voor aanmaken schema: imgeo_extractie *"
--- "*                           ten behoeve van BGT imgeo views                   *"
+-- "* Doel :                    SQL-scripts voor aanmaken schema: imgeo           *"
+-- "*                           ten behoeve van BGT imgeo-tabellen                *"
 -- "*                                                                             *"
 -- "*******************************************************************************"
 -- "*                                                                             *"
@@ -43,20 +43,20 @@
 
 \qecho
 \qecho "*******************************************************************************"
-\qecho "* Aanmaken schema imgeo_extractie tbv extractie BGT-data ...                  *"
+\qecho "* Aanmaken schema imgeo tbv BGT_tabellen ...                                  *"
 \qecho "*******************************************************************************"
 \qecho
 
--- Schema: imgeo_extractie
+-- Schema: imgeo
 
---DROP SCHEMA imgeo_extractie;
+DROP SCHEMA IF EXISTS imgeo CASCADE;
 
-CREATE SCHEMA IF NOT EXISTS imgeo_extractie
+CREATE SCHEMA IF NOT EXISTS imgeo
   AUTHORIZATION bgt;
 --
 --
 \qecho
 \qecho "*******************************************************************************"
-\qecho "* Klaar met aanmaken schema imgeo_extractie.                                  *"
+\qecho "* Klaar met aanmaken schema imgeo.                                            *"
 \qecho "*******************************************************************************"
 \qecho

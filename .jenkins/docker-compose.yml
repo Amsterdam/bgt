@@ -14,7 +14,7 @@ importer:
     DB_USER: bgt
     DB_PASSWORD: insecure
   command: >
-    bash -c "/app/docker-wait.sh \
+    bash -c "/docker/docker-wait.sh \
             && /app/import_bgt.sh"
 
 db-backup:

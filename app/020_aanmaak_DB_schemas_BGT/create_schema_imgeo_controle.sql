@@ -50,7 +50,7 @@
 
 -- Schema: imgeo_controle
 
---DROP SCHEMA imgeo_controle;
+DROP SCHEMA IF EXISTS imgeo_controle CASCADE;
 
 CREATE SCHEMA IF NOT EXISTS imgeo_controle
   AUTHORIZATION bgt;
