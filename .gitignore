@@ -1,5 +1,5 @@
 pgpass.txt
 .idea
 .jenkins/backups
-/data
-/dump*
+data
+dump
