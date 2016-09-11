@@ -13,6 +13,7 @@ importer:
     DB_NAME: bgt
     DB_USER: bgt
     DB_PASSWORD: insecure
+    FMEAPI:
   command: >
     bash -c "/docker/docker-wait.sh \
             && /app/import_bgt.sh"

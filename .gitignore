@@ -3,3 +3,5 @@ pgpass.txt
 .jenkins/backups
 data
 dump
+dump/bgt.dump
+keys.env

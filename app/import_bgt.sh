@@ -2,17 +2,19 @@
 
 bash -c "echo database:5432:bgt:bgt:insecure" > ~/.pgpass && chmod 600 ~/.pgpass
 
-#cd /app/010_download_BGT
-#sh START_SH_download_alle_BGT.sh
+cd /app/010_download_BGT
+sh START_SH_download_alle_BGT.sh
+
+python connect.py
+
+pg_dump -Fc -U dbuser -d gisdb -h bgt-datapunt.fmecloud.com -p 5432 -v > /dump/bgt.dump
+pg_restore -j 4 -d bgt -h database -O -v -U bgt /dump/bgt.dump
+
+curl -X PUT --header "Content-Type: application/json" --header "Accept: application/json" --header "Authorization: Bearer ${FMESERVERAPI}" "https://api.fmecloud.safe.com/v1/instances/2379/pause"
 
 cd /app/020_aanmaak_DB_schemas_BGT
 sh START_SH_aanmaak_schemas_BGT.sh database bgt 5432 bgt
 
-#TODO Create FME script here
-#cd /app/030_inlezen_BGT
-
-#pg_dump -Fc -U dbuser -d gisdb -h bgt-datapunt.fmecloud.com -p 5432 -v > /dump/bgt.dump
-pg_restore -j 4 -d bgt -h database -O -v -U bgt /dump/bgt.dump
 
 cd /app/040_controle_telling_BGT
 mkdir log

@@ -15,6 +15,7 @@ importer:
     DB_NAME: bgt
     DB_USER: bgt
     DB_PASSWORD: insecure
+  env_file: keys.env
   command: >
     bash -c "/app/docker-wait.sh \
             && /app/import_bgt.sh"
