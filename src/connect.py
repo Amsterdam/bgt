@@ -36,15 +36,15 @@ print("Continuing")
 #
 
 server='bgt-datapunt.fmecloud.com'
-auth={'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI)}
+auth={'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
 urlconnect='fmerest/v2/resources/connections'
 
 # delete directory
 url = 'https://{server}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
     server=server, urlconnect=urlconnect)
-
 repository_res = requests.delete(url, headers=auth)
 repository_res.raise_for_status()
+print("Directory deleted")
 
 # create directory
 url = 'https://{server}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
@@ -55,6 +55,7 @@ body = {
 }
 repository_res = requests.post(url, data=body, headers=auth)
 repository_res.raise_for_status()
+print("Directory created")
 
 # upload files
 url = 'https://{server}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low&overwrite=false'.format(
@@ -66,7 +67,7 @@ for infile in glob.glob(os.path.join('..', path, '*.*')):
         headers = {
             'Content-Disposition': 'attachment; filename="{}"'.format(filename),
             'Content-Type': 'application/octet-stream',
-            'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI),
+            'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI),
         }
         print('Uploading',infile,'to',filename)
         repository_res = requests.post(url, data=f, headers=headers)
@@ -90,7 +91,7 @@ def start_transformation(repository, workspace):
             headers={
                 "Referer": "https://bgt-datapunt.fmecloud.com/fmerest/v2/apidoc/",
                 "Origin": "https://bgt-datapunt.fmecloud.com",
-                "Authorization": "fmetoken token={FMEAPI}".format(FMEAPI),
+                "Authorization": "fmetoken token={FMEAPI}".format(FMEAPI=FMEAPI),
                 "Content-Type": "application/json",
                 "Accept": "application/json",
             },

@@ -51,10 +51,10 @@ huidige_dir=$(pwd)
 
 sh $huidige_dir/download_alle_BGT.sh 2>&1 | tee $huidige_dir/log/download_alle_BGT.log
 
-read -p "pauze, tik wat dan ook om verder te gaan ... : " willekeurige_toets
+#read -p "pauze, tik wat dan ook om verder te gaan ... : " willekeurige_toets
 echo ""
 echo "*******************************************************************************"
 echo "* Klaar met downloaden alle BGT-gegevens.                                     *"
 echo "*******************************************************************************"
 echo ""
-read -p "pauze, tik wat dan ook om verder te gaan ... : " willekeurige_toets
+#read -p "pauze, tik wat dan ook om verder te gaan ... : " willekeurige_toets

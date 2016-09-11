@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-bash -c "echo database:5432:bgt:bgt:insecure" > ~/.pgpass && chmod 600 ~/.pgpass
+bash -c "echo database:5432:bgt:bgt:insecure
+bgt-datapunt.fmecloud.com:5432:gisdb:dbuser:${FMEDBPASS}" > ~/.pgpass && chmod 600 ~/.pgpass
 
-cd /app/010_download_BGT
-sh START_SH_download_alle_BGT.sh
+#cd /app/010_download_BGT
+#mkdir log
+#sh START_SH_download_alle_BGT.sh
 
-python connect.py
+cd /app/
+/usr/bin/python3 /src/connect.py
 
 pg_dump -Fc -U dbuser -d gisdb -h bgt-datapunt.fmecloud.com -p 5432 -v > /dump/bgt.dump
 pg_restore -j 4 -d bgt -h database -O -v -U bgt /dump/bgt.dump
