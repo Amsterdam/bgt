@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER datapunt.ois@amsterdam.nl
 
 RUN apt-get update \
-    && apt-get install -y wget postgresql-client-common postgresql-client-9.5 unzip gdal-bin netcat python3-requests \
+    && apt-get install -y wget postgresql-client-common postgresql-client-9.5 unzip gdal-bin netcat python3-requests curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && mkdir /data \

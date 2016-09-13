@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-bash -c "echo database:5432:bgt:bgt:insecure
-bgt-datapunt.fmecloud.com:5432:gisdb:dbuser:${FMEDBPASS}" > ~/.pgpass && chmod 600 ~/.pgpass
+cat > ~/.pgpass <<EOF
+database:5432:bgt:bgt:insecure
+bgt-datapunt.fmecloud.com:5432:gisdb:dbuser:${FMEDBPASS}
+EOF
 
-#cd /app/010_download_BGT
-#mkdir log
-#sh START_SH_download_alle_BGT.sh
+chmod 600 ~/.pgpass
+
+cd /app/010_download_BGT
+mkdir log
+sh START_SH_download_alle_BGT.sh
 
 cd /app/
 /usr/bin/python3 /src/connect.py
@@ -17,7 +21,6 @@ curl -X PUT --header "Content-Type: application/json" --header "Accept: applicat
 
 cd /app/020_aanmaak_DB_schemas_BGT
 sh START_SH_aanmaak_schemas_BGT.sh database bgt 5432 bgt
-
 
 cd /app/040_controle_telling_BGT
 mkdir log
