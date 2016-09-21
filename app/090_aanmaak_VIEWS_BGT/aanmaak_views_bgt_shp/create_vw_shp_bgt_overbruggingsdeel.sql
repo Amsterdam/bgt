@@ -1,21 +1,21 @@
 ﻿
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Aanmaak view imgeo_extractie.vw_shp_bgt_overbruggingsdeel ...               *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Aanmaak view imgeo_extractie.vw_shp_bgt_overbruggingsdeel ...               *'
+\qecho '*******************************************************************************'
 \qecho
 
 
 -- Schema: imgeo_extractie
 
--- \pset tuples_only
+DROP VIEW IF EXISTS imgeo_extractie.vw_shp_bgt_overbruggingsdeel;
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_shp_bgt_overbruggingsdeel
 AS
 (
 SELECT identificatie_namespace     as NAMESPACE
      , identificatie_lokaalid      as LOKAALID
-     , objectbegintijd	           as BEGINTIJD
+     , objectbegintijd             as BEGINTIJD
      , objecteindtijd              as EINDDTIJD
      , tijdstipregistratie         as TIJDREG     
      , eindregistratie             as EINDREG
@@ -27,7 +27,7 @@ SELECT identificatie_namespace     as NAMESPACE
      , plus_status                 as PLUSSTATUS
      , plus_type                   as PLUSTYPE
      , REPLACE (identificatie_namespace ,'NL.IMGeo','BGT_ODL_overbruggingsdeel')
-					           as BESTANDNAAM
+                                   as BESTANDSNAAM
      , hoortbijtypeoverbrugging    as HOORTBIJ
      , overbruggingisbeweegbaar    as ISBEWEEGB
      , geometrie                   as GEOMETRIE
@@ -36,7 +36,7 @@ SELECT identificatie_namespace     as NAMESPACE
 
 
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_overbruggingsdeel.        *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_overbruggingsdeel.        *'
+\qecho '*******************************************************************************'
 \qecho

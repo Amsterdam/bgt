@@ -15,9 +15,9 @@ db_user=$4
 # Zie voorbeeldbestandjes in submapje configuratie.
 
 # Hieronder t.b.v. de logging een aantal standaardvariabelen uit de Linux-omgeving:
-whoami=$(whoami)   					# whoami - print effective userid
-who_m=$(who -m)    					# who - show who is logged on, optie: -m     only hostname and user associated with stdin
-working_dir=$(pwd) 					# pwd - print name of current/working directory
+whoami=$(whoami)                       # whoami - print effective userid
+who_m=$(who -m)                        # who - show who is logged on, optie: -m     only hostname and user associated with stdin
+working_dir=$(pwd)                     # pwd - print name of current/working directory
 datum_tijd=$(date +"%Y%m%d_%H%M%S") # date - print or set the system date and time
 
 logbestand=${working_dir}/log/aanmaak_DB_views_BGT_SHP.${datum_tijd}.log
@@ -26,7 +26,7 @@ logbestand=${working_dir}/log/aanmaak_DB_views_BGT_SHP.${datum_tijd}.log
 # ""
 # "*******************************************************************************"
 # "*                                                                             *"
-# "* Naam :                    START_SH_aanmaak_DB_views_BGT_SHP.sh                  *"
+# "* Naam :                    START_SH_aanmaak_DB_views_BGT_SHP.sh              *"
 # "*                                                                             *"
 # "* Systeem :                 DATAPUNT                                          *"
 # "*                                                                             *"
@@ -82,13 +82,13 @@ echo
 if test "$#" -ne "4"
   then
     # als niet alle parameters 1 t/m 4 zijn gevuld,
-	# wordt ontwikkel-BGT-database DataPunt benaderd
+    # wordt ontwikkel-BGT-database DataPunt benaderd
     # echo 'test $# -ne 4' : Vul parameters met standaardwaarden ...
     if test "$1" = ""
       then
         db_server='85.222.225.45'
     fi
-	if test "$2" = ""
+    if test "$2" = ""
       then
         database='bgt_dev'
     fi

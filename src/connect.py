@@ -2,11 +2,11 @@ import requests, os, glob, time, json
 
 FMESERVERAPI=os.getenv('FMESERVERAPI', 'secret')
 FMEAPI=os.getenv('FMEAPI', 'secret')
-
-# TODO: How to remove tokens here and move to Jenkins / local file?
+FMESERVER=os.getenv('FMESERVER', 'secret')
 
 print("Starting server")
 auth = {'Authorization': 'bearer {FMESERVERAPI}'.format(FMESERVERAPI=FMESERVERAPI)}
+# TODO ADJUST THIS ID
 url = 'https://api.fmecloud.safe.com/v1/instances/2379'
 
 res = requests.get(url, headers=auth)
@@ -35,20 +35,19 @@ print("Continuing")
 # Step 1: Upload the GML files
 #
 
-server='bgt-datapunt.fmecloud.com'
 auth={'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
 urlconnect='fmerest/v2/resources/connections'
 
 # delete directory
-url = 'https://{server}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
-    server=server, urlconnect=urlconnect)
+url = 'https://{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
+    FMESERVER=FMESERVER, urlconnect=urlconnect)
 repository_res = requests.delete(url, headers=auth)
 repository_res.raise_for_status()
 print("Directory deleted")
 
 # create directory
-url = 'https://{server}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-    server=server, urlconnect=urlconnect)
+url = 'https://{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+    FMESERVER=FMESERVER, urlconnect=urlconnect)
 body = {
     'directoryname': 'Import_GML',
     'type': 'DIR',
@@ -58,8 +57,8 @@ repository_res.raise_for_status()
 print("Directory created")
 
 # upload files
-url = 'https://{server}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low&overwrite=false'.format(
-    server=server, urlconnect=urlconnect)
+url = 'https://{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low&overwrite=false'.format(
+    FMESERVER=FMESERVER, urlconnect=urlconnect)
 path = 'data'
 for infile in glob.glob(os.path.join('..', path, '*.*')):
     with open(infile,'rb') as f:
@@ -74,13 +73,29 @@ for infile in glob.glob(os.path.join('..', path, '*.*')):
         repository_res.raise_for_status()
 
 #
-# Step 2: Start Transformation Job
+
+
+# Step 2: Create/Upload Transformation Repository
+#
+urlconnect='fmerest/v2/repositories'
+
+# delete repository
+url = 'https://{FMESERVER}/{urlconnect}/BGT?detail=low'.format(
+    FMESERVER=FMESERVER, urlconnect=urlconnect)
+repository_res = requests.delete(url, headers=auth)
+repository_res.raise_for_status()
+print("Repository deleted")
+
+
+
+#
+# Step 3: Start Transformation Job
 #
 urltransform='fmerest/v2/transformations'
 
 def start_transformation(repository, workspace):
-    target_url = 'https://{server}/{urltransform}/commands/submit/{repository}/{workspace}'.format(
-        server=server, urltransform=urltransform, repository=repository, workspace=workspace)
+    target_url = 'https://{FMESERVER}/{urltransform}/commands/submit/{repository}/{workspace}'.format(
+        FMESERVER=FMESERVER, urltransform=urltransform, repository=repository, workspace=workspace)
 
     try:
         response = requests.post(
@@ -89,8 +104,8 @@ def start_transformation(repository, workspace):
                 "detail": "low",
             },
             headers={
-                "Referer": "https://bgt-datapunt.fmecloud.com/fmerest/v2/apidoc/",
-                "Origin": "https://bgt-datapunt.fmecloud.com",
+                "Referer": "https://{FMESERVER}/fmerest/v2/apidoc/".format(FMESERVER=FMESERVER),
+                "Origin": "https://{FMESERVER}".format(FMESERVER=FMESERVER),
                 "Authorization": "fmetoken token={FMEAPI}".format(FMEAPI=FMEAPI),
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -156,8 +171,8 @@ print("Wait 2 hours until polling for completion")
 time.sleep(7200)
 print("2 hours have passed, now checking every 5 minutes")
 sleep = 300
-url = 'https://{server}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
-    server=server, urltransform=urltransform, jobid=jobid)
+url = 'https://{FMESERVER}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
+    FMESERVER=FMESERVER, urltransform=urltransform, jobid=jobid)
 
 while True:
     res = requests.get(url, headers=auth)

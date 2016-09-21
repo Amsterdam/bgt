@@ -26,20 +26,20 @@ logbestand=${working_dir}/log/aanmaak_DB_views_BGT_DGN.${datum_tijd}.log
 # ""
 # "*******************************************************************************"
 # "*                                                                             *"
-# "* Naam :                    START_SH_aanmaak_DB_views_BGT_DGN.sh              *"
+# "* Naam :                    aanmaak_DB_views_BGT_DGN.sh                       *"
 # "*                                                                             *"
 # "* Systeem :                 DATAPUNT                                          *"
 # "*                                                                             *"
 # "* Module :                  BGT (database)                                    *"
 # "*                                                                             *"
-# "* Schema / Gegevensstroom : IMGEO_EXTRACTIE / BGT                             *"
+# "* Schema / Gegevensstroom : BGT                                               *"
 # "*                                                                             *"
-# "* Aangeroepen vanuit :                                                        *"
+# "* Aangeroepen vanuit :      START_SH_aanmaak_DB_views_BGT_DGN.sh              *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
 # "* Doel :                    Aanmaken extractie-views schema imgeo_extractie   *"
-# "*                           BGT-database t.b.v. extractie BGT-dgn             *"
+# "*                           BGT-database t.b.v. extractie BGT-DGN             *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
@@ -58,10 +58,9 @@ logbestand=${working_dir}/log/aanmaak_DB_views_BGT_DGN.${datum_tijd}.log
 # "*                                                      - parameters -> log    *"
 # "*                                                      - wijz. parameternamen *"
 # "*                                                      - interpr. met bash    *"
-# "* Raymond Young, IV-BI      15-08-2016   1.00.0   RC1: hernoem SHP-scripts en *"
-# "*                                                 verbeter logging            *"
-# "* Raymond Young, IV-BI      29-08-2016   1.00.0   RC1: verdere kleine         *"
-# "*                                                 verbetering logging         *"
+# "* Raymond Young, IV-BI      15-08-2016   1.00.0   RC1: kopieer en pas         *"
+# "*                                                 SHP-scripts aan t.b.v.      *"
+# "*                                                 DGN-views                   *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
@@ -104,7 +103,20 @@ if test "$#" -ne "4"
     fi
 fi
 
-sh aanmaak_DB_views_BGT_DGN.sh ${db_server} ${database} ${db_port} ${db_user} 2>&1 | tee ${logbestand}
+echo
+echo "-------------------------------------------------------------------------------"
+echo "ParameterX: os_user     = ${whoami} / ${who_m}"
+echo "ParameterY: working_dir = ${working_dir}"
+echo "ParameterZ: datum_tijd  = ${datum_tijd}"
+echo "Parameter0: script      = $0"
+echo "Parameter1: db_server   = ${db_server}"
+echo "Parameter2: database    = ${database}"
+echo "Parameter3: db_port     = ${db_port}"
+echo "Parameter4: db_user     = ${db_user}"
+echo "-------------------------------------------------------------------------------"
+echo
+
+psql -h ${db_server} -d ${database} -p ${db_port} -U ${db_user} -f START_SQL_aanmaak_DB_views_BGT_DGN.sql
 
 # Start dit shellscript START_SH_views.sh door:
 # in Ubuntu sh START_views.sh te runnen

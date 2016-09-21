@@ -1,21 +1,21 @@
 ﻿
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Aanmaak view imgeo_extractie.vw_shp_bgt_tunneldeel ...                      *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Aanmaak view imgeo_extractie.vw_shp_bgt_tunneldeel ...                      *'
+\qecho '*******************************************************************************'
 \qecho
 
 
 -- Schema: imgeo_extractie
 
--- \pset tuples_only
+DROP VIEW IF EXISTS imgeo_extractie.vw_shp_bgt_tunneldeel;
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_shp_bgt_tunneldeel
 AS
 (
 SELECT identificatie_namespace     as NAMESPACE
      , identificatie_lokaalid      as LOKAALID
-     , objectbegintijd	           as BEGINTIJD
+     , objectbegintijd             as BEGINTIJD
      , objecteindtijd              as EINDDTIJD
      , tijdstipregistratie         as TIJDREG     
      , eindregistratie             as EINDREG
@@ -26,14 +26,14 @@ SELECT identificatie_namespace     as NAMESPACE
      , bgt_status                  as BGTSTATUS
      , plus_status                 as PLUSSTATUS
      , REPLACE (identificatie_namespace ,'NL.IMGeo','BGT_TDL_tunneldeel')
-				   as BESTANDNAAM 
-     , geometrie               as GEOMETRIE
+                                   as BESTANDSNAAM 
+     , geometrie                   as GEOMETRIE
   FROM imgeo.bgt_tunneldeel)
   ;
 
 
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_tunneldeel.               *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_tunneldeel.               *'
+\qecho '*******************************************************************************'
 \qecho

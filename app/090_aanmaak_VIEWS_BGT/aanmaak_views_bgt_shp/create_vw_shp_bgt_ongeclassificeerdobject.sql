@@ -1,21 +1,21 @@
 ﻿
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Aanmaak view imgeo_extractie.vw_shp_bgt_ongeclassificeerdobject ...         *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Aanmaak view imgeo_extractie.vw_shp_bgt_ongeclassificeerdobject ...         *'
+\qecho '*******************************************************************************'
 \qecho
 
 
 -- Schema: imgeo_extractie
 
--- \pset tuples_only
+DROP VIEW IF EXISTS imgeo_extractie.vw_shp_bgt_ongeclassificeerdobject;
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_shp_bgt_ongeclassificeerdobject
 AS
 (
 SELECT identificatie_namespace as NAMESPACE
      , identificatie_lokaalid  as LOKAALID
-     , objectbegintijd	       as BEGINTIJD
+     , objectbegintijd         as BEGINTIJD
      , objecteindtijd          as EINDDTIJD
      , tijdstipregistratie     as TIJDREG     
      , eindregistratie         as EINDREG
@@ -25,18 +25,17 @@ SELECT identificatie_namespace as NAMESPACE
      , relatievehoogteligging  as HOOGTELIG
      , bgt_status              as BGTSTATUS
      , plus_status             as PLUSSTATUS
-	 , CASE 
+     , CASE 
              when identificatie_namespace ='NL.IMGeo'
              then 'BGT_OOT_ongeclassificeerd'
-       END		       
-	                           as BESTANDNAAM 
+       END                     as BESTANDSNAAM 
      , geometrie               as geometrie
   FROM imgeo.bgt_ongeclassificeerdobject)
   ;
 
 
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_ongeclassificeerdobject.  *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_ongeclassificeerdobject.  *'
+\qecho '*******************************************************************************'
 \qecho

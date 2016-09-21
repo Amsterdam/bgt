@@ -2,7 +2,7 @@
 
 cat > ~/.pgpass <<EOF
 database:5432:bgt:bgt:insecure
-bgt-datapunt.fmecloud.com:5432:gisdb:dbuser:${FMEDBPASS}
+${FMESERVER}:5432:gisdb:dbuser:${FMEDBPASS}
 EOF
 
 chmod 600 ~/.pgpass

@@ -1,14 +1,14 @@
 ﻿
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Aanmaak view imgeo_extractie.vw_shp_imgeo_overigbouwwerk ...                *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Aanmaak view imgeo_extractie.vw_shp_imgeo_overigbouwwerk ...                *'
+\qecho '*******************************************************************************'
 \qecho
 
 
 -- Schema: imgeo_extractie
 
--- \pset tuples_only
+DROP VIEW IF EXISTS imgeo_extractie.vw_shp_imgeo_overigbouwwerk;
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_shp_imgeo_overigbouwwerk AS 
  SELECT imgeo_overigbouwwerk.identificatie_namespace AS namespace,
@@ -25,58 +25,58 @@ CREATE OR REPLACE VIEW imgeo_extractie.vw_shp_imgeo_overigbouwwerk AS
     imgeo_overigbouwwerk.plus_status AS plusstatus,
     imgeo_overigbouwwerk.bgt_type AS bgttype
     , case
-		when bgt_type ='niet-bgt' -- cntr op bgt_type ='niet-bgt'
-	 then null
+        when bgt_type ='niet-bgt' -- cntr op bgt_type ='niet-bgt'
+     then null
 
-	 else
-	      'BGT_OBW_'|| -- prefixed toevoegen aan bestandnaam
-	LOWER(		REPLACE(           	    
-				REPLACE(
-					Replace(
-						REPLACE(
-							REPLACE(
-								REPLACE(
-									REPLACE (bgt_type ,',',''),  -- vervangen ',' tekens met niks  
-								'/ ',''), -- vervangen '/spatie' tekens met niks 
-							':',''), -- vervangen ':' tekens met niks 
-						'(',''), -- vervangen '(' tekens met niks 
-					')',''), -- vervangen ')' tekens met niks 		
-				'/',''), -- vervangen '/' tekens met niks 			
-			' ','_') -- vervangen 'spatie' tekens met '_' teken 		
+     else
+          'BGT_OBW_'|| -- prefixed toevoegen aan BESTANDSNAAM
+    LOWER(        REPLACE(                   
+                REPLACE(
+                    REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    REPLACE (bgt_type ,',',''),  -- vervangen ',' tekens met niks  
+                                '/ ',''), -- vervangen '/spatie' tekens met niks 
+                            ':',''), -- vervangen ':' tekens met niks 
+                        '(',''), -- vervangen '(' tekens met niks 
+                    ')',''), -- vervangen ')' tekens met niks         
+                '/','_'), -- vervangen '/' tekens met underscore (tbv en/of -> en_of)             
+            ' ','_') -- vervangen 'spatie' tekens met '_' teken         
              )
-	end	  			as BESTANDNAAM
+    end                  as BESTANDSNAAM
 
     ,imgeo_overigbouwwerk.plus_type AS plustype
 
     ,case
-	when bgt_type ='niet-bgt' and plus_type is null -- cntr op bgt_type ='niet-bgt' en plus_type is leeg
-		 then 'BGTPLUS_OBW_'||'onbekend' --prefixed en plustype 'onbekend' in bestandnaam_plus
-		 else
-			case
-			when bgt_type ='niet-bgt' -- cntr op bgt_type ='niet-bgt' en plustype is wel gevuld
-			then
-			     'BGTPLUS_OBW_'|| --prefixed en plustype in bestandnaam_plus
-		LOWER(		REPLACE(           	    
-					REPLACE(
-						Replace(
-							REPLACE(
-								REPLACE(
-									REPLACE(
-										REPLACE (plus_type ,',',''),  -- vervangen ',' tekens met niks  
-									'/ ',''), -- vervangen '/spatie' tekens met niks 
-								':',''), -- vervangen ':' tekens met niks 
-							'(',''), -- vervangen '(' tekens met niks 
-						')',''), -- vervangen ')' tekens met niks 		
-					'/',''), -- vervangen '/' tekens met niks 			
-				' ','_') -- vervangen 'spatie' tekens met '_' 	
-			)end
-	end 						as BESTANDNAAM_PLUS
+    when bgt_type ='niet-bgt' and plus_type is null -- cntr op bgt_type ='niet-bgt' en plus_type is leeg
+         then 'BGTPLUS_OBW_'||'onbekend' --prefixed en plustype 'onbekend' in BESTANDSNAAM_plus
+         else
+            case
+            when bgt_type ='niet-bgt' -- cntr op bgt_type ='niet-bgt' en plustype is wel gevuld
+            then
+                 'BGTPLUS_OBW_'|| --prefixed en plustype in BESTANDSNAAM_plus
+        LOWER(        REPLACE(                   
+                    REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    REPLACE(
+                                        REPLACE (plus_type ,',',''),  -- vervangen ',' tekens met niks  
+                                    '/ ',''), -- vervangen '/spatie' tekens met niks 
+                                ':',''), -- vervangen ':' tekens met niks 
+                            '(',''), -- vervangen '(' tekens met niks 
+                        ')',''), -- vervangen ')' tekens met niks         
+                    '/','_'), -- vervangen '/' tekens met underscore (tbv en/of -> en_of)             
+                ' ','_') -- vervangen 'spatie' tekens met '_'     
+            )end
+    end                         as BESTANDSNAAM_PLUS
    , imgeo_overigbouwwerk.geometrie
    FROM imgeo.imgeo_overigbouwwerk;
    
 
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Klaar met aanmaak view imgeo_extractie.vw_shp_imgeo_overigbouwwerk.         *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Klaar met aanmaak view imgeo_extractie.vw_shp_imgeo_overigbouwwerk.         *'
+\qecho '*******************************************************************************'
 \qecho

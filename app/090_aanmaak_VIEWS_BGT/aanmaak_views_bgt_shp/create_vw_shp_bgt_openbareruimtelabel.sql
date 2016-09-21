@@ -1,21 +1,21 @@
 ﻿
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Aanmaak view imgeo_extractie.vw_shp_bgt_openbareruimtelabel ...             *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Aanmaak view imgeo_extractie.vw_shp_bgt_openbareruimtelabel ...             *'
+\qecho '*******************************************************************************'
 \qecho
 
 
 -- Schema: imgeo_extractie
 
--- \pset tuples_only
+DROP VIEW IF EXISTS imgeo_extractie.vw_shp_bgt_openbareruimtelabel;
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_shp_bgt_openbareruimtelabel
 AS
 (
 SELECT identificatie_namespace as NAMESPACE
      , identificatie_lokaalid  as LOKAALID
-     , objectbegintijd	       as BEGINTIJD
+     , objectbegintijd         as BEGINTIJD
      , objecteindtijd          as EINDDTIJD
      , tijdstipregistratie     as TIJDREG     
      , eindregistratie         as EINDREG
@@ -29,23 +29,20 @@ SELECT identificatie_namespace as NAMESPACE
      , identificatiebagopr     as BAGOPRID
      , openbareruimtetype      as OPRTYPE
      , REPLACE (identificatie_namespace ,'NL.IMGeo','BGT_LBL_')||
-	LOWER( REPLACE(           	    
-			REPLACE(
-				Replace(
-					REPLACE(
-						REPLACE(
-							REPLACE(
-								REPLACE (openbareruimtetype ,',',''),  -- vervangen ',' tekens met niks  
-								'/ ',''), -- vervangen '/spatie' tekens met niks 
-							':',''), -- vervangen ':' tekens met niks 
-						'(',''), -- vervangen '(' tekens met niks 
-					')',''), -- vervangen ')' tekens met niks 		
-				'/',''), -- vervangen '/' tekens met niks 			
-			' ','_') -- vervangen 'spatie' tekens met '_' teken 		
-		)
-		  			as BESTANDNAAM
-      		       
-	                       
+    LOWER( REPLACE(                   
+            REPLACE(
+                REPLACE(
+                    REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                REPLACE (openbareruimtetype ,',',''),  -- vervangen ',' tekens met niks  
+                                '/ ',''), -- vervangen '/spatie' tekens met niks 
+                            ':',''), -- vervangen ':' tekens met niks 
+                        '(',''), -- vervangen '(' tekens met niks 
+                    ')',''), -- vervangen ')' tekens met niks         
+                '/','_'), -- vervangen '/' tekens met underscore (tbv en/of -> en_of)             
+            ' ','_') -- vervangen 'spatie' tekens met '_' teken         
+         )                     as BESTANDSNAAM
      , opr_label_tekst         as LABELTEKST
      , opr_label_hoek          as HOEK
      , geometrie               as geometrie
@@ -54,7 +51,7 @@ SELECT identificatie_namespace as NAMESPACE
   
 
 \qecho
-\qecho "*******************************************************************************"
-\qecho "* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_openbareruimtelabel.      *"
-\qecho "*******************************************************************************"
+\qecho '*******************************************************************************'
+\qecho '* Klaar met aanmaak view imgeo_extractie.vw_shp_bgt_openbareruimtelabel.      *'
+\qecho '*******************************************************************************'
 \qecho
