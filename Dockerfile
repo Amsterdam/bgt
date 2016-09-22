@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:16.04
 MAINTAINER datapunt.ois@amsterdam.nl
 
 RUN apt-get update \
