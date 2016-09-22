@@ -16,7 +16,7 @@ importer:
     DB_USER: bgt
     DB_PASSWORD: insecure
   volumes:
-    /tmp/data:/data:ro
+    - /tmp/data:/data
   env_file: keys.env
   command: >
     bash -c "/app/docker-wait.sh \
