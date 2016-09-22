@@ -117,9 +117,9 @@ psql -h ${db_server} -d ${database} -p ${db_port} -U ${db_user} -f START_SQL_aan
 # NB als parameters 1 t/m 4 niet zijn gevuld, wordt ontwikkel-BGT-database DataPunt benaderd
 
 # Bovenstaande roept een START_SQL_schema.sql aan en roept een aantal create sqlscripts aan om schema's aan te maken in de bgt_database
-#   
+#
 
-# 
+#
 #
 
 
@@ -127,4 +127,4 @@ psql -h ${db_server} -d ${database} -p ${db_port} -U ${db_user} -f START_SQL_aan
 # "*******************************************************************************"
 # "* Klaar met aanmaken DB-schemas BGT.                                          *"
 # "*******************************************************************************"
-# "" 
+# ""

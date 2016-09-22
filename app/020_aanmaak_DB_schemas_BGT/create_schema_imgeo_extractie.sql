@@ -51,8 +51,7 @@
 
 DROP SCHEMA IF EXISTS imgeo_extractie CASCADE;
 
-CREATE SCHEMA IF NOT EXISTS imgeo_extractie
-  AUTHORIZATION bgt;
+CREATE SCHEMA IF NOT EXISTS imgeo_extractie;
 --
 --
 \qecho

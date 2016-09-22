@@ -33,7 +33,7 @@
 -- "*******************************************************************************"
 
 
-\qecho 
+\qecho
 \qecho "*******************************************************************************"
 \qecho "* Aanmaken schema imgeo_gml ten behoeve van inlezen GML-gegevens BGT ...      *"
 \qecho "*******************************************************************************"
@@ -44,8 +44,7 @@
 
 DROP SCHEMA IF EXISTS imgeo_gml CASCADE;
 
-CREATE SCHEMA IF NOT EXISTS imgeo_gml
-  AUTHORIZATION bgt;
+CREATE SCHEMA IF NOT EXISTS imgeo_gml;
 --
 --
 \qecho
