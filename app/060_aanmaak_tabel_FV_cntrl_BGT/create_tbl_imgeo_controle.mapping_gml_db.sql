@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS imgeo_controle.mapping_gml_db
   dbnaam character varying -- db objectklasse in bgt imgeo-tabel.
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo_controle.mapping_gml_db
-  OWNER TO bgt;
+--ALTER TABLE imgeo_controle.mapping_gml_db
+--  OWNER TO bgt;
 COMMENT ON TABLE imgeo_controle.mapping_gml_db
   IS 'mapping_gml-db tabel met daarin de mapping van de gml-objectklasse met de db-objectklasse.';
 COMMENT ON COLUMN imgeo_controle.mapping_gml_db.gmlnaam IS 'gml_objectklasse in  gmlbestand';

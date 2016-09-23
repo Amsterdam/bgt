@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS imgeo.imgeo_sensor
   geometrie geometry(Geometry,28992)
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo.imgeo_sensor
-  OWNER TO bgt;
+--ALTER TABLE imgeo.imgeo_sensor
+--  OWNER TO bgt;
 
   
 \qecho

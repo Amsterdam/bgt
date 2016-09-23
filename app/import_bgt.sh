@@ -2,14 +2,14 @@
 
 cat > ~/.pgpass <<EOF
 database:5432:bgt:bgt:insecure
-${FMESERVER}:5432:gisdb:dbuser:${FMEDBPASS}
+${FMEHOST}:5432:gisdb:dbuser:${FMEDBPASS}
 EOF
 
 chmod 600 ~/.pgpass
 
 cd /app/010_download_BGT
 mkdir log
-# sh START_SH_download_alle_BGT.sh
+#sh START_SH_download_alle_BGT.sh
 
 cd /app/
 /usr/bin/python3 /src/connect.py

@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS imgeo_controle.vergelijk_gml_db
   verschil bigint -- verschil gml-tabellen met imgeo-tabellen in dbase
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo_controle.vergelijk_gml_db
-  OWNER TO bgt;
+--ALTER TABLE imgeo_controle.vergelijk_gml_db
+--  OWNER TO bgt;
 COMMENT ON TABLE imgeo_controle.vergelijk_gml_db
   IS 'vergelijk_gml_db bevat een vergelijking van de telling in de gmltabellen met de imgeo-tabellen in de dbase';
 COMMENT ON COLUMN imgeo_controle.vergelijk_gml_db.aantal_gml IS 'aantal rijen van gml tabellen in dbase';

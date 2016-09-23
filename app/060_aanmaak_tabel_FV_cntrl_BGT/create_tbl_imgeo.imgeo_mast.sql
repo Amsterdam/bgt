@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS imgeo.imgeo_mast
   geometrie geometry(Point,28992)
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo.imgeo_mast
-  OWNER TO bgt;
+--ALTER TABLE imgeo.imgeo_mast
+--  OWNER TO bgt;
 
 -- Index: imgeo.imgeo_mast_geometrie_1465822102262
 

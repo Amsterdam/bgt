@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS imgeo_controle.frequentieverdeling_gml
   aantal bigint
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo_controle.frequentieverdeling_gml
-  OWNER TO bgt;
+--ALTER TABLE imgeo_controle.frequentieverdeling_gml
+--  OWNER TO bgt;
 COMMENT ON TABLE imgeo_controle.frequentieverdeling_gml
   IS 'In tabel frequentieverdeling_gml wordt een telling opgeslagen van het aantal attribuutwaarden per objectklasse van de geïmporteerde gmlbestanden.';
 COMMENT ON COLUMN imgeo_controle.frequentieverdeling_gml.tabelnaam IS 'Tabelnaam van de objectklasse van het gml-bestand.';

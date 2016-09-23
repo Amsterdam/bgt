@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS imgeo_controle.tel_db
   aantal bigint -- aantal rijen objectklasse van bgt imgeo-tabel
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo_controle.tel_db
-  OWNER TO bgt;
+--ALTER TABLE imgeo_controle.tel_db
+--  OWNER TO bgt;
 COMMENT ON TABLE imgeo_controle.tel_db
   IS 'tel_db wordt het aantal rijen van de bgt imgeo-tabel bijgehouden. ';
 COMMENT ON COLUMN imgeo_controle.tel_db.tabelnaam IS 'tabelnaam objectklasse van bgt imgeo-tabel';

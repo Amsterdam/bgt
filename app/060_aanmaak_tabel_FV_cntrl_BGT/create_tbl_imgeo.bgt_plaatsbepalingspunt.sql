@@ -56,8 +56,8 @@ CREATE TABLE IF NOT EXISTS imgeo.bgt_plaatsbepalingspunt
   geometrie geometry(Point,28992)
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo.bgt_plaatsbepalingspunt
-  OWNER TO bgt;
+--ALTER TABLE imgeo.bgt_plaatsbepalingspunt
+--  OWNER TO bgt;
 
 -- Index: imgeo.bgt_plaatsbepalingspunt_geometrie_1465822101622
 

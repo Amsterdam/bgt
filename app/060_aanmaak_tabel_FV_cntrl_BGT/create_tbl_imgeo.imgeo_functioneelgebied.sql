@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS imgeo.imgeo_functioneelgebied
   geometrie geometry(CurvePolygon,28992)
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo.imgeo_functioneelgebied
-  OWNER TO bgt;
+--ALTER TABLE imgeo.imgeo_functioneelgebied
+--  OWNER TO bgt;
 
 -- Index: imgeo.imgeo_functioneelgebied_geometrie_1465822099300
 

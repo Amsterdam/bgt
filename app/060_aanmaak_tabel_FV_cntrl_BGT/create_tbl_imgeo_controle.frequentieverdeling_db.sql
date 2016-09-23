@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS imgeo_controle.frequentieverdeling_db
   aantal bigint
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo_controle.frequentieverdeling_db
-  OWNER TO bgt;
+--ALTER TABLE imgeo_controle.frequentieverdeling_db
+--  OWNER TO bgt;
 COMMENT ON TABLE imgeo_controle.frequentieverdeling_db
   IS 'frequentieverdeling_db wordt het aantal attribuutwaarden van de bgt imgeo-tabellen bijgehouden.';
 COMMENT ON COLUMN imgeo_controle.frequentieverdeling_db.tabelnaam IS 'tabelnaam bgt imgeo-tabel';

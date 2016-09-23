@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS imgeo_controle.tel_gml
   aantal bigint -- aantal rijen in de gmltabel
 ) WITHOUT OIDS;
 
-ALTER TABLE imgeo_controle.tel_gml
-  OWNER TO bgt;
+--ALTER TABLE imgeo_controle.tel_gml
+--  OWNER TO bgt;
 COMMENT ON TABLE imgeo_controle.tel_gml
   IS 'tel_gml wordt een telling van het aantal rijen van de geïmporteerde  gml-tabellen bijgehouden.';
 COMMENT ON COLUMN imgeo_controle.tel_gml.tabelnaam IS 'tabelnaam van de gmlobjectklasse';

@@ -112,12 +112,11 @@ def upload_gml_files():
     print ("Upload files completed")
 
 
-def upload_repositories():
+def upload_repositories(repo_name):
     """
     Step 2: Create/Upload Transformation Repository
     """
     urlrepositories = 'fmerest/v2/repositories'
-    repo_name = 'BGT'
 
     # delete repository <repo_name>
     url = '{FMESERVER}/{urlconnect}/{repo_name}?detail=low'.format(
@@ -143,16 +142,15 @@ def upload_repositories():
     print("Repository created")
 
 
-def upload_fmw_script():
+def upload_fmw_script(repo_name, filepath, filename):
     """
-    Upload the fmw file from `030_inlezen_BGT/fme`
+    Upload the fmw file from `<filepath>/<filename>`
     """
     urlrepositories = 'fmerest/v2/repositories'
-    repo_name = 'BGT'
     print("Delete existing FMW file (if exists)")
     delete_url = '{FMESERVER}/{urlconnect}/{repo_name}/items/{filename}?detail=low&accept=json'.format(
         FMESERVER=FMESERVER, urlconnect=urlrepositories,
-        repo_name=repo_name, filename='inlezen_DB_BGT_uit_citygml.fmw')
+        repo_name=repo_name, filename=filename)
     delete_headers = {
         'Accept': 'application/json',
         'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
@@ -168,11 +166,11 @@ def upload_fmw_script():
     upload_url = '{FMESERVER}/{urlconnect}/{repo_name}/items?detail=low&accept=json'.format(
         FMESERVER=FMESERVER, urlconnect=urlrepositories, repo_name=repo_name)
     post_headers = {
-        'Content-Disposition': 'attachment; filename="inlezen_DB_BGT_uit_citygml.fmw"',
+        'Content-Disposition': 'attachment; filename={filename}'.format(filename=filename),
         'Content-Type': 'application/octet-stream',
         'Accept': 'application/json',
         'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
-    payload = open("../app/030_inlezen_BGT/fme/inlezen_DB_BGT_uit_citygml.fmw", encoding="utf-8").read()
+    payload = open("{filepath}/{filename}".format(filepath=filepath, filename=filename), encoding="utf-8").read()
     upload_fmw_result = requests.post(upload_url, headers=post_headers, data=payload)
     upload_fmw_result.raise_for_status()
     print("FMW script uploaded")
@@ -181,7 +179,7 @@ def upload_fmw_script():
     print("Register `fmejobsubmitter` service")
     reg_service_url = '{FMESERVER}/{urlconnect}/{repo_name}/items/{filename}/services?detail=low&accept=json'.format(
         FMESERVER=FMESERVER, urlconnect=urlrepositories,
-        repo_name=repo_name, filename='inlezen_DB_BGT_uit_citygml.fmw')
+        repo_name=repo_name, filename=filename)
     reg_service_headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -240,7 +238,7 @@ def upload_imgeo_xsd():
     print ("Upload imgeo.xsd completed")
 
 
-def start_transformation(repository, workspace):
+def start_transformation_db(repository, workspace):
     """
     Step 3: Start Transformation Job
     """
@@ -297,6 +295,113 @@ def start_transformation(repository, workspace):
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
 
+def start_transformation_shapes(repository, workspace):
+    """
+    Step 3: Start Transformation Job
+    """
+    urlconnect = 'fmerest/v2/resources/connections'
+
+    # delete directory
+    print ("Delete existing `Export_Shapes` directory")
+    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes?detail=low'.format(
+        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    repository_res = requests.delete(url, headers=fme_api_auth())
+    if repository_res.status_code not in [404, 204]:
+        repository_res.raise_for_status()
+    elif repository_res.status_code == 404:
+        print("Directory not found")
+    else:
+        print("Directory deleted")
+
+    # create directory
+    print("Create new `Export_Shapes` directory")
+    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    body = {
+        'directoryname': 'Export_Shapes',
+        'type': 'DIR',
+    }
+    repository_res = requests.post(url, data=body, headers=fme_api_auth())
+    repository_res.raise_for_status()
+    print("Directory created")
+
+    # delete directory
+    print ("Delete existing `Export_Shapes_Totaalgebied` directory")
+    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes_Totaalgebied?detail=low'.format(
+        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    repository_res = requests.delete(url, headers=fme_api_auth())
+    if repository_res.status_code not in [404, 204]:
+        repository_res.raise_for_status()
+    elif repository_res.status_code == 404:
+        print("Directory not found")
+    else:
+        print("Directory deleted")
+
+    # create directory
+    print("Create new `Export_Shapes_Totaalgebied` directory")
+    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    body = {
+        'directoryname': 'Export_Shapes_Totaalgebied',
+        'type': 'DIR',
+    }
+    repository_res = requests.post(url, data=body, headers=fme_api_auth())
+    repository_res.raise_for_status()
+    print("Directory created")
+
+    urltransform = 'fmerest/v2/transformations'
+    target_url = '{FMESERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
+        FMESERVER=FMESERVER, urltransform=urltransform, repository=repository, workspace=workspace)
+
+    try:
+        response = requests.post(
+            url=target_url,
+            headers={
+                "Referer": "{FMESERVER}/fmerest/v2/apidoc/".format(FMESERVER=FMESERVER),
+                "Origin": "{FMESERVER}".format(FMESERVER=FMESERVER),
+                "Authorization": "fmetoken token={FMEAPI}".format(FMEAPI=FMEAPI),
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+
+            data=json.dumps({
+                "subsection": "REST_SERVICE",
+                "FMEDirectives": {},
+                "NMDirectives": {
+                    "successTopics": [],
+                    "failureTopics": []
+                },
+                "TMDirectives": {
+                    "tag": "linux",
+                    "description": "Aanmaak Shapes uit DB"
+                },
+                "publishedParameters": [
+                    {
+                        "name": "SourceDataset_POSTGIS",
+                        "value": "DestDataset_POSTGIS_4"
+                    },
+                    {
+                        "name": "DestDataset_ESRISHAPE2",
+                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Export_Shapes/"]
+                    },
+                    {
+                        "name": "DestDataset_ESRISHAPE3",
+                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied/"]
+                    }
+                ]
+            })
+        )
+
+        print('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
+        print('Response HTTP Response Body: {content}'.format(content=response.content))
+
+        res = response.json()
+        print('Job started! Job ID: {}'.format(res['id']))
+        return {'jobid': res['id'], 'urltransform': urltransform}
+
+    except requests.exceptions.RequestException:
+        print('HTTP Request failed')
+
 
 def wait_for_job_to_complete(job):
     """
@@ -327,18 +432,57 @@ def create_db_schema_bgt():
     os.chdir('../app/020_aanmaak_DB_schemas_BGT')
     print (os.getcwd())
 
-    subprocess.call("sh START_SH_aanmaak_schemas_BGT.sh {FMESERVER} gisdb 5432 dbuser".format(
+    subprocess.call("sh aanmaak_schemas_BGT.sh {FMESERVER} gisdb 5432 dbuser".format(
+        FMESERVER=FMESERVER.split('//')[-1]), shell=True)
+    os.chdir(here)
+
+def aanmaak_db_tabellen_bgt():
+    """
+    Starts the existing scripts `060_aanmaak_tabel_FV_cntrl_BGT`
+    """
+    here = os.getcwd()
+    os.chdir('../app/060_aanmaak_tabel_FV_cntrl_BGT')
+    print (os.getcwd())
+
+    subprocess.call("sh aanmaak_tabellen_BGT.sh {FMESERVER} gisdb 5432 dbuser".format(
+        FMESERVER=FMESERVER.split('//')[-1]), shell=True)
+    os.chdir(here)
+
+def aanmaak_db_views_shapes_bgt():
+    """
+    Starts the existing scripts `090_aanmaak_views_BGT`
+    """
+    here = os.getcwd()
+    os.chdir('../app/090_aanmaak_VIEWS_BGT/aanmaak_views_bgt_shp')
+    print (os.getcwd())
+
+    subprocess.call("sh aanmaak_DB_views_BGT_SHP.sh {FMESERVER} gisdb 5432 dbuser".format(
         FMESERVER=FMESERVER.split('//')[-1]), shell=True)
     os.chdir(here)
 
 
 if __name__ == '__main__':
     print("Running")
+    # TODO: Download files within python instead of bash/wget
     start_server()
-    create_db_schema_bgt()
+    # create_db_schema_bgt()
     # upload_gml_files()
-    upload_repositories()
-    upload_fmw_script()
+    # upload_repositories('BGT-DB')
+    # upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
+    # TODO: Create db connection in FMECLoud
     # upload_imgeo_xsd() # TODO find out what we can do to make the utf-8 error disappear
-    wait_for_job_to_complete(start_transformation('BGT', 'inlezen_DB_BGT_uit_citygml.fmw'))
+    # wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
+    # aanmaak_db_tabellen_bgt()
+    # aanmaak_db_views_shapes_bgt()
+    # upload_repositories('BGT-SHAPES')
+    # upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
 
+    wait_for_job_to_complete(start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw'))
+    # run transformation
+    # download resulting shapes
+    # download database
+    # 030
+    # 040
+    # 070
+    # 075
+    # 080
