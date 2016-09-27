@@ -469,7 +469,7 @@ if __name__ == '__main__':
     # upload_gml_files()
     # upload_repositories('BGT-DB')
     # upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
-    # TODO: Create db connection in FMECLoud
+    # TODO: Create db connection in FMECLoud - Not possible by API
     # upload_imgeo_xsd() # TODO find out what we can do to make the utf-8 error disappear
     # wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
     # aanmaak_db_tabellen_bgt()
@@ -480,8 +480,7 @@ if __name__ == '__main__':
     wait_for_job_to_complete(start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw'))
     # run transformation
     # download resulting shapes
-    # download database
-    # 030
+    # dump / restore database locally
     # 040
     # 070
     # 075
