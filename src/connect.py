@@ -9,10 +9,10 @@ import socket
 import subprocess
 
 
-FME_SERVER_API = os.getenv('FME_SERVER_API', 'secret')
-FME_API = os.getenv('FME_API', 'secret')
-FME_SERVER = os.getenv('FME_SERVER', 'secret')
-INSTANCE_ID = os.getenv('FME_INSTANCE', 'secret')
+FME_SERVER_API = os.getenv('FMESERVERAPI', 'secret')
+FME_API = os.getenv('FMEAPI', 'secret')
+FME_SERVER = os.getenv('FMESERVER', 'secret')
+INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
 
 
 log = logging.getLogger(__name__)
@@ -40,11 +40,21 @@ def server_in_dns():
         return False
 
 
+def get_server_status():
+    """
+    Returns the current state of our server
+    """
+    res = requests.get(fme_url(), headers=fme_auth())
+    res.raise_for_status()
+
+    return res.json()['state']
+
+
 def start_server():
     """
     Start the FME instance
     """
-    log.debug("Starting server")
+    log.info("Starting server")
     res = requests.get(fme_url(), headers=fme_auth())
     res.raise_for_status()
 
@@ -52,14 +62,10 @@ def start_server():
         server_res = requests.put('{}/start'.format(fme_url()), headers=fme_auth())
         server_res.raise_for_status()
 
-    sleep = 10
-    while True:
-        res = requests.get(fme_url(), headers=fme_auth())
-        res.raise_for_status()
-        if res.json()['state'] == 'RUNNING':
-            break
-        log.debug("Waiting for server to start, sleeping for {} seconds".format(sleep))
-        time.sleep(sleep)
+    while get_server_status() != 'RUNNING':
+        log.debug("Waiting for server to start, current status is %s", get_server_status())
+        time.sleep(10)
+
     log.debug("Server started")
     log.debug("Waiting for DNS availability of server")
 
@@ -67,6 +73,18 @@ def start_server():
         time.sleep(2)
 
     log.debug("Continuing")
+
+
+def stop_server():
+    log.info("Stopping server")
+    res = requests.put(fme_url() + "/pause", headers=fme_auth())
+    res.raise_for_status()
+
+    while get_server_status() != 'PAUSED':
+        log.debug("Waiting for server to pause, current status is %s", get_server_status())
+        time.sleep(10)
+
+    log.info("Server paused")
 
 
 def upload_gml_files():
@@ -470,33 +488,44 @@ def aanmaak_db_views_shapes_bgt():
     os.chdir(here)
 
 
+def download_bgt():
+    pass
+
+
 if __name__ == '__main__':
     logging.basicConfig(
         level='DEBUG'
     )
     logging.getLogger('requests').setLevel('WARNING')
-    log.debug("Starting")
+
+    log.info("Starting script, current server status is %s", get_server_status())
 
     # TODO: Download files within python instead of bash/wget
-    start_server()
-    # create_db_schema_bgt()
-    # upload_gml_files()
-    # upload_repositories('BGT-DB')
-    # upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
-    # TODO: Create db connection in FMECLoud
-    # upload_imgeo_xsd() # TODO find out what we can do to make the utf-8 error disappear
-    # wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
-    # aanmaak_db_tabellen_bgt()
-    # aanmaak_db_views_shapes_bgt()
-    # upload_repositories('BGT-SHAPES')
-    # upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
+    download_bgt()
 
-    wait_for_job_to_complete(start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw'))
-    # run transformation
-    # download resulting shapes
-    # download database
-    # 030
-    # 040
-    # 070
-    # 075
-    # 080
+    try:
+        start_server()
+        # create_db_schema_bgt()
+        # upload_gml_files()
+        # upload_repositories('BGT-DB')
+        # upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
+        # TODO: Create db connection in FMECLoud
+        # upload_imgeo_xsd() # TODO find out what we can do to make the utf-8 error disappear
+        # wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
+        # aanmaak_db_tabellen_bgt()
+        # aanmaak_db_views_shapes_bgt()
+        # upload_repositories('BGT-SHAPES')
+        # upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
+
+        wait_for_job_to_complete(start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw'))
+        # run transformation
+        # download resulting shapes
+        # download database
+        # 030
+        # 040
+        # 070
+        # 075
+        # 080
+    finally:
+        pass
+        # stop_server()
