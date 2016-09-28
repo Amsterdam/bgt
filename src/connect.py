@@ -1,3 +1,5 @@
+import logging
+
 import requests
 import os
 import glob
@@ -11,6 +13,9 @@ FME_SERVER_API = os.getenv('FME_SERVER_API', 'secret')
 FME_API = os.getenv('FME_API', 'secret')
 FME_SERVER = os.getenv('FME_SERVER', 'secret')
 INSTANCE_ID = os.getenv('FME_INSTANCE', 'secret')
+
+
+log = logging.getLogger(__name__)
 
 
 def fme_url():
@@ -28,9 +33,10 @@ def fme_api_auth():
 def server_in_dns():
     try:
         socket.gethostbyname(FME_SERVER.split('//')[-1])
-        print('DNS is available for server')
+        log.debug('DNS is available for server')
         return True
     except:
+        log.warn("No DNS available for server")
         return False
 
 
@@ -38,7 +44,7 @@ def start_server():
     """
     Start the FME instance
     """
-    print("Starting server")
+    log.debug("Starting server")
     res = requests.get(fme_url(), headers=fme_auth())
     res.raise_for_status()
 
@@ -52,15 +58,15 @@ def start_server():
         res.raise_for_status()
         if res.json()['state'] == 'RUNNING':
             break
-        print("Waiting for server to start, sleeping for {} seconds".format(sleep))
+        log.debug("Waiting for server to start, sleeping for {} seconds".format(sleep))
         time.sleep(sleep)
-    print("Server started")
-    print("Waiting for DNS availability of server")
+    log.debug("Server started")
+    log.debug("Waiting for DNS availability of server")
 
     while not server_in_dns():
         time.sleep(2)
 
-    print("Continuing")
+    log.debug("Continuing")
 
 
 def upload_gml_files():
@@ -70,19 +76,19 @@ def upload_gml_files():
     url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
-    print ("Delete existing `Import_GML` directory")
+    log.debug ("Delete existing `Import_GML` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
     elif repository_res.status_code == 404:
-        print("Directory not found")
+        log.debug("Directory not found")
     else:
-        print("Directory deleted")
+        log.debug("Directory deleted")
 
     # create directory
-    print("Create new `Import_GML` directory")
+    log.debug("Create new `Import_GML` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
@@ -91,10 +97,10 @@ def upload_gml_files():
     }
     repository_res = requests.post(url, data=body, headers=fme_api_auth())
     repository_res.raise_for_status()
-    print("Directory created")
+    log.debug("Directory created")
 
     # upload files
-    print("Upload files to `Import_GML` directory")
+    log.debug("Upload files to `Import_GML` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low&overwrite=false'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     path = 'data'
@@ -106,10 +112,10 @@ def upload_gml_files():
                 'Content-Type': 'application/octet-stream',
                 'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
             }
-            print('Uploading', infile, 'to', filename)
+            log.debug('Uploading', infile, 'to', filename)
             repository_res = requests.post(url, data=f, headers=headers)
             repository_res.raise_for_status()
-    print ("Upload files completed")
+    log.debug ("Upload files completed")
 
 
 def upload_repositories(repo_name):
@@ -125,9 +131,9 @@ def upload_repositories(repo_name):
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
     elif repository_res.status_code == 404:
-        print("Repository not found")
+        log.debug("Repository not found")
     else:
-        print("Repository deleted")
+        log.debug("Repository deleted")
 
     # create repository
     create_url = '{FME_SERVER}/{url_connect}?detail=low&accept=json'.format(
@@ -139,7 +145,7 @@ def upload_repositories(repo_name):
     payload = {'description': repo_name, 'name': repo_name, }
     create_repo_result = requests.post(create_url, headers=post_headers, data=payload)
     create_repo_result.raise_for_status()
-    print("Repository created")
+    log.debug("Repository created")
 
 
 def upload_fmw_script(repo_name, filepath, filename):
@@ -147,7 +153,7 @@ def upload_fmw_script(repo_name, filepath, filename):
     Upload the fmw file from `<filepath>/<filename>`
     """
     url_repositories = 'fmerest/v2/repositories'
-    print("Delete existing FMW file (if exists)")
+    log.debug("Delete existing FMW file (if exists)")
     delete_url = '{FME_SERVER}/{url_connect}/{repo_name}/items/{filename}?detail=low&accept=json'.format(
         FME_SERVER=FME_SERVER, url_connect=url_repositories,
         repo_name=repo_name, filename=filename)
@@ -158,11 +164,11 @@ def upload_fmw_script(repo_name, filepath, filename):
     if delete_fmw_result.status_code not in [404, 204]:
         delete_fmw_result.raise_for_status()
     elif delete_fmw_result.status_code == 404:
-        print("Existing FMW file not found.")
+        log.debug("Existing FMW file not found.")
     else:
-        print("Existing FMW file deleted.")
+        log.debug("Existing FMW file deleted.")
 
-    print("Upload FMW file")
+    log.debug("Upload FMW file")
     upload_url = '{FME_SERVER}/{url_connect}/{repo_name}/items?detail=low&accept=json'.format(
         FME_SERVER=FME_SERVER, url_connect=url_repositories, repo_name=repo_name)
     post_headers = {
@@ -173,10 +179,10 @@ def upload_fmw_script(repo_name, filepath, filename):
     payload = open("{file_path}/{filename}".format(file_path=filepath, filename=filename), encoding="utf-8").read()
     upload_fmw_result = requests.post(upload_url, headers=post_headers, data=payload)
     upload_fmw_result.raise_for_status()
-    print("FMW script uploaded")
+    log.debug("FMW script uploaded")
 
     # register the service `fmejobsubmitter` to the fmw script
-    print("Register `fmejobsubmitter` service")
+    log.debug("Register `fmejobsubmitter` service")
     reg_service_url = '{FME_SERVER}/{url_connect}/{repo_name}/items/{filename}/services?detail=low&accept=json'.format(
         FME_SERVER=FME_SERVER, url_connect=url_repositories,
         repo_name=repo_name, filename=filename)
@@ -187,7 +193,7 @@ def upload_fmw_script(repo_name, filepath, filename):
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
     reg_service_res = requests.post(reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
     reg_service_res.raise_for_status()
-    print("Registered `fmejobsubmitter` service")
+    log.debug("Registered `fmejobsubmitter` service")
 
 
 def upload_imgeo_xsd():
@@ -197,19 +203,19 @@ def upload_imgeo_xsd():
     url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
-    print ("Delete existing `Import_XSD` directory")
+    log.debug ("Delete existing `Import_XSD` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
     elif repository_res.status_code == 404:
-        print("Directory not found")
+        log.debug("Directory not found")
     else:
-        print("Directory deleted")
+        log.debug("Directory deleted")
 
     # create directory
-    print("Create new `Import_XSD` directory")
+    log.debug("Create new `Import_XSD` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
@@ -218,10 +224,10 @@ def upload_imgeo_xsd():
     }
     repository_res = requests.post(url, data=body, headers=fme_api_auth())
     repository_res.raise_for_status()
-    print("Directory created")
+    log.debug("Directory created")
 
     # upload the file
-    print("Upload imgeo.xsd to `Import_XSD` directory")
+    log.debug("Upload imgeo.xsd to `Import_XSD` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?createDirectories=false&detail=low&overwrite=false'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
 
@@ -231,11 +237,11 @@ def upload_imgeo_xsd():
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
     }
 
-    print('Uploading imgeo.xsd')
+    log.debug('Uploading imgeo.xsd')
     payload = open('../app/030_inlezen_BGT/xsd/imgeo.xsd', encoding='utf-8').read()
     repository_res = requests.post(url, data=payload, headers=headers)
     repository_res.raise_for_status()
-    print ("Upload imgeo.xsd completed")
+    log.debug ("Upload imgeo.xsd completed")
 
 
 def start_transformation_db(repository, workspace):
@@ -285,15 +291,15 @@ def start_transformation_db(repository, workspace):
             })
         )
 
-        print('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
-        print('Response HTTP Response Body: {content}'.format(content=response.content))
+        log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
+        log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
 
         res = response.json()
-        print('Job started! Job ID: {}'.format(res['id']))
+        log.debug('Job started! Job ID: {}'.format(res['id']))
         return {'jobid': res['id'], 'urltransform': urltransform}
 
     except requests.exceptions.RequestException:
-        print('HTTP Request failed')
+        log.debug('HTTP Request failed')
 
 
 def start_transformation_shapes(repository, workspace):
@@ -303,19 +309,19 @@ def start_transformation_shapes(repository, workspace):
     url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
-    print ("Delete existing `Export_Shapes` directory")
+    log.debug ("Delete existing `Export_Shapes` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
     elif repository_res.status_code == 404:
-        print("Directory not found")
+        log.debug("Directory not found")
     else:
-        print("Directory deleted")
+        log.debug("Directory deleted")
 
     # create directory
-    print("Create new `Export_Shapes` directory")
+    log.debug("Create new `Export_Shapes` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
@@ -324,22 +330,22 @@ def start_transformation_shapes(repository, workspace):
     }
     repository_res = requests.post(url, data=body, headers=fme_api_auth())
     repository_res.raise_for_status()
-    print("Directory created")
+    log.debug("Directory created")
 
     # delete directory
-    print ("Delete existing `Export_Shapes_Totaalgebied` directory")
+    log.debug ("Delete existing `Export_Shapes_Totaalgebied` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes_Totaalgebied?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
     elif repository_res.status_code == 404:
-        print("Directory not found")
+        log.debug("Directory not found")
     else:
-        print("Directory deleted")
+        log.debug("Directory deleted")
 
     # create directory
-    print("Create new `Export_Shapes_Totaalgebied` directory")
+    log.debug("Create new `Export_Shapes_Totaalgebied` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
@@ -348,7 +354,7 @@ def start_transformation_shapes(repository, workspace):
     }
     repository_res = requests.post(url, data=body, headers=fme_api_auth())
     repository_res.raise_for_status()
-    print("Directory created")
+    log.debug("Directory created")
 
     urltransform = 'fmerest/v2/transformations'
     target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
@@ -393,24 +399,24 @@ def start_transformation_shapes(repository, workspace):
             })
         )
 
-        print('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
-        print('Response HTTP Response Body: {content}'.format(content=response.content))
+        log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
+        log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
 
         res = response.json()
-        print('Job started! Job ID: {}'.format(res['id']))
+        log.debug('Job started! Job ID: {}'.format(res['id']))
         return {'jobid': res['id'], 'urltransform': urltransform}
 
     except requests.exceptions.RequestException:
-        print('HTTP Request failed')
+        log.debug('HTTP Request failed')
 
 
 def wait_for_job_to_complete(job):
     """
     Step 3: Now wait for the job to be completed
     """
-    print("Wait 2 hours until polling for completion")
+    log.debug("Wait 2 hours until polling for completion")
     time.sleep(7200)
-    print("2 hours have passed, now checking every 5 minutes")
+    log.debug("2 hours have passed, now checking every 5 minutes")
     sleep = 300
     url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
         FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
@@ -420,9 +426,9 @@ def wait_for_job_to_complete(job):
         res.raise_for_status()
         if res.json()['status'] == 'SUCCESS':
             break
-        print("Still processing, sleeping for {}".format(sleep))
+        log.debug("Still processing, sleeping for {}".format(sleep))
         time.sleep(sleep)
-    print("Job completed!")
+    log.debug("Job completed!")
 
 
 def create_db_schema_bgt():
@@ -431,7 +437,7 @@ def create_db_schema_bgt():
     """
     here = os.getcwd()
     os.chdir('../app/020_aanmaak_DB_schemas_BGT')
-    print (os.getcwd())
+    log.debug (os.getcwd())
 
     subprocess.call("sh aanmaak_schemas_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
         FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
@@ -444,7 +450,7 @@ def aanmaak_db_tabellen_bgt():
     """
     here = os.getcwd()
     os.chdir('../app/060_aanmaak_tabel_FV_cntrl_BGT')
-    print (os.getcwd())
+    log.debug (os.getcwd())
 
     subprocess.call("sh aanmaak_tabellen_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
         FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
@@ -457,7 +463,7 @@ def aanmaak_db_views_shapes_bgt():
     """
     here = os.getcwd()
     os.chdir('../app/090_aanmaak_VIEWS_BGT/aanmaak_views_bgt_shp')
-    print (os.getcwd())
+    log.debug (os.getcwd())
 
     subprocess.call("sh aanmaak_DB_views_BGT_SHP.sh {FME_SERVER} gisdb 5432 dbuser".format(
         FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
@@ -465,7 +471,12 @@ def aanmaak_db_views_shapes_bgt():
 
 
 if __name__ == '__main__':
-    print("Running")
+    logging.basicConfig(
+        level='DEBUG'
+    )
+    logging.getLogger('requests').setLevel('WARNING')
+    log.debug("Starting")
+
     # TODO: Download files within python instead of bash/wget
     start_server()
     # create_db_schema_bgt()
