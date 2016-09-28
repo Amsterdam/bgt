@@ -7,10 +7,10 @@ import socket
 import subprocess
 
 
-FMESERVERAPI = os.getenv('FMESERVERAPI', 'secret')
-FMEAPI = os.getenv('FMEAPI', 'secret')
-FMESERVER = os.getenv('FMESERVER', 'secret')
-INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
+FME_SERVER_API = os.getenv('FME_SERVER_API', 'secret')
+FME_API = os.getenv('FME_API', 'secret')
+FME_SERVER = os.getenv('FME_SERVER', 'secret')
+INSTANCE_ID = os.getenv('FME_INSTANCE', 'secret')
 
 
 def fme_url():
@@ -18,16 +18,16 @@ def fme_url():
 
 
 def fme_auth():
-    return {'Authorization': 'bearer {FMESERVERAPI}'.format(FMESERVERAPI=FMESERVERAPI)}
+    return {'Authorization': 'bearer {FME_SERVER_API}'.format(FME_SERVER_API=FME_SERVER_API)}
 
 
 def fme_api_auth():
-    return {'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
+    return {'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
 
 
 def server_in_dns():
     try:
-        socket.gethostbyname(FMESERVER.split('//')[-1])
+        socket.gethostbyname(FME_SERVER.split('//')[-1])
         print('DNS is available for server')
         return True
     except:
@@ -67,12 +67,12 @@ def upload_gml_files():
     """
     Step 1: Upload the GML files
     """
-    urlconnect = 'fmerest/v2/resources/connections'
+    url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
     print ("Delete existing `Import_GML` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
@@ -83,8 +83,8 @@ def upload_gml_files():
 
     # create directory
     print("Create new `Import_GML` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
         'directoryname': 'Import_GML',
         'type': 'DIR',
@@ -95,8 +95,8 @@ def upload_gml_files():
 
     # upload files
     print("Upload files to `Import_GML` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low&overwrite=false'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low&overwrite=false'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     path = 'data'
     for infile in glob.glob(os.path.join('..', path, '*.*')):
         with open(infile, 'rb') as f:
@@ -104,7 +104,7 @@ def upload_gml_files():
             headers = {
                 'Content-Disposition': 'attachment; filename="{}"'.format(filename),
                 'Content-Type': 'application/octet-stream',
-                'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI),
+                'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
             }
             print('Uploading', infile, 'to', filename)
             repository_res = requests.post(url, data=f, headers=headers)
@@ -116,11 +116,11 @@ def upload_repositories(repo_name):
     """
     Step 2: Create/Upload Transformation Repository
     """
-    urlrepositories = 'fmerest/v2/repositories'
+    url_repositories = 'fmerest/v2/repositories'
 
     # delete repository <repo_name>
-    url = '{FMESERVER}/{urlconnect}/{repo_name}?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlrepositories, repo_name=repo_name)
+    url = '{FME_SERVER}/{url_connect}/{repo_name}?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_repositories, repo_name=repo_name)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
@@ -130,12 +130,12 @@ def upload_repositories(repo_name):
         print("Repository deleted")
 
     # create repository
-    create_url = '{FMESERVER}/{urlconnect}?detail=low&accept=json'.format(
-        FMESERVER=FMESERVER, urlconnect=urlrepositories)
+    create_url = '{FME_SERVER}/{url_connect}?detail=low&accept=json'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_repositories)
     post_headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
-        'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
     payload = {'description': repo_name, 'name': repo_name, }
     create_repo_result = requests.post(create_url, headers=post_headers, data=payload)
     create_repo_result.raise_for_status()
@@ -146,14 +146,14 @@ def upload_fmw_script(repo_name, filepath, filename):
     """
     Upload the fmw file from `<filepath>/<filename>`
     """
-    urlrepositories = 'fmerest/v2/repositories'
+    url_repositories = 'fmerest/v2/repositories'
     print("Delete existing FMW file (if exists)")
-    delete_url = '{FMESERVER}/{urlconnect}/{repo_name}/items/{filename}?detail=low&accept=json'.format(
-        FMESERVER=FMESERVER, urlconnect=urlrepositories,
+    delete_url = '{FME_SERVER}/{url_connect}/{repo_name}/items/{filename}?detail=low&accept=json'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_repositories,
         repo_name=repo_name, filename=filename)
     delete_headers = {
         'Accept': 'application/json',
-        'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
     delete_fmw_result = requests.delete(delete_url, headers=delete_headers)
     if delete_fmw_result.status_code not in [404, 204]:
         delete_fmw_result.raise_for_status()
@@ -163,28 +163,28 @@ def upload_fmw_script(repo_name, filepath, filename):
         print("Existing FMW file deleted.")
 
     print("Upload FMW file")
-    upload_url = '{FMESERVER}/{urlconnect}/{repo_name}/items?detail=low&accept=json'.format(
-        FMESERVER=FMESERVER, urlconnect=urlrepositories, repo_name=repo_name)
+    upload_url = '{FME_SERVER}/{url_connect}/{repo_name}/items?detail=low&accept=json'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_repositories, repo_name=repo_name)
     post_headers = {
         'Content-Disposition': 'attachment; filename={filename}'.format(filename=filename),
         'Content-Type': 'application/octet-stream',
         'Accept': 'application/json',
-        'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
-    payload = open("{filepath}/{filename}".format(filepath=filepath, filename=filename), encoding="utf-8").read()
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
+    payload = open("{file_path}/{filename}".format(file_path=filepath, filename=filename), encoding="utf-8").read()
     upload_fmw_result = requests.post(upload_url, headers=post_headers, data=payload)
     upload_fmw_result.raise_for_status()
     print("FMW script uploaded")
 
     # register the service `fmejobsubmitter` to the fmw script
     print("Register `fmejobsubmitter` service")
-    reg_service_url = '{FMESERVER}/{urlconnect}/{repo_name}/items/{filename}/services?detail=low&accept=json'.format(
-        FMESERVER=FMESERVER, urlconnect=urlrepositories,
+    reg_service_url = '{FME_SERVER}/{url_connect}/{repo_name}/items/{filename}/services?detail=low&accept=json'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_repositories,
         repo_name=repo_name, filename=filename)
     reg_service_headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
 
-        'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI)}
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
     reg_service_res = requests.post(reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
     reg_service_res.raise_for_status()
     print("Registered `fmejobsubmitter` service")
@@ -194,12 +194,12 @@ def upload_imgeo_xsd():
     """
     Upload the fmw file from `030_inlezen_BGT/xsd`to the Import_XSD
     """
-    urlconnect = 'fmerest/v2/resources/connections'
+    url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
     print ("Delete existing `Import_XSD` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
@@ -210,8 +210,8 @@ def upload_imgeo_xsd():
 
     # create directory
     print("Create new `Import_XSD` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
         'directoryname': 'Import_XSD',
         'type': 'DIR',
@@ -222,13 +222,13 @@ def upload_imgeo_xsd():
 
     # upload the file
     print("Upload imgeo.xsd to `Import_XSD` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?createDirectories=false&detail=low&overwrite=false'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?createDirectories=false&detail=low&overwrite=false'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
 
     headers = {
         'Content-Disposition': 'attachment; filename="{}"'.format('imgeo.xsd'),
         'Content-Type': 'application/octet-stream',
-        'Authorization': 'fmetoken token={FMEAPI}'.format(FMEAPI=FMEAPI),
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
     }
 
     print('Uploading imgeo.xsd')
@@ -243,16 +243,16 @@ def start_transformation_db(repository, workspace):
     Step 3: Start Transformation Job
     """
     urltransform = 'fmerest/v2/transformations'
-    target_url = '{FMESERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
-        FMESERVER=FMESERVER, urltransform=urltransform, repository=repository, workspace=workspace)
+    target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
+        FME_SERVER=FME_SERVER, urltransform=urltransform, repository=repository, workspace=workspace)
 
     try:
         response = requests.post(
             url=target_url,
             headers={
-                "Referer": "{FMESERVER}/fmerest/v2/apidoc/".format(FMESERVER=FMESERVER),
-                "Origin": "{FMESERVER}".format(FMESERVER=FMESERVER),
-                "Authorization": "fmetoken token={FMEAPI}".format(FMEAPI=FMEAPI),
+                "Referer": "{FME_SERVER}/fmerest/v2/apidoc/".format(FME_SERVER=FME_SERVER),
+                "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
+                "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
                 "Content-Type": "application/json",
                 "Accept": "application/json",
             },
@@ -300,12 +300,12 @@ def start_transformation_shapes(repository, workspace):
     """
     Step 3: Start Transformation Job
     """
-    urlconnect = 'fmerest/v2/resources/connections'
+    url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
     print ("Delete existing `Export_Shapes` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
@@ -316,8 +316,8 @@ def start_transformation_shapes(repository, workspace):
 
     # create directory
     print("Create new `Export_Shapes` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
         'directoryname': 'Export_Shapes',
         'type': 'DIR',
@@ -328,8 +328,8 @@ def start_transformation_shapes(repository, workspace):
 
     # delete directory
     print ("Delete existing `Export_Shapes_Totaalgebied` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes_Totaalgebied?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes_Totaalgebied?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code not in [404, 204]:
         repository_res.raise_for_status()
@@ -340,8 +340,8 @@ def start_transformation_shapes(repository, workspace):
 
     # create directory
     print("Create new `Export_Shapes_Totaalgebied` directory")
-    url = '{FMESERVER}/{urlconnect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FMESERVER=FMESERVER, urlconnect=urlconnect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
     body = {
         'directoryname': 'Export_Shapes_Totaalgebied',
         'type': 'DIR',
@@ -351,16 +351,16 @@ def start_transformation_shapes(repository, workspace):
     print("Directory created")
 
     urltransform = 'fmerest/v2/transformations'
-    target_url = '{FMESERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
-        FMESERVER=FMESERVER, urltransform=urltransform, repository=repository, workspace=workspace)
+    target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
+        FME_SERVER=FME_SERVER, urltransform=urltransform, repository=repository, workspace=workspace)
 
     try:
         response = requests.post(
             url=target_url,
             headers={
-                "Referer": "{FMESERVER}/fmerest/v2/apidoc/".format(FMESERVER=FMESERVER),
-                "Origin": "{FMESERVER}".format(FMESERVER=FMESERVER),
-                "Authorization": "fmetoken token={FMEAPI}".format(FMEAPI=FMEAPI),
+                "Referer": "{FME_SERVER}/fmerest/v2/apidoc/".format(FME_SERVER=FME_SERVER),
+                "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
+                "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
                 "Content-Type": "application/json",
                 "Accept": "application/json",
             },
@@ -412,8 +412,8 @@ def wait_for_job_to_complete(job):
     time.sleep(7200)
     print("2 hours have passed, now checking every 5 minutes")
     sleep = 300
-    url = '{FMESERVER}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
-        FMESERVER=FMESERVER, urltransform=job['urltransform'], jobid=job['jobid'])
+    url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
+        FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
 
     while True:
         res = requests.get(url, headers=fme_api_auth())
@@ -433,8 +433,8 @@ def create_db_schema_bgt():
     os.chdir('../app/020_aanmaak_DB_schemas_BGT')
     print (os.getcwd())
 
-    subprocess.call("sh aanmaak_schemas_BGT.sh {FMESERVER} gisdb 5432 dbuser".format(
-        FMESERVER=FMESERVER.split('//')[-1]), shell=True)
+    subprocess.call("sh aanmaak_schemas_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
+        FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
     os.chdir(here)
 
 
@@ -446,8 +446,8 @@ def aanmaak_db_tabellen_bgt():
     os.chdir('../app/060_aanmaak_tabel_FV_cntrl_BGT')
     print (os.getcwd())
 
-    subprocess.call("sh aanmaak_tabellen_BGT.sh {FMESERVER} gisdb 5432 dbuser".format(
-        FMESERVER=FMESERVER.split('//')[-1]), shell=True)
+    subprocess.call("sh aanmaak_tabellen_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
+        FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
     os.chdir(here)
 
 
@@ -459,8 +459,8 @@ def aanmaak_db_views_shapes_bgt():
     os.chdir('../app/090_aanmaak_VIEWS_BGT/aanmaak_views_bgt_shp')
     print (os.getcwd())
 
-    subprocess.call("sh aanmaak_DB_views_BGT_SHP.sh {FMESERVER} gisdb 5432 dbuser".format(
-        FMESERVER=FMESERVER.split('//')[-1]), shell=True)
+    subprocess.call("sh aanmaak_DB_views_BGT_SHP.sh {FME_SERVER} gisdb 5432 dbuser".format(
+        FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
     os.chdir(here)
 
 
