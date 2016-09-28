@@ -1,4 +1,7 @@
 import logging
+import urllib.request
+import urllib.parse
+from datetime import datetime
 
 import requests
 import os
@@ -489,7 +492,51 @@ def aanmaak_db_views_shapes_bgt():
 
 
 def download_bgt():
-    pass
+    target = "extract_bgt.zip"
+    pdok_extract = "https://www.pdok.nl/download/service/extract.zip"
+    tiles = {
+        "layers": [
+            {"aggregateLevel": 0,
+             "codes": [38519,38690,38517,38495,38666,38688,38516,38494,38664,38665,38668,38669,38493,38492,38489,
+                       38488,38477,38476,38473,38472,38429,38423,38421,38079,38077,38076,38070,38071,38114,38115,
+                       38113,38116,38094,38092,38086,38087,38098,38099,38102,38103,38101,38272,38273,38275,38278,
+                       38279,38285,38296,38297,38299,38321,38323,38329,38331,38673,38675,38674,38680,38663,38662,
+                       38659,38658,38487,38486,38483,38482,38471,38470,38468,38469,38465,38467,38466,38464,38122,
+                       38120,38121,38123,38126,38124,38118,38127,38125,38119,38480,38138,38136,38130,38128,38117,
+                       38481,38484,38485,38656,38139,38142,38143,38314,38137,38140,38141,38312,38131,38134,38135,
+                       38306,38095,38093,38106,38104,38129,38107,38105,38132,38110,38108,38133,38111,38109,38304,
+                       38282,38280,38274,38657,38315,38313,38660,38318,38316,38310,38307,38661,38672,38319,38330,
+                       38317,38328,38311,38322,38320,38298,38287,38309,38305,38308,38283,38286,38281,38284]
+             }
+        ]
+    }
+    tiles_as_json = json.dumps(tiles)
+    datum = datetime.now().strftime("%d-%m-%Y")
+
+    source = pdok_extract + "?" + urllib.parse.urlencode({
+        "extractset": "citygml",
+        "excludedtypes": "plaatsbepalingspunt",
+        "history": "false",
+        "enddate": datum,
+        "tiles": tiles_as_json,
+    })
+
+    log.info("Starting download from %s to %s", source, target)
+
+    def progress(count, block_size, total_size):
+        approximate = ''
+        if total_size == -1:
+            # evil PDOK not telling us the content size :-(
+            # educated guess is ~350Mb
+            total_size = 350 * 1024 * 1024
+            approximate = '~'
+
+        percentage = float(count * block_size * 100.0 / total_size)
+        log.info("%s%2.2f%%", approximate, percentage)
+
+    urllib.request.urlretrieve(source, target, reporthook=progress)
+
+    log.info("Download complete")
 
 
 if __name__ == '__main__':
@@ -502,6 +549,11 @@ if __name__ == '__main__':
 
     # TODO: Download files within python instead of bash/wget
     download_bgt()
+
+    if True:
+        log.info("Voortijdig afbreken want waarom ook niet")
+        import sys
+        sys.exit(1)
 
     try:
         start_server()
@@ -527,5 +579,4 @@ if __name__ == '__main__':
         # 075
         # 080
     finally:
-        pass
-        # stop_server()
+        stop_server()
