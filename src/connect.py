@@ -295,6 +295,7 @@ def start_transformation_db(repository, workspace):
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
 
+
 def start_transformation_shapes(repository, workspace):
     """
     Step 3: Start Transformation Job
@@ -436,6 +437,7 @@ def create_db_schema_bgt():
         FMESERVER=FMESERVER.split('//')[-1]), shell=True)
     os.chdir(here)
 
+
 def aanmaak_db_tabellen_bgt():
     """
     Starts the existing scripts `060_aanmaak_tabel_FV_cntrl_BGT`
@@ -447,6 +449,7 @@ def aanmaak_db_tabellen_bgt():
     subprocess.call("sh aanmaak_tabellen_BGT.sh {FMESERVER} gisdb 5432 dbuser".format(
         FMESERVER=FMESERVER.split('//')[-1]), shell=True)
     os.chdir(here)
+
 
 def aanmaak_db_views_shapes_bgt():
     """
