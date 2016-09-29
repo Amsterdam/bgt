@@ -317,7 +317,7 @@ def start_transformation_shapes(repository, workspace):
 
 
 def _get_job_status(job):
-    url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
+    url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}?detail=low'.format(
         FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
     res = requests.get(url, headers=fme_api_auth())
     res.raise_for_status()
