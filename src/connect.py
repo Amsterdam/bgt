@@ -1,93 +1,27 @@
+import glob
+import json
 import logging
-import urllib.request
+import os
+import subprocess
+import time
 import urllib.parse
+import urllib.request
 from datetime import datetime
 
 import requests
-import os
-import glob
-import time
-import json
-import socket
-import subprocess
 
+import fme_server
 
 FME_SERVER_API = os.getenv('FMESERVERAPI', 'secret')
 FME_API = os.getenv('FMEAPI', 'secret')
 FME_SERVER = os.getenv('FMESERVER', 'secret')
 INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
 
-
 log = logging.getLogger(__name__)
-
-
-def fme_url():
-    return 'https://api.fmecloud.safe.com/v1/instances/{}'.format(INSTANCE_ID)
-
-
-def fme_auth():
-    return {'Authorization': 'bearer {FME_SERVER_API}'.format(FME_SERVER_API=FME_SERVER_API)}
 
 
 def fme_api_auth():
     return {'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
-
-
-def server_in_dns():
-    try:
-        socket.gethostbyname(FME_SERVER.split('//')[-1])
-        log.debug('DNS is available for server')
-        return True
-    except:
-        log.warn("No DNS available for server")
-        return False
-
-
-def get_server_status():
-    """
-    Returns the current state of our server
-    """
-    res = requests.get(fme_url(), headers=fme_auth())
-    res.raise_for_status()
-
-    return res.json()['state']
-
-
-def start_server():
-    """
-    Start the FME instance
-    """
-    log.info("Starting server")
-    res = requests.get(fme_url(), headers=fme_auth())
-    res.raise_for_status()
-
-    if res.json()['state'] != 'RUNNING':
-        server_res = requests.put('{}/start'.format(fme_url()), headers=fme_auth())
-        server_res.raise_for_status()
-
-    while get_server_status() != 'RUNNING':
-        log.debug("Waiting for server to start, current status is %s", get_server_status())
-        time.sleep(10)
-
-    log.debug("Server started")
-    log.debug("Waiting for DNS availability of server")
-
-    while not server_in_dns():
-        time.sleep(2)
-
-    log.debug("Continuing")
-
-
-def stop_server():
-    log.info("Stopping server")
-    res = requests.put(fme_url() + "/pause", headers=fme_auth())
-    res.raise_for_status()
-
-    while get_server_status() != 'PAUSED':
-        log.debug("Waiting for server to pause, current status is %s", get_server_status())
-        time.sleep(10)
-
-    log.info("Server paused")
 
 
 def upload_gml_files():
@@ -97,7 +31,7 @@ def upload_gml_files():
     url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
-    log.debug ("Delete existing `Import_GML` directory")
+    log.debug("Delete existing `Import_GML` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
@@ -122,7 +56,8 @@ def upload_gml_files():
 
     # upload files
     log.debug("Upload files to `Import_GML` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low&overwrite=false'.format(
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?createDirectories=false&detail=low' \
+          '&overwrite=false'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     path = 'data'
     for infile in glob.glob(os.path.join('..', path, '*.*')):
@@ -136,7 +71,7 @@ def upload_gml_files():
             log.debug('Uploading', infile, 'to', filename)
             repository_res = requests.post(url, data=f, headers=headers)
             repository_res.raise_for_status()
-    log.debug ("Upload files completed")
+    log.debug("Upload files completed")
 
 
 def upload_repositories(repo_name):
@@ -163,7 +98,7 @@ def upload_repositories(repo_name):
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
-    payload = {'description': repo_name, 'name': repo_name, }
+    payload = {'description': repo_name, 'name': repo_name,}
     create_repo_result = requests.post(create_url, headers=post_headers, data=payload)
     create_repo_result.raise_for_status()
     log.debug("Repository created")
@@ -224,7 +159,7 @@ def upload_imgeo_xsd():
     url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
-    log.debug ("Delete existing `Import_XSD` directory")
+    log.debug("Delete existing `Import_XSD` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
@@ -249,7 +184,8 @@ def upload_imgeo_xsd():
 
     # upload the file
     log.debug("Upload imgeo.xsd to `Import_XSD` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?createDirectories=false&detail=low&overwrite=false'.format(
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?createDirectories=false&detail=low' \
+          '&overwrite=false'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
 
     headers = {
@@ -262,7 +198,7 @@ def upload_imgeo_xsd():
     payload = open('../app/030_inlezen_BGT/xsd/imgeo.xsd', encoding='utf-8').read()
     repository_res = requests.post(url, data=payload, headers=headers)
     repository_res.raise_for_status()
-    log.debug ("Upload imgeo.xsd completed")
+    log.debug("Upload imgeo.xsd completed")
 
 
 def start_transformation_db(repository, workspace):
@@ -330,7 +266,7 @@ def start_transformation_shapes(repository, workspace):
     url_connect = 'fmerest/v2/resources/connections'
 
     # delete directory
-    log.debug ("Delete existing `Export_Shapes` directory")
+    log.debug("Delete existing `Export_Shapes` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
@@ -354,7 +290,7 @@ def start_transformation_shapes(repository, workspace):
     log.debug("Directory created")
 
     # delete directory
-    log.debug ("Delete existing `Export_Shapes_Totaalgebied` directory")
+    log.debug("Delete existing `Export_Shapes_Totaalgebied` directory")
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes_Totaalgebied?detail=low'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     repository_res = requests.delete(url, headers=fme_api_auth())
@@ -458,7 +394,7 @@ def create_db_schema_bgt():
     """
     here = os.getcwd()
     os.chdir('../app/020_aanmaak_DB_schemas_BGT')
-    log.debug (os.getcwd())
+    log.debug(os.getcwd())
 
     subprocess.call("sh aanmaak_schemas_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
         FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
@@ -471,7 +407,7 @@ def aanmaak_db_tabellen_bgt():
     """
     here = os.getcwd()
     os.chdir('../app/060_aanmaak_tabel_FV_cntrl_BGT')
-    log.debug (os.getcwd())
+    log.debug(os.getcwd())
 
     subprocess.call("sh aanmaak_tabellen_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
         FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
@@ -484,7 +420,7 @@ def aanmaak_db_views_shapes_bgt():
     """
     here = os.getcwd()
     os.chdir('../app/090_aanmaak_VIEWS_BGT/aanmaak_views_bgt_shp')
-    log.debug (os.getcwd())
+    log.debug(os.getcwd())
 
     subprocess.call("sh aanmaak_DB_views_BGT_SHP.sh {FME_SERVER} gisdb 5432 dbuser".format(
         FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
@@ -497,16 +433,25 @@ def download_bgt():
     tiles = {
         "layers": [
             {"aggregateLevel": 0,
-             "codes": [38519,38690,38517,38495,38666,38688,38516,38494,38664,38665,38668,38669,38493,38492,38489,
-                       38488,38477,38476,38473,38472,38429,38423,38421,38079,38077,38076,38070,38071,38114,38115,
-                       38113,38116,38094,38092,38086,38087,38098,38099,38102,38103,38101,38272,38273,38275,38278,
-                       38279,38285,38296,38297,38299,38321,38323,38329,38331,38673,38675,38674,38680,38663,38662,
-                       38659,38658,38487,38486,38483,38482,38471,38470,38468,38469,38465,38467,38466,38464,38122,
-                       38120,38121,38123,38126,38124,38118,38127,38125,38119,38480,38138,38136,38130,38128,38117,
-                       38481,38484,38485,38656,38139,38142,38143,38314,38137,38140,38141,38312,38131,38134,38135,
-                       38306,38095,38093,38106,38104,38129,38107,38105,38132,38110,38108,38133,38111,38109,38304,
-                       38282,38280,38274,38657,38315,38313,38660,38318,38316,38310,38307,38661,38672,38319,38330,
-                       38317,38328,38311,38322,38320,38298,38287,38309,38305,38308,38283,38286,38281,38284]
+             "codes": [38519, 38690, 38517, 38495, 38666, 38688, 38516, 38494, 38664, 38665, 38668, 38669, 38493, 38492,
+                       38489,
+                       38488, 38477, 38476, 38473, 38472, 38429, 38423, 38421, 38079, 38077, 38076, 38070, 38071, 38114,
+                       38115,
+                       38113, 38116, 38094, 38092, 38086, 38087, 38098, 38099, 38102, 38103, 38101, 38272, 38273, 38275,
+                       38278,
+                       38279, 38285, 38296, 38297, 38299, 38321, 38323, 38329, 38331, 38673, 38675, 38674, 38680, 38663,
+                       38662,
+                       38659, 38658, 38487, 38486, 38483, 38482, 38471, 38470, 38468, 38469, 38465, 38467, 38466, 38464,
+                       38122,
+                       38120, 38121, 38123, 38126, 38124, 38118, 38127, 38125, 38119, 38480, 38138, 38136, 38130, 38128,
+                       38117,
+                       38481, 38484, 38485, 38656, 38139, 38142, 38143, 38314, 38137, 38140, 38141, 38312, 38131, 38134,
+                       38135,
+                       38306, 38095, 38093, 38106, 38104, 38129, 38107, 38105, 38132, 38110, 38108, 38133, 38111, 38109,
+                       38304,
+                       38282, 38280, 38274, 38657, 38315, 38313, 38660, 38318, 38316, 38310, 38307, 38661, 38672, 38319,
+                       38330,
+                       38317, 38328, 38311, 38322, 38320, 38298, 38287, 38309, 38305, 38308, 38283, 38286, 38281, 38284]
              }
         ]
     }
@@ -545,24 +490,20 @@ if __name__ == '__main__':
     )
     logging.getLogger('requests').setLevel('WARNING')
 
-    log.info("Starting script, current server status is %s", get_server_status())
+    server_manager = fme_server.Server(FME_SERVER, INSTANCE_ID, FME_SERVER_API)
 
-    # TODO: Download files within python instead of bash/wget
-    download_bgt()
+    log.info("Starting script, current server status is %s", server_manager.get_status())
 
-    if True:
-        log.info("Voortijdig afbreken want waarom ook niet")
-        import sys
-        sys.exit(1)
+    # download_bgt()
 
     try:
-        start_server()
+        server_manager.start()
         # create_db_schema_bgt()
         # upload_gml_files()
         # upload_repositories('BGT-DB')
         # upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
         # TODO: Create db connection in FMECLoud
-        # upload_imgeo_xsd() # TODO find out what we can do to make the utf-8 error disappear
+        upload_imgeo_xsd()
         # wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
         # aanmaak_db_tabellen_bgt()
         # aanmaak_db_views_shapes_bgt()
@@ -579,4 +520,5 @@ if __name__ == '__main__':
         # 075
         # 080
     finally:
-        stop_server()
+        # pass
+        server_manager.stop()
