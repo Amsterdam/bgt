@@ -24,35 +24,44 @@ def fme_api_auth():
     return {'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
 
 
+def delete_directory(directory):
+    # delete directory
+    log.info("Delete directory %s", directory)
+
+    url = ('{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA' +
+           '/filesys/{directory}?detail=low'.format(FME_SERVER=FME_SERVER, directory=directory))
+
+    repository_res = requests.delete(url, headers=fme_api_auth())
+    if repository_res.status_code == 404:
+        log.debug("Directory not found")
+
+    repository_res.raise_for_status()
+    log.debug("Directory deleted")
+
+
+def create_directory(directory):
+    log.info("Create directory %s", directory)
+    url = ('{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA' +
+           '/filesys/?detail=low'.format(FME_SERVER=FME_SERVER))
+
+    repository_res = requests.post(url, headers=fme_api_auth(), data={
+        'directoryname': directory,
+        'type': 'DIR',
+    })
+
+    repository_res.raise_for_status()
+    log.debug("Directory created")
+
+
+
 def upload_gml_files():
     """
     Step 1: Upload the GML files
     """
     url_connect = 'fmerest/v2/resources/connections'
 
-    # delete directory
-    log.debug("Delete existing `Import_GML` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_GML?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    repository_res = requests.delete(url, headers=fme_api_auth())
-    if repository_res.status_code not in [404, 204]:
-        repository_res.raise_for_status()
-    elif repository_res.status_code == 404:
-        log.debug("Directory not found")
-    else:
-        log.debug("Directory deleted")
-
-    # create directory
-    log.debug("Create new `Import_GML` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    body = {
-        'directoryname': 'Import_GML',
-        'type': 'DIR',
-    }
-    repository_res = requests.post(url, data=body, headers=fme_api_auth())
-    repository_res.raise_for_status()
-    log.debug("Directory created")
+    delete_directory('Import_GML')
+    create_directory('Import_GML')
 
     # upload files
     log.debug("Upload files to `Import_GML` directory")
@@ -158,29 +167,8 @@ def upload_imgeo_xsd():
     """
     url_connect = 'fmerest/v2/resources/connections'
 
-    # delete directory
-    log.debug("Delete existing `Import_XSD` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_XSD?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    repository_res = requests.delete(url, headers=fme_api_auth())
-    if repository_res.status_code not in [404, 204]:
-        repository_res.raise_for_status()
-    elif repository_res.status_code == 404:
-        log.debug("Directory not found")
-    else:
-        log.debug("Directory deleted")
-
-    # create directory
-    log.debug("Create new `Import_XSD` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    body = {
-        'directoryname': 'Import_XSD',
-        'type': 'DIR',
-    }
-    repository_res = requests.post(url, data=body, headers=fme_api_auth())
-    repository_res.raise_for_status()
-    log.debug("Directory created")
+    delete_directory('Import_XSD')
+    create_directory('Import_XSD')
 
     # upload the file
     log.debug("Upload imgeo.xsd to `Import_XSD` directory")
@@ -263,55 +251,11 @@ def start_transformation_shapes(repository, workspace):
     """
     Step 3: Start Transformation Job
     """
-    url_connect = 'fmerest/v2/resources/connections'
+    delete_directory('Export_Shapes')
+    create_directory('Export_Shapes')
 
-    # delete directory
-    log.debug("Delete existing `Export_Shapes` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    repository_res = requests.delete(url, headers=fme_api_auth())
-    if repository_res.status_code not in [404, 204]:
-        repository_res.raise_for_status()
-    elif repository_res.status_code == 404:
-        log.debug("Directory not found")
-    else:
-        log.debug("Directory deleted")
-
-    # create directory
-    log.debug("Create new `Export_Shapes` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    body = {
-        'directoryname': 'Export_Shapes',
-        'type': 'DIR',
-    }
-    repository_res = requests.post(url, data=body, headers=fme_api_auth())
-    repository_res.raise_for_status()
-    log.debug("Directory created")
-
-    # delete directory
-    log.debug("Delete existing `Export_Shapes_Totaalgebied` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Export_Shapes_Totaalgebied?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    repository_res = requests.delete(url, headers=fme_api_auth())
-    if repository_res.status_code not in [404, 204]:
-        repository_res.raise_for_status()
-    elif repository_res.status_code == 404:
-        log.debug("Directory not found")
-    else:
-        log.debug("Directory deleted")
-
-    # create directory
-    log.debug("Create new `Export_Shapes_Totaalgebied` directory")
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_connect)
-    body = {
-        'directoryname': 'Export_Shapes_Totaalgebied',
-        'type': 'DIR',
-    }
-    repository_res = requests.post(url, data=body, headers=fme_api_auth())
-    repository_res.raise_for_status()
-    log.debug("Directory created")
+    delete_directory('Export_Shapes_Totaalgebied')
+    create_directory('Export_Shapes_Totaalgebied')
 
     urltransform = 'fmerest/v2/transformations'
     target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
@@ -510,7 +454,8 @@ if __name__ == '__main__':
         # upload_repositories('BGT-SHAPES')
         # upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
 
-        wait_for_job_to_complete(start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw'))
+        transformation_job = start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw')
+        wait_for_job_to_complete(transformation_job)
         # run transformation
         # download resulting shapes
         # download database
