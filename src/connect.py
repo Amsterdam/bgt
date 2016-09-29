@@ -28,8 +28,11 @@ def delete_directory(directory):
     # delete directory
     log.info("Delete directory %s", directory)
 
-    url = ('{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA' +
-           '/filesys/{directory}?detail=low'.format(FME_SERVER=FME_SERVER, directory=directory))
+    url = (
+        '{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/{directory}?detail=low'.format(
+            FME_SERVER=FME_SERVER,
+            directory=directory
+        ))
 
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code == 404:
@@ -41,8 +44,10 @@ def delete_directory(directory):
 
 def create_directory(directory):
     log.info("Create directory %s", directory)
-    url = ('{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA' +
-           '/filesys/?detail=low'.format(FME_SERVER=FME_SERVER))
+    url = (
+        '{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/?detail=low'.format(
+            FME_SERVER=FME_SERVER
+        ))
 
     repository_res = requests.post(url, headers=fme_api_auth(), data={
         'directoryname': directory,
@@ -251,6 +256,8 @@ def start_transformation_shapes(repository, workspace):
     """
     Step 3: Start Transformation Job
     """
+    log.info("Starting transformation")
+
     delete_directory('Export_Shapes')
     create_directory('Export_Shapes')
 
@@ -261,74 +268,75 @@ def start_transformation_shapes(repository, workspace):
     target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
         FME_SERVER=FME_SERVER, urltransform=urltransform, repository=repository, workspace=workspace)
 
-    try:
-        response = requests.post(
-            url=target_url,
-            headers={
-                "Referer": "{FME_SERVER}/fmerest/v2/apidoc/".format(FME_SERVER=FME_SERVER),
-                "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
-                "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
-                "Content-Type": "application/json",
-                "Accept": "application/json",
+    response = requests.post(
+        url=target_url,
+        headers={
+            "Referer": "{FME_SERVER}/fmerest/v2/apidoc/".format(FME_SERVER=FME_SERVER),
+            "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
+            "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+
+        data=json.dumps({
+            "subsection": "REST_SERVICE",
+            "FMEDirectives": {},
+            "NMDirectives": {
+                "successTopics": [],
+                "failureTopics": []
             },
-
-            data=json.dumps({
-                "subsection": "REST_SERVICE",
-                "FMEDirectives": {},
-                "NMDirectives": {
-                    "successTopics": [],
-                    "failureTopics": []
+            "TMDirectives": {
+                "tag": "linux",
+                "description": "Aanmaak Shapes uit DB"
+            },
+            "publishedParameters": [
+                {
+                    "name": "SourceDataset_POSTGIS",
+                    "value": "DestDataset_POSTGIS_4"
                 },
-                "TMDirectives": {
-                    "tag": "linux",
-                    "description": "Aanmaak Shapes uit DB"
+                {
+                    "name": "DestDataset_ESRISHAPE2",
+                    "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes/"
                 },
-                "publishedParameters": [
-                    {
-                        "name": "SourceDataset_POSTGIS",
-                        "value": "DestDataset_POSTGIS_4"
-                    },
-                    {
-                        "name": "DestDataset_ESRISHAPE2",
-                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Export_Shapes/"]
-                    },
-                    {
-                        "name": "DestDataset_ESRISHAPE3",
-                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied/"]
-                    }
-                ]
-            })
-        )
+                {
+                    "name": "DestDataset_ESRISHAPE3",
+                    "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied/"
+                }
+            ]
+        })
+    )
 
-        log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
-        log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
+    log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
+    log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
 
-        res = response.json()
-        log.debug('Job started! Job ID: {}'.format(res['id']))
-        return {'jobid': res['id'], 'urltransform': urltransform}
+    response.raise_for_status()
 
-    except requests.exceptions.RequestException:
-        log.debug('HTTP Request failed')
+    res = response.json()
+    log.debug('Job started! Job: {}'.format(res))
+    return {'jobid': res['id'], 'urltransform': urltransform}
+
+
+def _get_job_status(job):
+    url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
+        FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
+    res = requests.get(url, headers=fme_api_auth())
+    res.raise_for_status()
+
+    status = res.json()['status']
+
+    log.debug("Status for job %s: %s", job, status)
+    return status
 
 
 def wait_for_job_to_complete(job):
     """
     Step 3: Now wait for the job to be completed
     """
-    log.debug("Wait 2 hours until polling for completion")
-    time.sleep(7200)
-    log.debug("2 hours have passed, now checking every 5 minutes")
-    sleep = 300
-    url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}/result?detail=low'.format(
-        FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
+    time.sleep(300)
 
-    while True:
-        res = requests.get(url, headers=fme_api_auth())
-        res.raise_for_status()
-        if res.json()['status'] == 'SUCCESS':
-            break
-        log.debug("Still processing, sleeping for {}".format(sleep))
-        time.sleep(sleep)
+    while _get_job_status(job) != 'SUCCESS':
+        time.sleep(300)
+
     log.debug("Job completed!")
 
 
@@ -452,9 +460,10 @@ if __name__ == '__main__':
         # aanmaak_db_tabellen_bgt()
         # aanmaak_db_views_shapes_bgt()
         # upload_repositories('BGT-SHAPES')
-        # upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
+        upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
 
         transformation_job = start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw')
+
         wait_for_job_to_complete(transformation_job)
         # run transformation
         # download resulting shapes
@@ -464,6 +473,8 @@ if __name__ == '__main__':
         # 070
         # 075
         # 080
+    except:
+        log.exception("Could not process server jobs")
     finally:
-        # pass
-        server_manager.stop()
+        # server_manager.stop()
+        pass

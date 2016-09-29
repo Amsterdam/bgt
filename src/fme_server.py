@@ -38,13 +38,15 @@ class Server(object):
 
     def start(self):
         log.info("Starting server %s", self.server_name)
+        while self.get_status() in ['PENDING', 'STOPPING']:
+            time.sleep(1)
+
         if self.get_status() == 'RUNNING':
             log.debug("Already running")
             return
 
-        if self.get_status() != 'PENDING':
-            res = requests.put(self._url("/start"), headers=self._headers())
-            res.raise_for_status()
+        res = requests.put(self._url("/start"), headers=self._headers())
+        res.raise_for_status()
 
         while self.get_status() != 'RUNNING':
             time.sleep(10)
@@ -58,6 +60,9 @@ class Server(object):
 
     def stop(self):
         log.info("Stopping server")
+        while self.get_status() in ['PENDING', 'STOPPING']:
+            time.sleep(1)
+
         if self.get_status() != "RUNNING":
             log.debug("Not running, cannot stop")
             return
