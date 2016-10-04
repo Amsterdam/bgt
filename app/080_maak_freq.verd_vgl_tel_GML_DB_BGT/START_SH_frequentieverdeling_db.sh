@@ -15,21 +15,23 @@ db_user=$4
 # Zie voorbeeldbestandjes in submapje configuratie.
 
 # Hieronder t.b.v. de logging een aantal standaardvariabelen uit de Linux-omgeving:
-whoami=$(whoami)
-who_m=$(who -m)
-working_dir=$(pwd)
-datum_tijd=$(date +"%Y%m%d_%H%M%S")
-logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
+whoami=$(whoami)   					# whoami - print effective userid
+who_m=$(who -m)    					# who - show who is logged on, optie: -m     only hostname and user associated with stdin
+working_dir=$(pwd) 					# pwd - print name of current/working directory
+datum_tijd=$(date +"%Y%m%d_%H%M%S") # date - print or set the system date and time
+
+logbestand=${working_dir}/log/frequentieverdeling_db.${datum_tijd}.log
+sql_script=${working_dir}/log/frequentieverdeling_db.${datum_tijd}.sql
 
 
 # ""
 # "*******************************************************************************"
 # "*                                                                             *"
-# "* Naam :                    START_SH_aanmaak_schemas_BGT.sh                   *"
+# "* Naam :                    START_SH_frequentieverdeling_db.sh                *"
 # "*                                                                             *"
 # "* Systeem :                 DATAPUNT                                          *"
 # "*                                                                             *"
-# "* Module :                  BGT (database)                                    *"
+# "* Module :                  BGT (Verwerving)                                  *"
 # "*                                                                             *"
 # "* Schema / Gegevensstroom : BGT                                               *"
 # "*                                                                             *"
@@ -37,7 +39,9 @@ logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
-# "* Doel :                    Aanmaken DB-schema's t.b.v. BGT.                  *"
+# "* Doel :                    SQL-scripts aanmaken en aftrappen voor            *"
+# "*                           maken frequentieverdeling BGT-/IMGEO-tabellen     *"
+# "*                           in schema IMGEO                                   *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
@@ -49,14 +53,13 @@ logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
 # "*                                                                             *"
 # "* auteur                    datum        versie   wijziging                   *"
 # "* -----------------------   ----------   ------   --------------------------- *"
-# "* Ron van Barneveld, IV-BI  22-07-2016   1.00.0   RC1: initiële aanmaak       *"
+# "* Ron van Barneveld, IV-BI  13-06-2016   1.00.0   RC1: initiële aanmaak       *"
+# "* Ron van Barneveld, IV-BI  14-07-2016   1.00.0   RC1: nieuw schema en tabel  *"
 # "* Raymond Young, IV-BI      04-08-2016   1.00.0   RC1: - splits START_SH en   *"
 # "*                                                        aanmaak-script.SH    *"
 # "*                                                      - parameters -> log    *"
 # "*                                                      - wijz. parameternamen *"
 # "*                                                      - interpr. met bash    *"
-# "* Raymond Young, IV-BI      04-08-2016   1.00.0   RC1: Verbetering locatie    *"
-# "*                                                 logbestand                  *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
@@ -69,22 +72,42 @@ logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
 # ""
 
 
-# Start dit shellscript START_SH_aanmaak_schemas_BGT.sh door:
-# in Ubuntu sh START_SH_aanmaak_schemas_BGT.sh te runnen
-# NB als parameters 1 t/m 4 niet zijn gevuld, wordt ontwikkel-BGT-database DataPunt benaderd
+# Start dit script als volgt, waarbij voor parameters (<HOOFDLETTERS>, etc.) juiste waarden dienen te worden meegegeven:
+#
+# sh START_SH_frequentieverdeling_db.sh <DB_SERVER> <DATABASE> <DB_PORT> <DB_USER>  
+# parameters tussen rechte haken te vervangen door de juiste waarden,
+# bijvoorbeeld: START_SH_frequentieverdeling_db.sh 10.62.86.35 bgt_dev_local 5433 bgt  --> hiermee wordt de lokale GML aangesproken en de lokale database benaderd.
+
+# Ter info hieronder een voorbeeld van de parameters lokaal op de laptop van RonvB (variabel IP-adres!):
+# db_user=bgt       --> default user van de database
+# db_server=10.62.86.35 --> dit is het ip-adres van de lokaal database op de laptop (met ipconfig in cmd te achterhalen)  
+# db_port=5433          --> dit portnummer is specifiek van de lokale database van Ron van Barneveld.
+# database=bgt_dev_local --> databasenaam afhankelijk van lokale naamgeving
+
+# (of uiteraard andere locatie- of database-gegevens)
+# Als niet ALLE parameters 1 t/m 4 zijn gevuld, krijgen die een standaardwaarde (zie hieronder).
+
+# Ter info hieronder de parameters op datapunt:
+# db_server=85.222.225.45
+# database=bgt_dev
+# db_port=8080
+# db_user=bgt
 
 
-# ""
-# "*******************************************************************************"
-# "* Aanmaken DB-schemas BGT ...                                                 *"
-# "*******************************************************************************"
-# ""
+echo
+echo "*******************************************************************************"
+echo "* Start script $0 ..."
+echo "* Maken frequentieverdeling BGT-/IMGEO-tabellen in schema IMGEO ...           *"
+echo "*******************************************************************************"
+echo
 
+# Controle of parameters zijn meegegeven:
 if test "$#" -ne "4"
   then
-    # als niet alle parameters 1 t/m 4 zijn gevuld,
-	# wordt ontwikkel-BGT-database DataPunt benaderd
-    # echo 'test $# -ne 4' : Vul parameters met standaardwaarden ...
+    # als niet ALLE 4 (!) parameters 1 t/m 4 zijn gevuld,
+	# wordt ontwikkel-BGT-database DataPunt benaderd.
+    # Vul variabelen met standaardwaarden ...
+    
     if test "$1" = ""
       then
         db_server='85.222.225.45'
@@ -103,15 +126,14 @@ if test "$#" -ne "4"
     fi
 fi
 
-sh aanmaak_schemas_BGT.sh ${db_server} ${database} ${db_port} ${db_user} 2>&1 | tee ${logbestand}
+sh frequentieverdeling_db.sh ${db_server} ${database} ${db_port} ${db_user} 2>&1 | tee ${logbestand}
 
-# Bovenstaande roept een START_SQL_aanmaak_schemas_BGT.sql aan
-# dat op zijn beurt weer een aantal create sqlscripts aanroept om schema's aan te maken in de bgt_database
-#   
+# Bovenstaande geeft de volgende uitvoer in tabel imgeo_controle.frequentieverdeling_db: frequentieverdelingen per attribuut per BGT-/IMGEO-tabel (= objectklasse) in IMGEO-schema in BGT-database
 
 
-# ""
-# "*******************************************************************************"
-# "* Klaar met aanmaken DB-schemas BGT.                                          *"
-# "*******************************************************************************"
-# "" 
+echo
+echo "*******************************************************************************"
+echo "* Klaar met script $0."
+echo "* Klaar met maken frequentieverdeling BGT-/IMGEO-tabellen in schema IMGEO.    *"
+echo "*******************************************************************************"
+echo

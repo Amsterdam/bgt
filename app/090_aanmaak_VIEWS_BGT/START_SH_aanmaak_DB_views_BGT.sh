@@ -15,29 +15,31 @@ db_user=$4
 # Zie voorbeeldbestandjes in submapje configuratie.
 
 # Hieronder t.b.v. de logging een aantal standaardvariabelen uit de Linux-omgeving:
-whoami=$(whoami)
-who_m=$(who -m)
-working_dir=$(pwd)
-datum_tijd=$(date +"%Y%m%d_%H%M%S")
-logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
+whoami=$(whoami)                       # whoami - print effective userid
+who_m=$(who -m)                        # who - show who is logged on, optie: -m     only hostname and user associated with stdin
+working_dir=$(pwd)                     # pwd - print name of current/working directory
+datum_tijd=$(date +"%Y%m%d_%H%M%S") # date - print or set the system date and time
+
+logbestand=${working_dir}/log/aanmaak_DB_views_BGT.${datum_tijd}.log
 
 
 # ""
 # "*******************************************************************************"
 # "*                                                                             *"
-# "* Naam :                    START_SH_aanmaak_schemas_BGT.sh                   *"
+# "* Naam :                    START_SH_aanmaak_DB_views_BGT.sh                  *"
 # "*                                                                             *"
 # "* Systeem :                 DATAPUNT                                          *"
 # "*                                                                             *"
 # "* Module :                  BGT (database)                                    *"
 # "*                                                                             *"
-# "* Schema / Gegevensstroom : BGT                                               *"
+# "* Schema / Gegevensstroom : IMGEO_EXTRACTIE / BGT                             *"
 # "*                                                                             *"
 # "* Aangeroepen vanuit :                                                        *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
-# "* Doel :                    Aanmaken DB-schema's t.b.v. BGT.                  *"
+# "* Doel :                    Aanmaken extractie-views schema imgeo_extractie   *"
+# "*                           BGT-database t.b.v. extractie BGT-producten       *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
@@ -49,14 +51,17 @@ logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
 # "*                                                                             *"
 # "* auteur                    datum        versie   wijziging                   *"
 # "* -----------------------   ----------   ------   --------------------------- *"
+# "*                                                                             *"
 # "* Ron van Barneveld, IV-BI  22-07-2016   1.00.0   RC1: initiële aanmaak       *"
 # "* Raymond Young, IV-BI      04-08-2016   1.00.0   RC1: - splits START_SH en   *"
 # "*                                                        aanmaak-script.SH    *"
 # "*                                                      - parameters -> log    *"
 # "*                                                      - wijz. parameternamen *"
 # "*                                                      - interpr. met bash    *"
-# "* Raymond Young, IV-BI      04-08-2016   1.00.0   RC1: Verbetering locatie    *"
-# "*                                                 logbestand                  *"
+# "* Raymond Young, IV-BI      15-08-2016   1.00.0   RC1: hernoem SHP-scripts en *"
+# "*                                                 verbeter logging            *"
+# "* Raymond Young, IV-BI      27-09-2016   1.00.0   RC1: hernoem extractie-     *"
+# "*                                                 scripts (algemeen gebruik)  *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
@@ -69,27 +74,23 @@ logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
 # ""
 
 
-# Start dit shellscript START_SH_aanmaak_schemas_BGT.sh door:
-# in Ubuntu sh START_SH_aanmaak_schemas_BGT.sh te runnen
-# NB als parameters 1 t/m 4 niet zijn gevuld, wordt ontwikkel-BGT-database DataPunt benaderd
-
-
-# ""
-# "*******************************************************************************"
-# "* Aanmaken DB-schemas BGT ...                                                 *"
-# "*******************************************************************************"
-# ""
+echo
+echo "*******************************************************************************"
+echo "* Start script $0 ..."
+echo "* Aanmaken extractie-views in schema imgeo_extractie BGT-database ...         *"
+echo "*******************************************************************************"
+echo
 
 if test "$#" -ne "4"
   then
     # als niet alle parameters 1 t/m 4 zijn gevuld,
-	# wordt ontwikkel-BGT-database DataPunt benaderd
+    # wordt ontwikkel-BGT-database DataPunt benaderd
     # echo 'test $# -ne 4' : Vul parameters met standaardwaarden ...
     if test "$1" = ""
       then
         db_server='85.222.225.45'
     fi
-	if test "$2" = ""
+    if test "$2" = ""
       then
         database='bgt_dev'
     fi
@@ -103,15 +104,22 @@ if test "$#" -ne "4"
     fi
 fi
 
-sh aanmaak_schemas_BGT.sh ${db_server} ${database} ${db_port} ${db_user} 2>&1 | tee ${logbestand}
+sh aanmaak_DB_views_BGT.sh ${db_server} ${database} ${db_port} ${db_user} 2>&1 | tee ${logbestand}
 
-# Bovenstaande roept een START_SQL_aanmaak_schemas_BGT.sql aan
-# dat op zijn beurt weer een aantal create sqlscripts aanroept om schema's aan te maken in de bgt_database
-#   
+# Start dit shellscript START_SH_views.sh door:
+# in Ubuntu sh START_views.sh te runnen
+# NB als parameters 1 t/m 4 niet zijn gevuld, wordt ontwikkel-BGT-database DataPunt benaderd
+
+# # Bovenstaande roept een START_SQL_views.sql aan en roept een aantal create view sqlscripts aan om views aan te maken van alle bgt-object_tabel in bgt_database in het imgeo_extractie-schema
+# #  
+
+# 
+#
 
 
-# ""
-# "*******************************************************************************"
-# "* Klaar met aanmaken DB-schemas BGT.                                          *"
-# "*******************************************************************************"
-# "" 
+echo
+echo "*******************************************************************************"
+echo "* Klaar met script $0."
+echo "* Klaar met Aanmaken extractie-views in schema imgeo_extractie BGT-DB.        *"
+echo "*******************************************************************************"
+echo 
