@@ -19,7 +19,7 @@ whoami=$(whoami)
 who_m=$(who -m)
 working_dir=$(pwd)
 datum_tijd=$(date +"%Y%m%d_%H%M%S")
-logbestand=aanmaak_schemas_BGT.${datum_tijd}.log
+logbestand=${working_dir}/log/aanmaak_schemas_BGT.${datum_tijd}.log
 
 
 # ""
@@ -55,6 +55,8 @@ logbestand=aanmaak_schemas_BGT.${datum_tijd}.log
 # "*                                                      - parameters -> log    *"
 # "*                                                      - wijz. parameternamen *"
 # "*                                                      - interpr. met bash    *"
+# "* Raymond Young, IV-BI      04-08-2016   1.00.0   RC1: Verbetering locatie    *"
+# "*                                                 logbestand                  *"
 # "*                                                                             *"
 # "*******************************************************************************"
 # "*                                                                             *"
