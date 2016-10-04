@@ -1,0 +1,4 @@
+IP: 85.222.225.45
+poort: 8080
+U: bgt
+P: jeesVadyooHetpalduc1
