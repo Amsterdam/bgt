@@ -440,16 +440,16 @@ if __name__ == '__main__':
 
     try:
         server_manager.start()
-        # create_db_schema_bgt()
-        # upload_gml_files()
-        # upload_repositories('BGT-DB')
-        # upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
+        create_db_schema_bgt()
+        upload_gml_files()
+        upload_repositories('BGT-DB')
+        upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
         # TODO: Create db connection in FMECLoud
         upload_imgeo_xsd()
-        # wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
-        # aanmaak_db_tabellen_bgt()
-        # aanmaak_db_views_shapes_bgt()
-        # upload_repositories('BGT-SHAPES')
+        wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
+        aanmaak_db_tabellen_bgt()
+        aanmaak_db_views_shapes_bgt()
+        upload_repositories('BGT-SHAPES')
         upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
 
         transformation_job = start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw')
