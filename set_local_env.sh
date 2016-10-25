@@ -1,0 +1,6 @@
+export FMESERVER=https://bgt-vicrea-amsterdam-2016.fmecloud.com
+export FMESERVERAPI=42390cd5cf8a6f5886a333bb9a6f83ba34940f500bbec2b8a9463f89f231469c
+export FMEAPI=6a931f735fa687adb8f779b7fe1d761c33deda9d
+export FMEDBPASS=RMBa96gvvmVLoUeFfgjJ
+export FMEINSTANCE=2493
+export PGPASSWORD=RMBa96gvvmVLoUeFfgjJ
