@@ -7,6 +7,7 @@ import time
 import urllib.parse
 import urllib.request
 from datetime import datetime
+from zipfile import ZipFile
 
 import requests
 
@@ -74,7 +75,7 @@ def upload_gml_files():
           '&overwrite=false'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     path = 'data'
-    for infile in glob.glob(os.path.join('..', path, '*.*')):
+    for infile in glob.glob(os.path.join('/', 'tmp', path, '*.*')):
         with open(infile, 'rb') as f:
             filename = os.path.split(infile)[-1]
             headers = {
@@ -82,7 +83,7 @@ def upload_gml_files():
                 'Content-Type': 'application/octet-stream',
                 'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
             }
-            log.debug('Uploading', infile, 'to', filename)
+            log.debug('Uploading {} to {}'.format(infile, filename))
             repository_res = requests.post(url, data=f, headers=headers)
             repository_res.raise_for_status()
     log.debug("Upload files completed")
@@ -379,7 +380,23 @@ def aanmaak_db_views_shapes_bgt():
     os.chdir(here)
 
 
+def unzip_pdok_file():
+    """
+    Unzip the extract_bgt.zip file into the `/tmp/data` directory
+    :return:
+    """
+    log.info("Start unzipping contents")
+    with ZipFile('extract_bgt.zip', 'r') as myzip:
+        myzip.extractall('/tmp/data/')
+    log.info("Unzip complete")
+    return  0
+
 def download_bgt():
+    """
+    Downloads the PDOK files to extract_bgt.zip and calls unzip_pdok_file()
+
+    :return: 0
+    """
     target = "extract_bgt.zip"
     pdok_extract = "https://www.pdok.nl/download/service/extract.zip"
     tiles = {
@@ -423,20 +440,19 @@ def download_bgt():
 
     urllib.request.urlretrieve(source, target, reporthook=progress)
 
+    unzip_pdok_file()
     log.info("Download complete")
-
+    return 0
 
 if __name__ == '__main__':
-    logging.basicConfig(
-        level='DEBUG'
-    )
+    logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
 
     server_manager = fme_server.Server(FME_SERVER, INSTANCE_ID, FME_SERVER_API)
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
 
-    # download_bgt()
+    download_bgt()
 
     try:
         server_manager.start()

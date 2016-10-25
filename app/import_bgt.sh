@@ -7,9 +7,7 @@ EOF
 
 chmod 600 ~/.pgpass
 
-cd /app/010_download_BGT
 mkdir log
-#sh START_SH_download_alle_BGT.sh
 
 cd /app/
 /usr/bin/python3 /src/connect.py
@@ -24,7 +22,7 @@ cd /app/
 
 # cd /app/040_controle_telling_BGT
 # mkdir log
-# sh START_SH_vergelijk_alle_gml_db.sh /data/ database bgt 5432 bgt
+# sh START_SH_vergelijk_alle_gml_db.sh /tmp/data/ database bgt 5432 bgt
 
 # cd /app/060_aanmaak_tabel_FV_cntrl_BGT
 # mkdir log
@@ -32,7 +30,7 @@ cd /app/
 
 # cd /app/070_import_gml_FV_cntrl_BGT
 # mkdir log
-# sh START_SH_import_gml2db.sh /data/ database bgt 5432 bgt
+# sh START_SH_import_gml2db.sh /tmp/data/ database bgt 5432 bgt
 
 # cd /app/075_import_csv_FV_cntrl_BGT
 # mkdir log
