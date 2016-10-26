@@ -7,6 +7,7 @@ import time
 import urllib.parse
 import urllib.request
 from datetime import datetime
+from zipfile import ZipFile
 
 import requests
 
@@ -74,7 +75,7 @@ def upload_gml_files():
           '&overwrite=false'.format(
         FME_SERVER=FME_SERVER, url_connect=url_connect)
     path = 'data'
-    for infile in glob.glob(os.path.join('..', path, '*.*')):
+    for infile in glob.glob(os.path.join('/', 'tmp', path, '*.*')):
         with open(infile, 'rb') as f:
             filename = os.path.split(infile)[-1]
             headers = {
@@ -82,7 +83,7 @@ def upload_gml_files():
                 'Content-Type': 'application/octet-stream',
                 'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
             }
-            log.debug('Uploading', infile, 'to', filename)
+            log.debug('Uploading {} to {}'.format(infile, filename))
             repository_res = requests.post(url, data=f, headers=headers)
             repository_res.raise_for_status()
     log.debug("Upload files completed")
@@ -345,24 +346,25 @@ def create_db_schema_bgt():
     Starts the existing scripts `020_aanmaak_DB_schemas_BGT`
     """
     here = os.getcwd()
-    os.chdir('../app/020_aanmaak_DB_schemas_BGT')
+    os.chdir('../app')
     log.debug(os.getcwd())
-
-    subprocess.call("sh aanmaak_schemas_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
-        FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
+    sql_script = "020_create_schema.sql"
+    # psql -h ${1} -d ${2} -p ${3} -U ${4} -f 020_create_schema.sql
+    subprocess.call("psql -h {FME_SERVER} -d gisdb -p 5432 -U dbuser -f {SQL}".format(
+        FME_SERVER=FME_SERVER.split('//')[-1], SQL=sql_script), shell=True)
     os.chdir(here)
 
 
 def aanmaak_db_tabellen_bgt():
     """
-    Starts the existing scripts `060_aanmaak_tabel_FV_cntrl_BGT`
+    Starts the existing scripts `060_aanmaak_tabel_BGT_BGT`
     """
     here = os.getcwd()
-    os.chdir('../app/060_aanmaak_tabel_FV_cntrl_BGT')
+    os.chdir('../app/')
     log.debug(os.getcwd())
-
-    subprocess.call("sh aanmaak_tabellen_BGT.sh {FME_SERVER} gisdb 5432 dbuser".format(
-        FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
+    sql_script = "060_aanmaak_tabellen_BGT.sql"
+    subprocess.call("psql -h {FME_SERVER} -d gisdb -p 5432 -U dbuser -f {SQL}".format(
+        FME_SERVER=FME_SERVER.split('//')[-1], SQL=sql_script), shell=True)
     os.chdir(here)
 
 
@@ -379,7 +381,24 @@ def aanmaak_db_views_shapes_bgt():
     os.chdir(here)
 
 
+def unzip_pdok_file():
+    """
+    Unzip the extract_bgt.zip file into the `/tmp/data` directory
+    :return:
+    """
+    log.info("Start unzipping contents")
+    with ZipFile('extract_bgt.zip', 'r') as myzip:
+        myzip.extractall('/tmp/data/')
+    log.info("Unzip complete")
+    return  0
+
+
 def download_bgt():
+    """
+    Downloads the PDOK files to extract_bgt.zip and calls unzip_pdok_file()
+
+    :return: 0
+    """
     target = "extract_bgt.zip"
     pdok_extract = "https://www.pdok.nl/download/service/extract.zip"
     tiles = {
@@ -423,13 +442,12 @@ def download_bgt():
 
     urllib.request.urlretrieve(source, target, reporthook=progress)
 
+    unzip_pdok_file()
     log.info("Download complete")
-
+    return 0
 
 if __name__ == '__main__':
-    logging.basicConfig(
-        level='DEBUG'
-    )
+    logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
 
     server_manager = fme_server.Server(FME_SERVER, INSTANCE_ID, FME_SERVER_API)
@@ -437,16 +455,18 @@ if __name__ == '__main__':
     log.info("Starting script, current server status is %s", server_manager.get_status())
 
     # download_bgt()
-
     try:
         server_manager.start()
         create_db_schema_bgt()
-        upload_gml_files()
-        upload_repositories('BGT-DB')
-        upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
+        # upload_gml_files()
+        #upload_repositories('BGT-DB')
+        #upload_fmw_script('BGT-DB', '../app/030060_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
         # TODO: Create db connection in FMECLoud
         upload_imgeo_xsd()
-        wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
+        try:
+            wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
+        except Exception:
+            exit(0)
         aanmaak_db_tabellen_bgt()
         aanmaak_db_views_shapes_bgt()
         upload_repositories('BGT-SHAPES')
