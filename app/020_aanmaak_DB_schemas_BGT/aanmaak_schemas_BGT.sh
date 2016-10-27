@@ -81,15 +81,17 @@ if test "$#" -ne "4"
     # echo 'test $# -ne 4' : Vul parameters met standaardwaarden ...
     if test "$1" = ""
       then
-        db_server='85.222.225.45'
+        # db_server='85.222.225.45'
+        db_server='127.0.0.1'
     fi
 	if test "$2" = ""
       then
-        database='bgt_dev'
+        # database='bgt_dev'
+        database='bgt'
     fi
     if test "$3" = ""
       then
-        db_port='8080'
+        db_port='5401'
     fi
     if test "$4" = ""
       then

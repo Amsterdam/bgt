@@ -5,3 +5,5 @@ data
 dump
 dump/bgt.dump
 keys.env
+set_env_local*
+src/extract_bgt.zip
