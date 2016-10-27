@@ -6,53 +6,6 @@ locatie_GML=$3
 
 datum_tijd=$(date +"%Y%m%d_%H%M%S")
 
-
-# ""
-# "*******************************************************************************"
-# "*                                                                             *"
-# "* Naam :                    geef_aantal_bestand_object_gml.sh                 *"
-# "*                                                                             *"
-# "* Systeem :                 DATAPUNT_BGT                                      *"
-# "*                                                                             *"
-# "* Module :                  Verwerving BGT                                    *"
-# "*                                                                             *"
-# "* Schema / Gegevensstroom : BGT                                               *"
-# "*                                                                             *"
-# "* Aangeroepen vanuit :      vergelijk_aantal_bestand_object_gml_tabel_db.sh   *"
-# "*                                                                             *"
-# "*******************************************************************************"
-# "*                                                                             *"
-# "* Doel :                    Shellscript voor m.b.v. ander shellscript         *"
-# "*                           tel_bestand_object_gml.sh / OGR-info              *"
-# "*                           opvragen aantal features in objectklasse          *"
-# "*                           in GML-bestand                                    *"
-# "*                                                                             *"
-# "*******************************************************************************"
-# "*                                                                             *"
-# "* DATAPUNT-BGT-versienr :   1.00.0                                            *"
-# "*                                                                             *"
-# "*******************************************************************************"
-# "*                                                                             *"
-# "* Wijzigingsgeschiedenis :                                                    *"
-# "*                                                                             *"
-# "* auteur                    datum        versie   wijziging                   *"
-# "* -----------------------   ----------   ------   --------------------------- *"
-# "* Raymond Young, IV-BI      24-05-2016   1.00.0   RC1: initiele aanmaak       *"
-# "* Raymond Young, IV-BI      31-05-2016   1.00.0   RC1: aanroep scripts met sh *"
-# "* Raymond Young, IV-BI      14-06-2016   1.00.0   RC1: wijz. stand.loc. GML   *"
-# "* Raymond Young, IV-BI      19-07-2016   1.00.0   RC1: wijz. voorbeeldaanroep *"
-# "* Raymond Young, IV-BI      05-08-2016   1.00.0   RC1: interpr. met bash      *"
-# "*                                                                             *"
-# "*******************************************************************************"
-# "*                                                                             *"
-# "* Parameter 1 :             GML                   GML-bestand met BGT-gegevs  *"
-# "* Parameter 2 :             object                objectlaag in GML-bestand   *"
-# "* Parameter 3 :             locatie_GML           locatie GML-bestand         *"
-# "*                                                                             *"
-# "*******************************************************************************"
-# ""
-
-
 # Start dit shellscript geef_aantal_bestand_object_gml.sh door:
 #
 # sh geef_aantal_bestand_object_gml.sh <GML> <OBJECT> <LOCATIE_GML>
