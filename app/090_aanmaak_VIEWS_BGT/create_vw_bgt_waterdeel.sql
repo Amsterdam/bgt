@@ -40,6 +40,7 @@ SELECT identificatie_namespace     as NAMESPACE
                 '/','_'), -- vervangen '/' tekens met underscore (tbv en/of -> en_of)             
             ' ','_') -- vervangen 'spatie' tekens met '_' teken         
             )                      as BESTANDSNAAM
+     , plus_type                   as PLUS_TYPE
      , plus_status                 as PLUSSTATUS
      , geometrie                   as GEOMETRIE
   FROM imgeo.bgt_waterdeel)
