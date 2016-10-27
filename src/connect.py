@@ -17,6 +17,10 @@ FME_SERVER_API = os.getenv('FMESERVERAPI', 'secret')
 FME_API = os.getenv('FMEAPI', 'secret')
 FME_SERVER = os.getenv('FMESERVER', 'secret')
 INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
+FME_DBPASS = os.getenv('FMEDBPASS', 'secret')
+CONTROLE_DB = os.getenv('database', 'secret')
+CONTROLE_USER = os.getenv('DB_USER', 'secret')
+CONTROLE_PASS = os.getenv('DB_PASS', 'secret')
 
 log = logging.getLogger(__name__)
 
@@ -194,6 +198,33 @@ def upload_imgeo_xsd():
     repository_res.raise_for_status()
     log.debug("Upload imgeo.xsd completed")
 
+def upload_import_kaartbladen():
+    """
+    Upload the fmw file from `030_inlezen_BGT/bron_shapes`to the Import_XSD
+    """
+    url_connect = 'fmerest/v2/resources/connections'
+
+    # delete_directory('Import_kaartbladen')
+    # create_directory('Import_kaartbladen')
+
+    # upload the file
+    log.debug("Upload BGT_kaartbladen.shp to `Import_kaartbladen` directory")
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/Import_kaartbladen?createDirectories=false&detail=low' \
+          '&overwrite=false'.format(
+        FME_SERVER=FME_SERVER, url_connect=url_connect)
+
+    headers = {
+        'Content-Disposition': 'attachment; filename="{}"'.format('BGT_kaartbladen.shp'),
+        'Content-Type': 'application/octet-stream',
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
+    }
+
+    log.debug('Uploading BGT_kaartbladen.shp')
+    payload = open('../app/030_inlezen_BGT/bron_shapes/BGT_kaartbladen.shp', encoding='utf-8').read()
+    repository_res = requests.post(url, data=payload, headers=headers)
+    repository_res.raise_for_status()
+    log.debug("Upload BGT_kaartbladen.shp completed")
+
 
 def start_transformation_db(repository, workspace):
     """
@@ -228,7 +259,7 @@ def start_transformation_db(repository, workspace):
                 "publishedParameters": [
                     {
                         "name": "DestDataset_POSTGIS_4",
-                        "value": "DestDataset_POSTGIS_4"
+                        "value": "bgt"
                     },
                     {
                         "name": "CITYGML_IN_ADE_XSD_DOC_CITYGML",
@@ -236,7 +267,11 @@ def start_transformation_db(repository, workspace):
                     },
                     {
                         "name": "SourceDataset_CITYGML",
-                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/*.gml"]
+                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/bgt_buurt.gml"]
+                    },
+                    {
+                        "name": "bron_BGT_kaartbladen",
+                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_kaartbladen/BGT_kaartbladen.shp"]
                     }
                 ]
             })
@@ -259,11 +294,11 @@ def start_transformation_shapes(repository, workspace):
     """
     log.info("Starting transformation")
 
-    delete_directory('Export_Shapes')
-    create_directory('Export_Shapes')
+    # delete_directory('Export_Shapes')
+    # create_directory('Export_Shapes')
 
-    delete_directory('Export_Shapes_Totaalgebied')
-    create_directory('Export_Shapes_Totaalgebied')
+    # delete_directory('Export_Shapes_Totaalgebied')
+    # create_directory('Export_Shapes_Totaalgebied')
 
     urltransform = 'fmerest/v2/transformations'
     target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
@@ -293,7 +328,11 @@ def start_transformation_shapes(repository, workspace):
             "publishedParameters": [
                 {
                     "name": "SourceDataset_POSTGIS",
-                    "value": "DestDataset_POSTGIS_4"
+                    "value": "bgt"
+                },
+                {
+                    "name": "SourceDataset_POSTGIS_3",
+                    "value": "bgt"
                 },
                 {
                     "name": "DestDataset_ESRISHAPE2",
@@ -348,6 +387,7 @@ def create_db_schema_bgt():
     here = os.getcwd()
     os.chdir('../app')
     log.debug(os.getcwd())
+    os.putenv('PGPASSWORD',FME_DBPASS)
     sql_script = "020_create_schema.sql"
     # psql -h ${1} -d ${2} -p ${3} -U ${4} -f 020_create_schema.sql
     subprocess.call("psql -h {FME_SERVER} -d gisdb -p 5432 -U dbuser -f {SQL}".format(
@@ -367,16 +407,43 @@ def aanmaak_db_tabellen_bgt():
         FME_SERVER=FME_SERVER.split('//')[-1], SQL=sql_script), shell=True)
     os.chdir(here)
 
+def aanmaak_db_mapping():
+    """
+    Add mapping file
+    """
+    here = os.getcwd()
+    os.chdir('../app/')
+    log.debug(os.getcwd())
+    sql_script = "060_aanmaak_mapping.sql"
+    subprocess.call("psql -h {FME_SERVER} -d gisdb -p 5432 -U dbuser -f {SQL}".format(
+        FME_SERVER=FME_SERVER.split('//')[-1], SQL=sql_script), shell=True)
+    os.chdir(here)
+
 
 def aanmaak_db_views_shapes_bgt():
     """
     Starts the existing scripts `090_aanmaak_views_BGT`
     """
     here = os.getcwd()
-    os.chdir('../app/090_aanmaak_VIEWS_BGT/aanmaak_views_bgt_shp')
+    os.chdir('../app/')
     log.debug(os.getcwd())
 
-    subprocess.call("sh aanmaak_DB_views_BGT_SHP.sh {FME_SERVER} gisdb 5432 dbuser".format(
+    sql_script = "090_aanmaak_DB_views_BGT.sql"
+    subprocess.call("psql -h {FME_SERVER} -d gisdb -p 5432 -U dbuser -f {SQL}".format(
+        FME_SERVER=FME_SERVER.split('//')[-1], SQL=sql_script), shell=True)
+    sql_script = "090_aanmaak_DB_views_IMGEO.sql"
+    subprocess.call("psql -h {FME_SERVER} -d gisdb -p 5432 -U dbuser -f {SQL}".format(
+        FME_SERVER=FME_SERVER.split('//')[-1], SQL=sql_script), shell=True)
+    os.chdir(here)
+
+def import_gml_controledb():
+    """
+    Starts the existing scripts `070_import_controledb`
+    """
+    here = os.getcwd()
+    os.chdir('../app/')
+    log.debug(os.getcwd())
+    subprocess.call("sh 070_import_gml_controledb.sh {FME_SERVER} gisdb 5432 dbuser".format(
         FME_SERVER=FME_SERVER.split('//')[-1]), shell=True)
     os.chdir(here)
 
@@ -457,32 +524,38 @@ if __name__ == '__main__':
     # download_bgt()
     try:
         server_manager.start()
-        create_db_schema_bgt()
+        # create_db_schema_bgt()
         # upload_gml_files()
-        #upload_repositories('BGT-DB')
-        #upload_fmw_script('BGT-DB', '../app/030060_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
-        # TODO: Create db connection in FMECLoud
-        upload_imgeo_xsd()
-        try:
-            wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
-        except Exception:
-            exit(0)
-        aanmaak_db_tabellen_bgt()
-        aanmaak_db_views_shapes_bgt()
+        # upload_repositories('BGT-DB')
+        # upload_fmw_script('BGT-DB', '../app/030_inlezen_BGT/fme', 'inlezen_DB_BGT_uit_citygml.fmw')
+        # TODO: Create db connection in FMECLoud manually - NOT POSSIBLE IN CURRENT API VERSION
+        # TODO: When uploading XSD the error is: Multi-byte error - NOW DONE MANUALLY
+        # upload_imgeo_xsd()
+        # TODO: FIX IMport kaartbladen - upload ALL files, some are binary & also allow create/delete to work
+        # upload_import_kaartbladen()
+        # try:
+        #     wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
+        # except Exception:
+        #     exit(0)
+        # TODO When FME_FAILURE -> stop job and dump FME logs?
+        os.putenv('PGPASSWORD',FME_DBPASS)
+        # aanmaak_db_tabellen_bgt()
+        # aanmaak_db_views_shapes_bgt()
         upload_repositories('BGT-SHAPES')
         upload_fmw_script('BGT-SHAPES', '../app/100_aanmaak_producten_BGT', 'aanmaak_esrishape_uit_DB_BGT.fmw')
+        # TODO: for start_transformation_shapes: allow create/delete to work
+        try:
+            wait_for_job_to_complete(start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw'))
+        except Exception:
+            exit(0)
 
-        transformation_job = start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw')
+        # TODO: download resulting shapes & upload to objectstore
 
-        wait_for_job_to_complete(transformation_job)
-        # run transformation
-        # download resulting shapes
-        # download database
-        # 030
-        # 040
-        # 070
-        # 075
-        # 080
+        # TODO: 1) download db and do telling OR do it on remote database
+        # TODO: Telling: 040
+        import_gml_controledb()
+        aanmaak_db_mapping()
+        # TODO: Frequentie verdeling: 080
     except:
         log.exception("Could not process server jobs")
     finally:
