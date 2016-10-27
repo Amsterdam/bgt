@@ -6,3 +6,5 @@ dump
 dump/bgt.dump
 keys.env
 set_local_env.sh
+set_env_local*
+src/extract_bgt.zip
