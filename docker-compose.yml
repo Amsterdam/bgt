@@ -1,5 +1,5 @@
 database:
-  image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
+  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   ports:
     - "5401:5432"
   environment:
@@ -16,7 +16,7 @@ importer:
     DB_USER: bgt
     DB_PASSWORD: insecure
   volumes:
-    - /tmp/data:/data
+    - /tmp/data:/tmp/data
   env_file: keys.env
   command: >
     bash -c "/app/docker-wait.sh \

@@ -1,2 +1,0 @@
-Zie test_BGT_176_c_import_mapping_GML_DB.xlsx
-op locatie 080_controle_frequentieverdeling_BGT.

@@ -11,3 +11,11 @@ cd src
 pip install -r requirements.txt
 python connect.py 
 ```
+
+## Docker development
+
+Om de applicatie te starten vanuit Docker.
+
+    docker-compose build
+    docker-compose run importer
+    
