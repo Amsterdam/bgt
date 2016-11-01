@@ -2,6 +2,7 @@ import glob
 import json
 import logging
 import os
+import sys
 import time
 import mimetypes
 import psycopg2
@@ -44,8 +45,8 @@ def run_sql_script(script_name):
         dbcur.execute(procedures)
         dbcur.execute('commit')
     except psycopg2.DatabaseError as e:
-        log("Database script exception: procedures :%s" % str(e))
-        exit(1)
+        log.debug("Database script exception: procedures :%s" % str(e))
+        sys.exit(1)
 
 
 def delete_directory(directory):
@@ -288,11 +289,11 @@ def start_transformation_shapes(repository, workspace):
     """
     log.info("Starting transformation")
 
-    # delete_directory('Export_Shapes')
-    # create_directory('Export_Shapes')
+    delete_directory('Export_Shapes')
+    create_directory('Export_Shapes')
 
-    # delete_directory('Export_Shapes_Totaalgebied')
-    # create_directory('Export_Shapes_Totaalgebied')
+    delete_directory('Export_Shapes_Totaalgebied')
+    create_directory('Export_Shapes_Totaalgebied')
 
     urltransform = 'fmerest/v2/transformations'
     target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
@@ -382,13 +383,8 @@ def wait_for_job_to_complete(job):
     """
     Step 3: Now wait for the job to be completed
     """
-    time.sleep(300)
-    while get_job_status(job) != 'PULLED':
-        # wait until the job is active.
-        time.sleep(300)
-
-    while get_job_status(job) == 'PULLED':
-        time.sleep(300)
+    while get_job_status(job) in ['SUBMITTED', 'QUEUED', 'PULLED']:
+        time.sleep(60)
 
     # Job is completed or has failed, check and report
     job_status = get_job_status(job)
@@ -398,7 +394,7 @@ def wait_for_job_to_complete(job):
         loginfo = fetch_log_for_job(job)
         # TODO: waar moet logfile komen??
         f = open('../{}-fme_job-{}.log'.format(datetime.now().strftime("%Y%m%d"), job['jobid']), 'w')
-        f.write(loginfo)
+        f.write(str(loginfo).encode('utf-8'))
         f.close()
         log.debug('Wrote logfile for job {}'.format(job['jobid']))
 
@@ -498,7 +494,7 @@ if __name__ == '__main__':
         try:
             wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
         except Exception:
-            exit(0)
+            sys.exit(1)
 
         run_sql_script("../app/060_aanmaak_tabellen_BGT.sql")
 
@@ -513,7 +509,7 @@ if __name__ == '__main__':
         try:  # 5 uur FME server
             wait_for_job_to_complete(start_transformation_shapes('BGT-SHAPES', 'aanmaak_esrishape_uit_DB_BGT.fmw'))
         except Exception:
-            exit(0)
+            sys.exit(1)
 
         # TODO: download resulting shapes & upload to objectstore
         # TODO: 1) download db and do telling OR do it on remote database
@@ -521,6 +517,7 @@ if __name__ == '__main__':
 
         # import controle db
         run_sql_script("../app/070_import_gml_controledb.sh")
+
         # import csv / mapping db
         run_sql_script("../app/075_aanmaak_mapping.sql")
 
@@ -529,4 +526,5 @@ if __name__ == '__main__':
         log.exception("Could not process server jobs")
     finally:
         server_manager.stop()
-        pass
+        sys.exit(0)
+
