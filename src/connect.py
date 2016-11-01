@@ -220,6 +220,61 @@ def upload_repository(source_directory, dir, files, recreate_repo=True, register
     log.debug("Upload {} completed".format(files))
 
 
+def start_transformation_gebieden(repository, workspace):
+    """
+    Start Transformation Job gebieden
+    """
+    urltransform = 'fmerest/v2/transformations'
+    target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
+        FME_SERVER=FME_SERVER, urltransform=urltransform, repository=repository, workspace=workspace)
+
+    try:
+        response = requests.post(
+            url=target_url,
+            headers={
+                "Referer": "{FME_SERVER}/fmerest/v2/apidoc/".format(FME_SERVER=FME_SERVER),
+                "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
+                "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+
+            data=json.dumps({
+                "subsection": "REST_SERVICE",
+                "FMEDirectives": {},
+                "NMDirectives": {
+                    "successTopics": [],
+                    "failureTopics": []
+                },
+                "TMDirectives": {
+                    "tag": "linux",
+                    "description": "DB BGT uit city gml"
+                },
+                "publishedParameters": [
+                    {
+                        "name": "DestDataset_POSTGIS_4",
+                        "value": "bgt"
+                    },
+                    {
+                        "name": "bron_BGT_kaartbladen",
+                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_kaartbladen/BGT_kaartbladen.shp"]
+                    }
+                ]
+            })
+        )
+
+        log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
+        log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
+
+        res = response.json()
+        log.debug('Job started! Job ID: {}'.format(res['id']))
+        return {'jobid': res['id'], 'urltransform': urltransform}
+
+    except requests.exceptions.RequestException:
+        log.debug('HTTP Request failed')
+
+
+
 def start_transformation_db(repository, workspace):
     """
     Step 3: Start Transformation Job
@@ -263,11 +318,6 @@ def start_transformation_db(repository, workspace):
                         "name": "SourceDataset_CITYGML",
                         "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/bgt_buurt.gml"]
                     },
-                    # TODO: inlezen met 2e FME bestand, kan hier weg. parameters zetten in FME!
-                    {
-                        "name": "bron_BGT_kaartbladen",
-                        "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_kaartbladen/BGT_kaartbladen.shp"]
-                    }
                 ]
             })
         )
@@ -331,7 +381,7 @@ def start_transformation_shapes(repository, workspace):
                 },
                 {
                     "name": "DestDataset_ESRISHAPE2",
-                    "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes.zip"  # check of dit zorgt voor download of ZIP.
+                    "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes"  # check of dit zorgt voor download ZIP als naam eindigt op .zip.
                 },
                 {
                     "name": "DestDataset_ESRISHAPE3",
@@ -361,7 +411,7 @@ def fetch_log_for_job(job):
         FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
     res = requests.get(url, headers=fme_api_auth())
     res.raise_for_status()
-    return res.content
+    return res.content.decode(encoding='utf-8')
 
 
 def get_job_status(job):
@@ -394,7 +444,7 @@ def wait_for_job_to_complete(job):
         loginfo = fetch_log_for_job(job)
         # TODO: waar moet logfile komen??
         f = open('../{}-fme_job-{}.log'.format(datetime.now().strftime("%Y%m%d"), job['jobid']), 'w')
-        f.write(str(loginfo).encode('utf-8'))
+        f.write(loginfo)
         f.close()
         log.debug('Wrote logfile for job {}'.format(job['jobid']))
 
@@ -492,6 +542,7 @@ if __name__ == '__main__':
         upload('../app/030_inlezen_BGT/bron_shapes', 'resources/connections', 'Import_kaartbladen', '*.*')
         # TODO: Run params kunnen gevonden worden in FME bij file.
         try:
+            wait_for_job_to_complete(start_transformation_gebieden('BGT-DB', 'inlezen_gebieden_uit_Shape_en_WFS.fmw'))
             wait_for_job_to_complete(start_transformation_db('BGT-DB', 'inlezen_DB_BGT_uit_citygml.fmw'))
         except Exception:
             sys.exit(1)
