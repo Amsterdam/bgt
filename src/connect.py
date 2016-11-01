@@ -5,6 +5,7 @@ import os
 import sys
 import time
 import mimetypes
+import subprocess
 import psycopg2
 import psycopg2.extensions
 import urllib.parse
@@ -473,7 +474,7 @@ if __name__ == '__main__':
         # TODO: Telling: 040
 
         # import controle db
-        run_sql_script("../app/070_import_gml_controledb.sh")
+        subprocess.call("../app/070_import_gml_controledb.sh", shell=True)
 
         # import csv / mapping db
         run_sql_script("../app/075_aanmaak_mapping.sql")
