@@ -2,7 +2,6 @@ import glob
 import json
 import logging
 import os
-import subprocess
 import time
 import mimetypes
 import psycopg2
@@ -21,9 +20,6 @@ FME_API = os.getenv('FMEAPI', 'secret')
 FME_SERVER = os.getenv('FMESERVER', 'secret')
 INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
 FME_DBPASS = os.getenv('FMEDBPASS', 'secret')
-# CONTROLE_DB = os.getenv('database', 'secret')
-# CONTROLE_USER = os.getenv('DB_USER', 'secret')
-# CONTROLE_PASS = os.getenv('DB_PASS', 'secret')
 
 log = logging.getLogger(__name__)
 
@@ -38,8 +34,9 @@ def run_sql_script(script_name):
     :param script_name:
     :return:
     """
-    conn = psycopg2.connect("host={} port={} dbname={} user={}  password={}".format(
-        FME_SERVER.split('//')[-1], '5432', 'gisdb', 'dbuser', FME_DBPASS))
+    conn = psycopg2.connect(
+        "host={} port={} dbname={} user={}  password={}".format(FME_SERVER.split('//')[-1], '5432', 'gisdb', 'dbuser',
+                                                                FME_DBPASS))
     conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
     dbcur = conn.cursor()
     try:
@@ -60,8 +57,8 @@ def delete_directory(directory):
     """
     log.info("Delete directory %s", directory)
     url = (
-        '{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA'
-        '/filesys/{directory}?detail=low'.format(FME_SERVER=FME_SERVER, directory=directory))
+    '{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/{directory}?detail=low'.format(
+        FME_SERVER=FME_SERVER, directory=directory))
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code == 404:
         log.debug("Directory not found")
@@ -160,39 +157,6 @@ def _register_fmejobsubmitter_service(repo_name, filename):
     reg_service_res.raise_for_status()
     result = True
     log.debug("Registered `fmejobsubmitter` service")
-    return result
-
-
-def recreate_repository(repo_name):
-    """
-    Step 2: Create or re_recreate Transformation Repository
-    """
-    result = False
-    url_repositories = 'fmerest/v2/repositories'
-
-    # delete existing repository <repo_name>
-    url = '{FME_SERVER}/{url_connect}/{repo_name}?detail=low'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_repositories, repo_name=repo_name)
-    repository_res = requests.delete(url, headers=fme_api_auth())
-    if repository_res.status_code not in [404, 204]:
-        repository_res.raise_for_status()
-    elif repository_res.status_code == 404:
-        log.debug("Repository not found")
-    else:
-        log.debug("Repository deleted")
-
-    # create repository
-    create_url = '{FME_SERVER}/{url_connect}?detail=low&accept=json'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_repositories)
-    post_headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
-    payload = {'description': repo_name, 'name': repo_name,}
-    create_repo_result = requests.post(create_url, headers=post_headers, data=payload)
-    create_repo_result.raise_for_status()
-    result = True
-    log.debug("Repository created")
     return result
 
 
@@ -464,24 +428,16 @@ def download_bgt():
             {"aggregateLevel": 0,
              "codes": [
                  38121, 38115, 38120, 38077, 38076, 38078, 38079, 38421, 38423, 38429, 38431, 38474, 38475, 38478,
-                 38479,
-                 38490, 38491, 38494, 38516, 38518, 38690, 38525, 38696, 38688, 38666, 38667, 38670, 38671, 38682,
-                 38680,
-                 38681, 38675, 38673, 38331, 38329, 38323, 38321, 38299, 38298, 38287, 38285, 38284, 38281, 38275,
-                 38274,
-                 38103, 38109, 38280, 38108, 38105, 38104, 38093, 38092, 38094, 38116, 38674, 38672, 38330, 38328,
-                 38317,
-                 38476, 38477, 38488, 38489, 38492, 38493, 38495, 38664, 38665, 38668, 38517, 38466, 38467, 38118,
-                 38119,
-                 38117, 38095, 38106, 38107, 38110, 38111, 38282, 38283, 38316, 38319, 38472, 38464, 38465, 38122,
-                 38470,
-                 38471, 38468, 38469, 38126, 38127, 38124, 38125, 38482, 38480, 38138, 38136, 38483, 38481, 38139,
-                 38140,
-                 38142, 38484, 38486, 38487, 38485, 38143, 38141, 38134, 38132, 38133, 38135, 38306, 38304, 38312,
-                 38314,
-                 38130, 38128, 38129, 38131, 38137, 38313, 38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659,
-                 38657,
-                 38662, 38660, 38661, 38663, 38311, 38309, 38320, 38322]
+                 38479, 38490, 38491, 38494, 38516, 38518, 38690, 38525, 38696, 38688, 38666, 38667, 38670, 38671,
+                 38682, 38680, 38681, 38675, 38673, 38331, 38329, 38323, 38321, 38299, 38298, 38287, 38285, 38284,
+                 38281, 38275, 38274, 38103, 38109, 38280, 38108, 38105, 38104, 38093, 38092, 38094, 38116, 38674,
+                 38672, 38330, 38328, 38317, 38476, 38477, 38488, 38489, 38492, 38493, 38495, 38664, 38665, 38668,
+                 38517, 38466, 38467, 38118, 38119, 38117, 38095, 38106, 38107, 38110, 38111, 38282, 38283, 38316,
+                 38319, 38472, 38464, 38465, 38122, 38470, 38471, 38468, 38469, 38126, 38127, 38124, 38125, 38482,
+                 38480, 38138, 38136, 38483, 38481, 38139, 38140, 38142, 38484, 38486, 38487, 38485, 38143, 38141,
+                 38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
+                 38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
+                 38309, 38320, 38322]
              }
         ]
     }
@@ -572,5 +528,5 @@ if __name__ == '__main__':
     except:
         log.exception("Could not process server jobs")
     finally:
-        # server_manager.stop()
+        server_manager.stop()
         pass
