@@ -6,6 +6,8 @@ import sys
 import time
 import mimetypes
 import subprocess
+import requests
+import fme_server
 import psycopg2
 import psycopg2.extensions
 import urllib.parse
@@ -13,8 +15,6 @@ import urllib.request
 from datetime import datetime
 from zipfile import ZipFile
 
-import requests
-import fme_server
 
 DEBUG = os.getenv('DEBUG', False) == '1'
 FME_SERVER_API = os.getenv('FMESERVERAPI', 'secret')
@@ -86,7 +86,6 @@ def delete_repository(repo):
 def create_directory(directory):
     """
     Creates a FME data directory
-
     :param directory: the directory name to delete
     :return:
     """
@@ -101,7 +100,6 @@ def create_directory(directory):
 def create_repository(repo):
     """
     Creates a FME repository
-
     :param directory: the directory name to delete
     :return:
     """
@@ -165,7 +163,6 @@ def _register_fmejobsubmitter_service(repo_name, filename):
 def upload(source_directory, repo, dir, files, recreate_dir=True):
     """
     Upload one or more files to FME
-
     :param source_directory: the local source directory
     :param repo: the FME repo
     :param dir: the FME directory in repo
@@ -195,7 +192,6 @@ def upload(source_directory, repo, dir, files, recreate_dir=True):
 def upload_repository(source_directory, dir, files, recreate_repo=True, register_fmejob=False):
     """
     Upload one or more files to FME
-
     :param source_directory: the local source directory
     :param repo: the FME repo
     :param dir: the FME directory in repo
@@ -307,8 +303,9 @@ def start_transformation_shapes():
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
                 # TODO: check of dit zorgt voor download ZIP als naam eindigt op .zip.
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes"},
-                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied/"}]})
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes.zip"},
+                {"name": "DestDataset_ESRISHAPE3", "value":
+                    "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied.zip"}]})
 
 
 def fetch_log_for_job(job):
@@ -428,6 +425,30 @@ def download_bgt():
     return 0
 
 
+def upload_resulting_shapes_to_objectstore():
+    """
+    Uploads the resulting shapes to BGT objectstore
+    :return:
+    """
+    from objectstore.objectstore import ObjectStore
+    store = ObjectStore('BGT')
+    log.info("Upload resulting shapes to BGT objectstore")
+    files = ['Export_Shapes.zip', 'Export_Shapes_Totaalgebied.zip']
+
+    for path in files:
+        log.info("Download {} for storing in objectstore".format(path))
+        download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low' \
+                       'createDirectories=false&detail=low&overwrite=false'.format(
+            DIR=path, FME_SERVER=FME_SERVER, url_connect="/fmerest/v2/resources/connections")
+        res = requests.get(download_url, headers=fme_api_auth())
+        res.raise_for_status()
+        if res.status_code == 200:
+            res_name = path.split('/')[-1]
+            store.put_to_objectstore('shapes/{}'.format(res_name), res.content, res.headers['Content-Type'])
+            log.info("Uploaded {} to objectstore BGT/shapes".format(res_name))
+    log.info("Uploaded resulting shapes to BGT objectstore")
+
+
 if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
@@ -445,7 +466,7 @@ if __name__ == '__main__':
         upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
         upload_repository('../app/030_inlezen_BGT/fme', 'repositories', 'BGT-DB', '*.*', register_fmejob=True)
 
-        # TODO: Create db connection in FMECLoud manually - NOT POSSIBLE IN CURRENT API VERSION
+        # DB Connection in FMECLoud needs to be set manually - NOT POSSIBLE IN CURRENT API VERSION
         upload('../app/030_inlezen_BGT/xsd', 'resources/connections', 'Import_XSD', 'imgeo.xsd')
         upload('../app/030_inlezen_BGT/bron_shapes', 'resources/connections', 'Import_kaartbladen', '*.*')
         try:
@@ -469,7 +490,8 @@ if __name__ == '__main__':
         except Exception:
             sys.exit(1)
 
-        # TODO: download resulting shapes & upload to objectstore
+        upload_resulting_shapes_to_objectstore()
+
         # TODO: 1) download db and do telling OR do it on remote database
         # TODO: Telling: 040
 

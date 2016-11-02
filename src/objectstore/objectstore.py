@@ -17,12 +17,10 @@ OBJECTSTORE = {
     'os_options': {
         'tenant_id': '1776010a62684386a08b094d89ce08d9',
         'region_name': 'NL',
-        'endpoint_type' : 'internalURL'}}
+        'endpoint_type': 'internalURL'}}
 
 bgt_connection = Connection(**OBJECTSTORE)
 
-def store_fme_results():
-    store = ObjectStore('BGT')
 
 class ObjectStore():
     RESP_LIMIT = 10000  # serverside limit of the response
@@ -50,13 +48,10 @@ class ObjectStore():
 
         _, page = self.conn.get_container(self.container, **kwargs)
         seed.extend(page)
-        return seed if len(page) < self.RESP_LIMIT else \
-            self._get_full_container_list(seed, **kwargs)
+        return seed if len(page) < self.RESP_LIMIT else self._get_full_container_list(seed, **kwargs)
 
     def folders(self, path):
-        objects_from_store = self._get_full_container_list(
-            [], delimiter='/', prefix=path
-        )
+        objects_from_store = self._get_full_container_list([], delimiter='/', prefix=path)
         return [store_object['subdir'] for store_object in objects_from_store if 'subdir' in store_object]
 
     def files(self, path, file_id):
