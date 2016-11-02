@@ -18,8 +18,8 @@ def test_objects(objectstore):
         if ob['name'].startswith('bgttest/'):
             objectstore.delete_from_objectstore(ob['name'])
 
-    res = objectstore._get_full_container_list([])
-    assert len(res) == 1
+    res = objectstore._get_full_container_list([], prefix='bgttest/')
+    assert len(res) == 0
 
     objects = []
     for filename in os.listdir(os.path.join(os.path.dirname(__file__), 'fixtures')):
@@ -34,5 +34,5 @@ def test_objects(objectstore):
             content_type = "application/octet-stream"
         objectstore.put_to_objectstore('bgttest/{}'.format(ob_name), content, content_type)
 
-    res = objectstore._get_full_container_list([])
-    assert len(res) == 6
+    res = objectstore._get_full_container_list([], prefix='bgttest/')
+    assert len(res) == 5
