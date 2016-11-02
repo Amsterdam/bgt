@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS imgeo.imgeo_functioneelgebied CASCADE;
 CREATE TABLE imgeo.imgeo_functioneelgebied
 (
   identificatie_namespace character varying(8),
@@ -21,6 +22,7 @@ ALTER TABLE imgeo.imgeo_functioneelgebied OWNER TO dbuser;
 CREATE INDEX imgeo_functioneelgebied_geometrie_1465822099300 ON imgeo.imgeo_functioneelgebied USING gist (geometrie);
 
 
+DROP TABLE IF EXISTS imgeo.bgt_plaatsbepalingspunt CASCADE;
 CREATE TABLE imgeo.bgt_plaatsbepalingspunt
 (
   identificatie_namespace character varying(8),
@@ -34,7 +36,7 @@ CREATE TABLE imgeo.bgt_plaatsbepalingspunt
 ALTER TABLE imgeo.bgt_plaatsbepalingspunt OWNER TO dbuser;
 CREATE INDEX bgt_plaatsbepalingspunt_geometrie_1465822101622 ON imgeo.bgt_plaatsbepalingspunt USING gist (geometrie);
 
-
+DROP TABLE IF EXISTS imgeo.imgeo_bord CASCADE;
 CREATE TABLE imgeo.imgeo_bord
 (
   identificatie_namespace character varying(8),
@@ -56,7 +58,7 @@ CREATE TABLE imgeo.imgeo_bord
 ALTER TABLE imgeo.imgeo_bord OWNER TO dbuser;
 CREATE INDEX imgeo_bord_geometrie_1465822102262 ON imgeo.imgeo_bord USING gist (geometrie);
 
-
+DROP TABLE IF EXISTS imgeo.imgeo_mast CASCADE;
 CREATE TABLE imgeo.imgeo_mast
 (
   identificatie_namespace character varying(8),
@@ -78,7 +80,7 @@ CREATE TABLE imgeo.imgeo_mast
 ALTER TABLE imgeo.imgeo_mast OWNER TO dbuser;
 CREATE INDEX imgeo_mast_geometrie_1465822102262 ON imgeo.imgeo_mast USING gist (geometrie);
 
-
+DROP TABLE IF EXISTS imgeo.imgeo_sensor CASCADE;
 CREATE TABLE imgeo.imgeo_sensor
 (
   identificatie_namespace character varying(8),
@@ -99,7 +101,7 @@ CREATE TABLE imgeo.imgeo_sensor
 );
 ALTER TABLE imgeo.imgeo_sensor OWNER TO dbuser;
 
-
+DROP TABLE IF EXISTS imgeo_controle.frequentieverdeling_db CASCADE;
 CREATE TABLE imgeo_controle.frequentieverdeling_db
 (
   tabelnaam character varying, -- tabelnaam bgt imgeo-tabel
@@ -113,7 +115,7 @@ COMMENT ON TABLE imgeo_controle.frequentieverdeling_db
 COMMENT ON COLUMN imgeo_controle.frequentieverdeling_db.tabelnaam IS 'tabelnaam bgt imgeo-tabel';
 COMMENT ON COLUMN imgeo_controle.frequentieverdeling_db.kolomnaam IS 'kolomnaam bgt imgeo-tabel';
 
-
+DROP TABLE IF EXISTS imgeo_controle.frequentieverdeling_gml CASCADE;
 CREATE TABLE imgeo_controle.frequentieverdeling_gml
 (
   tabelnaam character varying, -- Tabelnaam van de objectklasse van het gml-bestand.
@@ -127,7 +129,7 @@ COMMENT ON TABLE imgeo_controle.frequentieverdeling_gml
 COMMENT ON COLUMN imgeo_controle.frequentieverdeling_gml.tabelnaam IS 'Tabelnaam van de objectklasse van het gml-bestand.';
 COMMENT ON COLUMN imgeo_controle.frequentieverdeling_gml.kolomnaam IS 'Kolomnaam van de attribuut van de objectklasse. ';
 
-
+DROP TABLE IF EXISTS imgeo_controle.mapping_gml_db CASCADE;
 CREATE TABLE imgeo_controle.mapping_gml_db
 (
   gmlbestand character varying, -- gmlbestand
@@ -143,6 +145,7 @@ COMMENT ON COLUMN imgeo_controle.mapping_gml_db.dbnaam IS 'db objectklasse in bg
 COMMENT ON COLUMN imgeo_controle.mapping_gml_db.extractieview IS 'db extractieview in bgt imgeo_extractie.';
 
 
+DROP TABLE IF EXISTS imgeo_controle.tel_db CASCADE;
 CREATE TABLE imgeo_controle.tel_db
 (
   tabelnaam character varying, -- tabelnaam objectklasse van bgt imgeo-tabel
@@ -155,6 +158,7 @@ COMMENT ON COLUMN imgeo_controle.tel_db.tabelnaam IS 'tabelnaam objectklasse van
 COMMENT ON COLUMN imgeo_controle.tel_db.aantal IS 'aantal rijen objectklasse van bgt imgeo-tabel';
 
 
+DROP TABLE IF EXISTS imgeo_controle.tel_gml CASCADE;
 CREATE TABLE imgeo_controle.tel_gml
 (
   tabelnaam character varying, -- tabelnaam van de gmlobjectklasse
@@ -166,7 +170,7 @@ COMMENT ON TABLE imgeo_controle.tel_gml
 COMMENT ON COLUMN imgeo_controle.tel_gml.tabelnaam IS 'tabelnaam van de gmlobjectklasse';
 COMMENT ON COLUMN imgeo_controle.tel_gml.aantal IS 'aantal rijen in de gmltabel';
 
-
+DROP TABLE IF EXISTS imgeo_controle.vergelijk_gml_db;
 CREATE TABLE imgeo_controle.vergelijk_gml_db
 (
   tabelnaam character varying,
