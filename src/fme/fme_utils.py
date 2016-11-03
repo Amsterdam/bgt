@@ -3,6 +3,7 @@ import time
 import mimetypes
 import os
 import os.path
+import json
 import requests
 import logging
 from setup import FME_API, FME_SERVER
@@ -202,7 +203,6 @@ def run_transformation_job(repository, workspace, params):
 
         log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
         log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
-
         res = response.json()
         log.debug('Job started! Job ID: {}'.format(res['id']))
         return {'jobid': res['id'], 'urltransform': urltransform}

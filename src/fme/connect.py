@@ -56,12 +56,6 @@ def start_transformation_shapes():
     log.info("Starting transformation")
 
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
-    delete_directory('Export_Shapes')
-    create_directory('Export_Shapes')
-
-    delete_directory('Export_Shapes_Totaalgebied')
-    create_directory('Export_Shapes_Totaalgebied')
-
     return run_transformation_job(
         'BGT-SHAPES',
         'aanmaak_esrishape_uit_DB_BGT.fmw',
@@ -74,8 +68,25 @@ def start_transformation_shapes():
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
                 {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes.zip"},
+                {"name": "DestDataset_ESRISHAPE3",
+                 "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied.zip"}]})
+
+
+def start_test_transformation():
+    return run_transformation_job(
+        'BGT-SHAPES',
+        'aanmaak_esrishape_test_zip.fmw',
+        {
+            "subsection": "REST_SERVICE",
+            "FMEDirectives": {},
+            "NMDirectives": {"successTopics": [], "failureTopics": []},
+            "TMDirectives": {"tag": "linux", "description": "Aanmaak Shapes uit DB"},
+            "publishedParameters": [
+                {"name": "SourceDataset_POSTGIS", "value": "bgt"},
+                {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/TestExport.zip"},
                 {"name": "DestDataset_ESRISHAPE3", "value":
-                    "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied.zip"}]})
+                    "$(FME_SHAREDRESOURCE_DATA)/TestExportTotaalgebied.zip"}]})
 
 
 def upload_resulting_shapes_to_objectstore():
@@ -85,7 +96,8 @@ def upload_resulting_shapes_to_objectstore():
     """
     store = ObjectStore('BGT')
     log.info("Upload resulting shapes to BGT objectstore")
-    files = ['Export_Shapes.zip', 'Export_Shapes_Totaalgebied.zip']
+    # files = ['Export_Shapes.zip', 'Export_Shapes_Totaalgebied.zip']
+    files = ['TestExport.zip', 'TestExportTotaalgebied.zip']
 
     for path in files:
         log.info("Download {} for storing in objectstore".format(path))
@@ -134,10 +146,7 @@ def download_bgt():
                  38480, 38138, 38136, 38483, 38481, 38139, 38140, 38142, 38484, 38486, 38487, 38485, 38143, 38141,
                  38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
                  38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
-                 38309, 38320, 38322]
-             }
-        ]
-    }
+                 38309, 38320, 38322]}]}
     tiles_as_json = json.dumps(tiles)
     datum = datetime.now().strftime("%d-%m-%Y")
 
@@ -206,7 +215,6 @@ if __name__ == '__main__':
         # upload shapes fmw scripts naar reposiory
         upload_repository(
             '{app}/100_aanmaak_producten_BGT'.format(app=SCRIPT_ROOT), 'BGT-SHAPES', '*.*', register_fmejob=True)
-
         # run the `aanmaak_esrishape_uit_DB_BGT` scrop
         try:
             wait_for_job_to_complete(start_transformation_shapes())
