@@ -96,8 +96,7 @@ def upload_resulting_shapes_to_objectstore():
     """
     store = ObjectStore('BGT')
     log.info("Upload resulting shapes to BGT objectstore")
-    # files = ['Export_Shapes.zip', 'Export_Shapes_Totaalgebied.zip']
-    files = ['TestExport.zip', 'TestExportTotaalgebied.zip']
+    files = ['Export_Shapes.zip', 'Export_Shapes_Totaalgebied.zip']
 
     for path in files:
         log.info("Download {} for storing in objectstore".format(path))
@@ -222,7 +221,6 @@ if __name__ == '__main__':
             sys.exit(1)
 
         upload_resulting_shapes_to_objectstore()
-
         # TODO: 1) download db and do telling OR do it on remote database
         # TODO: Telling: 040
 

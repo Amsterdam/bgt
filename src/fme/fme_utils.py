@@ -28,8 +28,10 @@ def delete_directory(directory):
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code == 404:
         log.debug("Directory not found")
+        return repository_res.status_code
     repository_res.raise_for_status()
     log.debug("Directory deleted")
+    return repository_res.status_code
 
 
 def delete_repository(repo):
@@ -42,9 +44,11 @@ def delete_repository(repo):
     url = ('{FME_SERVER}/fmerest/v2/repositories/{repo}?detail=low'.format(FME_SERVER=FME_SERVER, repo=repo))
     repository_res = requests.delete(url, headers=fme_api_auth())
     if repository_res.status_code == 404:
-        log.debug("Directory not found")
+        log.debug("Repository not found")
+        return repository_res.status_code
     repository_res.raise_for_status()
-    log.debug("Directory deleted")
+    log.debug("Repository deleted")
+    return repository_res.status_code
 
 
 def create_directory(directory):
@@ -159,7 +163,7 @@ def upload_repository(source_directory, dir, files, recreate_repo=True, register
     :param repo: the FME repo
     :param dir: the FME directory in repo
     :param files: string with filename or wildcard expression
-    :param recreate_dir: explicitly recreates the desitnation directory
+    :param recreate_dir: explicitly recreates the destination directory
     :return: bool
     """
     url_connect = 'fmerest/v2/repositories/{}'.format(dir)
