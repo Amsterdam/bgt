@@ -10,6 +10,4 @@
 #mkdir log
 #
 #cd /app/
-/usr/bin/python3 /src/connect.py
-
-
+/usr/bin/python3 /src/fme/connect.py
