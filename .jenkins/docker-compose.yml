@@ -1,3 +1,18 @@
+tests:
+  build: ..
+#  links:
+#    - database:database
+  environment:
+    POSTGRES_DB: bgt
+    POSTGRES_USER: bgt
+    POSTGRES_PASSWORD: insecure
+    OBJECTSTORE_PASSWORD:
+
+  command: >
+    bash -c "cd /src && \
+            pip install -r requirements.txt \
+            && export TEST=1 && python py.test"
+
 database:
   image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
   environment:

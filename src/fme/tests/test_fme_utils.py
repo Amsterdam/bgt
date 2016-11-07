@@ -1,6 +1,5 @@
 import pytest
 import requests
-
 from unittest.mock import MagicMock, create_autospec
 import fme.fme_utils as fme_utils
 
@@ -19,9 +18,13 @@ def requests_post(mocker):
 def fme_utils_log(mocker):
     return mocker.patch('fme.fme_utils.log')
 
+@pytest.fixture
+def fme_utils_api_auth(mocker):
+    return mocker.patch('fme.fme_utils.fme_api_auth')
 
-def test_fme_ap_auth():
-    assert {'Authorization': 'fmetoken token=secret'} == fme_utils.fme_api_auth()
+def test_fme_api_auth(fme_utils_api_auth):
+    fme_utils.fme_api_auth()
+    fme_utils_api_auth.assert_called_once_with()
 
 
 def test_delete_directory_fails(requests_delete, fme_utils_log):
@@ -100,21 +103,3 @@ def test_upload_repository(requests_post, fme_utils_log):
     requests_post.return_value = create_autospec(requests.Response, status_code=201)
     fme_utils.upload_repository('fixtures', 'repositories', 'test_repo.*', recreate_repo=False, register_fmejob=False)
     fme_utils_log.debug.assert_called_once_with("Upload test_repo.* completed")
-
-# def test_run_transformation_job(requests_post, fme_utils_log):
-#     requests_post.return_value = create_autospec(requests.Response, status_code=201)
-#     fme_utils.run_transformation_job(
-#         'BGT-SHAPES',
-#         'aanmaak_esrishape_test_zip.fmw',
-#         {
-#             "subsection": "REST_SERVICE",
-#             "FMEDirectives": {},
-#             "NMDirectives": {"successTopics": [], "failureTopics": []},
-#             "TMDirectives": {"tag": "linux", "description": "Aanmaak Shapes uit DB"},
-#             "publishedParameters": [
-#                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
-#                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-#                 {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/TestExport.zip"},
-#                 {"name": "DestDataset_ESRISHAPE3", "value":
-#                     "$(FME_SHAREDRESOURCE_DATA)/TestExportTotaalgebied.zip"}]})
-#     fme_utils_log.debug.assert_called_once_with("Upload test_repo.* completed")
