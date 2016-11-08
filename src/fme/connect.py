@@ -1,6 +1,5 @@
 import json
 import logging
-import subprocess
 import sys
 import urllib.parse
 import urllib.request
@@ -106,8 +105,11 @@ def upload_resulting_shapes_to_objectstore():
         res = requests.get(download_url, headers=fme_api_auth())
         res.raise_for_status()
         if res.status_code == 200:
-            res_name = path.split('/')[-1]
-            store.put_to_objectstore('shapes/{}'.format(res_name), res.content, res.headers['Content-Type'])
+            res_name = path.split('/')[-1].split('.')
+            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+            store.put_to_objectstore('shapes/{}-{}.{}'.format(res_name[0], timestamp, res_name[-1]),
+                                     res.content,
+                                     res.headers['Content-Type'])
             log.info("Uploaded {} to objectstore BGT/shapes".format(res_name))
     log.info("Uploaded resulting shapes to BGT objectstore")
 
@@ -225,10 +227,10 @@ if __name__ == '__main__':
         # TODO: Telling: 040
 
         # import controle db
-        subprocess.call("{app}/070_import_gml_controledb.sh".format(app=SCRIPT_ROOT), shell=True)
+        # subprocess.call("{app}/070_import_gml_controledb.sh".format(app=SCRIPT_ROOT), shell=True)
 
         # import csv / mapping db
-        run_sql_script("{app}/075_aanmaak_mapping.sql".format(app=SCRIPT_ROOT))
+        # run_sql_script("{app}/075_aanmaak_mapping.sql".format(app=SCRIPT_ROOT))
 
         # TODO: Frequentie verdeling: 080
     except:
