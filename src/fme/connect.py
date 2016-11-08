@@ -15,6 +15,7 @@ from fme.fme_utils import (
     run_transformation_job, fme_api_auth, upload_repository, upload,
     wait_for_job_to_complete)
 
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
