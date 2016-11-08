@@ -11,8 +11,8 @@ logging.getLogger("swiftclient").setLevel(logging.WARNING)
 OBJECTSTORE = {
     'auth_version': '2.0',
     'authurl': 'https://identity.stack.cloudvps.com/v2.0',
-    'user': os.getenv('OSUSER', 'basiskaart'),
-    'key': os.getenv('OSPASS', 'insecure'),
+    'user': 'basiskaart',
+    'key': os.getenv('OBJECTSTORE_PASSWORD', 'insecure'),
     'tenant_name': 'BGE000081_BGT',
     'os_options': {
         'tenant_id': '1776010a62684386a08b094d89ce08d9',
@@ -32,7 +32,7 @@ class ObjectStore():
     def get_store_object(self, name):
         """
         Returns the object store
-        :param object_meta_data:
+        :param name:
         :return:
         """
         return self.conn.get_object(self.container, name)[1]

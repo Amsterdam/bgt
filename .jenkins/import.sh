@@ -15,6 +15,7 @@ rm -rf ${DIR}/backups
 mkdir -p ${DIR}/backups
 
 dc build
+#dc run --rm tests
 dc run --rm importer
 dc run --rm db-backup
 

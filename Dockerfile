@@ -16,4 +16,7 @@ ENV PGCLIENTENCODING='UTF-8'
 #COPY data /data
 COPY app /app
 COPY src /src
+WORKDIR /src
+#RUN pip install --no-cache-dir -r requirements.txt
+
 RUN chmod -R 755 /app/*.sh
