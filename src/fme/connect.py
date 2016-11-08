@@ -1,6 +1,7 @@
 import json
 import logging
 import sys
+import subprocess
 import urllib.parse
 import urllib.request
 from datetime import datetime
@@ -87,6 +88,17 @@ def start_test_transformation():
                 {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/TestExport.zip"},
                 {"name": "DestDataset_ESRISHAPE3", "value":
                     "$(FME_SHAREDRESOURCE_DATA)/TestExportTotaalgebied.zip"}]})
+
+
+def upload_bgt_source_zip():
+    store = ObjectStore('BGT')
+    log.info("Upload BGT source zip")
+    content = open('extract_bgt.zip', 'rb').read()
+
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    filename = 'bron-gml/extract_bgt-{}.zip'.format(timestamp)
+    store.put_to_objectstore(filename, content, 'application/octet-stream')
+    log.info("Uploaded {} to objectstore BGT/bron-gml".format(filename))
 
 
 def upload_resulting_shapes_to_objectstore():
@@ -223,10 +235,12 @@ if __name__ == '__main__':
         except Exception:
             sys.exit(1)
 
+        # upload the resulting shapes an the source GML zip to objectstore
         upload_resulting_shapes_to_objectstore()
+        upload_bgt_source_zip()
+
         # TODO: 1) download db and do telling OR do it on remote database
         # TODO: Telling: 040
-
         # import controle db
         # subprocess.call("{app}/070_import_gml_controledb.sh".format(app=SCRIPT_ROOT), shell=True)
 
