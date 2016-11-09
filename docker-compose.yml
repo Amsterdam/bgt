@@ -3,8 +3,8 @@ database:
   ports:
     - "5401:5432"
   environment:
-    POSTGRES_DB: bgt
-    POSTGRES_USER: bgt
+    POSTGRES_DB: gisdb
+    POSTGRES_USER: dbuser
     POSTGRES_PASSWORD: insecure
 
 importer:
@@ -12,8 +12,8 @@ importer:
   links:
     - database:database
   environment:
-    DB_NAME: bgt
-    DB_USER: bgt
+    DB_NAME: gisdb
+    DB_USER: dbuser
     DB_PASSWORD: insecure
   volumes:
     - /tmp/data:/tmp/data

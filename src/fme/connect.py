@@ -1,14 +1,13 @@
 import json
 import logging
 import sys
-import subprocess
 import urllib.parse
 import urllib.request
 from datetime import datetime
 from zipfile import ZipFile
 from objectstore.objectstore import ObjectStore
 import requests
-from fme.sql_utils import run_sql_script
+from fme.sql_utils import run_sql_script, import_gml_control_db, import_csv_fixture
 from setup import FME_SERVER_API, FME_SERVER, INSTANCE_ID, SCRIPT_ROOT
 
 from fme import fme_server
@@ -139,12 +138,7 @@ def unzip_pdok_file():
     return 0
 
 
-def download_bgt():
-    """
-    Downloads the PDOK files to extract_bgt.zip and calls unzip_pdok_file()
-    :return: 0
-    """
-    target = "extract_bgt.zip"
+def pdok_url():
     pdok_extract = "https://www.pdok.nl/download/service/extract.zip"
     tiles = {
         "layers": [
@@ -163,16 +157,28 @@ def download_bgt():
                  38309, 38320, 38322]}]}
     tiles_as_json = json.dumps(tiles)
     datum = datetime.now().strftime("%d-%m-%Y")
-
-    source = pdok_extract + "?" + urllib.parse.urlencode({
+    return pdok_extract + "?" + urllib.parse.urlencode({
         "extractset": "citygml",
         "excludedtypes": "plaatsbepalingspunt",
         "history": "false",
         "enddate": datum,
-        "tiles": tiles_as_json,
-    })
+        "tiles": tiles_as_json})
 
-    log.info("Starting download from %s to %s", source, target)
+
+def is_bgt_updated():
+    """Check new pdok.nl functionality"""
+    res = requests.head(pdok_url())
+    print(res)
+
+
+def download_bgt():
+    """
+    Downloads the PDOK files to extract_bgt.zip and calls unzip_pdok_file()
+    :return: 0
+    """
+    target = "extract_bgt.zip"
+
+    log.info("Starting download from %s to %s", pdok_url, target)
 
     def progress(count, block_size, total_size):
         approximate = ''
@@ -185,7 +191,7 @@ def download_bgt():
         percentage = float(count * block_size * 100.0 / total_size)
         log.info("%s%2.2f%%", approximate, percentage)
 
-    urllib.request.urlretrieve(source, target, reporthook=progress)
+    urllib.request.urlretrieve(pdok_url, target, reporthook=progress)
     unzip_pdok_file()
     log.info("Download complete")
     return 0
@@ -229,6 +235,7 @@ if __name__ == '__main__':
         # upload shapes fmw scripts naar reposiory
         upload_repository(
             '{app}/100_aanmaak_producten_BGT'.format(app=SCRIPT_ROOT), 'BGT-SHAPES', '*.*', register_fmejob=True)
+
         # run the `aanmaak_esrishape_uit_DB_BGT` scrop
         try:
             wait_for_job_to_complete(start_transformation_shapes())
@@ -241,11 +248,14 @@ if __name__ == '__main__':
 
         # TODO: 1) download db and do telling OR do it on remote database
         # TODO: Telling: 040
-        # import controle db
-        # subprocess.call("{app}/070_import_gml_controledb.sh".format(app=SCRIPT_ROOT), shell=True)
+
+        # import controle db vanuit /tmp/data/*.gml
+        import_gml_control_db('localhost', port=5401, password='insecure')
 
         # import csv / mapping db
-        # run_sql_script("{app}/075_aanmaak_mapping.sql".format(app=SCRIPT_ROOT))
+        import_csv_fixture('../app/075_mapping.csv',
+                           'imgeo_controle.mapping_gml_db',
+                           'localhost', port=5401)
 
         # TODO: Frequentie verdeling: 080
     except:
