@@ -1,0 +1,106 @@
+import os
+import csv
+import psycopg2
+import logging
+from subprocess import Popen, PIPE, STDOUT
+from datetime import datetime
+from setup import SCRIPT_ROOT
+
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
+workdir = '{}/work'.format(SCRIPT_ROOT)
+
+
+def compare_all_counts_csv():
+    log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
+    if not os.path.exists('{}/results'.format(workdir)):
+        os.makedirs('{}/results'.format(workdir))
+    csv_name = '{}/results/vergelijkings_resultaat-{}.csv'.format(workdir, datetime.now().strftime("%Y%m%d-%H%M%S"))
+    results_table = [[k, v['db'], v['file']] for k, v in compare_all_counts().items()]
+    with open(csv_name, 'w') as csvfile:
+        my_writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        my_writer.writerow(['name', 'database', 'file'])
+        for row in sorted(results_table, key=lambda x: x[0]):
+            my_writer.writerow(row)
+    log.info('csv bestand {} aangemaakt'.format(csv_name))
+
+
+def compare_all_counts():
+    gml_dispatch = {
+        'bgt_begroeidterreindeel': ['plantcover', 'bgt_begroeidterreindeel'],
+        'bgt_onbegroeidterreindeel': ['onbegroeidterreindeel', 'bgt_onbegroeidterreindeel'],
+        'bgt_ondersteunendwaterdeel': ['ondersteunendwaterdeel', 'bgt_ondersteunendwaterdeel'],
+        'bgt_ondersteunendwegdeel': ['auxiliarytrafficarea', 'bgt_ondersteunendwegdeel'],
+        'bgt_ongeclassificeerdobject': ['ongeclassificeerdobject', 'bgt_ongeclassificeerdobject'],
+        'bgt_openbareruimtelabel': ['openbareruimtelabel', 'bgt_openbareruimtelabel'],
+        'bgt_overbruggingsdeel': ['bridgeconstructionelement', 'bgt_overbruggingsdeel'],
+        'bgt_pand': ['buildingpart', 'bgt_pand'],
+        'bgt_plaatsbepalingspunt': ['plaatsbepalingspunt', 'bgt_plaatsbepalingspunt'],
+        'bgt_tunneldeel': ['tunnelpart', 'bgt_tunneldeel'],
+        'bgt_waterdeel': ['waterdeel', 'bgt_waterdeel'],
+        'bgt_wegdeel': ['trafficarea', 'bgt_wegdeel'],
+        'bgt_bak': ['bak', 'imgeo_bak'],
+        'bgt_bord': ['bord', 'imgeo_bord'],
+        'bgt_functioneelgebied': ['functioneelgebied', 'imgeo_functioneelgebied'],
+        'bgt_gebouwinstallatie': ['buildingInstallation', 'imgeo_gebouwinstallatie'],
+        'bgt_installatie': ['installatie', 'imgeo_installatie'],
+        'bgt_kast': ['kast', 'imgeo_kast'],
+        'bgt_kunstwerkdeel': ['kunstwerkdeel', 'imgeo_kunstwerkdeel'],
+        'bgt_mast': ['mast', 'imgeo_mast'],
+        'bgt_overigbouwwerk': ['overigbouwwerk', 'imgeo_overigbouwwerk'],
+        'bgt_overigescheiding': ['overigescheiding', 'imgeo_overigescheiding'],
+        'bgt_paal': ['paal', 'imgeo_paal'],
+        'bgt_put': ['put', 'imgeo_put'],
+        'bgt_scheiding': ['scheiding', 'imgeo_scheiding'],
+        'bgt_sensor': ['sensor', 'imgeo_sensor'],
+        'bgt_spoor': ['railway', 'imgeo_spoor'],
+        'bgt_straatmeubilair': ['straatmeubilair', 'imgeo_straatmeubilair'],
+        'bgt_vegetatieobject': ['solitaryvegetationobject', 'imgeo_vegetatieobject'],
+        'bgt_waterinrichtingselement': ['waterinrichtingselement', 'imgeo_waterinrichtingselement'],
+        'bgt_weginrichtingselement': ['weginrichtingselement', 'imgeo_weginrichtingselement']
+    }
+
+    # create log
+    if not os.path.exists('{}/log'.format(workdir)):
+        os.makedirs('{}/log'.format(workdir))
+
+    result_items = {}
+    for k, v in gml_dispatch.items():
+        result_items[k] = {'file': -1, 'db': -1}
+        result_items[k]['file'] = count_file_object(k, v[0])
+        result_items[k]['db'] = count_table_rows(v[1])
+    return result_items
+
+
+def count_table_rows(table, host='localhost', database='gisdb', port='5401', user='dbuser', password='insecure'):
+    sql = "SELECT count(*) FROM imgeo.{}".format(table)
+    res = -1
+    conn = psycopg2.connect(
+        "host={} port={} dbname={} user={}  password={}".format(host, port, database, user, password)
+    )
+    dbcur = conn.cursor()
+    try:
+        dbcur.execute("SELECT count(*) FROM imgeo.{};".format(table))
+        for row in dbcur:
+            res = row[0]
+    except psycopg2.DatabaseError as e:
+        log.debug("Database exception: command :%s" % str(e))
+    return res
+
+
+def count_file_object(filename, object):
+    logfile = '{WORK}/log/tel_bestand_object_gml.{GML}.{OBJ}.{TIMESTAMP}'.format(
+        WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S")
+    )
+    gml_location = '{WORK}/GML/{GML}.gml'.format(WORK=workdir, GML=filename)
+    cmd = 'ogrinfo -q {GML} -sql "select count(*) from {OBJ}"'.format(GML=gml_location, OBJ=object)
+    p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+    output = str(p.stdout.read(), encoding='utf-8')
+    f = open(logfile, 'w')
+    f.write(output)
+    f.close()
+    if output.split('\n')[0] == 'FAILURE:':
+        res = -1
+    else:
+        res = int(output.split('\n')[-3].split(' = ')[-1])
+    return res
