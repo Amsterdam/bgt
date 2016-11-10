@@ -246,9 +246,6 @@ if __name__ == '__main__':
         upload_resulting_shapes_to_objectstore()
         upload_bgt_source_zip()
 
-        # TODO: 1) download db and do telling OR do it on remote database
-        # TODO: Telling: 040
-
         # import controle db vanuit /tmp/data/*.gml
         import_gml_control_db('localhost', port=5401, password='insecure')
 
@@ -257,6 +254,7 @@ if __name__ == '__main__':
                            'imgeo_controle.mapping_gml_db',
                            'localhost', port=5401)
 
+        # todo: telling 040
         # TODO: Frequentie verdeling: 080
     except:
         log.exception("Could not process server jobs")

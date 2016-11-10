@@ -127,7 +127,7 @@ def p_import_gml_control_db(host, port=5432, password='insecure'):
     input_fd, output_fd = os.pipe()
     # start several subprocesses
     processes = [subprocess.Popen(
-        ['ogr2ogr', '-progress', '-skipfailures', '-overwrite', '-f', 'PostgreSQL',
+        ['ogr2ogr', '-skipfailures', '-overwrite', '-f', 'PostgreSQL',
          'PG:{PG}'.format(PG=postgres_conn), '-gt', '655360', '-lco', 'SPATIAL_INDEX=OFF', '--config',
          'PG_USE_COPY', 'YES', '{FNAME}'.format(FNAME=fname)],
         stdout=output_fd, close_fds=ON_POSIX) for fname in glob.glob('/tmp/data/*.gml')]
