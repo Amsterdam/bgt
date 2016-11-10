@@ -1,7 +1,7 @@
 import os.path
 
 DEBUG = os.getenv('DEBUG', False) == '1'
-SCRIPT_ROOT = os.path.join(os.path.dirname(__file__), '..', 'app')
+SCRIPT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'app'))
 
 if os.getenv('TEST', False) == '1':
     FME_SERVER_API = 'secret'

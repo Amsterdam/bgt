@@ -137,5 +137,5 @@ def p_import_gml_control_db(host, port=5432, password='insecure'):
     with io.open(input_fd, 'r', buffering=1) as file:
         for line in file:
             print(line, end='')
-    for p in processes.items():
+    for p in processes:
         p.wait()

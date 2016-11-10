@@ -8,6 +8,7 @@ from zipfile import ZipFile
 from objectstore.objectstore import ObjectStore
 import requests
 from fme.sql_utils import run_sql_script, import_gml_control_db, import_csv_fixture
+from fme.tellingen import compare_all_counts_csv
 from setup import FME_SERVER_API, FME_SERVER, INSTANCE_ID, SCRIPT_ROOT
 
 from fme import fme_server
@@ -250,12 +251,10 @@ if __name__ == '__main__':
         import_gml_control_db('localhost', port=5401, password='insecure')
 
         # import csv / mapping db
-        import_csv_fixture('../app/075_mapping.csv',
-                           'imgeo_controle.mapping_gml_db',
-                           'localhost', port=5401)
+        import_csv_fixture('../app/075_mapping.csv', 'imgeo_controle.mapping_gml_db', 'localhost', port=5401)
 
-        # todo: telling 040
-        # TODO: Frequentie verdeling: 080
+        # tellingen fka: 040...
+        compare_all_counts_csv()
     except:
         log.exception("Could not process server jobs")
     finally:
