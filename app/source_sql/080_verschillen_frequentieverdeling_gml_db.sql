@@ -1,6 +1,5 @@
 --- BGT: selecteer de verschillen in (frequentieverdeelde) kolommen
 --- in de frequentieverdelingen GML versus DB.
---- RY, 16 aug. 2016
 ---
 
 SELECT DISTINCT

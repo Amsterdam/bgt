@@ -9,13 +9,16 @@ from fme.sql_utils import run_local_sql_script, run_local_sql
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-workdir = '{}/work'.format(bgt_setup.SCRIPT_ROOT)
 
+def create_work_dir():
+    workdir = '{}/work'.format(bgt_setup.SCRIPT_ROOT)
+    if not os.path.exists('{}/results'.format(workdir)):
+        os.makedirs('{}/results'.format(workdir))
+    return workdir
 
 def compare_before_after_counts_csv():
     log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
-    if not os.path.exists('{}/results'.format(workdir)):
-        os.makedirs('{}/results'.format(workdir))
+    workdir = create_work_dir()
     csv_name = '{}/results/vergelijkings_resultaat-{}.csv'.format(workdir, datetime.now().strftime("%Y%m%d-%H%M%S"))
     results_table = [[k, v['db'], v['file']] for k, v in _compare_counts().items()]
     with open(csv_name, 'w') as csvfile:
@@ -27,6 +30,7 @@ def compare_before_after_counts_csv():
 
 
 def _compare_counts():
+    workdir = create_work_dir()
     gml_dispatch = {
         'bgt_begroeidterreindeel': ['plantcover', 'bgt_begroeidterreindeel'],
         'bgt_onbegroeidterreindeel': ['onbegroeidterreindeel', 'bgt_onbegroeidterreindeel'],
@@ -105,6 +109,17 @@ def _compare_counts():
     return result_items
 
 
+def create_freq_csv(rows, name):
+    log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
+    workdir = create_work_dir()
+    csv_name = '{}/results/{}-{}.csv'.format(workdir, name, datetime.now().strftime("%Y%m%d-%H%M%S"))
+    with open(csv_name, 'w') as csvfile:
+        my_writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        for row in rows:
+            my_writer.writerow(row)
+    log.info('csv bestand {} aangemaakt'.format(csv_name))
+
+
 def create_comparison_data():
     """
     creates tables for checking value distribution and summing.
@@ -127,5 +142,14 @@ def create_comparison_data():
                    '080_tel_db.sql', '080_tel_gml.sql']:
         generate_and_run_sql(script)
 
-    # Populate the comparison table
-    run_local_sql_script('{app}/source_sql/080_vergelijk_gml_db.sql')
+    # Output results of the comparison of GML and DB
+    create_freq_csv(
+        run_local_sql_script('{app}/source_sql/080_vergelijk_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
+        'vergelijk_gml_db')
+
+    # Output results of the frequention distribution GML and DB
+    create_freq_csv(
+        run_local_sql_script('{app}/source_sql/080_frequentieverdeling_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
+        'freq_verdeling_gml_db_alle_kolommen'
+    )
+    log.info("Ready creating comparison data")
