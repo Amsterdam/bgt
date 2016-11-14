@@ -236,17 +236,17 @@ if __name__ == '__main__':
     try:
         # start the fme server
         server_manager.start()
-        run_sql_script("{app}/020_create_schema.sql".format(app=SCRIPT_ROOT))
+        run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=SCRIPT_ROOT))
 
         # upload the GML files and FMW scripts
         upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
         upload_repository(
-            '{app}/030_inlezen_BGT/fme'.format(app=SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*', register_fmejob=True)
+            '{app}/source_data/fme'.format(app=SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*', register_fmejob=True)
 
         # When setting up a new FME instance a
         # DB Connection in FMECLoud needs to be set manually - NOT POSSIBLE IN CURRENT API VERSION
-        upload('{app}/030_inlezen_BGT/xsd'.format(app=SCRIPT_ROOT), 'resources/connections', 'Import_XSD', 'imgeo.xsd')
-        upload('{app}/030_inlezen_BGT/bron_shapes'.format(app=SCRIPT_ROOT), 'resources/connections',
+        upload('{app}/source_data/xsd'.format(app=SCRIPT_ROOT), 'resources/connections', 'Import_XSD', 'imgeo.xsd')
+        upload('{app}/source_data/bron_shapes'.format(app=SCRIPT_ROOT), 'resources/connections',
                'Import_kaartbladen',
                '*.*')
         try:
@@ -256,15 +256,15 @@ if __name__ == '__main__':
             logging.error("Exception during FME transformation {}".format(e))
             sys.exit(1)
 
-        run_sql_script("{app}/060_aanmaak_tabellen_BGT.sql".format(app=SCRIPT_ROOT))
+        run_sql_script("{app}/source_sql/060_aanmaak_tabellen_BGT.sql".format(app=SCRIPT_ROOT))
 
         # aanmaak db-views shapes_bgt
-        run_sql_script("{app}/090_aanmaak_DB_views_BGT.sql".format(app=SCRIPT_ROOT))
-        run_sql_script("{app}/090_aanmaak_DB_views_IMGEO.sql".format(app=SCRIPT_ROOT))
+        run_sql_script("{app}/source_sql/090_aanmaak_DB_views_BGT.sql".format(app=SCRIPT_ROOT))
+        run_sql_script("{app}/source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=SCRIPT_ROOT))
 
         # upload shapes fmw scripts naar reposiory
         upload_repository(
-            '{app}/100_aanmaak_producten_BGT'.format(app=SCRIPT_ROOT), 'BGT-SHAPES', '*.*', register_fmejob=True)
+            '{app}/source_data/aanmaak_producten_bgt'.format(app=SCRIPT_ROOT), 'BGT-SHAPES', '*.*', register_fmejob=True)
 
         # run the `aanmaak_esrishape_uit_DB_BGT` scrop
         try:
@@ -281,10 +281,14 @@ if __name__ == '__main__':
         import_gml_control_db('localhost', port=5401, password='insecure')
 
         # import csv / mapping db
-        import_csv_fixture('../app/075_mapping.csv', 'imgeo_controle.mapping_gml_db', 'localhost', port=5401)
+        import_csv_fixture('../app/source_data/075_mapping.csv', 'imgeo_controle.mapping_gml_db', 'localhost', port=5401)
 
-        # tellingen fka: 040...
+        # comparisons FKA: 040...
         compare_before_after_counts_csv()
+
+        # comparisons FKA 080...
+
+
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
     finally:
