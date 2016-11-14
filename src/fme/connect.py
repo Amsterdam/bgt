@@ -8,7 +8,7 @@ from zipfile import ZipFile
 from objectstore.objectstore import ObjectStore
 import requests
 from fme.sql_utils import run_sql_script, import_gml_control_db, import_csv_fixture
-from fme.tellingen import compare_all_counts_csv
+from fme.tellingen import compare_before_after_counts_csv
 from setup import FME_SERVER_API, FME_SERVER, INSTANCE_ID, SCRIPT_ROOT
 
 from fme import fme_server
@@ -21,6 +21,10 @@ log = logging.getLogger(__name__)
 
 
 def start_transformation_gebieden():
+    """
+    calls `inlezen_gebieden_uit_Shape_en_WFS.fmw` on FME server
+    :return:
+    """
     log.info("Starting transformation")
     return run_transformation_job(
         'BGT-DB',
@@ -36,6 +40,10 @@ def start_transformation_gebieden():
 
 
 def start_transformation_db():
+    """
+    calls `inlezen_DB_BGT_uit_citygml.fmw` on FME server
+    :return:
+    """
     log.info("Starting transformation")
     return run_transformation_job(
         'BGT-DB',
@@ -54,6 +62,10 @@ def start_transformation_db():
 
 
 def start_transformation_shapes():
+    """
+    calls `aanmaak_esrishape_uit_DB_BGT.fmw` on FME server
+    :return:
+    """
     log.info("Starting transformation")
 
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
@@ -74,6 +86,10 @@ def start_transformation_shapes():
 
 
 def start_test_transformation():
+    """
+    calls `aanmaak_esrishape_test_zip.fmw` on FME server
+    :return:
+    """
     return run_transformation_job(
         'BGT-SHAPES',
         'aanmaak_esrishape_test_zip.fmw',
@@ -91,6 +107,10 @@ def start_test_transformation():
 
 
 def upload_bgt_source_zip():
+    """
+    Upload the PDOK/bgt source zip to the objecstore
+    :return:
+    """
     store = ObjectStore('BGT')
     log.info("Upload BGT source zip")
     content = open('extract_bgt.zip', 'rb').read()
@@ -140,6 +160,10 @@ def unzip_pdok_file():
 
 
 def pdok_url():
+    """
+    Returns the PDOK url for `now`
+    :return:
+    """
     pdok_extract = "https://www.pdok.nl/download/service/extract.zip"
     tiles = {
         "layers": [
@@ -167,7 +191,9 @@ def pdok_url():
 
 
 def is_bgt_updated():
-    """Check new pdok.nl functionality"""
+    """
+    Check new pdok.nl functionality / for th emoment we get 500 server errors form pdok.
+    """
     res = requests.head(pdok_url())
     print(res)
 
@@ -208,6 +234,7 @@ if __name__ == '__main__':
 
     download_bgt()
     try:
+        # start the fme server
         server_manager.start()
         run_sql_script("{app}/020_create_schema.sql".format(app=SCRIPT_ROOT))
 
@@ -216,6 +243,7 @@ if __name__ == '__main__':
         upload_repository(
             '{app}/030_inlezen_BGT/fme'.format(app=SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*', register_fmejob=True)
 
+        # When setting up a new FME instance a
         # DB Connection in FMECLoud needs to be set manually - NOT POSSIBLE IN CURRENT API VERSION
         upload('{app}/030_inlezen_BGT/xsd'.format(app=SCRIPT_ROOT), 'resources/connections', 'Import_XSD', 'imgeo.xsd')
         upload('{app}/030_inlezen_BGT/bron_shapes'.format(app=SCRIPT_ROOT), 'resources/connections',
@@ -224,7 +252,8 @@ if __name__ == '__main__':
         try:
             wait_for_job_to_complete(start_transformation_gebieden())
             wait_for_job_to_complete(start_transformation_db())
-        except Exception:
+        except Exception as e:
+            logging.error("Exception during FME transformation {}".format(e))
             sys.exit(1)
 
         run_sql_script("{app}/060_aanmaak_tabellen_BGT.sql".format(app=SCRIPT_ROOT))
@@ -240,7 +269,8 @@ if __name__ == '__main__':
         # run the `aanmaak_esrishape_uit_DB_BGT` scrop
         try:
             wait_for_job_to_complete(start_transformation_shapes())
-        except Exception:
+        except Exception as e:
+            logging.error("Exception during FME transformation to shapes {}".format(e))
             sys.exit(1)
 
         # upload the resulting shapes an the source GML zip to objectstore
@@ -254,9 +284,9 @@ if __name__ == '__main__':
         import_csv_fixture('../app/075_mapping.csv', 'imgeo_controle.mapping_gml_db', 'localhost', port=5401)
 
         # tellingen fka: 040...
-        compare_all_counts_csv()
-    except:
-        log.exception("Could not process server jobs")
+        compare_before_after_counts_csv()
+    except Exception as e:
+        log.exception("Could not process server jobs {}".format(e))
     finally:
         server_manager.stop()
         sys.exit(0)
