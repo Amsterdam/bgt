@@ -4,11 +4,12 @@ import psycopg2
 import logging
 from subprocess import Popen, PIPE, STDOUT
 from datetime import datetime
-from setup import SCRIPT_ROOT
+import bgt_setup
+from fme.sql_utils import run_local_sql_script, run_local_sql
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-workdir = '{}/work'.format(SCRIPT_ROOT)
+workdir = '{}/work'.format(bgt_setup.SCRIPT_ROOT)
 
 
 def compare_before_after_counts_csv():
@@ -75,7 +76,6 @@ def _compare_counts():
             log.debug("Database exception: command :%s" % str(e))
         return res
 
-
     def count_file_object(filename, object):
         logfile = '{WORK}/log/tel_bestand_object_gml.{GML}.{OBJ}.{TIMESTAMP}'.format(
             WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -103,3 +103,29 @@ def _compare_counts():
         result_items[k]['file'] = count_file_object(k, v[0])
         result_items[k]['db'] = count_table_rows(v[1])
     return result_items
+
+
+def create_comparison_data():
+    """
+    creates tables for checking value distribution and summing.
+    This is done bij dynamically generating a SQL/DML script. That in in turn is populates the database with values
+    for comparison
+    :param voor: the sql script name
+    :return:
+    """
+
+    def generate_and_run_sql(voor):
+        new_script = run_local_sql_script(
+            '{app}/source_sql/{voor}'.format(app=bgt_setup.SCRIPT_ROOT, voor=voor))
+        if len(new_script) > 0:
+            run_local_sql('\n'.join([c[0] for c in new_script]), tx=True)
+            log.info("Performed `comparison.{voor}`.".format(voor=voor))
+        else:
+            log.info("No data found by comparison.{voor}`".format(voor=voor))
+
+    for script in ['080_frequentieverdeling_db.sql', '080_frequentieverdeling_gml.sql',
+                   '080_tel_db.sql', '080_tel_gml.sql']:
+        generate_and_run_sql(script)
+
+    # Populate the comparison table
+    run_local_sql_script('{app}/source_sql/080_vergelijk_gml_db.sql')

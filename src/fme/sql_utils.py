@@ -8,7 +8,7 @@ import logging
 import psycopg2
 import psycopg2.extensions
 
-from setup import FME_SERVER, FME_DBPASS
+from bgt_setup import FME_SERVER, FME_DBPASS
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -34,26 +34,32 @@ def run_sql_script(script_name):
         sys.exit(1)
 
 
-def run_local_sql_script(script_name):
+def run_local_sql_script(script_name, tx=False):
     """
     Runs the sql script against the FME database
     :param script_name:
     :return:
     """
+    return run_local_sql(open(script_name, 'r').read(), tx)
+
+
+def run_local_sql(script, tx=False):
     conn = psycopg2.connect(
         "host={} port={} dbname={} user={}  password={}".format(
             'localhost', '5401', 'gisdb', 'dbuser', 'insecure'))
     conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
     dbcur = conn.cursor()
     try:
-        procedures = open(script_name, 'r').read()
-
-        dbcur.execute(procedures)
-        dbcur.execute('commit')
+        dbcur.execute(script)
+        records = []
+        if dbcur.rowcount > 0:
+            records = dbcur.fetchall()
+        if tx:
+            dbcur.execute('commit')
+        return records
     except psycopg2.DatabaseError as e:
-        log.debug("Database script exception: procedures :%s" % str(e))
-        sys.exit(1)
-
+        log.exception("Database script exception: procedures :%s" % str(e))
+        return []
 
 def import_csv_fixture(filename, table_name, host, port=5432, password='insecure', truncate=True):
     """

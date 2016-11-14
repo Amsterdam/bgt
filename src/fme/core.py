@@ -8,8 +8,8 @@ from zipfile import ZipFile
 from objectstore.objectstore import ObjectStore
 import requests
 from fme.sql_utils import run_sql_script, import_gml_control_db, import_csv_fixture
-from fme.comparison import compare_before_after_counts_csv
-from setup import FME_SERVER_API, FME_SERVER, INSTANCE_ID, SCRIPT_ROOT
+from fme.comparison import compare_before_after_counts_csv, frequentieverdeling_db, frequentieverdeling_gml
+from bgt_setup import FME_SERVER_API, FME_SERVER, INSTANCE_ID, SCRIPT_ROOT
 
 from fme import fme_server
 from fme.fme_utils import (
@@ -253,7 +253,7 @@ if __name__ == '__main__':
             wait_for_job_to_complete(start_transformation_gebieden())
             wait_for_job_to_complete(start_transformation_db())
         except Exception as e:
-            logging.error("Exception during FME transformation {}".format(e))
+            logging.exception("Exception during FME transformation {}".format(e))
             sys.exit(1)
 
         run_sql_script("{app}/source_sql/060_aanmaak_tabellen_BGT.sql".format(app=SCRIPT_ROOT))
@@ -270,7 +270,7 @@ if __name__ == '__main__':
         try:
             wait_for_job_to_complete(start_transformation_shapes())
         except Exception as e:
-            logging.error("Exception during FME transformation to shapes {}".format(e))
+            logging.exception("Exception during FME transformation to shapes {}".format(e))
             sys.exit(1)
 
         # upload the resulting shapes an the source GML zip to objectstore
@@ -287,6 +287,8 @@ if __name__ == '__main__':
         compare_before_after_counts_csv()
 
         # comparisons FKA 080...
+        frequentieverdeling_db()
+        frequentieverdeling_gml()
 
 
     except Exception as e:

@@ -6,7 +6,7 @@ import os.path
 import json
 import requests
 import logging
-from setup import FME_API, FME_SERVER
+from bgt_setup import FME_API, FME_SERVER
 
 log = logging.getLogger(__name__)
 
