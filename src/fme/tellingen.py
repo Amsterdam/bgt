@@ -60,7 +60,7 @@ def _compare_counts():
         'bgt_weginrichtingselement': ['weginrichtingselement', 'imgeo_weginrichtingselement']
     }
 
-    def _count_table_rows(table, host='localhost', database='gisdb', port='5401', user='dbuser', password='insecure'):
+    def count_table_rows(table, host='localhost', database='gisdb', port='5401', user='dbuser', password='insecure'):
         sql = "SELECT count(*) FROM imgeo.{}".format(table)
         res = -1
         conn = psycopg2.connect(
@@ -76,7 +76,7 @@ def _compare_counts():
         return res
 
 
-    def _count_file_object(filename, object):
+    def count_file_object(filename, object):
         logfile = '{WORK}/log/tel_bestand_object_gml.{GML}.{OBJ}.{TIMESTAMP}'.format(
             WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S")
         )
@@ -100,6 +100,6 @@ def _compare_counts():
     result_items = {}
     for k, v in gml_dispatch.items():
         result_items[k] = {'file': -1, 'db': -1}
-        result_items[k]['file'] = _count_file_object(k, v[0])
-        result_items[k]['db'] = _count_table_rows(v[1])
+        result_items[k]['file'] = count_file_object(k, v[0])
+        result_items[k]['db'] = count_table_rows(v[1])
     return result_items
