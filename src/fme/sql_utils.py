@@ -117,7 +117,7 @@ def import_csv_fixture(filename, table_name, host, port=5432, password='insecure
 def import_gml_control_db(host, port=5432, password='insecure'):
     os.putenv('PGCLIENTENCODING', 'UTF8')
     postgres_conn = "host={} port={} ACTIVE_SCHEMA=imgeo_gml user='dbuser' dbname='gisdb' password={}".format(
-        host,  # FME_SERVER.split('//')[-1],fem
+        host,
         port,
         password)
     for file in glob.glob('/tmp/data/*.gml'):
