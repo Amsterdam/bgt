@@ -14,10 +14,10 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
-def run_sql_script(script_name):
+def run_sql(script, tx=False):
     """
     Runs the sql script against the FME database
-    :param script_name:
+    :param script:
     :return:
     """
     conn = psycopg2.connect(
@@ -26,12 +26,21 @@ def run_sql_script(script_name):
     conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
     dbcur = conn.cursor()
     try:
-        procedures = open(script_name, 'r').read()
-        dbcur.execute(procedures)
-        dbcur.execute('commit')
+        dbcur.execute(script)
+        if tx:
+            dbcur.execute('commit')
     except psycopg2.DatabaseError as e:
         log.debug("Database script exception: procedures :%s" % str(e))
         sys.exit(1)
+
+
+def run_sql_script(script_name, tx=False):
+    """
+    Runs the sql script against the FME database
+    :param script_name:
+    :return:
+    """
+    return run_sql(open(script_name, 'r').read(), tx)
 
 
 def run_local_sql_script(script_name, tx=False):
@@ -60,6 +69,7 @@ def run_local_sql(script, tx=False):
     except psycopg2.DatabaseError as e:
         log.exception("Database script exception: procedures :%s" % str(e))
         return []
+
 
 def import_csv_fixture(filename, table_name, host, port=5432, password='insecure', truncate=True):
     """

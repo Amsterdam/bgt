@@ -3,18 +3,17 @@ import logging
 import sys
 import urllib.parse
 import urllib.request
+import requests
+
 from datetime import datetime
 from zipfile import ZipFile
 from objectstore.objectstore import ObjectStore
-import requests
-from fme.sql_utils import run_sql_script, import_gml_control_db, import_csv_fixture
-from fme.comparison import compare_before_after_counts_csv, create_comparison_data
-from bgt_setup import FME_SERVER_API, FME_SERVER, INSTANCE_ID, SCRIPT_ROOT
 
-from fme import fme_server
-from fme.fme_utils import (
-    run_transformation_job, fme_api_auth, upload_repository, upload,
-    wait_for_job_to_complete)
+import bgt_setup
+import fme.sql_utils as fme_sql_utils
+import fme.comparison as fme_comparison
+import fme.fme_server as fme_server
+import fme.fme_utils as fme_utils
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -23,10 +22,10 @@ log = logging.getLogger(__name__)
 def start_transformation_gebieden():
     """
     calls `inlezen_gebieden_uit_Shape_en_WFS.fmw` on FME server
-    :return:
+    :return: dict with 'jobid' and 'urltransform'
     """
     log.info("Starting transformation")
-    return run_transformation_job(
+    return fme_utils.run_transformation_job(
         'BGT-DB',
         'inlezen_gebieden_uit_Shape_en_WFS.fmw',
         {
@@ -42,10 +41,10 @@ def start_transformation_gebieden():
 def start_transformation_db():
     """
     calls `inlezen_DB_BGT_uit_citygml.fmw` on FME server
-    :return:
+    :return: dict with 'jobid' and 'urltransform'
     """
     log.info("Starting transformation")
-    return run_transformation_job(
+    return fme_utils.run_transformation_job(
         'BGT-DB',
         'inlezen_DB_BGT_uit_citygml.fmw',
         {
@@ -64,12 +63,12 @@ def start_transformation_db():
 def start_transformation_shapes():
     """
     calls `aanmaak_esrishape_uit_DB_BGT.fmw` on FME server
-    :return:
+    :return: dict with 'jobid' and 'urltransform'
     """
     log.info("Starting transformation")
 
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
-    return run_transformation_job(
+    return fme_utils.run_transformation_job(
         'BGT-SHAPES',
         'aanmaak_esrishape_uit_DB_BGT.fmw',
         {
@@ -88,9 +87,9 @@ def start_transformation_shapes():
 def start_test_transformation():
     """
     calls `aanmaak_esrishape_test_zip.fmw` on FME server
-    :return:
+    :return: dict with 'jobid' and 'urltransform'
     """
-    return run_transformation_job(
+    return fme_utils.run_transformation_job(
         'BGT-SHAPES',
         'aanmaak_esrishape_test_zip.fmw',
         {
@@ -134,8 +133,8 @@ def upload_resulting_shapes_to_objectstore():
         log.info("Download {} for storing in objectstore".format(path))
         download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low' \
                        'createDirectories=false&detail=low&overwrite=false'.format(
-            DIR=path, FME_SERVER=FME_SERVER, url_connect="/fmerest/v2/resources/connections")
-        res = requests.get(download_url, headers=fme_api_auth())
+            DIR=path, FME_SERVER=bgt_setup.FME_SERVER, url_connect="/fmerest/v2/resources/connections")
+        res = requests.get(download_url, headers=fme_utils.fme_api_auth())
         res.raise_for_status()
         if res.status_code == 200:
             res_name = path.split('/')[-1].split('.')
@@ -228,7 +227,7 @@ if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
 
-    server_manager = fme_server.Server(FME_SERVER, INSTANCE_ID, FME_SERVER_API)
+    server_manager = fme_server.Server(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
 
@@ -236,39 +235,47 @@ if __name__ == '__main__':
     try:
         # start the fme server
         server_manager.start()
-        run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=SCRIPT_ROOT))
+        fme_sql_utils.run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT),
+                                     tx=True)
 
         # upload the GML files and FMW scripts
-        upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
-        upload_repository(
-            '{app}/source_data/fme'.format(app=SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*', register_fmejob=True)
+        fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
+        fme_utils.upload_repository(
+            '{app}/source_data/fme'.format(app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*',
+            register_fmejob=True)
 
         # When setting up a new FME instance a
         # DB Connection in FMECLoud needs to be set manually - NOT POSSIBLE IN CURRENT API VERSION
-        upload('{app}/source_data/xsd'.format(app=SCRIPT_ROOT), 'resources/connections', 'Import_XSD', 'imgeo.xsd')
-        upload('{app}/source_data/bron_shapes'.format(app=SCRIPT_ROOT), 'resources/connections',
-               'Import_kaartbladen',
-               '*.*')
+        fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
+                         'Import_XSD',
+                         'imgeo.xsd')
+        fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
+                         'Import_kaartbladen',
+                         '*.*')
         try:
-            wait_for_job_to_complete(start_transformation_gebieden())
-            wait_for_job_to_complete(start_transformation_db())
+            fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+            fme_utils.wait_for_job_to_complete(start_transformation_db())
         except Exception as e:
             logging.exception("Exception during FME transformation {}".format(e))
             sys.exit(1)
 
-        run_sql_script("{app}/source_sql/060_aanmaak_tabellen_BGT.sql".format(app=SCRIPT_ROOT))
+        fme_sql_utils.run_sql_script("{app}/source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT),
+                                     tx=True)
 
         # aanmaak db-views shapes_bgt
-        run_sql_script("{app}/source_sql/090_aanmaak_DB_views_BGT.sql".format(app=SCRIPT_ROOT))
-        run_sql_script("{app}/source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=SCRIPT_ROOT))
+        fme_sql_utils.run_sql_script("{app}/source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT),
+                                     tx=True)
+        fme_sql_utils.run_sql_script(
+            "{app}/source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT), tx=True)
 
         # upload shapes fmw scripts naar reposiory
-        upload_repository(
-            '{app}/source_data/aanmaak_producten_bgt'.format(app=SCRIPT_ROOT), 'BGT-SHAPES', '*.*', register_fmejob=True)
+        fme_utils.upload_repository(
+            '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
+            'BGT-SHAPES', '*.*', register_fmejob=True)
 
-        # run the `aanmaak_esrishape_uit_DB_BGT` scrop
+        # run the `aanmaak_esrishape_uit_DB_BGT` script
         try:
-            wait_for_job_to_complete(start_transformation_shapes())
+            fme_utils.wait_for_job_to_complete(start_transformation_shapes())
         except Exception as e:
             logging.exception("Exception during FME transformation to shapes {}".format(e))
             sys.exit(1)
@@ -278,16 +285,19 @@ if __name__ == '__main__':
         upload_bgt_source_zip()
 
         # import controle db vanuit /tmp/data/*.gml
-        import_gml_control_db('localhost', port=5401, password='insecure')
+        fme_sql_utils.import_gml_control_db('localhost', port=5401, password='insecure')
 
         # import csv / mapping db
-        import_csv_fixture('../app/source_data/075_mapping.csv', 'imgeo_controle.mapping_gml_db', 'localhost', port=5401)
+        fme_sql_utils.import_csv_fixture('../app/source_data/075_mapping.csv',
+                                         'imgeo_controle.mapping_gml_db',
+                                         'localhost',
+                                         port=5401)
 
         # comparisons FKA: 040...
-        compare_before_after_counts_csv()
+        fme_comparison.compare_before_after_counts_csv()
 
         # comparisons FKA 080...
-        create_comparison_data()
+        fme_comparison.create_comparison_data()
 
 
     except Exception as e:
