@@ -11,12 +11,12 @@ log = logging.getLogger(__name__)
 workdir = '{}/work'.format(SCRIPT_ROOT)
 
 
-def compare_all_counts_csv():
+def compare_before_after_counts_csv():
     log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
     if not os.path.exists('{}/results'.format(workdir)):
         os.makedirs('{}/results'.format(workdir))
     csv_name = '{}/results/vergelijkings_resultaat-{}.csv'.format(workdir, datetime.now().strftime("%Y%m%d-%H%M%S"))
-    results_table = [[k, v['db'], v['file']] for k, v in compare_all_counts().items()]
+    results_table = [[k, v['db'], v['file']] for k, v in _compare_counts().items()]
     with open(csv_name, 'w') as csvfile:
         my_writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         my_writer.writerow(['name', 'database', 'file'])
@@ -25,7 +25,7 @@ def compare_all_counts_csv():
     log.info('csv bestand {} aangemaakt'.format(csv_name))
 
 
-def compare_all_counts():
+def _compare_counts():
     gml_dispatch = {
         'bgt_begroeidterreindeel': ['plantcover', 'bgt_begroeidterreindeel'],
         'bgt_onbegroeidterreindeel': ['onbegroeidterreindeel', 'bgt_onbegroeidterreindeel'],
@@ -60,6 +60,39 @@ def compare_all_counts():
         'bgt_weginrichtingselement': ['weginrichtingselement', 'imgeo_weginrichtingselement']
     }
 
+    def count_table_rows(table, host='localhost', database='gisdb', port='5401', user='dbuser', password='insecure'):
+        sql = "SELECT count(*) FROM imgeo.{}".format(table)
+        res = -1
+        conn = psycopg2.connect(
+            "host={} port={} dbname={} user={}  password={}".format(host, port, database, user, password)
+        )
+        dbcur = conn.cursor()
+        try:
+            dbcur.execute("SELECT count(*) FROM imgeo.{};".format(table))
+            for row in dbcur:
+                res = row[0]
+        except psycopg2.DatabaseError as e:
+            log.debug("Database exception: command :%s" % str(e))
+        return res
+
+
+    def count_file_object(filename, object):
+        logfile = '{WORK}/log/tel_bestand_object_gml.{GML}.{OBJ}.{TIMESTAMP}'.format(
+            WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S")
+        )
+        gml_location = '{WORK}/GML/{GML}.gml'.format(WORK=workdir, GML=filename)
+        cmd = 'ogrinfo -q {GML} -sql "select count(*) from {OBJ}"'.format(GML=gml_location, OBJ=object)
+        p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+        output = str(p.stdout.read(), encoding='utf-8')
+        f = open(logfile, 'w')
+        f.write(output)
+        f.close()
+        if output.split('\n')[0] == 'FAILURE:':
+            res = -1
+        else:
+            res = int(output.split('\n')[-3].split(' = ')[-1])
+        return res
+
     # create log
     if not os.path.exists('{}/log'.format(workdir)):
         os.makedirs('{}/log'.format(workdir))
@@ -70,37 +103,3 @@ def compare_all_counts():
         result_items[k]['file'] = count_file_object(k, v[0])
         result_items[k]['db'] = count_table_rows(v[1])
     return result_items
-
-
-def count_table_rows(table, host='localhost', database='gisdb', port='5401', user='dbuser', password='insecure'):
-    sql = "SELECT count(*) FROM imgeo.{}".format(table)
-    res = -1
-    conn = psycopg2.connect(
-        "host={} port={} dbname={} user={}  password={}".format(host, port, database, user, password)
-    )
-    dbcur = conn.cursor()
-    try:
-        dbcur.execute("SELECT count(*) FROM imgeo.{};".format(table))
-        for row in dbcur:
-            res = row[0]
-    except psycopg2.DatabaseError as e:
-        log.debug("Database exception: command :%s" % str(e))
-    return res
-
-
-def count_file_object(filename, object):
-    logfile = '{WORK}/log/tel_bestand_object_gml.{GML}.{OBJ}.{TIMESTAMP}'.format(
-        WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S")
-    )
-    gml_location = '{WORK}/GML/{GML}.gml'.format(WORK=workdir, GML=filename)
-    cmd = 'ogrinfo -q {GML} -sql "select count(*) from {OBJ}"'.format(GML=gml_location, OBJ=object)
-    p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
-    output = str(p.stdout.read(), encoding='utf-8')
-    f = open(logfile, 'w')
-    f.write(output)
-    f.close()
-    if output.split('\n')[0] == 'FAILURE:':
-        res = -1
-    else:
-        res = int(output.split('\n')[-3].split(' = ')[-1])
-    return res

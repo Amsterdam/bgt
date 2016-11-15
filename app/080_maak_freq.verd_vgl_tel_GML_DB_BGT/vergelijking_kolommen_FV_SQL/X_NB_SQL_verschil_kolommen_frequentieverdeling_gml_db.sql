@@ -3,25 +3,41 @@
 --- RY, 16 aug. 2016
 ---
 
-select   distinct 'GML' as bron, gml.tabelnaam as gml_tabelnaam, map.dbnaam as db_tabelnaam, gml.kolomnaam /*, db.kolomwaarde */
-from     imgeo_controle.frequentieverdeling_gml gml
-,        imgeo_controle.mapping_gml_db          map
-WHERE    lower(map.gmlnaam) = lower(gml.tabelnaam)
-and      (lower(gml.tabelnaam), lower(map.dbnaam), gml.kolomnaam) not in ( select   lower(map.gmlnaam), lower(db.tabelnaam), db.kolomnaam /*, db.kolomwaarde */
-                                                                           from     imgeo_controle.frequentieverdeling_db  db
-                                                                           ,        imgeo_controle.mapping_gml_db          map
-                                                                           WHERE    lower(map.dbnaam) = lower(db.tabelnaam)
-                                                                         )
+SELECT DISTINCT
+  'GML'         AS bron,
+  gml.tabelnaam AS gml_tabelnaam,
+  map.dbnaam    AS db_tabelnaam,
+  gml.kolomnaam /*, db.kolomwaarde */
+FROM imgeo_controle.frequentieverdeling_gml gml
+  , imgeo_controle.mapping_gml_db map
+WHERE lower(map.gmlnaam) = lower(gml.tabelnaam)
+      AND (lower(gml.tabelnaam), lower(map.dbnaam), gml.kolomnaam) NOT IN (SELECT
+                                                                             lower(map.gmlnaam),
+                                                                             lower(db.tabelnaam),
+                                                                             db.kolomnaam /*, db.kolomwaarde */
+                                                                           FROM imgeo_controle.frequentieverdeling_db db
+                                                                             , imgeo_controle.mapping_gml_db map
+                                                                           WHERE lower(map.dbnaam) = lower(db.tabelnaam)
+)
 ---
 UNION
 ---
-select   distinct 'DB' as bron, map.gmlnaam as gml_tabelnaam, db.tabelnaam as db_tabelnaam, db.kolomnaam /*, db.kolomwaarde*/
-from     imgeo_controle.frequentieverdeling_db  db
-,        imgeo_controle.mapping_gml_db          map
-WHERE    lower(map.dbnaam) = lower(db.tabelnaam)
-and      (lower(map.gmlnaam), lower(db.tabelnaam), db.kolomnaam)  not in ( select   lower(gml.tabelnaam), lower(map.gmlnaam), gml.kolomnaam /*, db.kolomwaarde */
-                                                                           from     imgeo_controle.frequentieverdeling_gml gml
-                                                                           ,        imgeo_controle.mapping_gml_db          map
-                                                                           WHERE    lower(map.gmlnaam) = lower(gml.tabelnaam)
-                                                                         )
-ORDER by gml_tabelnaam, db_tabelnaam, kolomnaam /*, db.kolomwaarde */ ;
+SELECT DISTINCT
+  'DB'         AS bron,
+  map.gmlnaam  AS gml_tabelnaam,
+  db.tabelnaam AS db_tabelnaam,
+  db.kolomnaam /*, db.kolomwaarde*/
+FROM imgeo_controle.frequentieverdeling_db db
+  , imgeo_controle.mapping_gml_db map
+WHERE lower(map.dbnaam) = lower(db.tabelnaam)
+      AND (lower(map.gmlnaam), lower(db.tabelnaam), db.kolomnaam) NOT IN (SELECT
+                                                                            lower(gml.tabelnaam),
+                                                                            lower(map.gmlnaam),
+                                                                            gml.kolomnaam /*, db.kolomwaarde */
+                                                                          FROM
+                                                                            imgeo_controle.frequentieverdeling_gml gml
+                                                                            , imgeo_controle.mapping_gml_db map
+                                                                          WHERE
+                                                                            lower(map.gmlnaam) = lower(gml.tabelnaam)
+)
+ORDER BY gml_tabelnaam, db_tabelnaam, kolomnaam /*, db.kolomwaarde */;
