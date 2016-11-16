@@ -40,6 +40,7 @@ def test_failing_query(sql_runner):
         res = sql_runner.run_sql("SELECT * FROM unknown_table")
         print(res)
 
+
 def test_ogr2ogr_login(sql_runner):
     res = sql_runner.get_ogr2_ogr_login('public')
     assert res == "host=localhost port=5401 ACTIVE_SCHEMA=public user='dbuser' dbname='gisdb' password=insecure"
