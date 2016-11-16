@@ -39,7 +39,7 @@ class SQLRunner(object):
 
         except psycopg2.DatabaseError as e:
             log.debug("Database script exception: procedures :%s" % str(e))
-            return []
+            raise Exception(e)
 
     def run_sql_script(self, script_name) -> list:
         """
@@ -56,9 +56,6 @@ class SQLRunner(object):
 
         :param filename: The CSV file to import
         :param table_name: The table that gets populated
-        :param host: The DB hostname
-        :param port: The DB port
-        :param password: The password for the database
         :param truncate: If True the table is truncated before import
         :return: bool
         """
@@ -89,9 +86,9 @@ class SQLRunner(object):
             log.info("Import CSV succeeded, {} rows imported to {}".format(rows, table_name))
             return True
 
-    def get_ogr2_org_login(self, schema):
+    def get_ogr2_ogr_login(self, schema):
         return "host={} port={} ACTIVE_SCHEMA={} user='dbuser' dbname='gisdb' password={}".format(
-            self.host, self.port, self.schema, self.password)
+            self.host, self.port, schema, self.password)
 
     def import_gml_control_db(self):
         os.putenv('PGCLIENTENCODING', 'UTF8')
@@ -101,7 +98,7 @@ class SQLRunner(object):
             subprocess.call(
                 'ogr2ogr -progress -skipfailures -overwrite -f "PostgreSQL" '
                 'PG:"{PG}" -gt 655360 {LCO} {CONF} {FNAME}'.format(
-                    PG=self.get_ogr2_org_login('imgeo_gml'),
+                    PG=self.get_ogr2_ogr_login('imgeo_gml'),
                     LCO='-lco SPATIAL_INDEX=OFF',
                     CONF='--config PG_USE_COPY YES',
                     FNAME=file), shell=True)
@@ -115,7 +112,7 @@ class SQLRunner(object):
         # start several subprocesses
         processes = [subprocess.Popen(
             ['ogr2ogr', '-skipfailures', '-overwrite', '-f', 'PostgreSQL',
-             'PG:{PG}'.format(PG=self.get_ogr2_org_login('imgeo_gml')),
+             'PG:{PG}'.format(PG=self.get_ogr2_ogr_login('imgeo_gml')),
              '-gt', '655360', '-lco', 'SPATIAL_INDEX=OFF', '--config',
              'PG_USE_COPY', 'YES', '{FNAME}'.format(FNAME=fname)],
             stdout=output_fd, close_fds=ON_POSIX) for fname in glob.glob('/tmp/data/*.gml')]

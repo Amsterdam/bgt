@@ -84,11 +84,10 @@ def _compare_counts():
 
     def count_file_object(filename, object):
         logfile = '{WORK}/log/tel_bestand_object_gml.{GML}.{OBJ}.{TIMESTAMP}'.format(
-            WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S")
-        )
+            WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S"))
         gml_location = '{WORK}/GML/{GML}.gml'.format(WORK=workdir, GML=filename)
         cmd = 'ogrinfo -q {GML} -sql "select count(*) from {OBJ}"'.format(GML=gml_location, OBJ=object)
-        p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+        p = Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
         output = str(p.stdout.read(), encoding='utf-8')
         f = open(logfile, 'w')
         f.write(output)
@@ -116,7 +115,6 @@ def create_comparison_data():
     creates tables for checking value distribution and summing.
     This is done bij dynamically generating a SQL/DML script. That in in turn is populates the database with values
     for comparison
-    :param voor: the sql script name
     :return:
     """
 

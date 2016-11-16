@@ -1,6 +1,8 @@
+from unittest.mock import MagicMock, create_autospec
+
 import pytest
 import requests
-from unittest.mock import MagicMock, create_autospec
+
 import fme.fme_utils as fme_utils
 
 
@@ -18,9 +20,11 @@ def requests_post(mocker):
 def fme_utils_log(mocker):
     return mocker.patch('fme.fme_utils.log')
 
+
 @pytest.fixture
 def fme_utils_api_auth(mocker):
     return mocker.patch('fme.fme_utils.fme_api_auth')
+
 
 def test_fme_api_auth(fme_utils_api_auth):
     fme_utils.fme_api_auth()
