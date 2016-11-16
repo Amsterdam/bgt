@@ -231,12 +231,16 @@ if __name__ == '__main__':
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
 
+    loc_pgsql = fme_sql_utils.SQLRunner(port='5401', dbname='gisdb', user='dbuser')
+    fme_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.FME_SERVER.split('//')[-1],
+                                        dbname='gisdb', user='dbuser', password=bgt_setup.FME_DBPASS)
+
     download_bgt()
     try:
         # start the fme server
         server_manager.start()
-        fme_sql_utils.run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT),
-                                     tx=True)
+        fme_pgsql.run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT),
+                                 tx=True)
 
         # upload the GML files and FMW scripts
         fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
@@ -259,14 +263,11 @@ if __name__ == '__main__':
             logging.exception("Exception during FME transformation {}".format(e))
             sys.exit(1)
 
-        fme_sql_utils.run_sql_script("{app}/source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT),
-                                     tx=True)
+        fme_pgsql.run_sql_script("{app}/source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # aanmaak db-views shapes_bgt
-        fme_sql_utils.run_sql_script("{app}/source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT),
-                                     tx=True)
-        fme_sql_utils.run_sql_script(
-            "{app}/source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT), tx=True)
+        fme_pgsql.run_sql_script("{app}/source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        fme_pgsql.run_sql_script("{app}/source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # upload shapes fmw scripts naar reposiory
         fme_utils.upload_repository(
@@ -285,13 +286,10 @@ if __name__ == '__main__':
         upload_bgt_source_zip()
 
         # import controle db vanuit /tmp/data/*.gml
-        fme_sql_utils.import_gml_control_db('localhost', port=5401, password='insecure')
+        loc_pgsql.import_gml_control_db()
 
         # import csv / mapping db
-        fme_sql_utils.import_csv_fixture('../app/source_data/075_mapping.csv',
-                                         'imgeo_controle.mapping_gml_db',
-                                         'localhost',
-                                         port=5401)
+        loc_pgsql.import_csv_fixture('../app/source_data/075_mapping.csv', 'imgeo_controle.mapping_gml_db')
 
         # comparisons FKA: 040...
         fme_comparison.compare_before_after_counts_csv()
