@@ -1,2 +1,0 @@
-Zie test_BGT_176_b_aanmaak_tabellen_BGT.xlsx
-op locatie 080_controle_frequentieverdeling_BGT.

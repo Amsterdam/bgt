@@ -4,17 +4,23 @@ import psycopg2
 import logging
 from subprocess import Popen, PIPE, STDOUT
 from datetime import datetime
-from setup import SCRIPT_ROOT
+import bgt_setup
+import fme.sql_utils as fme_sql_utils
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-workdir = '{}/work'.format(SCRIPT_ROOT)
+
+
+def create_work_dir():
+    workdir = '{}/work'.format(bgt_setup.SCRIPT_ROOT)
+    if not os.path.exists('{}/results'.format(workdir)):
+        os.makedirs('{}/results'.format(workdir))
+    return workdir
 
 
 def compare_before_after_counts_csv():
     log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
-    if not os.path.exists('{}/results'.format(workdir)):
-        os.makedirs('{}/results'.format(workdir))
+    workdir = create_work_dir()
     csv_name = '{}/results/vergelijkings_resultaat-{}.csv'.format(workdir, datetime.now().strftime("%Y%m%d-%H%M%S"))
     results_table = [[k, v['db'], v['file']] for k, v in _compare_counts().items()]
     with open(csv_name, 'w') as csvfile:
@@ -26,6 +32,7 @@ def compare_before_after_counts_csv():
 
 
 def _compare_counts():
+    workdir = create_work_dir()
     gml_dispatch = {
         'bgt_begroeidterreindeel': ['plantcover', 'bgt_begroeidterreindeel'],
         'bgt_onbegroeidterreindeel': ['onbegroeidterreindeel', 'bgt_onbegroeidterreindeel'],
@@ -75,7 +82,6 @@ def _compare_counts():
             log.debug("Database exception: command :%s" % str(e))
         return res
 
-
     def count_file_object(filename, object):
         logfile = '{WORK}/log/tel_bestand_object_gml.{GML}.{OBJ}.{TIMESTAMP}'.format(
             WORK=workdir, GML=filename, OBJ=object, TIMESTAMP=datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -103,3 +109,51 @@ def _compare_counts():
         result_items[k]['file'] = count_file_object(k, v[0])
         result_items[k]['db'] = count_table_rows(v[1])
     return result_items
+
+
+def create_comparison_data():
+    """
+    creates tables for checking value distribution and summing.
+    This is done bij dynamically generating a SQL/DML script. That in in turn is populates the database with values
+    for comparison
+    :param voor: the sql script name
+    :return:
+    """
+
+    loc_pgsql = fme_sql_utils.SQLRunner(port='5401', dbname='gisdb', user='dbuser')
+
+    def create_freq_csv(rows, name):
+        log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
+        workdir = create_work_dir()
+        csv_name = '{}/results/{}-{}.csv'.format(workdir, name, datetime.now().strftime("%Y%m%d-%H%M%S"))
+        with open(csv_name, 'w') as csvfile:
+            my_writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            for row in rows:
+                my_writer.writerow(row)
+        log.info('csv bestand {} aangemaakt'.format(csv_name))
+
+    def generate_and_run_sql(voor):
+        new_script = loc_pgsql.run_sql_script('{app}/source_sql/{voor}'.format(app=bgt_setup.SCRIPT_ROOT, voor=voor))
+        if len(new_script) > 0:
+            loc_pgsql.run_sql('\n'.join([c[0] for c in new_script]))
+            log.info("Performed `comparison.{voor}`.".format(voor=voor))
+        else:
+            log.info("No data found by comparison.{voor}`".format(voor=voor))
+
+    for script in ['080_frequentieverdeling_db.sql', '080_frequentieverdeling_gml.sql',
+                   '080_tel_db.sql', '080_tel_gml.sql']:
+        generate_and_run_sql(script)
+
+    # Output results of the comparison of GML and DB
+    create_freq_csv(
+        loc_pgsql.run_sql_script(
+            '{app}/source_sql/080_vergelijk_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
+        'vergelijk_gml_db')
+
+    # Output results of the frequention distribution GML and DB
+    create_freq_csv(
+        loc_pgsql.run_sql_script(
+            '{app}/source_sql/080_frequentieverdeling_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
+        'freq_verdeling_gml_db_alle_kolommen')
+
+    log.info("Ready creating comparison data")

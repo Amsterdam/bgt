@@ -1,7 +1,4 @@
---- BGT: selecteer alle kolommen
---- in de frequentieverdelingen GML en DB.
---- RY, 16 aug. 2016
----
+-- all columns
 
 SELECT DISTINCT
   'DB'         AS bron,

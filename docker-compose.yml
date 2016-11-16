@@ -7,17 +7,17 @@ database:
     POSTGRES_USER: dbuser
     POSTGRES_PASSWORD: insecure
 
-importer:
-  build: .
-  links:
-    - database:database
-  environment:
-    DB_NAME: gisdb
-    DB_USER: dbuser
-    DB_PASSWORD: insecure
-  volumes:
-    - /tmp/data:/tmp/data
-  env_file: keys.env
-  command: >
-    bash -c "/app/docker-wait.sh \
-            && /app/import_bgt.sh"
+#importer:
+#  build: .
+#  links:
+#    - database:database
+#  environment:
+#    DB_NAME: gisdb
+#    DB_USER: dbuser
+#    DB_PASSWORD: insecure
+#  volumes:
+#    - /tmp/data:/tmp/data
+#  env_file: keys.env
+#  command: >
+#    bash -c "/app/docker-wait.sh \
+#            && /app/import_bgt.sh"
