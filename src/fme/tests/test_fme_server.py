@@ -1,14 +1,14 @@
 import pytest
 import logging
 from unittest.mock import MagicMock, patch
-from ..fme_server import Server
+from ..fme_server import FMEServer
 
 log = logging.getLogger(__name__)
 
 
 @pytest.fixture
 def fme_server():
-    s = Server(
+    s = FMEServer(
         'http://localhost',
         '2222',
         '95b4bd5265c03482n2cb481bf37f29e7a545ab88')

@@ -1,10 +1,11 @@
-import os
-import sys
-import io
 import csv
 import glob
-import subprocess
+import io
 import logging
+import os
+import subprocess
+import sys
+
 import psycopg2
 import psycopg2.extensions
 

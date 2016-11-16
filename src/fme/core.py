@@ -227,7 +227,7 @@ if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
 
-    server_manager = fme_server.Server(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
+    server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
 
