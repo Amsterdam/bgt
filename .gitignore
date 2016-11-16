@@ -1,6 +1,7 @@
 pgpass.txt
 .idea
 .jenkins/backups
+*.recover
 data
 dump
 dump/bgt.dump
