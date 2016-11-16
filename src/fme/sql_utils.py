@@ -14,6 +14,11 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
+_fme_connect = "host={} port={} dbname={} user={}  password={}".format(FME_SERVER.split('//')[-1],
+                                                                       '5432', 'gisdb', 'dbuser', FME_DBPASS)
+_local_connect = "host={} port={} dbname={} user={}  password={}".format('localhost',
+                                                                         '5401', 'gisdb', 'dbuser', 'insecure')
+
 def run_sql(script, tx=False):
     """
     Runs the sql script against the FME database

@@ -10,11 +10,13 @@ from fme.sql_utils import run_local_sql_script, run_local_sql
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+
 def create_work_dir():
     workdir = '{}/work'.format(bgt_setup.SCRIPT_ROOT)
     if not os.path.exists('{}/results'.format(workdir)):
         os.makedirs('{}/results'.format(workdir))
     return workdir
+
 
 def compare_before_after_counts_csv():
     log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
