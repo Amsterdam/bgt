@@ -142,6 +142,9 @@ def upload_resulting_shapes_to_objectstore():
             store.put_to_objectstore('shapes/{}-{}.{}'.format(res_name[0], timestamp, res_name[-1]),
                                      res.content,
                                      res.headers['Content-Type'])
+            store.put_to_objectstore('shapes/{}-latest'.format(path.split('/')[-1]),
+                                     res.content,
+                                     res.headers['Content-Type'])
             log.info("Uploaded {} to objectstore BGT/shapes".format(res_name))
     log.info("Uploaded resulting shapes to BGT objectstore")
 
@@ -239,8 +242,7 @@ if __name__ == '__main__':
     try:
         # start the fme server
         server_manager.start()
-        fme_pgsql.run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT),
-                                 tx=True)
+        fme_pgsql.run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # upload the GML files and FMW scripts
         fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
