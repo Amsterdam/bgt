@@ -3,17 +3,17 @@ import logging
 import sys
 import urllib.parse
 import urllib.request
-import requests
-
 from datetime import datetime
 from zipfile import ZipFile
-from objectstore.objectstore import ObjectStore
+
+import requests
 
 import bgt_setup
-import fme.sql_utils as fme_sql_utils
 import fme.comparison as fme_comparison
 import fme.fme_server as fme_server
 import fme.fme_utils as fme_utils
+import fme.sql_utils as fme_sql_utils
+from objectstore.objectstore import ObjectStore
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -58,6 +58,50 @@ def start_transformation_db():
                                      "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_XSD/imgeo.xsd"]},
                                     {"name": "SourceDataset_CITYGML",
                                      "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/bgt_buurt.gml"]}, ]})
+
+
+def start_transformation_dgn():
+    """
+    calls `aanmaak_dgnNLCS_uit_DB_BGT.fmw` on FME server
+    :return: dict with 'jobid' and 'urltransform'
+    """
+    log.info("Starting transformation")
+
+    # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
+    return fme_utils.run_transformation_job(
+        'BGT-DGN',
+        'aanmaak_dgn_uit_DB_BGT.fmw',
+        {"subsection": "REST_SERVICE",
+         "FMEDirectives": {},
+         "NMDirectives": {"successTopics": [], "failureTopics": []},
+         "TMDirectives": {"tag": "linux", "description": "Aanmaak NLCS uit DB"},
+         "publishedParameters": [{"name": "SourceDataset_POSTGIS", "value": "bgt"},
+                                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
+                                 {"name": "OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)/DGN.zip"},
+                                 {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)/BGT_NLCS.cel"},
+                                 {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-GBKAseed_v8.dgn"}]})
+
+
+def start_transformation_nlcs():
+    """
+    calls `aanmaak_esrishape_uit_DB_BGT.fmw` on FME server
+    :return: dict with 'jobid' and 'urltransform'
+    """
+    log.info("Starting transformation")
+    # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
+    return fme_utils.run_transformation_job(
+        'BGT-DGN',
+        'aanmaak_dgnNLCS_uit_DB_BGT.fmw',
+        {"subsection": "REST_SERVICE",
+         "FMEDirectives": {},
+         "NMDirectives": {"successTopics": [], "failureTopics": []},
+         "TMDirectives": {"tag": "linux", "description": "Aanmaak NLCS uit DB"},
+         "publishedParameters": [{"name": "SourceDataset_POSTGIS", "value": "bgt"},
+                                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
+                                 {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)/BGT_NLCS.cel"},
+                                 {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-ISO.ttf"}
+                                 {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS.zip"},
+                                 {"name": "SEED_FILE_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-Seed2d.dgn"}]})
 
 
 def start_transformation_shapes():
@@ -277,6 +321,11 @@ if __name__ == '__main__':
         fme_utils.upload_repository(
             '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
             'BGT-SHAPES', '*.*', register_fmejob=True)
+
+        # upload resources
+        fme_utils.upload_repository(
+            '{app}/source_data/aanmaake_producten_bgt/resource'.format(
+                app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DGN', '*.*', register_fmejob=True)
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         try:
