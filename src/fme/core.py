@@ -70,7 +70,7 @@ def start_transformation_shapes():
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
     return fme_utils.run_transformation_job(
         'BGT-SHAPES',
-        'aanmaak_esrishape_uit_DB_BGT.fmw',
+        'aanmaak_esrishape_csv_zip.fmw',
         {
             "subsection": "REST_SERVICE",
             "FMEDirectives": {},
@@ -79,9 +79,10 @@ def start_transformation_shapes():
             "publishedParameters": [
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes.zip"},
-                {"name": "DestDataset_ESRISHAPE3",
-                 "value": "$(FME_SHAREDRESOURCE_DATA)/Export_Shapes_Totaalgebied.zip"}]})
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/shp_gebied.zip"},
+                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)/shp_totaal.zip"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/csv_gebieden.zip"},
+                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/csv_totaal.zip"}]})
 
 
 def start_test_transformation():
@@ -127,7 +128,8 @@ def upload_resulting_shapes_to_objectstore():
     """
     store = ObjectStore('BGT')
     log.info("Upload resulting shapes to BGT objectstore")
-    files = ['Export_Shapes.zip', 'Export_Shapes_Totaalgebied.zip']
+
+    files = ['shp_gebied.zip', 'shp_totaal.zip', 'csv_gebieden.zip', 'csv_totaal.zip']
 
     for path in files:
         log.info("Download {} for storing in objectstore".format(path))
