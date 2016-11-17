@@ -57,7 +57,7 @@ def start_transformation_db():
                                     {"name": "CITYGML_IN_ADE_XSD_DOC_CITYGML",
                                      "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_XSD/imgeo.xsd"]},
                                     {"name": "SourceDataset_CITYGML",
-                                     "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/bgt_buurt.gml"]}, ]})
+                                     "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/*.gml"]}, ]})
 
 
 def start_transformation_dgn():
@@ -305,8 +305,8 @@ if __name__ == '__main__':
                          'Import_kaartbladen',
                          '*.*')
         try:
-            fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
             fme_utils.wait_for_job_to_complete(start_transformation_db())
+            fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
         except Exception as e:
             logging.exception("Exception during FME transformation {}".format(e))
             sys.exit(1)
@@ -354,5 +354,5 @@ if __name__ == '__main__':
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
     finally:
-        server_manager.stop()
+        # server_manager.stop()
         sys.exit(0)
