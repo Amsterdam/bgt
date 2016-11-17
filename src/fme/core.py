@@ -253,7 +253,7 @@ def download_bgt():
     """
     target = "extract_bgt.zip"
 
-    log.info("Starting download from %s to %s", pdok_url, target)
+    log.info("Starting download from %s to %s", pdok_url(), target)
 
     def progress(count, block_size, total_size):
         approximate = ''
@@ -266,7 +266,7 @@ def download_bgt():
         percentage = float(count * block_size * 100.0 / total_size)
         log.info("%s%2.2f%%", approximate, percentage)
 
-    urllib.request.urlretrieve(pdok_url, target, reporthook=progress)
+    urllib.request.urlretrieve(pdok_url(), target, reporthook=progress)
     unzip_pdok_file()
     log.info("Download complete")
     return 0

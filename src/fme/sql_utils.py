@@ -14,7 +14,7 @@ log = logging.getLogger(__name__)
 
 
 class SQLRunner(object):
-    def __init__(self, host='localhost', port='54321', dbname='postgresql', user='dbuser', password='insecure'):
+    def __init__(self, host='localhost', port='5432', dbname='postgresql', user='dbuser', password='insecure'):
         self.host = host
         self.port = port
         self.dbname = dbname
