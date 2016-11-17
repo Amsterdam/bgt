@@ -99,7 +99,7 @@ def start_transformation_nlcs():
          "publishedParameters": [{"name": "SourceDataset_POSTGIS", "value": "bgt"},
                                  {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
                                  {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)/BGT_NLCS.cel"},
-                                 {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-ISO.ttf"}
+                                 {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-ISO.ttf"},
                                  {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS.zip"},
                                  {"name": "SEED_FILE_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-Seed2d.dgn"}]})
 
