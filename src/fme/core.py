@@ -338,6 +338,16 @@ if __name__ == '__main__':
         upload_resulting_shapes_to_objectstore()
         upload_bgt_source_zip()
 
+        try:
+            fme_utils.wait_for_job_to_complete(start_transformation_dgn())
+        except Exception as e:
+            logging.exception("Exception during FME transformation to dgn {}".format(e))
+
+        try:
+            fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
+        except Exception e:
+            logging.exception("Exception during FME transformation to dgn {}".format(e))
+
         # import controle db vanuit /tmp/data/*.gml
         loc_pgsql.import_gml_control_db()
 
