@@ -345,7 +345,7 @@ if __name__ == '__main__':
 
         try:
             fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
-        except Exception e:
+        except Exception as e:
             logging.exception("Exception during FME transformation to dgn {}".format(e))
 
         # import controle db vanuit /tmp/data/*.gml
