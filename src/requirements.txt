@@ -2,3 +2,5 @@ requests==2.11.1
 pytest==3.0.2
 pytest-mock==0.4.3
 requests-mock==1.1.0
+python_swiftclient==3.2.0
+psycopg2==2.6.2

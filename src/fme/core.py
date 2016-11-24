@@ -13,6 +13,8 @@ import fme.comparison as fme_comparison
 import fme.fme_server as fme_server
 import fme.fme_utils as fme_utils
 import fme.sql_utils as fme_sql_utils
+import endproduct.bld_database as bld_database
+
 from objectstore.objectstore import ObjectStore
 
 logging.basicConfig(level=logging.INFO)
@@ -360,6 +362,8 @@ if __name__ == '__main__':
         # comparisons FKA 080...
         fme_comparison.create_comparison_data()
 
+        # build final database
+        bld_database.bld_sql_db(loc_pgsql)
 
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))

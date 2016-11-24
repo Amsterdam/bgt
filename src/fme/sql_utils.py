@@ -54,7 +54,8 @@ class SQLRunner(object):
         Imports a CSV file in file `filename` to table `table_name`.
         The first line is used to determine the column names.
 
-        :param filename: The CSV file to import
+        :param filename: The CSV file to import, either the complete path or a
+                            filelike object
         :param table_name: The table that gets populated
         :param truncate: If True the table is truncated before import
         :return: bool
@@ -63,28 +64,35 @@ class SQLRunner(object):
 
         self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
         dbcur = self.conn.cursor()
-        rows = 0
         try:
             if truncate:
                 dbcur.execute('TRUNCATE TABLE {};'.format(table_name))
-            with open(filename) as csvfile:
-                dialect = csv.Sniffer().sniff(csvfile.read(1024))
-                csvfile.seek(0)
-                reader = csv.reader(csvfile, dialect)
-
-                # get the first line for the column names and format them for SQL
-                names = '({})'.format(','.join(next(reader)))
-                for line in reader:
-                    # insert to db table
-                    dbcur.execute('insert into {} {} values ({})'.format(
-                        table_name, names, ','.join("'{}'".format(f) for f in line)))
-                    rows += 1
+            if isinstance(filename, str):       # complete path
+                with open(filename) as csvfile:
+                    rows = self.process_csvfile(csvfile, table_name, dbcur)
+            else:                               # file like object
+                rows = self.process_csvfile(filename, table_name, dbcur)
         except psycopg2.DatabaseError as e:
             log.debug("Import CSV exception :%s" % str(e))
             return False
         finally:
             log.info("Import CSV succeeded, {} rows imported to {}".format(rows, table_name))
             return True
+
+    def process_csvfile(self, csvfile, table_name, dbcur):
+        rows = 0
+        dialect = csv.Sniffer().sniff(csvfile.read(1024))
+        csvfile.seek(0)
+        reader = csv.reader(csvfile, dialect)
+
+        # get the first line for the column names and format them for SQL
+        names = '({})'.format(','.join(next(reader)))
+        for line in reader:
+            # insert to db table
+            dbcur.execute('insert into {} {} values ({})'.format(
+                table_name, names, ','.join("'{}'".format(f) for f in line)))
+            rows += 1
+        return rows
 
     def get_ogr2_ogr_login(self, schema):
         return "host={} port={} ACTIVE_SCHEMA={} user='dbuser' dbname='gisdb' password={}".format(
