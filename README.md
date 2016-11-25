@@ -19,3 +19,6 @@ Om de applicatie te starten vanuit Docker.
     docker-compose build
     docker-compose run importer
     
+## installatie van psycopg2 op OSX sierra
+
+    env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip install psycopg2
