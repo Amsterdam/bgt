@@ -278,7 +278,7 @@ SELECT
     relatievehoogteligging      AS HOOGTELIG,
     bgt_status                  AS BGTSTATUS,
     bgt_type                    AS BGTTYPE,
-    bgt_waterdeel.plus_type     AS PLUS_TYPE,
+    bgt_waterdeel.plus_type     AS PLUSTYPE,
     'BGT_WDL_'|| LOWER(
     REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
     bgt_type ,',',''),'/ ',''),':',''),'(',''),')',''),'/','_'),' ','_'))
