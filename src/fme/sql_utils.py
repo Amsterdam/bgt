@@ -47,7 +47,7 @@ class SQLRunner(object):
         :param script_name:
         :return:
         """
-        return self.run_sql(open(script_name, 'r').read())
+        return self.run_sql(open(script_name, 'r', encoding="utf-8").read())
 
     def import_csv_fixture(self, filename, table_name, truncate=True) -> bool:
         """

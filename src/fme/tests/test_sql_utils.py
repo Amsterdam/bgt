@@ -9,7 +9,8 @@ log = logging.getLogger(__name__)
 
 @pytest.fixture
 def sql_runner():
-    runner = SQLRunner(port='5401', dbname='gisdb', user='dbuser')
+    # 5401 / localhost
+    runner = SQLRunner(host='database', port='5432', dbname='gisdb', user='dbuser')
     runner.run_sql("DROP TABLE IF EXISTS public.sql_utils;")
     return runner
 
