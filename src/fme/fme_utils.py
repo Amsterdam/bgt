@@ -1,11 +1,13 @@
 import glob
-import time
+import json
+import logging
 import mimetypes
 import os
 import os.path
-import json
+import time
+
 import requests
-import logging
+
 from bgt_setup import FME_API, FME_SERVER
 
 log = logging.getLogger(__name__)
@@ -60,7 +62,7 @@ def create_directory(directory):
     log.info("Create directory %s", directory)
     url = ('{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA'
            '/filesys/?detail=low'.format(FME_SERVER=FME_SERVER))
-    res = requests.post(url, headers=fme_api_auth(), data={'directoryname': directory, 'type': 'DIR',})
+    res = requests.post(url, headers=fme_api_auth(), data={'directoryname': directory, 'type': 'DIR', })
     res.raise_for_status()
     log.debug("Directory created")
 
@@ -68,7 +70,7 @@ def create_directory(directory):
 def create_repository(repo):
     """
     Creates a FME repository
-    :param directory: the directory name to delete
+    :param repo: the repo to create
     :return:
     """
     log.info("Create repository %s", repo)
@@ -160,10 +162,9 @@ def upload_repository(source_directory, dir, files, recreate_repo=True, register
     """
     Upload one or more files to FME
     :param source_directory: the local source directory
-    :param repo: the FME repo
     :param dir: the FME directory in repo
     :param files: string with filename or wildcard expression
-    :param recreate_dir: explicitly recreates the destination directory
+    :param recreate_repo: explicitly recreates the destination repo
     :return: bool
     """
     url_connect = 'fmerest/v2/repositories/{}'.format(dir)
@@ -213,6 +214,7 @@ def run_transformation_job(repository, workspace, params):
     except requests.exceptions.RequestException:
         log.debug('HTTP Request failed')
 
+
 def fetch_log_for_job(job):
     """
     Fetches the logfile for job `job`
@@ -238,7 +240,6 @@ def get_job_status(job):
     res.raise_for_status()
     status = res.json()['status']
     log.debug("Status for job %s: %s", job, status)
-    return status
     return status
 
 
