@@ -2,6 +2,7 @@ import os.path
 
 DEBUG = os.getenv('DEBUG', False) == '1'
 SCRIPT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'app'))
+SCRIPT_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 if os.getenv('TEST', False) == '1':
     FME_SERVER_API = 'secret'
@@ -15,3 +16,4 @@ else:
     FME_SERVER = os.getenv('FMESERVER', 'secret')
     INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
     FME_DBPASS = os.getenv('FMEDBPASS', 'secret')
+
