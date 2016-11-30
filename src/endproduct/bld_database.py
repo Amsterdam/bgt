@@ -11,6 +11,13 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 TOTALCSVNAME = 'csv_totaal.zip'
+
+NAMEMAPPING = {'BGT_LBL_terrein.csv': 'bgt_openbareruimtelabel',
+               'BGT_LBL_water.csv': 'bgt_openbareruimtelabel',
+               'BGT_LBL_weg.csv': 'bgt_openbareruimtelabel',
+               'BGT_LBL_kunstwerk.csv': 'bgt_openbareruimtelabel',
+               'BGT_LBL_landschappelijk_gebied.csv': 'bgt_openbareruimtelabel',}
+
 TABLEMAPPING = {'BGTPLUS_BAK': 'imgeo_bak',
                 'BGTPLUS_FGD': 'imgeo_functioneelgebied',
                 'BGTPLUS_GISE': 'imgeo_gebouwinstallatie',
@@ -49,6 +56,12 @@ TABLEMAPPING = {'BGTPLUS_BAK': 'imgeo_bak',
                 'BGT_WGL': 'bgt_wegdeel',
                 }
 
+FIELDMAPPING =    { 'geometry':'geometrie',
+                    'hoek':'opr_label_hoek',
+                    'label_tekst': 'opr_label_tekst'
+                    }
+
+SRID=28992
 
 RESULT_DATABASE_PORT = 5432
 RESULT_DATABASE_HOST = 'localhost'
@@ -157,26 +170,17 @@ class final_db:
         :param inzip: ZipFile object
         :return:
         """
-        try:
-            table_name = self.map_csv_to_table(process_file_info.filename)
-        except KeyError:
-            if ignore_not_found:
-                table_name = None
-            else:
-                table_name = process_file_info.filename
-
+        table_name = self.map_csv_to_table(process_file_info.filename, ignore_not_found)
         if table_name:
-            log.info("Table %s verwerking", process_file_info.filename)
+            log.info("Table %s verwerking naar sql-tabel %s", process_file_info.filename, table_name)
 
             with StringIO(self.decodedata(inzip.read(process_file_info.filename))) as file_in_zip:
-                self.bgt_loc_pgsql.import_csv_fixture(file_in_zip, table_name, truncate=False,
-                                                  converthdrs={'geometry':'geometrie'},
-                                                  datefields=('objectbegintijd',
-                                                              'objecteindtijd',
-                                                              'tijdstipregistratie',
-                                                              'eindregistratie',
-                                                              'lv_publicatiedatum'),
-                                                  srid=28992)
+                try:
+                    self.bgt_loc_pgsql.import_csv_fixture(file_in_zip, table_name, truncate=False,
+                                                  converthdrs=FIELDMAPPING,
+                                                  srid=SRID)
+                except Exception as e:
+                    log.error('\n' + str(e) + '\n')
 
     def decodedata(self, filebytes):
         encodings = ('UTF-8', 'LATIN-1', 'LATIN-2', 'LATIN-3')
@@ -208,8 +212,24 @@ class final_db:
 
         return zipfile.ZipFile(name)
 
-    def map_csv_to_table(self, csvname):
-        cs = csvname.split('_')
-        cnsplit = '_'.join(cs[0:2])
-        return TABLEMAPPING[cnsplit]
+    def map_csv_to_table(self, csvname:str, ignore_not_found:bool) -> str:
+        """
+        Translate found tablename in csv to sqlname
+
+        :param csvname:
+        :param ignore_not_found:
+        :return: mapped_name is name to be used in SQL database
+        """
+        mapped_name = None
+        if csvname in NAMEMAPPING:
+            mapped_name = NAMEMAPPING[csvname]
+        else:
+            cs = csvname.split('_')
+            cnsplit = '_'.join(cs[0:2])
+            try:
+                mapped_name = TABLEMAPPING[cnsplit]
+            except KeyError:
+                if not ignore_not_found:
+                    mapped_name = csvname
+        return mapped_name
 

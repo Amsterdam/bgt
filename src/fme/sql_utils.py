@@ -5,7 +5,7 @@ import logging
 import os
 import subprocess
 import sys
-import json
+import datetime
 
 import psycopg2
 import psycopg2.extensions
@@ -57,7 +57,7 @@ class SQLRunner(object):
         return self.run_sql(open(script_name, 'r').read())
 
     def import_csv_fixture(self, filename, table_name, truncate=True,
-                           converthdrs={}, emptynone=True, datefields=(), srid=0) -> bool:
+                           converthdrs={}, emptynone=True, srid=0) -> bool:
         """
         Imports a CSV file in file `filename` to table `table_name`.
         The first line is used to determine the column names.
@@ -79,10 +79,10 @@ class SQLRunner(object):
         if isinstance(filename, str):       # complete path
             with open(filename) as csvfile:
                 rows = self.process_csvfile(csvfile, table_name, dbcur,
-                                            converthdrs, emptynone, datefields, srid)
+                                            converthdrs, emptynone, srid)
         else:                               # file like object
             rows = self.process_csvfile(filename, table_name, dbcur,
-                                        converthdrs, emptynone, datefields, srid)
+                                        converthdrs, emptynone, srid)
         # except psycopg2.DatabaseError as e:
         #     log.debug("Import CSV exception :%s" % str(e))
         #     return False
@@ -91,7 +91,17 @@ class SQLRunner(object):
         return True
 
     def process_csvfile(self, csvfile, table_name, dbcur,
-                        converthdrs={}, emptynone=True, datefields=(), srid=None):
+                        converthdrs={}, emptynone=True, srid=None):
+        """
+        Process a single CSV file
+        :param csvfile: csv file name
+        :param table_name: mapped table in SQL
+        :param dbcur: postgresql cursor
+        :param converthdrs: list of headers to be converted
+        :param emptynone: Translate all empty fields to None values
+        :param srid: coordinate system
+        :return: number of rows
+        """
         rows = 0
         data = csvfile.read(1024)
         try:
@@ -103,54 +113,108 @@ class SQLRunner(object):
         csvfile.seek(0)
         reader = csv.reader(csvfile, dialect)
 
-        names, dateconvert = self.process_hdr(next(reader), converthdrs, datefields)
+        names, dateconvert, geo_dict = self.process_hdr(next(reader), converthdrs, dbcur, table_name)
         # get the first line for the column names and format them for SQL
 
         for line in reader:
             # insert to db table
-            values = self.process_values(line, emptynone, dateconvert, srid)
+            values = self.process_values(line, emptynone, dateconvert, srid, geo_dict)
+            placeholders =['%s']* len(values)
+            for pos, value in  [(idx, value) for idx, value in enumerate(values)
+                                if isinstance(value, str) and 'ST_GeomFromText' in value]:
+                placeholders[pos] = value
+                del values[pos]
             sqlstmt = 'insert into {} {} values ({})'.format(
-                table_name, names, values)
-            dbcur.execute(sqlstmt)
+                table_name, names, ','.join(placeholders))
+            dbcur.execute(sqlstmt, values)
             rows += 1
         return rows
 
-    def process_values(self, line:list, emptynone:bool, dateconvert:list, srid:int) -> str:
+    def process_values(self, line:list, emptynone:bool, dateconvert:list, srid:int, geo_dict:dict) -> str:
         newvalues = []
         for idx, value in enumerate(line):
             if value == '' and emptynone:
-                newvalues.append('NULL')
-            elif idx in dateconvert and len(value) > 8:
-                newvalues.append("'{} {}:{}:{}'".format(value[0:8], value[8:10], value[10:12], value[12:]))
-            elif srid and 'MULTIPOLYGON' in value:
-                newvalues.append(value.replace("MULTIPOLYGON", "ST_GeomFromText('MULTISURFACE") + "',{})".format(srid))
-            elif srid and 'POLYGON' in value:
-                newvalues.append(value.replace("POLYGON", "ST_GeomFromText('CURVEPOLYGON") + "',{})".format(srid))
-            elif srid and 'MULTIPOINT' in value:
-                newvalues.append(value.replace("MULTIPOINT", "ST_GeomFromText('MULTIPOINT") + "',{})".format(srid))
-            elif srid and 'POINT' in value:
-                newvalues.append(value.replace("POINT", "ST_GeomFromText('POINT") + "',{})".format(srid))
-            elif srid and 'LINESTRING' in value:
-                newvalues.append(value.replace("LINESTRING", "ST_GeomFromText('LINESTRING") + "',{})".format(srid))
+                newvalues.append(None)
+            elif idx in dateconvert:
+                if len(value) > 12:
+                    newvalues.append(datetime.datetime(int(value[0:4]), int(value[4:6]),
+                                                       int(value[6:8]), int(value[8:10]),
+                                                       int(value[10:12]), int(value[12:])))
+                else:
+                    newvalues.append(
+                        datetime.datetime(int(value[0:4]), int(value[4:6]), int(value[6:8])))
+            elif idx in geo_dict:
+                if geo_dict[idx] == 'GEOMETRY':
+                    newvalues.append("ST_GeomFromText('{}',{})".format(value, srid))
+                else:
+                    geometry_values = value[value.index('('):]
+                    newvalues.append("ST_GeomFromText('{}{}',{})".format(geo_dict[idx], geometry_values, srid))
             else:
-                newvalues.append("'{}'".format(value))
-        return ','.join(newvalues)
+                try:
+                    intvalue = int(value)
+                    newvalues.append(intvalue)
+                except ValueError:
+                    try:
+                        flvalue = float(value)
+                        newvalues.append(flvalue)
+                    except ValueError:
+                        newvalues.append(value)
+        return newvalues
 
     def convert_2_json(self, value):
         value.split()
 
-    def process_hdr(self, headers:list, converthdrs:dict, datefields:tuple) -> (str, list):
+    def process_hdr(self, headers:list, converthdrs:dict, dbcur, table_name:str) -> (str, list):
         dfs = []
+        columns, datefields, geometry_info = self.get_columninfo(dbcur, table_name)
+        unmatched_columns = []
+        geo_dict = {}
+        error_matching = False
         new_hdr = []
         for idx, h in enumerate(headers):
-            if h in converthdrs:
-                new_hdr.append(converthdrs[h])
+            h = h.lower().replace('-','_')                  # convert to lowercase
+            if h in columns:
+                columns[h] = True
+                new_hdr.append(h)
             else:
-                new_hdr.append(h.replace('-','_'))
-            if new_hdr[-1] in datefields:
-                dfs.append(idx)
+                if h in converthdrs:
+                    new_hdr.append(converthdrs[h])
+                    columns[converthdrs[h]] = True
+                else:
+                    unmatched_columns.append(h)
+                    error_matching = True
+            if len(new_hdr):
+                last_column = new_hdr[-1]
+                if last_column in datefields:
+                    dfs.append(idx)
+                if last_column in geometry_info:
+                    geo_dict[idx] = geometry_info[last_column]
 
-        return '("' + '","'.join(new_hdr) + '")', dfs
+        if error_matching:
+            raise Exception('no match database/csv for field(s) {} in '
+                            'table {} skipped'.format(','.join(unmatched_columns), table_name))
+        non_matched_fields = [column for column, matched in columns.items() if not matched]
+        if len(non_matched_fields):
+            log.error('fields %s in table %s not filled; processing continues', ','.join(non_matched_fields), table_name)
+
+        return '("' + '","'.join(new_hdr) + '")', dfs, geo_dict
+
+    def get_columninfo(self, dbcur, table_name:str) -> (dict, list):
+        dbcur.execute("""SELECT current_schema();""")
+        schema = dbcur.fetchall()[0][0]
+        column_info_query = \
+                        """SELECT column_name, data_type FROM information_schema.columns
+                            WHERE table_schema = '{}' AND
+                            table_name = '{}';""".format(schema, table_name)
+        dbcur.execute(column_info_query)
+        columninfo = dbcur.fetchall()
+        datefields = [column_name for column_name, data_type in columninfo
+                      if 'date' in data_type or 'timestamp' in data_type]
+        columns = {column_name:False for column_name, data_type in columninfo}
+        dbcur.execute("""SELECT f_geometry_column, type from geometry_columns WHERE f_table_name = '{}'
+                        and f_table_schema = '{}';""".format(table_name, schema))
+        geometry_columns = {column:geometrytype for column, geometrytype in dbcur.fetchall()}
+        return columns, datefields, geometry_columns
 
     def get_ogr2_ogr_login(self, schema):
         return "host={} port={} ACTIVE_SCHEMA={} user='dbuser' dbname='gisdb' password={}".format(
