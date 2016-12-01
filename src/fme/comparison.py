@@ -67,7 +67,7 @@ def _compare_counts():
         'bgt_weginrichtingselement': ['weginrichtingselement', 'imgeo_weginrichtingselement']
     }
     # localhost / 5401
-    def count_table_rows(table, host='database', database='gisdb', port='5432', user='dbuser', password='insecure'):
+    def count_table_rows(table, host='database_TMP', database='gisdb', port='5432', user='dbuser', password='insecure'):
         sql = "SELECT count(*) FROM imgeo.{}".format(table)
         res = -1
         conn = psycopg2.connect(
@@ -118,7 +118,7 @@ def create_comparison_data():
     :return:
     """
     # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(host='database', port='5432', dbname='gisdb', user='dbuser')
+    loc_pgsql = fme_sql_utils.SQLRunner(host='database_TMP', port='5432', dbname='gisdb', user='dbuser')
 
     def create_freq_csv(rows, name):
         log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')

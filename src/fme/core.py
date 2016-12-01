@@ -277,12 +277,13 @@ def download_bgt():
 if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
+    log.info("Starting import script")
 
     server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
     # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(host='database', port='5432', dbname='gisdb', user='dbuser')
+    loc_pgsql = fme_sql_utils.SQLRunner(host='database_TMP', port='5432', dbname='gisdb', user='dbuser')
     fme_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.FME_SERVER.split('//')[-1],
                                         dbname='gisdb', user='dbuser', password=bgt_setup.FME_DBPASS)
 

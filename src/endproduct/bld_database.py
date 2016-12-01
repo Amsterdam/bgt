@@ -63,93 +63,74 @@ FIELDMAPPING =    { 'geometry':'geometrie',
 
 SRID=28992
 
-RESULT_DATABASE_PORT = 5432
-RESULT_DATABASE_HOST = 'localhost'
 RESULT_DATABASE_dbname = 'bgt'
-RESULT_DATABASE_user = 'dbuser'
-RESULT_DATABASE_pw = 'insecure'
-HOST_DB_pw = '35whiskey'
-HOST_DB_postgres = 'postgres'
-HOST_DB_user = 'postgres'
+HOST_DB_postgres = 'postgis'
 
 
 class final_db:
-    def __init__(self,  port=RESULT_DATABASE_PORT,
-                        host=RESULT_DATABASE_HOST,
-                        dbname=RESULT_DATABASE_dbname,
-                        user = RESULT_DATABASE_user,
-                        password=RESULT_DATABASE_pw,
-                        keep_db=False):
+    def __init__(self):
 
         """
         Create destination database for bgt
         """
-        self.keep_db = keep_db
-        self.dbname = dbname
-        self.port = port
-        self.host = host
-        self.password = password
-        self.user = user
+        self.user = bgt_setup.DEBUG
+        self.password = bgt_setup.FME_SERVER_API
         self.bgt_loc_pgsql = None
 
     def connect_to_postgresdb(self):
-        return SQLRunner(port=self.port, host=self.host,
-                                dbname=HOST_DB_postgres, user=HOST_DB_user, password=HOST_DB_pw)
+        return SQLRunner()
 
     def connect_to_bgtdb(self):
-        return SQLRunner(port=self.port, host=self.host,
-                                dbname=self.dbname, user=self.user, password=self.password)
+        return SQLRunner(dbname='database_BGT', user='dbuser', password=self.password)
 
-    def create_database(self, cleardb=False):
+    def create_database(self):
+        """
+        Create database
+        :return:
+        """
         pub_loc_pgsql = self.connect_to_postgresdb()
-        exists = pub_loc_pgsql.run_sql("SELECT exists(SELECT 1 from "
-                                        "pg_catalog.pg_database where datname = "
-                                        "'{dbname}')".format(dbname=self.dbname))[0][0]
-        if exists:
-            if not self.keep_db:
-                pub_loc_pgsql.run_sql('DROP DATABASE {dbname}'.format(dbname=self.dbname))
-                exists = False
-        if not exists:
-            pub_loc_pgsql.run_sql('CREATE DATABASE {dbname}'.format(dbname=self.dbname))
+        pub_loc_pgsql.run_sql('DROP DATABASE IF EXISTS {dbname}'.format(dbname=self.dbname))
+        pub_loc_pgsql.run_sql('CREATE DATABASE {dbname}'.format(dbname=self.dbname))
 
         pub_loc_pgsql.commit()
         pub_loc_pgsql.close()
 
-        bgt_loc_pgsql = self.create_tables(exists)
+        bgt_loc_pgsql = self.create_tables()
 
-        if exists and cleardb:
-            for tablename in TABLEMAPPING.values():
-                bgt_loc_pgsql.run_sql("TRUNCATE  TABLE {};".format(tablename))
         return bgt_loc_pgsql
 
 
-    def create_tables(self, exists):
+    def create_tables(self):
+        """
+        Create tables in the database including postgis extension
+
+        :return: connection to database
+        """
         # Connect to the newly created database
         bgt_loc_pgsql = self.connect_to_bgtdb()
 
-        if not exists:
-            try:
-                bgt_loc_pgsql.run_sql('CREATE EXTENSION postgis')
-            except Exception as e:
-                pass
-            root = bgt_setup.SCRIPT_ROOT
-            bgt_loc_pgsql.run_sql_script("{app}/source_sql/010_create_database.sql".format(app=root))
+        try:
+            bgt_loc_pgsql.run_sql('CREATE EXTENSION postgis')
+        except Exception as e:
+            pass
+        root = bgt_setup.SCRIPT_ROOT
+        bgt_loc_pgsql.run_sql_script("{app}/source_sql/010_create_database.sql".format(app=root))
 
         return bgt_loc_pgsql
 
-    def bld_sql_db(self, name=None, procfile_name=None, clear_db=False):
+    def bld_sql_db(self, name=TOTALCSVNAME, procfile_name=None, location='os'):
         """
         Create bgt database and load all shapes into it
 
         :param name: Load a csv/zip
         :param procfile_name: Load this specific csv file
-        :param clear_db: Switch to clear the tables before load
+        :param location: Load file from this location (os = objectstore, fs=filesystem)
         :return: success
         """
 
-        self.bgt_loc_pgsql = self.create_database(clear_db)
+        self.bgt_loc_pgsql = self.create_database()
 
-        inzip = self.get_zip(name)
+        inzip = self.get_zip(name, location)
         for process_file_info in inzip.infolist():
             if procfile_name:
                 if process_file_info.filename == procfile_name:
@@ -161,16 +142,17 @@ class final_db:
         self.bgt_loc_pgsql.commit()
         self.bgt_loc_pgsql.close()
 
-    def process_file(self, process_file_info, inzip, ignore_not_found=True):
+    def process_file(self, process_file_info, inzip):
         """
+        Process a specific csv file to be imported into the database
+        Note that the zipfile is used as StringIO!
 
-        :param loc_pgsql: Postgresql connection
         :param process_file_info: Processfile info as retrieved from zipfile for
                                   specific file
         :param inzip: ZipFile object
         :return:
         """
-        table_name = self.map_csv_to_table(process_file_info.filename, ignore_not_found)
+        table_name = self.map_csv_to_table(process_file_info.filename)
         if table_name:
             log.info("Table %s verwerking naar sql-tabel %s", process_file_info.filename, table_name)
 
@@ -183,6 +165,13 @@ class final_db:
                 #     log.error('\n' + str(e) + '\n')
 
     def decodedata(self, filebytes):
+        """
+        The csv can be in UTF-8 or LATIN- 1, 2, or 3 depending on the producing
+        machine.
+
+        :param filebytes:
+        :return: decoded string
+        """
         encodings = ('UTF-8', 'LATIN-1', 'LATIN-2', 'LATIN-3')
         stringdata = None
         for encode in encodings:
@@ -195,29 +184,25 @@ class final_db:
             raise UnicodeDecodeError
         return stringdata
 
-    def get_zip(self, name=None):
+    def get_zip(self, name, location):
         """
         Get zip from either local disk (for testing purposes) or from Objectstore
 
         :param name: Name of
         :return: ZipFile object
         """
-        if not name:
-            name = TOTALCSVNAME
-
-        if not name[0] == '/':
+        if location == 'os':
             store = ObjectStore('BGT')
             log.info("Download BGT source csv zip")
             name = store.get_store_object(name)
 
         return zipfile.ZipFile(name)
 
-    def map_csv_to_table(self, csvname:str, ignore_not_found:bool) -> str:
+    def map_csv_to_table(self, csvname:str) -> str:
         """
         Translate found tablename in csv to sqlname
 
         :param csvname:
-        :param ignore_not_found:
         :return: mapped_name is name to be used in SQL database
         """
         mapped_name = None
@@ -229,7 +214,6 @@ class final_db:
             try:
                 mapped_name = TABLEMAPPING[cnsplit]
             except KeyError:
-                if not ignore_not_found:
-                    mapped_name = csvname
+                log.error('%s not found in mapping, file ignored', csvname)
         return mapped_name
 
