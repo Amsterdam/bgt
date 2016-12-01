@@ -7,7 +7,7 @@
 #    
 #    "C:\Program Files\FME\fme.exe" C:\BGT\code\app\source_data\aanmaak_producten_bgt\aanmaak_dgn_uit_DB_BGT.fmw
 #          --P_LOG "C:\BGT\FME\aanmaak_dgn_uit_DB_BGT.log"
-#          --P_OUTPUT_DGN "C:\BGT\FME\BGT_DGN\DGN.zip"
+#          --P_OUTPUT_DGN "G:\DBI\Uitwissel\Geo\BGT_uitwissel\DGNv8\DGN.zip"
 #          --P_CEL "C:\BGT\code\app\source_data\aanmaak_producten_bgt\resource\BGT_NLCS.cel"
 #          --P_SEED "C:\BGT\code\app\source_data\aanmaak_producten_bgt\resource\GBKAseed_v8.dgn"
 #          --SourceDataset_POSTGIS "bgt_dev_local"
@@ -40,7 +40,7 @@
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   REDIRECT_TERMINATORS="NONE"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
-#!   ZOOM_SCALE="90"
+#!   ZOOM_SCALE="78"
 #!   IGNORE_READER_FAILURE="No"
 #!   USAGE="&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&#10;    &lt;br/&gt;&#10;&lt;/p&gt;&#10;"
 #!   DOC_TOP_LEFT="-22515.1 -79844.5"
@@ -50,11 +50,11 @@
 #!   LOG_FILE="$(P_LOG)"
 #!   END_TCL=""
 #!   SOURCE="NONE"
-#!   VIEW_POSITION="-22816.9 -36603.1"
+#!   VIEW_POSITION="-1742.91 -57019"
 #!   HISTORY="2006,Paul&lt;space&gt;Geerts,Initi&lt;u00eb&gt;le&lt;space&gt;creatie,3&lt;space&gt;juni&lt;space&gt;2014,Rob&lt;space&gt;Kromwijk,Upgrade&lt;space&gt;van&lt;space&gt;FME2006&lt;space&gt;naar&lt;space&gt;FME2009,4&lt;space&gt;december&lt;space&gt;2014,Jeroen&lt;space&gt;de&lt;space&gt;Vries,Gekopieerd&lt;space&gt;en&lt;space&gt;aangepast&lt;space&gt;naar&lt;space&gt;aanleiding&lt;space&gt;van&lt;space&gt;GBKA-lookalike,16&lt;space&gt;dec&lt;space&gt;&lt;apos&gt;14,Jeroen&lt;space&gt;de&lt;space&gt;Vries,Puntvormig&lt;space&gt;straatmeubilair&lt;space&gt;toegevoegd.,9&lt;space&gt;feb&lt;space&gt;&lt;apos&gt;15,Jeroen&lt;space&gt;de&lt;space&gt;Vries,Mantis&lt;space&gt;#2674&lt;space&gt;en&lt;space&gt;cell&lt;space&gt;name&lt;space&gt;kast&lt;space&gt;nutsvoorziening&lt;space&gt;aangepast.,11&lt;space&gt;maart&lt;space&gt;&lt;apos&gt;15,Jeroen&lt;space&gt;de&lt;space&gt;Vries,Trappen&lt;space&gt;worden&lt;space&gt;nu&lt;space&gt;als&lt;space&gt;gesloten&lt;space&gt;trap&lt;space&gt;aangemerkt&lt;space&gt;als&lt;space&gt;het&lt;space&gt;type&lt;space&gt;onbekend&lt;space&gt;is.Openbaar&lt;space&gt;toilet&lt;space&gt;&lt;openparen&gt;P&lt;closeparen&gt;&lt;space&gt;kreeg&lt;space&gt;ten&lt;space&gt;onrechte&lt;space&gt;de&lt;space&gt;cell&lt;space&gt;naam&lt;space&gt;KUNST.,23&lt;space&gt;maart&lt;space&gt;&lt;apos&gt;15,Jeroen&lt;space&gt;de&lt;space&gt;Vries,Mantis&lt;space&gt;#2708:&lt;space&gt;parameter&lt;space&gt;P_PASWORD&lt;space&gt;hernoemd&lt;space&gt;naar&lt;space&gt;P_PASSWORD."
 #!   DOC_EXTENTS="58593.3 101832"
 #!   BEGIN_PYTHON=""
-#!   LAST_SAVE_DATE="2016-12-01T11:41:21"
+#!   LAST_SAVE_DATE="2016-12-01T15:18:26"
 #!   LEGAL_TERMS_CONDITIONS="&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&#10;    &lt;br/&gt;&#10;&lt;/p&gt;&#10;"
 #!   FME_BUILD_NUM="16178"
 #! >
@@ -2238,7 +2238,7 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI FILENAME P_OUTPUT_DGN Design_Files(*.dgn)|*.dgn|All_files(*.*)|*.* Destination Bentley MicroStation Design File:"
-#!   DEFAULT_VALUE="C:\BGT\FME\BGT_DGN\DGN.zip"
+#!   DEFAULT_VALUE="G:\DBI\Uitwissel\Geo\BGT_uitwissel\DGNv8\DGN.zip"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
@@ -4513,7 +4513,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -4542,7 +4542,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,933,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_SCHIJNWERPER"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,933,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_SCHIJNWERPER-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_LICHTPUNT"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -4557,7 +4557,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -4586,7 +4586,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,51,igds_level,929,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_TELEFOONCEL"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,51,igds_level,929,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_TELEFOONCEL-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_TELEFOONCEL"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -4645,7 +4645,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -4670,7 +4670,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bgttype&lt;closeparen&gt;,igds_color,55,igds_type,igds_cell,igds_cell_name,SOG-TOPOGRAFIE_WATER-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bgttype&lt;closeparen&gt;,igds_color,55,igds_type,igds_cell,igds_cell_name,SOG-WATER-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_WATER"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -5326,7 +5326,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -5355,7 +5355,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,43,igds_level,926,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_OPENBAARTOILET-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,43,igds_level,926,igds_style,0,igds_weight,0,igds_cell_name,SIE-OPENBAARTOILET-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_OPENBAAR_TOILET"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -10877,7 +10877,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -10906,7 +10906,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,930,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_ZITBANK"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,930,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_ZITBANK_MET_LEUNING"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_BANK"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -11048,12 +11048,12 @@
 #!   IDENTIFIER="722"
 #!   TYPE="AttributeCreator"
 #!   VERSION="4"
-#!   POSITION="-3300 -63000.2"
-#!   BOUNDING_RECT="-3300 -63000.2 1061.06 71"
+#!   POSITION="-3300 -63000"
+#!   BOUNDING_RECT="-3300 -63000 1061.06 71"
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -11082,7 +11082,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_level" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_cell_name,SIE-WEG_FIETSKLUIS,igds_style,0,igds_weight,0,igds_level,937"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_cell_name,SIE-FIETSKLUIS-SO,igds_style,0,igds_weight,0,igds_level,937"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_FIETSENKLUIS"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -11141,7 +11141,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -11170,7 +11170,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_color,49,igds_type,igds_cell,igds_level,932,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_FONTIJN-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_color,49,igds_type,igds_cell,igds_level,932,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_FONTEIN-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_FONTEIN"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -11185,7 +11185,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -11214,7 +11214,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,938,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_HERDENKINGSMONUMENT-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,938,igds_style,0,igds_weight,0,igds_cell_name,SIE-HERDENKINGSMONUMENT-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_HERDENKINGSMONUMENT"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -11361,7 +11361,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -11390,7 +11390,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,928,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_SPEELTOESTEL"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_level,928,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_SPEELTOESTEL-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_SPEELVOORZIENING"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -24185,7 +24185,7 @@
 #!     <XFORM_ATTR ATTR_NAME="volg" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam&lt;closeparen&gt;,igds_level,956,igds_fill_color,62,igds_color,0,igds_style,0,igds_weight,0,igds_cell_name,HOOGTEMK,volg,5"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam&lt;closeparen&gt;,igds_level,956,igds_fill_color,62,igds_color,0,igds_style,0,igds_weight,0,igds_cell_name,SIE-WATER_BOEI-SO,volg,5"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_onbekend_P_3"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -24761,7 +24761,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,804,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SGR-PLANTENBAK-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,804,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SGR-PLANTENBAK"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_BLOEMBAK_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -24893,7 +24893,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,808,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SIE:SIE-WEG_CONTAINER_ALGEMEEN"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,808,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SIE-WEG_CONTAINER_ALGEMEEN"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_BAK_onbekend_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -25245,7 +25245,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,836,igds_color,56,igds_style,0,igds_weight,0,igds_cell_name,SKL-ET_OV_TERREINKAST-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,836,igds_color,56,igds_style,0,igds_weight,0,igds_cell_name,SKL-ET_TERREINKAST-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_openbare_verlichtingkast_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -26296,7 +26296,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -26325,7 +26325,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,864,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SVW-VRI"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,864,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_VERKEERSLICHT-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_verkeersregelinstallatiepaal_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -26340,7 +26340,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -26369,7 +26369,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,865,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SVW-VERKEERSTEKEN_DRAAGCONSTRUCTIE"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,865,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_VERKEERSBORD_ROND-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_verkeersbordpaal_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -26384,7 +26384,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -26414,7 +26414,7 @@
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,866,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SVW-POLLER-SO"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_poller_P_2"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_poller_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
@@ -26472,7 +26472,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -26501,8 +26501,8 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,868,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_VLAGGEMAST-SO"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_vlaggenmastl_P"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,868,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SIE-WEG_VLAGGENMAST-SO"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_vlaggenmast_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
@@ -26604,7 +26604,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -26633,7 +26633,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,871,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SVW-HECTOMETER-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,871,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SVW-HECTOMETERPAAL-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_hectometerpaal_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -26692,7 +26692,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -26721,7 +26721,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,873,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SVW-VRI_DRUKKNOPMAST"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,873,igds_color,50,igds_style,0,igds_weight,0,igds_cell_name,SVW-VRI_DRUKKNOPMAST-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_drukknoppaal_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -27281,8 +27281,8 @@
 #!   IDENTIFIER="1447"
 #!   TYPE="AttributeCreator"
 #!   VERSION="4"
-#!   POSITION="-2890.8 -76387.9"
-#!   BOUNDING_RECT="-2890.8 -76387.9 1061.06 71"
+#!   POSITION="-2850 -76350"
+#!   BOUNDING_RECT="-2850 -76350 1061.06 71"
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -27447,7 +27447,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,815,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SVW-VERKEERSTEKEN_BORD-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,815,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SIE-WEG_VERKEERSBORD_ROND-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_scheepvaartbord_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -27457,8 +27457,8 @@
 #!   IDENTIFIER="1455"
 #!   TYPE="AttributeCreator"
 #!   VERSION="4"
-#!   POSITION="-2890.8 -75519.5"
-#!   BOUNDING_RECT="-2890.8 -75519.5 1061.06 71"
+#!   POSITION="-2850 -75516"
+#!   BOUNDING_RECT="-2850 -75516 1061.06 71"
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -27491,7 +27491,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,814,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SVW-VERKEERSTEKEN_BORD-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,814,igds_color,56,igds_weight,0,igds_style,0,igds_cell_name,SIE-WEG_VERKEERSBORD_ROND-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_verkeersbord_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -28710,7 +28710,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -28739,7 +28739,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,892,igds_color,48,igds_weight,0,igds_style,0,igds_cell_name,SIE-WEG_DEBIETMETER-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,892,igds_color,48,igds_weight,0,igds_style,0,igds_cell_name,SIE-WATER_DEBIETMETER-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_debietmeter_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -28798,7 +28798,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -28827,7 +28827,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_cell_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,894,igds_color,48,igds_weight,0,igds_style,0,igds_cell_name,SIE-WEG_WEERSTATION-SO"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_level,894,igds_color,48,igds_weight,0,igds_style,0,igds_cell_name,SIE-WEERSTATION-SO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_weerstation_P"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -28930,7 +28930,7 @@
 #!   ORDER="5e+14"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -29798,7 +29798,7 @@
 #!     <XFORM_ATTR ATTR_NAME="igds_level" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_cell_name,STRTM,igds_style,0,igds_weight,0,igds_level,939"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="igds_level_name,&lt;at&gt;Value&lt;openparen&gt;bestandsnaam_plus&lt;closeparen&gt;,igds_type,igds_cell,igds_color,49,igds_cell_name,SIE-WEG_PARKEERMAATREGEL_POEF_ROND,igds_style,0,igds_weight,0,igds_level,939"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_BGT_STRTM_onbekend"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -38214,7 +38214,7 @@ FME_PYTHON_VERSION 27
 GUI IGNORE SourceDataset_POSTGIS_1,POSTGIS_IN_EXPOSE_ATTRS_GROUP_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1,POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1,POSTGIS_IN_SEARCH_METHOD_POSTGIS_1,POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_1,POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_1,POSTGIS_IN_BEGIN_SQL_POSTGIS_1,POSTGIS_IN_END_SQL_POSTGIS_1,SourceDataset_POSTGIS_2,POSTGIS_IN_EXPOSE_ATTRS_GROUP_POSTGIS_2,POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_2,POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_2,POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_2,POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_2,POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_2,POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_2,POSTGIS_IN_SEARCH_METHOD_POSTGIS_2,POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_2,POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_2,POSTGIS_IN_BEGIN_SQL_POSTGIS_2,POSTGIS_IN_END_SQL_POSTGIS_2,DestDataset_DGNV8_1,_SEED_DGNV8_1,_OUT_UNITS_DGNV8_1,_COMPUTE_SEED_DGNV8_1,_TYPE3_DGNV8_1,_ALLOW_FILL_DGNV8_1,_WRITE_TAGS_DGNV8_1,_SCALE_CELL_MODELS_DGNV8_1,DGNV8_OUT_RSC_FONT_FILE_DGNV8_1,_CELLLIB_DGNV8_1,_MANGLE_DBCS_TEXT_DGNV8_1,_UOR_GLOBAL_ORIGIN_X_DGNV8_1,_UOR_GLOBAL_ORIGIN_Y_DGNV8_1,_UOR_GLOBAL_ORIGIN_Z_DGNV8_1,_MASTER_UNIT_NAME_DGNV8_1,_SUB_UNIT_NAME_DGNV8_1,_SUBS_PER_MASTER_DGNV8_1,_UORS_PER_SUB_DGNV8_1,_DEFAULT_CELL_NAME_DGNV8_1
 DEFAULT_MACRO P_LOG C:\BGT\FME\aanmaak_dgn_uit_DB_BGT.log
 GUI OPTIONAL FILENAME P_LOG Log_Files_(*.log)|*.log|All_Files_(*.*)|*.* Log File:
-DEFAULT_MACRO P_OUTPUT_DGN C:\BGT\FME\BGT_DGN\DGN.zip
+DEFAULT_MACRO P_OUTPUT_DGN G:\DBI\Uitwissel\Geo\BGT_uitwissel\DGNv8\DGN.zip
 GUI FILENAME P_OUTPUT_DGN Design_Files(*.dgn)|*.dgn|All_files(*.*)|*.* Destination Bentley MicroStation Design File:
 DEFAULT_MACRO P_CEL $(FME_MF_DIR)resource\BGT_NLCS.cel
 GUI OPTIONAL MULTIFILE P_CEL Cell_Library_Files(*.cel)|*.cel|All_files(*.*)|*.* Cell Library File:
@@ -38710,9 +38710,9 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_reclamebord_P ATT
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_verklikker_transportleiding_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_48_verklikker<space>transportleiding ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 816 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WATER_MERKPAAL_LEIDING-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_verklikker_transportleiding_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_scheepvaartbord_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_48_scheepvaartbord ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 815 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SVW-VERKEERSTEKEN_BORD-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_scheepvaartbord_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_scheepvaartbord_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_48_scheepvaartbord ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 815 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_VERKEERSBORD_ROND-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_scheepvaartbord_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_verkeersbord_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_48_verkeersbord ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 814 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SVW-VERKEERSTEKEN_BORD-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_verkeersbord_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_verkeersbord_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_48_verkeersbord ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 814 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_VERKEERSBORD_ROND-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_verkeersbord_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_straatnaambord_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_48_straatnaambord ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 813 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SVW-VERKEERSTEKEN_BORD_STRAATNAAM-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_straatnaambord_P_OUTPUT 
 # -------------------------------------------------------------------------
@@ -38776,8 +38776,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_7_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_7_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_7___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_7_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_7___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_7___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_7_Deagg    INPUT FEATURE_TYPE GeometryFilter_7___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_7_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_7___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_7___Input___    OUTPUT FEATURE_TYPE GeometryFilter_7___Prepped___        GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5344_targetFeatureType @Lookup(GeometryFilter_7_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_7_Router    INPUT FEATURE_TYPE GeometryFilter_7___Prepped___    TEST @Value(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5344_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5344_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5344_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7_<UNFILTERED>        @RemoveAttributes(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5344_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_7_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_7___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_7___Input___    OUTPUT FEATURE_TYPE GeometryFilter_7___Prepped___        GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5347_targetFeatureType @Lookup(GeometryFilter_7_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_7_Router    INPUT FEATURE_TYPE GeometryFilter_7___Prepped___    TEST @Value(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5347_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5347_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5347_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7_<UNFILTERED>        @RemoveAttributes(GeometryFilter_7_62be40cc_9ec8_4a88_a047_904aad4ae5347_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_7 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_7_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -38841,11 +38841,11 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_waterstandmeter_P
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_flitser_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_50_flitser ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 895 ATTR igds_color 48 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_FLITSPAAL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_flitser_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_weerstation_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_50_weerstation ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 894 ATTR igds_color 48 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_WEERSTATION-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_weerstation_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_weerstation_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_50_weerstation ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 894 ATTR igds_color 48 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEERSTATION-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_weerstation_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_hoogtedetectieapparaat_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_50_hoogtedetectieapparaat ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 893 ATTR igds_color 48 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_HOOGTEDETECTIEMETER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_hoogtedetectieapparaat_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_debietmeter_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_50_debietmeter ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 892 ATTR igds_color 48 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_DEBIETMETER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_debietmeter_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_debietmeter_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_50_debietmeter ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 892 ATTR igds_color 48 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WATER_DEBIETMETER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_debietmeter_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_camera_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_50_camera ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 891 ATTR igds_color 48 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SKL-MONITORING_CAMERA_VIDEO-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_camera_P_OUTPUT 
 # -------------------------------------------------------------------------
@@ -39174,7 +39174,7 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_watervlakte ATTRS
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_waterloop ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_24_waterloop ATTR igds_level_name <at>Value<openparen>bestandsnaam<closeparen> ATTR igds_level 502 ATTR igds_fill_color 16 ATTR igds_color 0 ATTR volg 5 ATTR igds_style 0 ATTR igds_weight 0    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_waterloop_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_WATER ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE imgeo_extractie.vw_bgt_waterdeel_POSTGIS_2_0_GLcuLGpliDU= ATTR igds_level_name <at>Value<openparen>bgttype<closeparen> ATTR igds_color 55 ATTR igds_type igds_cell ATTR igds_cell_name SOG-TOPOGRAFIE_WATER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_WATER_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_WATER ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE imgeo_extractie.vw_bgt_waterdeel_POSTGIS_2_0_GLcuLGpliDU= ATTR igds_level_name <at>Value<openparen>bgttype<closeparen> ATTR igds_color 55 ATTR igds_type igds_cell ATTR igds_cell_name SOG-WATER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_WATER_OUTPUT 
 # -------------------------------------------------------------------------
 
 
@@ -39269,7 +39269,7 @@ MACRO $(Verhardingssymbolen_DGN_WORKSPACE_NAME)_SOORT_VERHARDING <at>Value<openp
 MACRO $(Verhardingssymbolen_DGN_WORKSPACE_NAME)_NIVEAU <at>Value<openparen>niveau<closeparen>
 DEFAULT_MACRO Verhardingssymbolen_DGN_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(Verhardingssymbolen_DGN_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(Verhardingssymbolen_DGN_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_IN1480588881 Input Splitter"   INPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_IN"   OUTPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_IN" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,SOORT_VERHARDING,$($(Verhardingssymbolen_DGN_WORKSPACE_NAME)_SOORT_VERHARDING),NIVEAU,$($(Verhardingssymbolen_DGN_WORKSPACE_NAME)_NIVEAU), FEATURE_TYPE)"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_IN1480601906 Input Splitter"   INPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_IN"   OUTPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_IN" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,SOORT_VERHARDING,$($(Verhardingssymbolen_DGN_WORKSPACE_NAME)_SOORT_VERHARDING),NIVEAU,$($(Verhardingssymbolen_DGN_WORKSPACE_NAME)_NIVEAU), FEATURE_TYPE)"
 # -------------------------------------------------------------------------
 
 INCLUDE [    if { {INSIDE} == {CENTER}  } {          puts {MACRO TEE_OUTPUT OUTPUT FEATURE_TYPE __TO_OUTPUT__ @ConvertToPoint()};    } else {       if { {INSIDE} == {CENTEROFGRAV}  } {             puts {MACRO TEE_OUTPUT OUTPUT FEATURE_TYPE __TO_OUTPUT__ @ConvertToPoint(CENTER_OF_GRAVITY)};       } else {             puts {MACRO TEE_OUTPUT OUTPUT FEATURE_TYPE __TO_TEST__ @GeneratePoint(3D,__temp_x__,__temp_y__,__temp_z__)};       };    }; ]
@@ -39282,7 +39282,7 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME $(Verhardingssymbolen_DGN_WORKSPACE_NA
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TestFactory    FACTORY_NAME $(Verhardingssymbolen_DGN_WORKSPACE_NAME)_Tester_9    INPUT  FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    TEST igds_cell_name NOT_ATTRIBUTE_IS_MISSING "" ENCODED TEST igds_cell_name NOT_ATTRIBUTE_IS_EMPTY "" ENCODED TEST igds_cell_name NOT_ATTRIBUTE_VALUE_NULL "" ENCODED    BOOLEAN_OPERATOR AND    OUTPUT PASSED FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_Tester_9_PASSED"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_UIT1480588881 Output Collector"   INPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_Tester_9_PASSED"   OUTPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_UIT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_UIT1480601906 Output Collector"   INPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_Tester_9_PASSED"   OUTPUT FEATURE_TYPE "$(Verhardingssymbolen_DGN_WORKSPACE_NAME)_UIT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(Verhardingssymbolen_DGN_WORKSPACE_NAME))}]
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Verhardingssymbolen_DGN UIT Output Renamer/Nuker"   INPUT FEATURE_TYPE Verhardingssymbolen_DGN_UIT   OUTPUT FEATURE_TYPE Verhardingssymbolen_DGN_UIT
 # -------------------------------------------------------------------------
@@ -39306,13 +39306,13 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_14 <MISSING> Output Nuk
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_14 <NULL> Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_14_<NULL>
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_14 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_14_<UNFILTERED>
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BAK_onbekend_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_14_onbekend ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 808 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE:SIE-WEG_CONTAINER_ALGEMEEN    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BAK_onbekend_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BAK_onbekend_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_14_onbekend ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 808 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_CONTAINER_ALGEMEEN    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BAK_onbekend_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_container_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_14_container ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 806 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_CONTAINER_ALGEMEEN    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_container_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_zand-_zoutbak_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_14_zand-<space><solidus><space>zoutbak ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 805 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG_STROOIRESERVOIR-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_zand-_zoutbak_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BLOEMBAK_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_14_bloembak ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 804 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SGR-PLANTENBAK-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BLOEMBAK_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BLOEMBAK_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_14_bloembak ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 804 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SGR-PLANTENBAK    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BLOEMBAK_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_DRINKBAK_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_14_drinkbak ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 803 ATTR igds_color 56 ATTR igds_weight 0 ATTR igds_style 0 ATTR igds_cell_name SIE-WEG-DRINKBAK-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_DRINKBAK_P_OUTPUT 
 # -------------------------------------------------------------------------
@@ -39503,7 +39503,7 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_telkast_P ATTRSET
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_Verkeersregelinstallatiekast_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_16_Verkeersregelinstallatiekast ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 837 ATTR igds_color 56 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SKL-VRI_TERREINKAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_Verkeersregelinstallatiekast_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_openbare_verlichtingkast_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_16_openbare<space>verlichtingkast ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 836 ATTR igds_color 56 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SKL-ET_OV_TERREINKAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_openbare_verlichtingkast_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_openbare_verlichtingkast_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_16_openbare<space>verlichtingkast ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 836 ATTR igds_color 56 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SKL-ET_TERREINKAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_openbare_verlichtingkast_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_riool-kast_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_16_rioolkast ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 835 ATTR igds_color 56 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SRI-TERREINKAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_riool-kast_P_OUTPUT 
 # -------------------------------------------------------------------------
@@ -39541,8 +39541,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_13_InputPassThrough    I
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_13_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_13___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_13___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_13_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_13___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_13___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_13___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_13_Deagg    INPUT FEATURE_TYPE GeometryFilter_13___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_13___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_13___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_13___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_13___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_13___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_13_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_13___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_13___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_13___Input___    OUTPUT FEATURE_TYPE GeometryFilter_13___Prepped___        GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc84_targetFeatureType @Lookup(GeometryFilter_13_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_13_Router    INPUT FEATURE_TYPE GeometryFilter_13___Prepped___    TEST @Value(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc84_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc84_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc84_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_13_<UNFILTERED>        @RemoveAttributes(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc84_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_13_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_13___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_13___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_13___Input___    OUTPUT FEATURE_TYPE GeometryFilter_13___Prepped___        GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc87_targetFeatureType @Lookup(GeometryFilter_13_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_13_Router    INPUT FEATURE_TYPE GeometryFilter_13___Prepped___    TEST @Value(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc87_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc87_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc87_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_13_<UNFILTERED>        @RemoveAttributes(GeometryFilter_13_fac13a0c_e5e3_45cd_be45_7e9c70937cc87_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_13 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_13_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -39794,8 +39794,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_14_InputPassThrough    I
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_14_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_14___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_14___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_14_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_14___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_14___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_14___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_14_Deagg    INPUT FEATURE_TYPE GeometryFilter_14___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_14___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_14___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_14___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_14___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_14___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_14_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_14___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_14___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_14___Input___    OUTPUT FEATURE_TYPE GeometryFilter_14___Prepped___        GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca4_targetFeatureType @Lookup(GeometryFilter_14_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_14_Router    INPUT FEATURE_TYPE GeometryFilter_14___Prepped___    TEST @Value(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca4_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca4_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca4_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_14_<UNFILTERED>        @RemoveAttributes(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca4_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_14_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_14___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_14___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_14___Input___    OUTPUT FEATURE_TYPE GeometryFilter_14___Prepped___        GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca7_targetFeatureType @Lookup(GeometryFilter_14_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_14_Router    INPUT FEATURE_TYPE GeometryFilter_14___Prepped___    TEST @Value(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca7_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca7_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca7_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_14_<UNFILTERED>        @RemoveAttributes(GeometryFilter_14_9bbea373_ee7a_4625_8c7a_2515751ff4ca7_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_14 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_14_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -39887,25 +39887,25 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_sirene_P ATTRSET_
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_grensmarkering_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_grensmarkering ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 874 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_GRENSPAAL    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_grensmarkering_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_drukknoppaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_drukknoppaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 873 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-VRI_DRUKKNOPMAST    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_drukknoppaal_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_drukknoppaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_drukknoppaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 873 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-VRI_DRUKKNOPMAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_drukknoppaal_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_dijkpaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_dijkpaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 872 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-DIJKPAAL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_dijkpaal_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_hectometerpaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_hectometerpaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 871 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-HECTOMETER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_hectometerpaal_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_hectometerpaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_hectometerpaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 871 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-HECTOMETERPAAL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_hectometerpaal_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_praatpaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_praatpaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 870 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_PRAATPAAL    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_praatpaal_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_afsluitpaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_afsluitpaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 869 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-AFSLUITPAAL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_afsluitpaal_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_vlaggenmastl_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_vlaggenmast ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 868 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_VLAGGEMAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_vlaggenmastl_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_vlaggenmast_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_vlaggenmast ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 868 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_VLAGGENMAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_vlaggenmast_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_haltepaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_haltepaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 867 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-HALTEPAAL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_haltepaal_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_poller_P_2 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_poller ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 866 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-POLLER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_poller_P_2_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_poller_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_poller ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 866 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-POLLER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_poller_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_verkeersbordpaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_verkeersbordpaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 865 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-VERKEERSTEKEN_DRAAGCONSTRUCTIE    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_verkeersbordpaal_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_verkeersbordpaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_verkeersbordpaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 865 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_VERKEERSBORD_ROND-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_verkeersbordpaal_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_verkeersregelinstallatiepaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_verkeersregelinstallatiepaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 864 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-VRI    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_verkeersregelinstallatiepaal_P_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_verkeersregelinstallatiepaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_verkeersregelinstallatiepaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 864 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_VERKEERSLICHT-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_verkeersregelinstallatiepaal_P_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_portaal_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_portaal ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 863 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SVW-BEWEGWIJZERING_DRAAGCONSTRUCTIE_PORTAAL_ANWB    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_portaal_P_OUTPUT 
 # -------------------------------------------------------------------------
@@ -39913,7 +39913,7 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_telmast_P ATTRSET
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_lichtmast_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_47_lichtmast ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_level 861 ATTR igds_color 50 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name B-SIE-WEG_LICHTMAST-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_lichtmast_P_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_volg_10 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeCreator_BGT_lichtmast_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_telmast_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_verkeersregelinstallatiepaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_praatpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_paal_onbekend_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_portaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_verkeersbordpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_vlaggenmastl_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_hectometerpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_dijkpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_poller_P_2_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_haltepaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_afsluitpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_drukknoppaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_sirene_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_grensmarkering_P_OUTPUT ATTR volg 16    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_volg_10_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_volg_10 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeCreator_BGT_lichtmast_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_telmast_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_verkeersregelinstallatiepaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_praatpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_paal_onbekend_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_portaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_verkeersbordpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_vlaggenmast_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_hectometerpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_dijkpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_poller_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_haltepaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_afsluitpaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_drukknoppaal_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_sirene_P_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_BGT_grensmarkering_P_OUTPUT ATTR volg 16    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_volg_10_OUTPUT 
 # -------------------------------------------------------------------------
 
 
@@ -39975,8 +39975,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_12_InputPassThrough    I
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_12_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_12___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_12___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_12_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_12___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_12___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_12___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_12_Deagg    INPUT FEATURE_TYPE GeometryFilter_12___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_12___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_12___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_12___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_12___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_12___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_12_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_12___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_12___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_12___Input___    OUTPUT FEATURE_TYPE GeometryFilter_12___Prepped___        GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac4_targetFeatureType @Lookup(GeometryFilter_12_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_12_Router    INPUT FEATURE_TYPE GeometryFilter_12___Prepped___    TEST @Value(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac4_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac4_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac4_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_12_<UNFILTERED>        @RemoveAttributes(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac4_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_12_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_12___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_12___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_12___Input___    OUTPUT FEATURE_TYPE GeometryFilter_12___Prepped___        GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac7_targetFeatureType @Lookup(GeometryFilter_12_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_12_Router    INPUT FEATURE_TYPE GeometryFilter_12___Prepped___    TEST @Value(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac7_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac7_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac7_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_12_<UNFILTERED>        @RemoveAttributes(GeometryFilter_12_4c078cae_5700_4a11_864a_b73fb432a5ac7_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_12 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_12_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -40173,23 +40173,23 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_5 <MISSING> Output Nuke
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_5 <NULL> Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_5_<NULL>
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_5 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_5_<UNFILTERED>
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_STRTM_onbekend ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_onbekend ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_cell_name STRTM ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_level 939    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_STRTM_onbekend_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_STRTM_onbekend ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_onbekend ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_cell_name SIE-WEG_PARKEERMAATREGEL_POEF_ROND ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_level 939    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_STRTM_onbekend_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_FIETSENKLUIS ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_fietsenkluis ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_cell_name SIE-WEG_FIETSKLUIS ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_level 937    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_FIETSENKLUIS_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_FIETSENKLUIS ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_fietsenkluis ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_cell_name SIE-FIETSKLUIS-SO ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_level 937    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_FIETSENKLUIS_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BETAALAUTOMAAT ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_betaalautomaat ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 935 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_PARKEERAUTOMAAT    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BETAALAUTOMAAT_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_PARKEERBEUGEL ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_parkeerbeugel ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_cell_name SIE-WEG_BOOM_BESCHERMBEUGEL ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_level 934    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_PARKEERBEUGEL_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_LICHTPUNT ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_lichtpunt ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 933 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_SCHIJNWERPER    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_LICHTPUNT_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_LICHTPUNT ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_lichtpunt ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 933 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_SCHIJNWERPER-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_LICHTPUNT_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_FONTEIN ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_fontein ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_color 49 ATTR igds_type igds_cell ATTR igds_level 932 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_FONTIJN-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_FONTEIN_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_FONTEIN ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_fontein ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_color 49 ATTR igds_type igds_cell ATTR igds_level 932 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_FONTEIN-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_FONTEIN_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_PICKNICKTAFEL ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_picknicktafel ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 931 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_PICKNICKSET    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_PICKNICKTAFEL_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BANK ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_bank ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 930 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_ZITBANK    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BANK_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BANK ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_bank ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 930 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_ZITBANK_MET_LEUNING    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BANK_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_SPEELVOORZIENING ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_speelvoorziening ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 928 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_SPEELTOESTEL    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_SPEELVOORZIENING_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_SPEELVOORZIENING ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_speelvoorziening ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 928 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_SPEELTOESTEL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_SPEELVOORZIENING_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_SLAGBOOM ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_slagboom ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 927 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_SLAGBOOM    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_SLAGBOOM_OUTPUT 
 # -------------------------------------------------------------------------
@@ -40199,13 +40199,13 @@ FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BRIEVENBUS ATTRSE
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_BOLDER ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_bolder ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 922 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WATER_BOLDER    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_BOLDER_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_HERDENKINGSMONUMENT ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_herdenkingsmonument ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 938 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_HERDENKINGSMONUMENT-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_HERDENKINGSMONUMENT_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_HERDENKINGSMONUMENT ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_herdenkingsmonument ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 49 ATTR igds_level 938 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-HERDENKINGSMONUMENT-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_HERDENKINGSMONUMENT_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_RECLAMENZUIL ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_reclamezuil ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 41 ATTR igds_level 936 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_RECLAMEZUIL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_RECLAMENZUIL_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_TELEFOONCEL ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_telefooncel ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 51 ATTR igds_level 929 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_TELEFOONCEL    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_TELEFOONCEL_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_TELEFOONCEL ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_telefooncel ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 51 ATTR igds_level 929 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_TELEFOONCEL-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_TELEFOONCEL_OUTPUT 
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_OPENBAAR_TOILET ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_openbaar<space>toilet ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 43 ATTR igds_level 926 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WEG_OPENBAARTOILET-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_OPENBAAR_TOILET_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_OPENBAAR_TOILET ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_openbaar<space>toilet ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_type igds_cell ATTR igds_color 43 ATTR igds_level 926 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-OPENBAARTOILET-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_OPENBAAR_TOILET_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_KUNSTOBJECT_SYMBOOL ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_5_kunstobject ATTR igds_level_name <at>Value<openparen>bestandsnaam_plus<closeparen> ATTR igds_color 49 ATTR igds_type igds_cell ATTR igds_level 925 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-KUNSTOBJECT-SO    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_KUNSTOBJECT_SYMBOOL_OUTPUT 
 # -------------------------------------------------------------------------
@@ -40237,8 +40237,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_16_InputPassThrough    I
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_16_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_16___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_16___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_16_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_16___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_16___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_16___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_16_Deagg    INPUT FEATURE_TYPE GeometryFilter_16___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_16___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_16___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_16___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_16___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_16___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_16_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_16___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_16___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_16___Input___    OUTPUT FEATURE_TYPE GeometryFilter_16___Prepped___        GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c4_targetFeatureType @Lookup(GeometryFilter_16_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_16_Router    INPUT FEATURE_TYPE GeometryFilter_16___Prepped___    TEST @Value(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c4_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c4_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c4_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_16_<UNFILTERED>        @RemoveAttributes(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c4_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_16_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_16___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_16___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_16___Input___    OUTPUT FEATURE_TYPE GeometryFilter_16___Prepped___        GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c7_targetFeatureType @Lookup(GeometryFilter_16_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_16_Router    INPUT FEATURE_TYPE GeometryFilter_16___Prepped___    TEST @Value(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c7_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c7_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c7_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_16_<UNFILTERED>        @RemoveAttributes(GeometryFilter_16_aacf7a0e_f723_4c65_a820_4216c512862c7_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_16 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_16_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -40338,8 +40338,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_17_InputPassThrough    I
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_17_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_17___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_17___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_17_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_17___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_17___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_17___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_17_Deagg    INPUT FEATURE_TYPE GeometryFilter_17___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_17___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_17___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_17___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_17___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_17___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_17_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_17___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_17___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_17___Input___    OUTPUT FEATURE_TYPE GeometryFilter_17___Prepped___        GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d824_targetFeatureType @Lookup(GeometryFilter_17_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_17_Router    INPUT FEATURE_TYPE GeometryFilter_17___Prepped___    TEST @Value(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d824_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d824_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d824_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_17_<UNFILTERED>        @RemoveAttributes(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d824_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_17_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_17___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_17___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_17___Input___    OUTPUT FEATURE_TYPE GeometryFilter_17___Prepped___        GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d827_targetFeatureType @Lookup(GeometryFilter_17_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_17_Router    INPUT FEATURE_TYPE GeometryFilter_17___Prepped___    TEST @Value(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d827_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d827_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d827_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_17_<UNFILTERED>        @RemoveAttributes(GeometryFilter_17_40403df9_70ea_4b66_a4b0_40b3ce493d827_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_17 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_17_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -40393,7 +40393,7 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_46 <MISSING> Output Nuk
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_46 <NULL> Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_46_<NULL>
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter_46 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_46_<UNFILTERED>
 # -------------------------------------------------------------------------
-FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_onbekend_P_3 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_46_onbekend ATTR igds_level_name <at>Value<openparen>bestandsnaam<closeparen> ATTR igds_level 956 ATTR igds_fill_color 62 ATTR igds_color 0 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name HOOGTEMK ATTR volg 5    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_onbekend_P_3_OUTPUT 
+FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_onbekend_P_3 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_46_onbekend ATTR igds_level_name <at>Value<openparen>bestandsnaam<closeparen> ATTR igds_level 956 ATTR igds_fill_color 62 ATTR igds_color 0 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SIE-WATER_BOEI-SO ATTR volg 5    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_onbekend_P_3_OUTPUT 
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME AttributeCreator_BGT_hoogtemerkl_P ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV INPUT  FEATURE_TYPE AttributeFilter_46_hoogtemerk ATTR igds_level_name <at>Value<openparen>bestandsnaam<closeparen> ATTR igds_level 956 ATTR igds_fill_color 62 ATTR igds_color 0 ATTR igds_style 0 ATTR igds_weight 0 ATTR igds_cell_name SOG-HOOGTEPUNT-SO ATTR volg 5    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_BGT_hoogtemerkl_P_OUTPUT 
 # -------------------------------------------------------------------------
@@ -40427,8 +40427,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_15_InputPassThrough    I
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_15_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_15___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_15___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_15_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_15___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_15___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_15___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_15_Deagg    INPUT FEATURE_TYPE GeometryFilter_15___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_15___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_15___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_15___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_15___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_15___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_15_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_15___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_15___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_15___Input___    OUTPUT FEATURE_TYPE GeometryFilter_15___Prepped___        GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514634_targetFeatureType @Lookup(GeometryFilter_15_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_15_Router    INPUT FEATURE_TYPE GeometryFilter_15___Prepped___    TEST @Value(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514634_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514634_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514634_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_15_<UNFILTERED>        @RemoveAttributes(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514634_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_15_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_15___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_15___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_15___Input___    OUTPUT FEATURE_TYPE GeometryFilter_15___Prepped___        GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514637_targetFeatureType @Lookup(GeometryFilter_15_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_15_Router    INPUT FEATURE_TYPE GeometryFilter_15___Prepped___    TEST @Value(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514637_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514637_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514637_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_15_<UNFILTERED>        @RemoveAttributes(GeometryFilter_15_f11e0afa_7961_4f24_bfb9_87c1e78514637_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_15 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_15_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -40475,8 +40475,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_V_InputPassThrough    IN
 FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_V_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_V___AllInput___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    TEST $(OUTPUT_INSTANCE_FTYPE) != not_selected    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_V___RestInput___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_V_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_V___RestInput___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_V___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_V___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_V_Deagg    INPUT FEATURE_TYPE GeometryFilter_V___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW <Unused>    OUTPUT POINT FEATURE_TYPE GeometryFilter_V___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_V___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_V___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_V___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_V___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_V_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_V___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_V___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_V___RestInput___    OUTPUT FEATURE_TYPE GeometryFilter_V___Prepped___        GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2994_targetFeatureType @Lookup(GeometryFilter_V_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_V_Router    INPUT FEATURE_TYPE GeometryFilter_V___Prepped___    TEST @Value(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2994_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2994_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2994_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_V_<UNFILTERED>        @RemoveAttributes(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2994_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_V_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_V___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_V___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_V___RestInput___    OUTPUT FEATURE_TYPE GeometryFilter_V___Prepped___        GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2997_targetFeatureType @Lookup(GeometryFilter_V_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_V_Router    INPUT FEATURE_TYPE GeometryFilter_V___Prepped___    TEST @Value(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2997_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2997_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2997_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_V_<UNFILTERED>        @RemoveAttributes(GeometryFilter_V_b655bd75_8534_461e_904a_46790acfd2997_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_V <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_V_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -40564,7 +40564,7 @@ MACRO $(Kaartbladen_WORKSPACE_NAME)_BIG_ID <at>Value<openparen>big_id<closeparen
 MACRO $(Kaartbladen_WORKSPACE_NAME)_NAAM <at>Value<openparen>naam<closeparen>
 DEFAULT_MACRO Kaartbladen_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(Kaartbladen_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(Kaartbladen_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Kaartbladen_WORKSPACE_NAME)_AttributeFilter_6_Input_kaartblad1480588881 Input Splitter"   INPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_AttributeFilter_6_Input_kaartblad"   OUTPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_AttributeFilter_6_Input_kaartblad" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,big_id,$($(Kaartbladen_WORKSPACE_NAME)_BIG_ID),naam,$($(Kaartbladen_WORKSPACE_NAME)_NAAM), FEATURE_TYPE)"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Kaartbladen_WORKSPACE_NAME)_AttributeFilter_6_Input_kaartblad1480601906 Input Splitter"   INPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_AttributeFilter_6_Input_kaartblad"   OUTPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_AttributeFilter_6_Input_kaartblad" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,big_id,$($(Kaartbladen_WORKSPACE_NAME)_BIG_ID),naam,$($(Kaartbladen_WORKSPACE_NAME)_NAAM), FEATURE_TYPE)"
 # -------------------------------------------------------------------------
 Lookup $(Kaartbladen_WORKSPACE_NAME)_AttributeFilter_6_AttributeFilterLut   1 ok   "" notok   ENCODED
 
@@ -40588,7 +40588,7 @@ FACTORY_DEF * SpikeRemoverFactory    FACTORY_NAME $(Kaartbladen_WORKSPACE_NAME)_
 
 FACTORY_DEF * SliverRemovingFactory    FACTORY_NAME $(Kaartbladen_WORKSPACE_NAME)_SliverRemover_3    INPUT  FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_SpikeRemover_2_UNCHANGED"    INPUT  FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_SpikeRemover_2_CHANGED"    REPAIR LongestBoundary    PRIORITY_ATTR <Unused>    OUTPUT REPAIRED FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_SliverRemover_3_REPAIRED"
 
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Kaartbladen_WORKSPACE_NAME)_Output_kaartblad1480588881 Output Collector"   INPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_SliverRemover_3_REPAIRED"   OUTPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_Output_kaartblad"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Kaartbladen_WORKSPACE_NAME)_Output_kaartblad1480601906 Output Collector"   INPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_SliverRemover_3_REPAIRED"   OUTPUT FEATURE_TYPE "$(Kaartbladen_WORKSPACE_NAME)_Output_kaartblad"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(Kaartbladen_WORKSPACE_NAME))}]
 FACTORY_DEF * TeeFactory   FACTORY_NAME "frietsnijder Output_kaartblad Output Renamer/Nuker"   INPUT FEATURE_TYPE frietsnijder_Output_kaartblad   OUTPUT FEATURE_TYPE frietsnijder_Output_kaartblad
 FACTORY_DEF * TeeFactory   FACTORY_NAME "frietsnijder Output_kaartblad Splitter"   INPUT FEATURE_TYPE frietsnijder_Output_kaartblad   OUTPUT FEATURE_TYPE frietsnijder_Output_kaartblad_0_SZ1l94ADVEo=   OUTPUT FEATURE_TYPE frietsnijder_Output_kaartblad_1_f2r9+IkJh1c=   OUTPUT FEATURE_TYPE frietsnijder_Output_kaartblad_2_9YDvITJVmEQ=
@@ -40621,7 +40621,7 @@ MACRO $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL_NAME <at>Value<openpa
 MACRO $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_NIVEAU <at>Value<openparen>niveau<closeparen>
 DEFAULT_MACRO LevelEnLevelnaamBepaler_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(LevelEnLevelnaamBepaler_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN1480588881 Input Splitter"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,igds_level,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL$encode),igds_level_name,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL_NAME),NIVEAU,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_NIVEAU), FEATURE_TYPE)"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN1480601906 Input Splitter"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,igds_level,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL$encode),igds_level_name,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL_NAME),NIVEAU,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_NIVEAU), FEATURE_TYPE)"
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_AttributeCreator INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN" ATTR NIVEAU "FME_CONDITIONAL:DEFAULT_VALUE'<at>Value<openparen>NIVEAU<closeparen>'BOOL_OP;OR;COMPOSITE_TEST;<Unused>;TEST NIVEAU ATTRIBUTE_VALUE_NULL _FME_BLANK_STRING_;TEST NIVEAU ATTRIBUTE_IS_EMPTY _FME_BLANK_STRING_;TEST NIVEAU ATTRIBUTE_IS_MISSING _FME_BLANK_STRING_'0'FME_NUM_CONDITIONS2___"    OUTPUT OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_AttributeCreator_OUTPUT" 
 # -------------------------------------------------------------------------
@@ -40633,8 +40633,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAM
 FACTORY_DEF * TestFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_OUTPUT"    TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>NIVEAU<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7) < 0 ENCODED    BOOLEAN_OPERATOR OR    OUTPUT PASSED FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_FAILED"
 # -------------------------------------------------------------------------
 
-Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a718_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_FAILED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a718_doSetAttr {@EvaluateExpression(STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen><at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3)} ")
+Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a7114_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_FAILED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a7114_doSetAttr {@EvaluateExpression(STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen><at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3)} ")
 
 # -------------------------------------------------------------------------
 
@@ -40642,14 +40642,14 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAM
 
 # -------------------------------------------------------------------------
 
-Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf18_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf18_doSetAttr {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen>-<at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau)} ")
+Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf114_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf114_doSetAttr {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen>-<at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau)} ")
 
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_OUTPUT"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2_OUTPUT"         "igds_level" "@EvaluateExpression(FLOAT,<at>Value<openparen>igds_level<closeparen>+<openparen><at>Value<openparen>_absNiveau<closeparen>*1000<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2)"
 
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT1480588881 Output Collector"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_3_OUTPUT"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT1480601906 Output Collector"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_3_OUTPUT"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LevelEnLevelnaamBepaler_WORKSPACE_NAME))}]
 FACTORY_DEF * TeeFactory   FACTORY_NAME "LevelEnLevelnaamBepaler_V_L UIT Output Renamer/Nuker"   INPUT FEATURE_TYPE LevelEnLevelnaamBepaler_V_L_UIT   OUTPUT FEATURE_TYPE LevelEnLevelnaamBepaler_V_L_UIT
 # -------------------------------------------------------------------------
@@ -40730,7 +40730,7 @@ MACRO $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL_NAME <at>Value<openpa
 MACRO $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_NIVEAU <at>Value<openparen>niveau<closeparen>
 DEFAULT_MACRO LevelEnLevelnaamBepaler_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(LevelEnLevelnaamBepaler_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN1480588881 Input Splitter"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,igds_level,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL$encode),igds_level_name,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL_NAME),NIVEAU,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_NIVEAU), FEATURE_TYPE)"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN1480601906 Input Splitter"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN" "@EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV,igds_level,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL$encode),igds_level_name,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IGDS_LEVEL_NAME),NIVEAU,$($(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_NIVEAU), FEATURE_TYPE)"
 # -------------------------------------------------------------------------
 FACTORY_DEF * AttrSetFactory FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_AttributeCreator INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_IN" ATTR NIVEAU "FME_CONDITIONAL:DEFAULT_VALUE'<at>Value<openparen>NIVEAU<closeparen>'BOOL_OP;OR;COMPOSITE_TEST;<Unused>;TEST NIVEAU ATTRIBUTE_VALUE_NULL _FME_BLANK_STRING_;TEST NIVEAU ATTRIBUTE_IS_EMPTY _FME_BLANK_STRING_;TEST NIVEAU ATTRIBUTE_IS_MISSING _FME_BLANK_STRING_'0'FME_NUM_CONDITIONS2___"    OUTPUT OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_AttributeCreator_OUTPUT" 
 # -------------------------------------------------------------------------
@@ -40742,8 +40742,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAM
 FACTORY_DEF * TestFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_OUTPUT"    TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>NIVEAU<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7) < 0 ENCODED    BOOLEAN_OPERATOR OR    OUTPUT PASSED FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_FAILED"
 # -------------------------------------------------------------------------
 
-Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a719_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_FAILED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a719_doSetAttr {@EvaluateExpression(STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen><at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3)} ")
+Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a7115_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_FAILED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3_0bbb55db_cb8d_4157_9080_b1d294d29a7115_doSetAttr {@EvaluateExpression(STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen><at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_V_3)} ")
 
 # -------------------------------------------------------------------------
 
@@ -40751,14 +40751,14 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAM
 
 # -------------------------------------------------------------------------
 
-Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf19_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf19_doSetAttr {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen>-<at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau)} ")
+Tcl2 proc $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf115_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {igds_level_name}] [FME_DecodeText $attrText] }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_OUTPUT"        @Tcl2("$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_52854516_9d7e_422f_bee7_14aa34270cf115_doSetAttr {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>igds_level_name<closeparen>-<at>Value<openparen>_absNiveau<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau)} ")
 
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2    INPUT  FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_StringConcatenator_niveau_OUTPUT"    OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2_OUTPUT"         "igds_level" "@EvaluateExpression(FLOAT,<at>Value<openparen>igds_level<closeparen>+<openparen><at>Value<openparen>_absNiveau<closeparen>*1000<closeparen>,$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2)"
 
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT1480588881 Output Collector"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_3_OUTPUT"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT1480601906 Output Collector"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_3_OUTPUT"   INPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_ExpressionEvaluator_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(LevelEnLevelnaamBepaler_WORKSPACE_NAME)_UIT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LevelEnLevelnaamBepaler_WORKSPACE_NAME))}]
 FACTORY_DEF * TeeFactory   FACTORY_NAME "LevelEnLevelnaamBepaler_T UIT Output Renamer/Nuker"   INPUT FEATURE_TYPE LevelEnLevelnaamBepaler_T_UIT   OUTPUT FEATURE_TYPE LevelEnLevelnaamBepaler_T_UIT
 # -------------------------------------------------------------------------
