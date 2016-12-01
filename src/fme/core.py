@@ -281,8 +281,8 @@ if __name__ == '__main__':
     server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
-
-    loc_pgsql = fme_sql_utils.SQLRunner(port='5401', dbname='gisdb', user='dbuser')
+    # localhost / 5401
+    loc_pgsql = fme_sql_utils.SQLRunner(host='database', port='5432', dbname='gisdb', user='dbuser')
     fme_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.FME_SERVER.split('//')[-1],
                                         dbname='gisdb', user='dbuser', password=bgt_setup.FME_DBPASS)
 
@@ -348,7 +348,7 @@ if __name__ == '__main__':
         try:
             fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
         except Exception as e:
-            logging.exception("Exception during FME transformation to dgn {}".format(e))
+            logging.exception("Exception during FME transformation to nlcs {}".format(e))
 
         # import controle db vanuit /tmp/data/*.gml
         loc_pgsql.import_gml_control_db()

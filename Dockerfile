@@ -1,20 +1,17 @@
-FROM python:3.5
+FROM ubuntu:16.04
 MAINTAINER datapunt.ois@amsterdam.nl
 
-RUN apt-get update \
-    && apt-get install -y wget postgresql-client-9.4 unzip gdal-bin netcat python3-requests curl \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && mkdir /data \
-    && mkdir /app \
-    && mkdir /src \
-    && mkdir /dump
+RUN apt-get update -qy
+RUN apt-get install -y python3.5 python3.5-dev python3-pip python-dev python3-dev \
+    postgresql libpq-dev postgresql-client postgresql-client-common sudo netcat
 
-ENV PGCLIENTENCODING='UTF-8'
+RUN mkdir /data /app /src /dump
 
 COPY app /app
 COPY src /src
 WORKDIR /src
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt \
+    && chmod -R 755 /app/*.sh
 
-RUN chmod -R 755 /app/*.sh
+ENV PGCLIENTENCODING='UTF-8'
+

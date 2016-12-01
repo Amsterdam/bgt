@@ -1,11 +1,13 @@
 import glob
-import time
+import json
+import logging
 import mimetypes
 import os
 import os.path
-import json
+import time
+
 import requests
-import logging
+
 from bgt_setup import FME_API, FME_SERVER
 
 log = logging.getLogger(__name__)
@@ -60,7 +62,7 @@ def create_directory(directory):
     log.info("Create directory %s", directory)
     url = ('{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA'
            '/filesys/?detail=low'.format(FME_SERVER=FME_SERVER))
-    res = requests.post(url, headers=fme_api_auth(), data={'directoryname': directory, 'type': 'DIR',})
+    res = requests.post(url, headers=fme_api_auth(), data={'directoryname': directory, 'type': 'DIR', })
     res.raise_for_status()
     log.debug("Directory created")
 
@@ -68,7 +70,7 @@ def create_directory(directory):
 def create_repository(repo):
     """
     Creates a FME repository
-    :param directory: the directory name to delete
+    :param repo: the repo to create
     :return:
     """
     log.info("Create repository %s", repo)
@@ -110,7 +112,6 @@ def _register_fmejobsubmitter_service(repo_name, filename):
     :return:
     """
     # register the service `fmejobsubmitter` to a fmw script
-    result = False
     url_repositories = 'fmerest/v2/repositories'
 
     log.debug("Register `fmejobsubmitter` service")
@@ -123,17 +124,16 @@ def _register_fmejobsubmitter_service(repo_name, filename):
     }
     reg_service_res = requests.post(reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
     reg_service_res.raise_for_status()
-    result = True
     log.debug("Registered `fmejobsubmitter` service")
-    return result
+    return True
 
 
-def upload(source_directory, repo, dir, files, recreate_dir=True):
+def upload(source_directory, repo, directory, files, recreate_dir=True):
     """
     Upload one or more files to FME
     :param source_directory: the local source directory
     :param repo: the FME repo
-    :param dir: the FME directory in repo
+    :param directory: the FME directory in repo
     :param files: string with filename or wildcard expression
     :param recreate_dir: explicitly recreates the desitnation directory
     :return: bool
@@ -141,12 +141,12 @@ def upload(source_directory, repo, dir, files, recreate_dir=True):
     url_connect = 'fmerest/v2/{}'.format(repo)
 
     if recreate_dir:
-        delete_directory(dir)
-        create_directory(dir)
+        delete_directory(directory)
+        create_directory(directory)
 
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?' \
-          'createDirectories=false&detail=low&overwrite=false'.format(
-        DIR=dir, FME_SERVER=FME_SERVER, url_connect=url_connect)
+    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}? \
+          createDirectories=false&detail=low&overwrite=false'.format(
+        DIR=directory, FME_SERVER=FME_SERVER, url_connect=url_connect)
 
     for infile in glob.glob(os.path.join(source_directory, files)):
         log.debug('upload {}'.format(infile))
@@ -156,21 +156,21 @@ def upload(source_directory, repo, dir, files, recreate_dir=True):
     log.debug("Upload {} completed".format(files))
 
 
-def upload_repository(source_directory, dir, files, recreate_repo=True, register_fmejob=False):
+def upload_repository(source_directory, directory, files, recreate_repo=True, register_fmejob=False):
     """
     Upload one or more files to FME
     :param source_directory: the local source directory
-    :param repo: the FME repo
-    :param dir: the FME directory in repo
+    :param directory: the FME directory in repo
     :param files: string with filename or wildcard expression
-    :param recreate_dir: explicitly recreates the destination directory
+    :param recreate_repo: explicitly recreates the destination repo
+    :param register_fmejob:
     :return: bool
     """
-    url_connect = 'fmerest/v2/repositories/{}'.format(dir)
+    url_connect = 'fmerest/v2/repositories/{}'.format(directory)
 
     if recreate_repo:
-        delete_repository(dir)
-        create_repository(dir)
+        delete_repository(directory)
+        create_repository(directory)
 
     for infile in glob.glob(os.path.join(source_directory, files)):
         print(infile)
@@ -179,7 +179,7 @@ def upload_repository(source_directory, dir, files, recreate_repo=True, register
                 FME_SERVER=FME_SERVER, url_connect=url_connect)
             _post_file(url, infile, os.path.split(infile)[-1], f.read())
             if register_fmejob:
-                _register_fmejobsubmitter_service(dir, os.path.split(infile)[-1])
+                _register_fmejobsubmitter_service(directory, os.path.split(infile)[-1])
 
     log.debug("Upload {} completed".format(files))
 
@@ -213,6 +213,7 @@ def run_transformation_job(repository, workspace, params):
     except requests.exceptions.RequestException:
         log.debug('HTTP Request failed')
 
+
 def fetch_log_for_job(job):
     """
     Fetches the logfile for job `job`
@@ -236,10 +237,8 @@ def get_job_status(job):
         FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
     res = requests.get(url, headers=fme_api_auth())
     res.raise_for_status()
-    status = res.json()['status']
-    log.debug("Status for job %s: %s", job, status)
-    return status
-    return status
+    log.debug("Status for job %s: %s", job, res.json()['status'])
+    return res.json()['status']
 
 
 def wait_for_job_to_complete(job):
