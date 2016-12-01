@@ -70,11 +70,11 @@ def test_load_csv():
     fdb = final_db()
     inzip = '/home/dick/Downloads/csv_totaal.zip'
     # inzip = '{app}/endproduct/tests/fixtures/cvs_totaal.zip'.format(app=bgt_setup.SCRIPT_SRC)
-    # fdb.bld_sql_db(name=inzip, procfile_name='BGT_WDL_greppel_droge_sloot.csv')
+    fdb.bld_sql_db(name=inzip, procfile_name='BGT_SPR_trein.csv')
     #
     # fdb.bld_sql_db(name=inzip)
 
     # inzip = '/home/dick/Downloads/csv_totaal.zip'
-    fdb.bld_sql_db(name=inzip)
+    # fdb.bld_sql_db(name=inzip)
 #
 test_load_csv()

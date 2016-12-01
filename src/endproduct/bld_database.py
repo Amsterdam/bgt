@@ -175,12 +175,12 @@ class final_db:
             log.info("Table %s verwerking naar sql-tabel %s", process_file_info.filename, table_name)
 
             with StringIO(self.decodedata(inzip.read(process_file_info.filename))) as file_in_zip:
-                try:
-                    self.bgt_loc_pgsql.import_csv_fixture(file_in_zip, table_name, truncate=False,
+                # try:
+                self.bgt_loc_pgsql.import_csv_fixture(file_in_zip, table_name, truncate=False,
                                                   converthdrs=FIELDMAPPING,
                                                   srid=SRID)
-                except Exception as e:
-                    log.error('\n' + str(e) + '\n')
+                # except Exception as e:
+                #     log.error('\n' + str(e) + '\n')
 
     def decodedata(self, filebytes):
         encodings = ('UTF-8', 'LATIN-1', 'LATIN-2', 'LATIN-3')

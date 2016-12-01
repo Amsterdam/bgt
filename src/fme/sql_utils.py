@@ -146,6 +146,8 @@ class SQLRunner(object):
             elif idx in geo_dict:
                 if geo_dict[idx] == 'GEOMETRY':
                     newvalues.append("ST_GeomFromText('{}',{})".format(value, srid))
+                elif geo_dict[idx] == 'COMPOUNDCURVE':
+                    newvalues.append("ST_GeomFromText('{}({})',{})".format(geo_dict[idx], value, srid))
                 else:
                     geometry_values = value[value.index('('):]
                     newvalues.append("ST_GeomFromText('{}{}',{})".format(geo_dict[idx], geometry_values, srid))
