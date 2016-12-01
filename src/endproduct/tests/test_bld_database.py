@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 
 
 def test_get_zip():
-    fdb = final_db(keep_db=False)
+    fdb = final_db()
     root = bgt_setup.SCRIPT_SRC
     inzip = fdb.get_zip('{app}/endproduct/tests/fixtures/bgt_test.zip'.format(app=bgt_setup.SCRIPT_SRC))
     for process_file_info in inzip.infolist():
@@ -34,26 +34,9 @@ def test_create_database():
     loc_bgt_db.commit()
     loc_bgt_db.close()
 
-    fdb = final_db(keep_db=False)
-    loc_bgt_db = fdb.create_database()
-    exists = loc_bgt_db.run_sql("SELECT exists(SELECT 1 from "
-                                    "pg_catalog.pg_database where datname = "
-                                    "'bgt')")[0][0]
-    assert(exists)
-    loc_bgt_db.commit()
-    loc_bgt_db.close()
-
-    fdb = final_db(keep_db=True)
-    loc_bgt_db = fdb.create_database()
-    exists = loc_bgt_db.run_sql("SELECT exists(SELECT 1 from "
-                                    "pg_catalog.pg_database where datname = "
-                                    "'bgt')")[0][0]
-    assert(exists)
-    loc_bgt_db.commit()
-    loc_bgt_db.close()
 
 def test_tabellen():
-    fdb = final_db(keep_db=True)
+    fdb = final_db()
     loc_bgt_db = fdb.create_database()
 
     for tablename in TABLEMAPPING.values():
@@ -68,13 +51,11 @@ def test_tabellen():
 
 def test_load_csv():
     fdb = final_db()
-    inzip = '/home/dick/Downloads/csv_totaal.zip'
-    # inzip = '{app}/endproduct/tests/fixtures/cvs_totaal.zip'.format(app=bgt_setup.SCRIPT_SRC)
-    fdb.bld_sql_db(name=inzip, procfile_name='BGT_SPR_trein.csv')
+    # inzip = '/home/dick/Downloads/csv_totaal.zip'
+    inzip = '{app}/endproduct/tests/fixtures/cvs_totaal.zip'.format(app=bgt_setup.SCRIPT_SRC)
+    fdb.bld_sql_db(name=inzip, location='fs')
     #
     # fdb.bld_sql_db(name=inzip)
 
     # inzip = '/home/dick/Downloads/csv_totaal.zip'
     # fdb.bld_sql_db(name=inzip)
-#
-test_load_csv()

@@ -4,5 +4,5 @@
 #
 pushd /src
 export PYTHONPATH=$PYTHONPATH:`pwd`
-/usr/bin/python3 /src/fme/core.py
+python src/fme/core.py
 popd
