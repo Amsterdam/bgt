@@ -57,7 +57,7 @@ class SQLRunner(object):
         return self.run_sql(open(script_name, 'r', encoding="utf-8").read())
 
     def import_csv_fixture(self, filename, table_name, truncate=True,
-                           converthdrs=None, emptynone=True, srid=0) -> bool:
+                           converthdrs=None, emptynone=True, srid=0, dialect=None) -> bool:
         """
         Imports a CSV file in file `filename` to table `table_name`.
         The first line is used to determine the column names and the
@@ -71,6 +71,7 @@ class SQLRunner(object):
                             name in sql
         :param emptynone: Convert empty fields to None
         :param srid: Coordinate system of postgis
+        :param dialect: Force a specific csv dialect
         :return: bool
         """
         log.info("Import CSV {} to table {}".format(filename, table_name))
@@ -84,10 +85,10 @@ class SQLRunner(object):
             if isinstance(filename, str):       # complete path
                 with open(filename) as csvfile:
                     rows = self.process_csvfile(csvfile, table_name, dbcur,
-                                                converthdrs, emptynone, srid)
+                                                converthdrs, emptynone, srid, dialect)
             else:                               # file like object
                 rows = self.process_csvfile(filename, table_name, dbcur,
-                                            converthdrs, emptynone, srid)
+                                            converthdrs, emptynone, srid, dialect)
         except psycopg2.DatabaseError as e:
             log.error("Import CSV exception :%s" % str(e))
             return False
@@ -96,7 +97,7 @@ class SQLRunner(object):
         return True
 
     def process_csvfile(self, csvfile, table_name, dbcur,
-                        converthdrs, emptynone=True, srid=None):
+                        converthdrs, emptynone=True, srid=None, dialect=None):
         """
         Process a single CSV file
 
@@ -110,13 +111,14 @@ class SQLRunner(object):
         """
         csv.field_size_limit(sys.maxsize)                   # required for extremely large shapes (BGT_OTRN_erf.csv)
         rows = 0
-        data = csvfile.read(1024)
-        try:
-            dialect = csv.Sniffer().sniff(data)
-        except csv.Error:
-            log.info('CSV Dialect not found by sniffer, fallback to csvshapes dialect')
-            csv.register_dialect('csvshapes', delimiter=';', doublequote=False, quoting=csv.QUOTE_NONE)
-            dialect = 'csvshapes'
+        if dialect is None:
+            data = csvfile.read(1024)
+            try:
+                dialect = csv.Sniffer().sniff(data)
+            except csv.Error:
+                log.info('CSV Dialect not found by sniffer, fallback to csvshapes dialect')
+                csv.register_dialect('csvshapes', delimiter=';', doublequote=False, quoting=csv.QUOTE_NONE)
+                dialect = 'csvshapes'
 
         csvfile.seek(0)
         reader = csv.reader(csvfile, dialect)

@@ -1,49 +1,29 @@
-tests:
-  build: ..
-#  links:
-#    - database:database
+database_BGT1:
+  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+  ports:
+    - "5401:5432"
   environment:
-    POSTGRES_DB: bgt
-    POSTGRES_USER: bgt
+    POSTGRES_DB: gisdb
+    POSTGRES_USER: dbuser
     POSTGRES_PASSWORD: insecure
-    OBJECTSTORE_PASSWORD:
 
-  command: >
-    bash -c "cd /src && \
-            pip install -r requirements.txt \
-            && export TEST=1 && python py.test"
-
-database:
-  image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
+database_BGT2:
+  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+  ports:
+    - "5402:5432"
   environment:
     POSTGRES_DB: bgt
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
 
 importer:
-  build: ..
+  build: .
   links:
-    - database:database
-  environment:
-    DB_NAME: bgt
-    DB_USER: bgt
-    DB_PASSWORD: insecure
-    FMEAPI:
-  command: >
-    bash -c "/docker/docker-wait.sh \
-            && /app/import_bgt.sh"
-
-db-backup:
-  image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
-  links:
-    - database:db
+    - database_BGT1:database_BGT1
+    - database_BGT2:database_BGT2
   volumes:
-    - ./backups:/tmp/backups
+    - /tmp/data:/tmp/data
   command: >
-    bash -c "echo db:5432:bgt:bgt:insecure > ~/.pgpass \
-            && chmod 600 ~/.pgpass \
-            && pg_dump --clean \
-                        -Fc \
-                        -U bgt \
-                        -h db -p 5432 \
-                        bgt > /tmp/backups/database.dump"
+    bash -c "/app/docker-wait.sh \
+            && /app/import_bgt1.sh
+            && /app/import_bgt2.sh"

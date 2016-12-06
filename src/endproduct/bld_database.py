@@ -4,6 +4,7 @@ import logging
 import bgt_setup
 from fme.sql_utils import SQLRunner
 from io import StringIO, BytesIO
+import csv
 
 from objectstore.objectstore import ObjectStore
 
@@ -161,10 +162,13 @@ class FinalDB:
         if table_name:
             log.info("Table %s verwerking naar sql-tabel %s", process_file_info.filename, table_name)
 
+            csv.register_dialect('csvshapes', delimiter=';', doublequote=False, quoting=csv.QUOTE_NONE)
+            dialect = 'csvshapes'
+
             with StringIO(self.decodedata(inzip.read(process_file_info.filename))) as file_in_zip:
                 self.bgt_loc_pgsql.import_csv_fixture(file_in_zip, table_name, truncate=False,
                                                   converthdrs=FIELDMAPPING,
-                                                  srid=SRID)
+                                                  srid=SRID, dialect=dialect)
 
     def decodedata(self, filebytes):
         """
