@@ -1,9 +1,15 @@
-FROM ubuntu:16.04
+FROM python:3.5
 MAINTAINER datapunt.ois@amsterdam.nl
 
-RUN apt-get update -qy
-RUN apt-get install -y python3.5 python3.5-dev python3-pip python-dev python3-dev \
-    postgresql libpq-dev postgresql-client postgresql-client-common sudo netcat
+ENV PYTHONUNBUFFERED 1FROM python:3.5
+
+RUN apt-get update \
+	&& apt-get install -y \
+		gdal-bin \
+		libgeos-dev \
+		netcat \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir /data /app /src /dump
 

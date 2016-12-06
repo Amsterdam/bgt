@@ -10,6 +10,7 @@ from ..objectstore  import ObjectStore
 def objectstore():
     return ObjectStore('BGT')
 
+@pytest.mark.skip(reason='no tests to objectstore')
 def test_objects(objectstore):
 
     # clean up

@@ -10,3 +10,6 @@ set_local_env.sh
 set_env_local*
 src/extract_bgt.zip
 app/work/*
+.cache
+*.pyc
+__pycache__

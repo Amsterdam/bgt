@@ -13,7 +13,6 @@ import fme.comparison as fme_comparison
 import fme.fme_server as fme_server
 import fme.fme_utils as fme_utils
 import fme.sql_utils as fme_sql_utils
-import endproduct.bld_database as bld_database
 
 from objectstore.objectstore import ObjectStore
 
@@ -277,12 +276,13 @@ def download_bgt():
 if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
+    log.info("Starting import script")
 
     server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
     # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(host='database', port='5432', dbname='gisdb', user='dbuser')
+    loc_pgsql = fme_sql_utils.SQLRunner(host='database_BGT1', port='5432', dbname='gisdb', user='dbuser')
     fme_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.FME_SERVER.split('//')[-1],
                                         dbname='gisdb', user='dbuser', password=bgt_setup.FME_DBPASS)
 
@@ -361,9 +361,6 @@ if __name__ == '__main__':
 
         # comparisons FKA 080...
         fme_comparison.create_comparison_data()
-
-        # build final database
-        bld_database.bld_sql_db(loc_pgsql)
 
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))

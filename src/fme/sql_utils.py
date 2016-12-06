@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 
 
 class SQLRunner(object):
-    def __init__(self, host='localhost', port='5432', dbname='postgresql', user='dbuser', password='insecure'):
+    def __init__(self, host='localhost', port='5432', dbname='postgres', user='dbuser', password='insecure'):
         self.host = host
         self.port = port
         self.dbname = dbname
@@ -57,15 +57,21 @@ class SQLRunner(object):
         return self.run_sql(open(script_name, 'r', encoding="utf-8").read())
 
     def import_csv_fixture(self, filename, table_name, truncate=True,
-                           converthdrs={}, emptynone=True, srid=0) -> bool:
+                           converthdrs=None, emptynone=True, srid=0, dialect=None) -> bool:
         """
         Imports a CSV file in file `filename` to table `table_name`.
-        The first line is used to determine the column names.
+        The first line is used to determine the column names and the
+        types, to enable a correct import of the data
 
         :param filename: The CSV file to import, either the complete path or a
                             filelike object
         :param table_name: The table that gets populated
         :param truncate: If True the table is truncated before import
+        :param converthdrs: dict which can convert a headername in csv to a field
+                            name in sql
+        :param emptynone: Convert empty fields to None
+        :param srid: Coordinate system of postgis
+        :param dialect: Force a specific csv dialect
         :return: bool
         """
         log.info("Import CSV {} to table {}".format(filename, table_name))
@@ -73,42 +79,46 @@ class SQLRunner(object):
         self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
         dbcur = self.conn.cursor()
         rows = 0
-        # try:
-        if truncate:
-            dbcur.execute('TRUNCATE TABLE {};'.format(table_name))
-        if isinstance(filename, str):       # complete path
-            with open(filename) as csvfile:
-                rows = self.process_csvfile(csvfile, table_name, dbcur,
-                                            converthdrs, emptynone, srid)
-        else:                               # file like object
-            rows = self.process_csvfile(filename, table_name, dbcur,
-                                        converthdrs, emptynone, srid)
-        # except psycopg2.DatabaseError as e:
-        #     log.debug("Import CSV exception :%s" % str(e))
-        #     return False
-        # finally:
-        #     log.info("Import CSV succeeded, {} rows imported to {}".format(rows, table_name))
+        try:
+            if truncate:
+                dbcur.execute('TRUNCATE TABLE {};'.format(table_name))
+            if isinstance(filename, str):       # complete path
+                with open(filename) as csvfile:
+                    rows = self.process_csvfile(csvfile, table_name, dbcur,
+                                                converthdrs, emptynone, srid, dialect)
+            else:                               # file like object
+                rows = self.process_csvfile(filename, table_name, dbcur,
+                                            converthdrs, emptynone, srid, dialect)
+        except psycopg2.DatabaseError as e:
+            log.error("Import CSV exception :%s" % str(e))
+            return False
+        finally:
+            log.info("Import CSV succeeded, {} rows imported to {}".format(rows, table_name))
         return True
 
     def process_csvfile(self, csvfile, table_name, dbcur,
-                        converthdrs={}, emptynone=True, srid=None):
+                        converthdrs, emptynone=True, srid=None, dialect=None):
         """
         Process a single CSV file
+
         :param csvfile: csv file name
         :param table_name: mapped table in SQL
         :param dbcur: postgresql cursor
-        :param converthdrs: list of headers to be converted
+        :param converthdrs: dict of headers to be converted
         :param emptynone: Translate all empty fields to None values
         :param srid: coordinate system
         :return: number of rows
         """
+        csv.field_size_limit(sys.maxsize)                   # required for extremely large shapes (BGT_OTRN_erf.csv)
         rows = 0
-        data = csvfile.read(1024)
-        try:
-            dialect = csv.Sniffer().sniff(data)
-        except csv.Error as e:
-            csv.register_dialect('csvshapes', delimiter=';', doublequote=False, quoting=csv.QUOTE_NONE)
-            dialect = 'csvshapes'
+        if dialect is None:
+            data = csvfile.read(1024)
+            try:
+                dialect = csv.Sniffer().sniff(data)
+            except csv.Error:
+                log.info('CSV Dialect not found by sniffer, fallback to csvshapes dialect')
+                csv.register_dialect('csvshapes', delimiter=';', doublequote=False, quoting=csv.QUOTE_NONE)
+                dialect = 'csvshapes'
 
         csvfile.seek(0)
         reader = csv.reader(csvfile, dialect)
@@ -130,20 +140,30 @@ class SQLRunner(object):
             rows += 1
         return rows
 
-    def process_values(self, line:list, emptynone:bool, dateconvert:list, srid:int, geo_dict:dict) -> str:
+    def process_values(self, line:list, emptynone:bool, dateconvert:list, srid:int, geo_dict:dict) -> list:
+        """
+        Process values in a single row in csv, modify them to allow for proper import
+
+        :param line: list of csv values (unicode)
+        :param emptynone: Translate empty to None
+        :param dateconvert: List of indexnumbers with datefields
+        :param srid: Coordinate system of geodata
+        :param geo_dict: fields with geodata and type in database
+        :return: list of converted values
+        """
         newvalues = []
         for idx, value in enumerate(line):
             if value == '' and emptynone:
                 newvalues.append(None)
-            elif idx in dateconvert:
-                if len(value) > 12:
+            elif idx in dateconvert:                # datefield
+                if len(value) > 12:                 # datetime
                     newvalues.append(datetime.datetime(int(value[0:4]), int(value[4:6]),
                                                        int(value[6:8]), int(value[8:10]),
                                                        int(value[10:12]), int(value[12:])))
-                else:
+                else:                               # date
                     newvalues.append(
                         datetime.datetime(int(value[0:4]), int(value[4:6]), int(value[6:8])))
-            elif idx in geo_dict:
+            elif idx in geo_dict:                   # Geometry fields
                 if geo_dict[idx] == 'GEOMETRY':
                     newvalues.append("ST_GeomFromText('{}',{})".format(value, srid))
                 elif geo_dict[idx] == 'COMPOUNDCURVE':
@@ -154,19 +174,30 @@ class SQLRunner(object):
             else:
                 try:
                     intvalue = int(value)
-                    newvalues.append(intvalue)
+                    newvalues.append(intvalue)      # integer
                 except ValueError:
                     try:
-                        flvalue = float(value)
+                        flvalue = float(value)      # floate
                         newvalues.append(flvalue)
                     except ValueError:
-                        newvalues.append(value)
+                        newvalues.append(value)     # string
         return newvalues
 
-    def convert_2_json(self, value):
-        value.split()
+    def process_hdr(self, headers:list, converthdrs:dict, dbcur, table_name:str) -> (str, list, dict):
+        """
+        Convert headers in csv to fieldnames in sql including type information retrieved from
+        the database
 
-    def process_hdr(self, headers:list, converthdrs:dict, dbcur, table_name:str) -> (str, list):
+        :param headers: list of fieldnames in csv
+        :param converthdrs: dictionary where fieldnames in cvs are mapped to fieldnames in sql
+        :param dbcur: The psycopg2 cursor
+        :param table_name: the tablename in sql
+        :return:    string usable in insert with sql fieldnames
+                    list with the columnnumbers with datefields
+                    dict with the columnnumbers and types of the geodata in the sqltable
+        """
+        if not converthdrs:
+            converthdrs = {}
         dfs = []
         columns, datefields, geometry_info = self.get_columninfo(dbcur, table_name)
         unmatched_columns = []
@@ -197,16 +228,27 @@ class SQLRunner(object):
                             'table {} skipped'.format(','.join(unmatched_columns), table_name))
         non_matched_fields = [column for column, matched in columns.items() if not matched]
         if len(non_matched_fields):
-            log.error('fields %s in table %s not filled; processing continues', ','.join(non_matched_fields), table_name)
+            log.error('fields %s in table %s not filled; processing continues',
+                      ','.join(non_matched_fields), table_name)
 
         return '("' + '","'.join(new_hdr) + '")', dfs, geo_dict
 
-    def get_columninfo(self, dbcur, table_name:str) -> (dict, list):
+    def get_columninfo(self, dbcur, table_name:str) -> (dict, list, dict):
+        """
+        Retrieves columninfo from the database to allow modifying the data properly
+
+        :param dbcur: psycopg2 cursor
+        :param table_name: sql tablename to be used
+        :return:    dict of columns in table that are to be processed
+                    list of columnnames that are datefields
+                    dict of geo columnnames with geotype
+        """
         dbcur.execute("""SELECT current_schema();""")
         schema = dbcur.fetchall()[0][0]
         column_info_query = \
                         """SELECT column_name, data_type FROM information_schema.columns
-                            WHERE table_schema = '{}' AND
+                            WHERE
+                            table_schema = '{}' AND
                             table_name = '{}';""".format(schema, table_name)
         dbcur.execute(column_info_query)
         columninfo = dbcur.fetchall()

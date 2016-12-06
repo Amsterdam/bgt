@@ -3,6 +3,7 @@
 # Make sure we have the ENV set correctly
 #
 pushd /src
+echo "create of database started"
 export PYTHONPATH=$PYTHONPATH:`pwd`
-/usr/bin/python3 /src/fme/core.py
+python endproduct/bld_database.py
 popd
