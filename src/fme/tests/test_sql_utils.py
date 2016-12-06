@@ -42,6 +42,7 @@ def test_failing_query(sql_runner):
         print(res)
 
 
+@pytest.mark.skip(reason='tests for test environment')
 def test_ogr2ogr_login(sql_runner):
     res = sql_runner.get_ogr2_ogr_login('public')
-    assert res == "host=localhost port=5401 ACTIVE_SCHEMA=public user='dbuser' dbname='gisdb' password=insecure"
+    assert res == "host=database_BGT1 port=5432 ACTIVE_SCHEMA=public user='dbuser' dbname='gisdb' password=insecure"
