@@ -13,7 +13,6 @@ import fme.comparison as fme_comparison
 import fme.fme_server as fme_server
 import fme.fme_utils as fme_utils
 import fme.sql_utils as fme_sql_utils
-
 from objectstore.objectstore import ObjectStore
 
 logging.basicConfig(level=logging.INFO)
@@ -282,14 +281,12 @@ if __name__ == '__main__':
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
     # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.DB_FME_HOST,
-                                        port=bgt_setup.DB_FME_PORT,
-                                        dbname=bgt_setup.DB_FME_DBNAME,
-                                        user=bgt_setup.DB_FME_USER)
-    fme_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.FME_SERVER.split('//')[-1],
-                                        dbname=bgt_setup.DB_FME_DBNAME,
-                                        user=bgt_setup.DB_FME_USER,
-                                        password=bgt_setup.FME_DBPASS)
+    loc_pgsql = fme_sql_utils.SQLRunner(
+        host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
+        dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER)
+    fme_pgsql = fme_sql_utils.SQLRunner(
+        host=bgt_setup.FME_SERVER.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
+        user=bgt_setup.DB_FME_USER, password=bgt_setup.FME_DBPASS)
 
     download_bgt()
     try:
@@ -322,7 +319,8 @@ if __name__ == '__main__':
 
         # aanmaak db-views shapes_bgt
         fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
-        fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        fme_pgsql.run_sql_script(
+            "{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # upload shapes fmw scripts naar reposiory
         fme_utils.upload_repository(

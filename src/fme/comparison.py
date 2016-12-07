@@ -1,9 +1,11 @@
-import os
 import csv
-import psycopg2
 import logging
-from subprocess import Popen, PIPE, STDOUT
+import os
 from datetime import datetime
+from subprocess import Popen, PIPE, STDOUT
+
+import psycopg2
+
 import bgt_setup
 import fme.sql_utils as fme_sql_utils
 
@@ -66,9 +68,9 @@ def _compare_counts():
         'bgt_waterinrichtingselement': ['waterinrichtingselement', 'imgeo_waterinrichtingselement'],
         'bgt_weginrichtingselement': ['weginrichtingselement', 'imgeo_weginrichtingselement']
     }
+
     # localhost / 5401
     def count_table_rows(table, host='database_FME', database='gisdb', port='5432', user='dbuser', password='insecure'):
-        sql = "SELECT count(*) FROM imgeo.{}".format(table)
         res = -1
         conn = psycopg2.connect(
             "host={} port={} dbname={} user={}  password={}".format(host, port, database, user, password)
@@ -134,7 +136,8 @@ def create_comparison_data():
         log.info('csv bestand {} aangemaakt'.format(csv_name))
 
     def generate_and_run_sql(voor):
-        new_script = loc_pgsql.run_sql_script('{app}/fme_source_sql/{voor}'.format(app=bgt_setup.SCRIPT_ROOT, voor=voor))
+        new_script = loc_pgsql.run_sql_script(
+            '{app}/fme_source_sql/{voor}'.format(app=bgt_setup.SCRIPT_ROOT, voor=voor))
         if len(new_script) > 0:
             loc_pgsql.run_sql('\n'.join([c[0] for c in new_script]))
             log.info("Performed `comparison.{voor}`.".format(voor=voor))

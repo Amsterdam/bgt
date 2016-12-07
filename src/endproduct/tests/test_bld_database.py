@@ -8,11 +8,10 @@ log = logging.getLogger(__name__)
 
 def test_get_zip():
     fdb = FinalDB()
-    root = bgt_setup.SCRIPT_SRC
     inzip = fdb.get_zip('{app}/endproduct/tests/fixtures/bgt_test.zip'.format(app=bgt_setup.SCRIPT_SRC), 'fs')
     for process_file_info in inzip.infolist():
         print(process_file_info.filename)
-        assert(process_file_info.filename in ('test1.csv', 'test2.csv'))
+        assert (process_file_info.filename in ('test1.csv', 'test2.csv'))
 
 
 def test_tabellen():
@@ -27,7 +26,7 @@ def test_tabellen():
 
         if not exists:
             print("table %s does not exist" % tablename)
-        assert(exists)
+        assert (exists)
 
 
 def test_load_csv():
