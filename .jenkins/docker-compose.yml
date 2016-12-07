@@ -20,11 +20,12 @@ tests:
     - database_FME:database_FME
     - database_BGT:database_BGT
   command: >
-    bash -c "/app/docker-wait.sh \
+    bash -c "/app/docker-wait_bgt.sh \
+            && /app/docker-wait_fme.sh \
             && cd /src \
             && pip install -r requirements.txt \
             && export TEST=1 \
-            && python -m pytest"
+            && py.test /src"
 
 
 importer_fme:
@@ -34,7 +35,7 @@ importer_fme:
   volumes:
     - /tmp/data:/tmp/data
   command: >
-    bash -c "/app/docker-wait.sh \
+    bash -c "/app/docker-wait_fme.sh \
             && /app/import_bgt1.sh"
 
 
@@ -45,7 +46,7 @@ importer_bgt:
   volumes:
     - /tmp/data:/tmp/data
   command: >
-    bash -c "/app/docker-wait.sh \
+    bash -c "/app/docker-wait_bgt.sh \
             && /app/import_bgt2.sh"
 
 
