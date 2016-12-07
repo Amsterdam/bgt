@@ -32,6 +32,14 @@ importer_fme:
   build: ..
   links:
     - database_FME:database_FME
+  environment:
+    FMESERVER:
+    FMESERVERAPI:
+    FMEAPI:
+    FMEDBPASS:
+    FMEINSTANCE:
+    DEBUG:
+    OBJECTSTORE_PASSWORD:
   volumes:
     - /tmp/data:/tmp/data
   command: >
@@ -43,6 +51,14 @@ importer_bgt:
   build: ..
   links:
     - database_BGT:database_BGT
+  environment:
+    FMESERVER:
+    FMESERVERAPI:
+    FMEAPI:
+    FMEDBPASS:
+    FMEINSTANCE:
+    DEBUG:
+    OBJECTSTORE_PASSWORD:
   volumes:
     - /tmp/data:/tmp/data
   command: >
