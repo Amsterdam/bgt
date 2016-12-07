@@ -1,6 +1,6 @@
 import logging
 from swiftclient.client import Connection
-import bgt_setup
+import os
 
 log = logging.getLogger(__name__)
 
@@ -12,14 +12,13 @@ OBJECTSTORE = {
     'auth_version': '2.0',
     'authurl': 'https://identity.stack.cloudvps.com/v2.0',
     'user': 'basiskaart',
-    'key': bgt_setup.OBJECTSTORE_PASSWORD,
+    'key': os.getenv('OBJECTSTORE_PASSWORD', 'insecure'),
     'tenant_name': 'BGE000081_BGT',
     'os_options': {
         'tenant_id': '1776010a62684386a08b094d89ce08d9',
         'region_name': 'NL',
         'endpoint_type': 'internalURL'}}
 
-print(OBJECTSTORE)
 bgt_connection = Connection(**OBJECTSTORE)
 
 
