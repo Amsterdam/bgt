@@ -19,6 +19,7 @@ OBJECTSTORE = {
         'region_name': 'NL',
         'endpoint_type': 'internalURL'}}
 
+print(OBJECTSTORE)
 bgt_connection = Connection(**OBJECTSTORE)
 
 
