@@ -36,7 +36,7 @@ importer_fme:
     - /tmp/data:/tmp/data
   command: >
     bash -c "/app/docker-wait_fme.sh \
-            && /app/import_bgt1.sh"
+            && /app/import_fme.sh"
 
 
 importer_bgt:
@@ -47,7 +47,7 @@ importer_bgt:
     - /tmp/data:/tmp/data
   command: >
     bash -c "/app/docker-wait_bgt.sh \
-            && /app/import_bgt2.sh"
+            && /app/import_bgt.sh"
 
 
 db-backup_bgt:
