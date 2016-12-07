@@ -1,22 +1,24 @@
-database_BGT1:
+database_FME:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   environment:
     POSTGRES_DB: gisdb
     POSTGRES_USER: dbuser
     POSTGRES_PASSWORD: insecure
 
-database_BGT2:
+
+database_BGT:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   environment:
     POSTGRES_DB: bgt
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
 
+
 tests:
   build: ..
   links:
-    - database_BGT1:database_BGT1
-    - database_BGT2:database_BGT2
+    - database_FME:database_FME
+    - database_BGT:database_BGT
   command: >
     bash -c "/app/docker-wait.sh \
             && cd /src \
@@ -24,23 +26,33 @@ tests:
             && export TEST=1 \
             && python -m pytest"
 
-importer:
+
+importer_fme:
   build: ..
   links:
-    - database_BGT1:database_BGT1
-    - database_BGT2:database_BGT2
+    - database_FME:database_FME
   volumes:
     - /tmp/data:/tmp/data
   command: >
     bash -c "/app/docker-wait.sh \
-            && /app/import_bgt1.sh
+            && /app/import_bgt1.sh"
+
+
+importer_bgt:
+  build: ..
+  links:
+    - database_BGT:database_BGT
+  volumes:
+    - /tmp/data:/tmp/data
+  command: >
+    bash -c "/app/docker-wait.sh \
             && /app/import_bgt2.sh"
 
-db-backup:
+
+db-backup_bgt:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   links:
-    - database_BGT1:db1
-    - database_BGT2:db2
+    - database_BGT:db2
   volumes:
     - ./backups:/tmp/backups
   command: >
@@ -49,11 +61,6 @@ db-backup:
             && pg_dump --clean \
                         -Fc \
                         -U bgt \
-                        -h db1 -p 5432 \
-                        bgt > /tmp/backups/database_bgt1.dump \
-            && pg_dump --clean \
-                        -Fc \
-                        -U bgt \
                         -h db2 -p 5432 \
-                        bgt > /tmp/backups/database_bgt2.dump
+                        bgt > /tmp/backups/database.dump
                         "

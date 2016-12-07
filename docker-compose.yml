@@ -1,4 +1,4 @@
-database_BGT1:
+database_FME:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   ports:
     - "5401:5432"
@@ -7,7 +7,7 @@ database_BGT1:
     POSTGRES_USER: dbuser
     POSTGRES_PASSWORD: insecure
 
-database_BGT2:
+database_BGT:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   ports:
     - "5402:5432"
@@ -15,15 +15,3 @@ database_BGT2:
     POSTGRES_DB: bgt
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
-
-importer:
-  build: .
-  links:
-    - database_BGT1:database_BGT1
-    - database_BGT2:database_BGT2
-  volumes:
-    - /tmp/data:/tmp/data
-  command: >
-    bash -c "/app/docker-wait.sh \
-            && /app/import_bgt1.sh
-            && /app/import_bgt2.sh"

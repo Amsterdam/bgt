@@ -67,7 +67,7 @@ def _compare_counts():
         'bgt_weginrichtingselement': ['weginrichtingselement', 'imgeo_weginrichtingselement']
     }
     # localhost / 5401
-    def count_table_rows(table, host='database_BGT1', database='gisdb', port='5432', user='dbuser', password='insecure'):
+    def count_table_rows(table, host='database_FME', database='gisdb', port='5432', user='dbuser', password='insecure'):
         sql = "SELECT count(*) FROM imgeo.{}".format(table)
         res = -1
         conn = psycopg2.connect(
@@ -118,7 +118,10 @@ def create_comparison_data():
     :return:
     """
     # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(host='database_BGT1', port='5432', dbname='gisdb', user='dbuser')
+    loc_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.DB_FME_HOST,
+                                        port=bgt_setup.DB_FME_PORT,
+                                        dbname=bgt_setup.DB_FME_DBNAME,
+                                        user=bgt_setup.DB_FME_USER)
 
     def create_freq_csv(rows, name):
         log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
@@ -131,7 +134,7 @@ def create_comparison_data():
         log.info('csv bestand {} aangemaakt'.format(csv_name))
 
     def generate_and_run_sql(voor):
-        new_script = loc_pgsql.run_sql_script('{app}/source_sql/{voor}'.format(app=bgt_setup.SCRIPT_ROOT, voor=voor))
+        new_script = loc_pgsql.run_sql_script('{app}/fme_source_sql/{voor}'.format(app=bgt_setup.SCRIPT_ROOT, voor=voor))
         if len(new_script) > 0:
             loc_pgsql.run_sql('\n'.join([c[0] for c in new_script]))
             log.info("Performed `comparison.{voor}`.".format(voor=voor))
@@ -145,13 +148,13 @@ def create_comparison_data():
     # Output results of the comparison of GML and DB
     create_freq_csv(
         loc_pgsql.run_sql_script(
-            '{app}/source_sql/080_vergelijk_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
+            '{app}/fme_source_sql/080_vergelijk_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
         'vergelijk_gml_db')
 
     # Output results of the frequention distribution GML and DB
     create_freq_csv(
         loc_pgsql.run_sql_script(
-            '{app}/source_sql/080_frequentieverdeling_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
+            '{app}/fme_source_sql/080_frequentieverdeling_gml_db.sql'.format(app=bgt_setup.SCRIPT_ROOT)),
         'freq_verdeling_gml_db_alle_kolommen')
 
     log.info("Ready creating comparison data")

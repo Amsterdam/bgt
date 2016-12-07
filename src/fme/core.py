@@ -282,15 +282,20 @@ if __name__ == '__main__':
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
     # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(host='database_BGT1', port='5432', dbname='gisdb', user='dbuser')
+    loc_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.DB_FME_HOST,
+                                        port=bgt_setup.DB_FME_PORT,
+                                        dbname=bgt_setup.DB_FME_DBNAME,
+                                        user=bgt_setup.DB_FME_USER)
     fme_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.FME_SERVER.split('//')[-1],
-                                        dbname='gisdb', user='dbuser', password=bgt_setup.FME_DBPASS)
+                                        dbname=bgt_setup.DB_FME_DBNAME,
+                                        user=bgt_setup.DB_FME_USER,
+                                        password=bgt_setup.FME_DBPASS)
 
     download_bgt()
     try:
         # start the fme server
         server_manager.start()
-        fme_pgsql.run_sql_script("{app}/source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        fme_pgsql.run_sql_script("{app}/fme_source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # upload the GML files and FMW scripts
         fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
@@ -313,11 +318,11 @@ if __name__ == '__main__':
             logging.exception("Exception during FME transformation {}".format(e))
             sys.exit(1)
 
-        fme_pgsql.run_sql_script("{app}/source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # aanmaak db-views shapes_bgt
-        fme_pgsql.run_sql_script("{app}/source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
-        fme_pgsql.run_sql_script("{app}/source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # upload shapes fmw scripts naar reposiory
         fme_utils.upload_repository(

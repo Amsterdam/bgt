@@ -3,6 +3,7 @@ import logging
 import pytest
 
 from fme.sql_utils import SQLRunner
+import bgt_setup
 
 log = logging.getLogger(__name__)
 
@@ -10,7 +11,10 @@ log = logging.getLogger(__name__)
 @pytest.fixture
 def sql_runner():
     # 5401 / localhost
-    runner = SQLRunner(host='database_BGT1', port='5432', dbname='gisdb', user='dbuser')
+    runner = SQLRunner(host=bgt_setup.DB_FME_HOST,
+                        port=bgt_setup.DB_FME_PORT,
+                        dbname=bgt_setup.DB_FME_DBNAME,
+                        user=bgt_setup.DB_FME_USER)
     runner.run_sql("DROP TABLE IF EXISTS public.sql_utils;")
     return runner
 
@@ -30,7 +34,7 @@ def test_sql_runner_run_sql(sql_runner):
 
 
 def test_run_sql_script(sql_runner):
-    res = sql_runner.run_sql_script('fme/tests/fixtures/test_pg.sql')
+    res = sql_runner.run_sql_script('{app}/fme/tests/fixtures/test_pg.sql'.format(app=bgt_setup.SCRIPT_SRC))
     assert len(res) == 0
     res = sql_runner.run_sql('SELECT * FROM public.sql_utils;')
     assert len(res) == 2
@@ -45,4 +49,4 @@ def test_failing_query(sql_runner):
 @pytest.mark.skip(reason='tests for test environment')
 def test_ogr2ogr_login(sql_runner):
     res = sql_runner.get_ogr2_ogr_login('public')
-    assert res == "host=database_BGT1 port=5432 ACTIVE_SCHEMA=public user='dbuser' dbname='gisdb' password=insecure"
+    assert res == "host=database_FME port=5432 ACTIVE_SCHEMA=public user='dbuser' dbname='gisdb' password=insecure"

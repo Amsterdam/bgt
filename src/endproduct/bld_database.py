@@ -75,35 +75,11 @@ class FinalDB:
         """
         self.user = bgt_setup.DEBUG
         self.password = bgt_setup.BGT_DBPASS
-        self.dbname = bgt_setup.BGT2_DBNAME
-        self.dbuser = bgt_setup.BGT2_USER
-        self.host = bgt_setup.BGT2_HOST
-        self.port = bgt_setup.BGT2_PORT
+        self.dbname = bgt_setup.BGT_DBNAME
+        self.dbuser = bgt_setup.BGT_USER
+        self.host = bgt_setup.BGT_HOST
+        self.port = bgt_setup.BGT_PORT
         self.bgt_loc_pgsql = None
-
-    def connect_to_postgresdb(self):
-        return SQLRunner(host=self.host, dbname='postgres', user=self.dbuser,
-                         password=self.password, port=self.port)
-
-    def connect_to_bgtdb(self):
-        return SQLRunner(host=self.host, dbname=self.dbname, user=self.dbuser,
-                         password=self.password, port=self.port)
-
-    def create_database(self):
-        """
-        Create database
-        :return:
-        """
-        pub_loc_pgsql = self.connect_to_postgresdb()
-        pub_loc_pgsql.run_sql('DROP DATABASE IF EXISTS {dbname}'.format(dbname=self.dbname))
-        pub_loc_pgsql.run_sql('CREATE DATABASE {dbname}'.format(dbname=self.dbname))
-
-        pub_loc_pgsql.commit()
-        pub_loc_pgsql.close()
-
-        bgt_loc_pgsql = self.create_tables()
-
-        return bgt_loc_pgsql
 
 
     def create_tables(self):
@@ -112,15 +88,11 @@ class FinalDB:
 
         :return: connection to database
         """
-        # Connect to the newly created database
-        bgt_loc_pgsql = self.connect_to_bgtdb()
+        bgt_loc_pgsql = SQLRunner(host=self.host, dbname=self.dbname, user=self.dbuser,
+                         password=self.password, port=self.port)
 
-        try:
-            bgt_loc_pgsql.run_sql('CREATE EXTENSION postgis')
-        except Exception as e:
-            pass
         root = bgt_setup.SCRIPT_ROOT
-        bgt_loc_pgsql.run_sql_script("{app}/source_sql/010_create_database.sql".format(app=root))
+        bgt_loc_pgsql.run_sql_script("{app}/bgt_source_sql/010_create_database.sql".format(app=root))
 
         return bgt_loc_pgsql
 
@@ -134,7 +106,7 @@ class FinalDB:
         :return: success
         """
 
-        self.bgt_loc_pgsql = self.create_database()
+        self.bgt_loc_pgsql = self.create_tables()
 
         inzip = self.get_zip(name, location)
         if procfile_name:

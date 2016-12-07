@@ -20,9 +20,10 @@ SET row_security = off;
 -- Name: imgeo; Type: SCHEMA; Schema: -; Owner: -
 --
 
-CREATE SCHEMA imgeo;
+DROP SCHEMA IF EXISTS bgt CASCADE;
+CREATE SCHEMA bgt;
 
-SET search_path = imgeo, pg_catalog, public;
+SET search_path = bgt, pg_catalog, public;
 
 SET default_with_oids = false;
 
