@@ -69,7 +69,7 @@ importer_bgt:
 db-backup_bgt:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   links:
-    - database_BGT:db2
+    - database_BGT:db
   volumes:
     - ./backups:/tmp/backups
   command: >
@@ -78,6 +78,6 @@ db-backup_bgt:
             && pg_dump --clean \
                         -Fc \
                         -U bgt \
-                        -h db2 -p 5432 \
+                        -h db -p 5432 \
                         bgt > /tmp/backups/database.dump
                         "
