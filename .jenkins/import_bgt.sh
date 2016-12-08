@@ -15,8 +15,7 @@ rm -rf ${DIR}/backups
 mkdir -p ${DIR}/backups
 
 dc build
+dc up -d database_BGT
 #dc run --rm tests
 dc run --rm importer_bgt
 dc run --rm db-backup_bgt
-
-
