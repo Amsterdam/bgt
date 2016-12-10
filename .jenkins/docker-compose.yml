@@ -77,6 +77,7 @@ db-backup_bgt:
             && chmod 600 ~/.pgpass \
             && pg_dump --clean \
                         -Fc \
+                        -n bgt \
                         -U bgt \
                         -h db -p 5432 \
                         bgt > /tmp/backups/database.dump
