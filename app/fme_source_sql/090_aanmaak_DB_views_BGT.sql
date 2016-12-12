@@ -15,12 +15,13 @@ SELECT
     bgt_fysiekvoorkomen     AS BGTFYSVKN,
     'BGT_BTRN_'|| LOWER(
     REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-    bgt_fysiekvoorkomen ,',',''),'/ ',''),':',''),'(',''),')',''),'/','_'),' ','_'))                
+    bgt_fysiekvoorkomen ,',',''),'/ ',''),':',''),'(',''),')',''),'/','_'),' ','_'))
                             AS BESTANDSNAAM,
     optalud                 AS OPTALUD,
     plus_fysiekvoorkomen    AS PLUSFYSVKN,
     geometrie               AS geometrie
 FROM imgeo.bgt_begroeidterreindeel);
+
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_bgt_kruinlijn AS (
 SELECT
@@ -59,7 +60,7 @@ SELECT
     relatievehoogteligging      AS HOOGTELIG,
     bgt_status                  AS BGTSTATUS,
     plus_status                 AS PLUSSTATUS,
-    REPLACE(identificatie_namespace ,'NL.IMGeo','BGT_LBL_nummeraanduidingreeks') 
+    REPLACE(identificatie_namespace ,'NL.IMGeo','BGT_LBL_nummeraanduidingreeks')
                                 AS BESTANDSNAAM,
     identificatiebagpnd         AS BAGPNDID,
     id_bagvbolaagste_huisnummer AS BAGVBOLGST,
