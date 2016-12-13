@@ -5,14 +5,12 @@ database_FME:
     POSTGRES_USER: dbuser
     POSTGRES_PASSWORD: insecure
 
-
 database_BGT:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   environment:
     POSTGRES_DB: bgt
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
-
 
 tests:
   build: ..
@@ -26,7 +24,6 @@ tests:
             && pip install -r requirements.txt \
             && export TEST=1 \
             && py.test /src"
-
 
 importer_fme:
   build: ..
@@ -45,7 +42,6 @@ importer_fme:
   command: >
     bash -c "/app/docker-wait_fme.sh \
             && /app/import_fme.sh"
-
 
 importer_bgt:
   build: ..
@@ -79,6 +75,6 @@ db-backup_bgt:
                         -Fc \
                         -t imgeo* \
                         -t bgt* \
+                        -U bgt
                         -h db -p 5432 \
-                        bgt > /tmp/backups/database.dump
-                        "
+                        bgt > /tmp/backups/database.dump"
