@@ -77,6 +77,6 @@ db-backup_bgt:
                         -Fc \
                         -t imgeo* \
                         -t bgt* \
-                        -U bgt
+                        -U bgt \
                         -h db -p 5432 \
                         bgt > /tmp/backups/database.dump"
