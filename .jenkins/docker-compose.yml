@@ -62,7 +62,9 @@ importer_bgt:
   volumes:
     - /tmp/data:/tmp/data
   command: >
-    bash -c "/app/docker-wait_bgt.sh \
+    bash -c "echo db:5432:bgt:bgt:insecure > ~/.pgpass \
+            && chmod 600 ~/.pgpass \
+            && /app/docker-wait_bgt.sh \
             && /app/import_bgt.sh"
 
 
