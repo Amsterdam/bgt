@@ -4,7 +4,7 @@ DEBUG = os.getenv('DEBUG', False) == '1'
 SCRIPT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'app'))
 SCRIPT_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-OBJECTSTORE_PASSWORD = os.getenv('OBJECTSTORE_PASSWORD', 'insecure')
+BGT_OBJECTSTORE_PASSWORD = os.getenv('BGT_OBJECTSTORE_PASSWORD', 'insecure')
 
 FME_SERVER_API = os.getenv('FMESERVERAPI', 'secret')
 FME_API = os.getenv('FMEAPI', 'secret')
