@@ -14,7 +14,7 @@ FME_DBPASS = os.getenv('FMEDBPASS', 'secret')
 
 BGT_DBPASS = os.getenv('DB_PASSWORD', 'insecure')
 
-BGT_USER = os.getenv('BGT_DATABASE_BGT_1_ENV_POSTGRES_USER', 'bgt')
+BGT_USER = os.getenv('BGT_DATABASE_BGT_1_ENV_POSTGRES_USER', 'basiskaart')
 BGT_HOST = os.getenv('DATABASE_BGT_1_PORT_5432_TCP_ADDR', 'localhost')
 BGT_DBNAME = os.getenv('DATABASE_BGT_1_ENV_POSTGRES_DB', 'bgt')
 BGT_PW = os.getenv('DATABASE_BGT_1_ENV_POSTGRES_PASSWORD', 'insecure')

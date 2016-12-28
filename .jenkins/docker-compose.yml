@@ -8,8 +8,8 @@ database_FME:
 database_BGT:
   image: build.datapunt.amsterdam.nl:5000/atlas/postgres
   environment:
-    POSTGRES_DB: bgt
-    POSTGRES_USER: bgt
+    POSTGRES_DB: basiskaart
+    POSTGRES_USER: basiskaart
     POSTGRES_PASSWORD: insecure
 
 tests:
@@ -77,6 +77,6 @@ db-backup_bgt:
                         -Fc \
                         -t imgeo* \
                         -t bgt* \
-                        -U bgt \
+                        -U basiskaart \
                         -h db -p 5432 \
                         bgt > /tmp/backups/database.dump"
