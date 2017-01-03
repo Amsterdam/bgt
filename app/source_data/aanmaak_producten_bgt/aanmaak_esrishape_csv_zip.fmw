@@ -10,12 +10,12 @@
 #          --DestDataset_ESRISHAPE2 "C:\BGT\FME\esri_shape\shp_gebieden.zip"
 #          --DestDataset_ESRISHAPE3 "C:\BGT\FME\esri_shape\shp_totaal.zip"
 #          --SourceDataset_POSTGIS_3 "bgt_dev_local"
-#          --DestDataset_CSV "C:\BGT\FME\WKT\csv_gebieden.zip"
-#          --DestDataset_CSV_3 "C:\BGT\FME\WKT\csv_totaal.zip"
+#          --DestDataset_CSV "C:\BGT\FME\wkt\csv_gebieden.zip"
+#          --DestDataset_CSV_3 "C:\BGT\FME\wkt\csv_totaal.zip"
 #    
 #    
 #!   CATEGORY="Frietsnijder shapefiles"
-#!   VIEW_POSITION="6232.7 -16489.7"
+#!   VIEW_POSITION="-2750.03 -23496.7"
 #!   FME_BUILD_NUM="16178"
 #!   LAST_SAVE_BUILD="FME(R) 2016.0.1.2 (20160318 - Build 16178 - WIN64)"
 #!   DOC_EXTENTS="18134.2 20977"
@@ -30,7 +30,7 @@
 #!   END_PYTHON=""
 #!   REQUIREMENTS="&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&#10;    &lt;br/&gt;&#10;&lt;/p&gt;&#10;"
 #!   REQUIREMENTS_KEYWORD="none"
-#!   ZOOM_SCALE="72"
+#!   ZOOM_SCALE="71"
 #!   SOURCE_ROUTING_FILE=""
 #!   MULTI_WRITER_DATASET_ORDER="BY_ID"
 #!   DESCRIPTION="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Frietsnijder shapefiles &lt;/p&gt;&#10;"
@@ -53,7 +53,7 @@
 #!   FME_REPROJECTION_ENGINE="FME"
 #!   HISTORY=""
 #!   WORKSPACE_VERSION="1"
-#!   LAST_SAVE_DATE="2017-01-03T11:43:54"
+#!   LAST_SAVE_DATE="2017-01-03T17:18:48"
 #!   TITLE="BGT producten"
 #!   DESTINATION="NONE"
 #!   PYTHON_COMPATIBILITY="27"
@@ -1321,8 +1321,18 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="hoogtelig" ATTR_TYPE="short" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgtstatus" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plusstatus" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bgtfunctie" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bgtfysvkn" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="optalud" ATTR_TYPE="char(1)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="plusfunct" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="plusfysvkn" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgttype" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plustype" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bagpndid" ATTR_TYPE="char(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="hoortbij" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="isbeweegb" ATTR_TYPE="char(1)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="naam" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_geometry" ATTR_TYPE="fme_char(50)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="shape_layer_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="shape_dimension" PARM_VALUE="auto"/>
 #! </FEATURE_TYPE>
@@ -1357,6 +1367,9 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plusstatus" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgttype" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plustype" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bgtfunctie" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="plusfunct" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_geometry" ATTR_TYPE="fme_char(50)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="shape_layer_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="shape_dimension" PARM_VALUE="auto"/>
 #! </FEATURE_TYPE>
@@ -1373,7 +1386,7 @@
 #!   ORDER="5e+14"
 #!   COLLAPSED="true"
 #!   KEYWORD="ESRISHAPE_1"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   SCHEMA_ATTRIBUTE_SOURCE="1"
 #! >
@@ -1391,6 +1404,14 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plusstatus" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgttype" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plustype" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bagpndid" ATTR_TYPE="char(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bagvbolgst" ATTR_TYPE="char(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bagvbohgst" ATTR_TYPE="char(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="labeltekst" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="hoek" ATTR_TYPE="float" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bagoprid" ATTR_TYPE="char(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="oprtype" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_geometry" ATTR_TYPE="fme_char(50)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="shape_layer_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="shape_dimension" PARM_VALUE="auto"/>
 #! </FEATURE_TYPE>
@@ -3421,7 +3442,15 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plus-status" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgt-type" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plus-type" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bgt_pand_id" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="id_bagvbolaagste_huisnummer" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="id_bagvbohoogste_huisnummer" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="label_tekst" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="hoek" ATTR_TYPE="float" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="identificatieBAGOPR" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="openbareruimtetype" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="geometry" ATTR_TYPE="float" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_geometry" ATTR_TYPE="fme_char(50)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="csv_layer_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="csv_field_names" PARM_VALUE="INHERIT_FROM_WRITER"/>
 #!     <DEFLINE_PARM PARM_NAME="csv_append_mode" PARM_VALUE="INHERIT_FROM_WRITER"/>
@@ -3457,7 +3486,10 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plus-status" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgt-type" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plus-type" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bgtfunctie" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="plusfunct" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="geometry" ATTR_TYPE="float" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_geometry" ATTR_TYPE="fme_char(50)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="csv_layer_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="csv_field_names" PARM_VALUE="INHERIT_FROM_WRITER"/>
 #!     <DEFLINE_PARM PARM_NAME="csv_append_mode" PARM_VALUE="INHERIT_FROM_WRITER"/>
@@ -3491,9 +3523,19 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="relatievehoogteligging" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgt-status" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plus-status" ATTR_TYPE="char(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bgtfunctie" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bgtfysvkn" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="optalud" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="plusfunct" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="plusfysvkn" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bgt-type" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="plus-type" ATTR_TYPE="char(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="bagpndid" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="hoortbij" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="isbeweegb" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="naam" ATTR_TYPE="char(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="geometry" ATTR_TYPE="float" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_geometry" ATTR_TYPE="fme_char(50)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="csv_layer_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="csv_field_names" PARM_VALUE="INHERIT_FROM_WRITER"/>
 #!     <DEFLINE_PARM PARM_NAME="csv_append_mode" PARM_VALUE="INHERIT_FROM_WRITER"/>
@@ -4219,12 +4261,12 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME DestDataset_CSV Destination CSV (CommaSeparatedValue) Folder:"
-#!   DEFAULT_VALUE="C:\BGT\FME\WKT\csv_gebieden.zip"
+#!   DEFAULT_VALUE="C:\BGT\FME\wkt\csv_gebieden.zip"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME DestDataset_CSV_3 Destination CSV (CommaSeparatedValue) Folder:"
-#!   DEFAULT_VALUE="C:\BGT\FME\WKT\csv_totaal.zip"
+#!   DEFAULT_VALUE="C:\BGT\FME\wkt\csv_totaal.zip"
 #!   IS_STAND_ALONE="false"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -10157,9 +10199,9 @@
 #!   POSITION="11416.6 -18619.6"
 #!   BOUNDING_RECT="11416.6 -18619.6 -1 -1"
 #!   ORDER="5e+14"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="16177"
+#!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -10199,7 +10241,7 @@
 #!     <XFORM_ATTR ATTR_NAME="bagoprid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="oprtype" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_predicate" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="namespace namespace  NO_OP lokaalid lokaalid  NO_OP begintijd begintijd  NO_OP einddtijd eindtijd  RENAME_SET_VALUE tijdreg tijdreg  NO_OP eindreg eindreg  NO_OP lv_pubdat lv_pubdat  NO_OP bronhoud bronhoud  NO_OP inonderzk inonderzk  NO_OP hoogtelig hoogtelig  NO_OP bgtstatus bgtstatus  NO_OP plusstatus plusstatus  NO_OP bgttype bgttype  NO_OP plustype plustype  NO_OP bestandsnaam bestandsnaam  NO_OP bestandsnaam_plus bestandsnaam_plus  NO_OP fme_geometry fme_geometry  NO_OP _count _count  NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="namespace namespace  NO_OP lokaalid lokaalid  NO_OP begintijd begintijd  NO_OP einddtijd eindtijd  RENAME_SET_VALUE tijdreg tijdreg  NO_OP eindreg eindreg  NO_OP lv_pubdat lv_pubdat  NO_OP bronhoud bronhoud  NO_OP inonderzk inonderzk  NO_OP hoogtelig hoogtelig  NO_OP bgtstatus bgtstatus  NO_OP plusstatus plusstatus  NO_OP bgttype bgttype  NO_OP plustype plustype  NO_OP bestandsnaam bestandsnaam  NO_OP bestandsnaam_plus bestandsnaam_plus  NO_OP fme_geometry fme_geometry  NO_OP _count _count  NO_OP id id  NO_OP naam naam  NO_OP big_id big_id  NO_OP hoortbij hoortbij  NO_OP isbeweegb isbeweegb  NO_OP bgtfysvkn bgtfysvkn  NO_OP optalud optalud  NO_OP plusfysvkn plusfysvkn  NO_OP bgtfunctie bgtfunctie  NO_OP plusfunct plusfunct  NO_OP bagpndid bagpndid  NO_OP bagvbolgst bagvbolgst  NO_OP bagvbohgst bagvbohgst  NO_OP labeltekst labeltekst  NO_OP hoek hoek  NO_OP bagoprid bagoprid  NO_OP oprtype oprtype  NO_OP _predicate _predicate  NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -13345,9 +13387,9 @@ DEFAULT_MACRO DestDataset_ESRISHAPE3 C:\BGT\FME\esri_shape\shp_totaal.zip
 GUI OPTIONAL DIRNAME DestDataset_ESRISHAPE3 Destination Esri Shapefolder:
 DEFAULT_MACRO SourceDataset_POSTGIS_3 bgt_dev_local
 GUI NAMED_DB_CONNECTION_ENCODED SourceDataset_POSTGIS_3 FMT:POSTGRES%FAMILY:PostgreSQL Connection:
-DEFAULT_MACRO DestDataset_CSV C:\BGT\FME\WKT\csv_gebieden.zip
+DEFAULT_MACRO DestDataset_CSV C:\BGT\FME\wkt\csv_gebieden.zip
 GUI DIRNAME DestDataset_CSV Destination CSV (CommaSeparatedValue) Folder:
-DEFAULT_MACRO DestDataset_CSV_3 C:\BGT\FME\WKT\csv_totaal.zip
+DEFAULT_MACRO DestDataset_CSV_3 C:\BGT\FME\wkt\csv_totaal.zip
 GUI DIRNAME DestDataset_CSV_3 Destination CSV (CommaSeparatedValue) Folder:
 INCLUDE [ if {{$(SourceDataset_POSTGIS)} == {}} { puts_real {Parameter 'SourceDataset_POSTGIS' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(SourceDataset_POSTGIS_3)} == {}} { puts_real {Parameter 'SourceDataset_POSTGIS_3' must be given a value.}; exit 1; }; ]
@@ -14516,8 +14558,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_9_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_9_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_9___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_9___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_9_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_9___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_9___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_9___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_9_Deagg    INPUT FEATURE_TYPE GeometryFilter_9___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_9___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_9___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_9___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_9___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_9___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_9_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_9___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_9___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_9___Input___    OUTPUT FEATURE_TYPE GeometryFilter_9___Prepped___        GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d36_targetFeatureType @Lookup(GeometryFilter_9_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_9_Router    INPUT FEATURE_TYPE GeometryFilter_9___Prepped___    TEST @Value(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d36_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d36_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d36_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_9_<UNFILTERED>        @RemoveAttributes(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d36_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_9_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_9___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_9___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_9___Input___    OUTPUT FEATURE_TYPE GeometryFilter_9___Prepped___        GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d45_targetFeatureType @Lookup(GeometryFilter_9_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_9_Router    INPUT FEATURE_TYPE GeometryFilter_9___Prepped___    TEST @Value(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d45_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d45_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d45_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_9_<UNFILTERED>        @RemoveAttributes(GeometryFilter_9_919cb62d_122c_4339_b9c5_6c27b970402d45_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_9 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_9_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -14568,8 +14610,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_6_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_6_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_6___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_6___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_6_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_6___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_6___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_6___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_6_Deagg    INPUT FEATURE_TYPE GeometryFilter_6___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_6___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_6___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_6___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_6___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_6___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_6_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_6___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_6___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_6___Input___    OUTPUT FEATURE_TYPE GeometryFilter_6___Prepped___        GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc36_targetFeatureType @Lookup(GeometryFilter_6_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_6_Router    INPUT FEATURE_TYPE GeometryFilter_6___Prepped___    TEST @Value(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc36_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc36_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc36_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_6_<UNFILTERED>        @RemoveAttributes(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc36_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_6_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_6___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_6___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_6___Input___    OUTPUT FEATURE_TYPE GeometryFilter_6___Prepped___        GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc45_targetFeatureType @Lookup(GeometryFilter_6_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_6_Router    INPUT FEATURE_TYPE GeometryFilter_6___Prepped___    TEST @Value(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc45_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc45_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc45_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_6_<UNFILTERED>        @RemoveAttributes(GeometryFilter_6_5b4e6a9a_4edd_476a_8ddc_cd91cf55fdbc45_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_6 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_6_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -14648,8 +14690,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_5_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_5_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_5___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_5___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_5_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_5___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_5___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_5___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_5_Deagg    INPUT FEATURE_TYPE GeometryFilter_5___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_5___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_5___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_5___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_5___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_5___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_5_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_5___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_5___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_5___Input___    OUTPUT FEATURE_TYPE GeometryFilter_5___Prepped___        GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684636_targetFeatureType @Lookup(GeometryFilter_5_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_5_Router    INPUT FEATURE_TYPE GeometryFilter_5___Prepped___    TEST @Value(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684636_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684636_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684636_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_5_<UNFILTERED>        @RemoveAttributes(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684636_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_5_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_5___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_5___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_5___Input___    OUTPUT FEATURE_TYPE GeometryFilter_5___Prepped___        GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684645_targetFeatureType @Lookup(GeometryFilter_5_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_5_Router    INPUT FEATURE_TYPE GeometryFilter_5___Prepped___    TEST @Value(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684645_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684645_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684645_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_5_<UNFILTERED>        @RemoveAttributes(GeometryFilter_5_54447dc8_8f87_4ca9_875a_966d16d4684645_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_5 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_5_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -14683,8 +14725,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_4_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_4_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_4___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_4___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_4_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_4___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_4___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_4___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_4_Deagg    INPUT FEATURE_TYPE GeometryFilter_4___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_4___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_4___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_4___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_4___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_4___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_4_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_4___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_4___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_4___Input___    OUTPUT FEATURE_TYPE GeometryFilter_4___Prepped___        GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890336_targetFeatureType @Lookup(GeometryFilter_4_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_4_Router    INPUT FEATURE_TYPE GeometryFilter_4___Prepped___    TEST @Value(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890336_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890336_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890336_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_4_<UNFILTERED>        @RemoveAttributes(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890336_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_4_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_4___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_4___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_4___Input___    OUTPUT FEATURE_TYPE GeometryFilter_4___Prepped___        GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890345_targetFeatureType @Lookup(GeometryFilter_4_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_4_Router    INPUT FEATURE_TYPE GeometryFilter_4___Prepped___    TEST @Value(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890345_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890345_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890345_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_4_<UNFILTERED>        @RemoveAttributes(GeometryFilter_4_ca7b83ea_c6c9_4765_90a9_e2112971890345_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_4 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_4_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -14765,8 +14807,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_7_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_7_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_7___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_7_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_7___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_7___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_7_Deagg    INPUT FEATURE_TYPE GeometryFilter_7___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_7_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_7___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_7___Input___    OUTPUT FEATURE_TYPE GeometryFilter_7___Prepped___        GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f36_targetFeatureType @Lookup(GeometryFilter_7_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_7_Router    INPUT FEATURE_TYPE GeometryFilter_7___Prepped___    TEST @Value(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f36_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f36_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f36_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7_<UNFILTERED>        @RemoveAttributes(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f36_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_7_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_7___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_7___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_7___Input___    OUTPUT FEATURE_TYPE GeometryFilter_7___Prepped___        GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f45_targetFeatureType @Lookup(GeometryFilter_7_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_7_Router    INPUT FEATURE_TYPE GeometryFilter_7___Prepped___    TEST @Value(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f45_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f45_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f45_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_7_<UNFILTERED>        @RemoveAttributes(GeometryFilter_7_264edc0f_9742_4b1c_9923_091f98b79e6f45_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_7 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_7_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -14805,8 +14847,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_3_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_3_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_3___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_3___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_3_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_3___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_3___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_3___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_3_Deagg    INPUT FEATURE_TYPE GeometryFilter_3___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_3___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_3___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_3___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_3___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_3___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_3_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_3___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_3___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_3___Input___    OUTPUT FEATURE_TYPE GeometryFilter_3___Prepped___        GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f536_targetFeatureType @Lookup(GeometryFilter_3_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_3_Router    INPUT FEATURE_TYPE GeometryFilter_3___Prepped___    TEST @Value(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f536_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f536_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f536_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_3_<UNFILTERED>        @RemoveAttributes(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f536_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_3_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_3___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_3___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_3___Input___    OUTPUT FEATURE_TYPE GeometryFilter_3___Prepped___        GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f545_targetFeatureType @Lookup(GeometryFilter_3_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_3_Router    INPUT FEATURE_TYPE GeometryFilter_3___Prepped___    TEST @Value(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f545_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f545_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f545_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_3_<UNFILTERED>        @RemoveAttributes(GeometryFilter_3_e22cec66_6f33_4e96_a1a1_8124040ba9f545_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_3 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_3_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -14844,8 +14886,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_8_InputPassThrough    IN
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_8_InstanceTest    INPUT FEATURE_TYPE GeometryFilter_8___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_8___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_8_CollectionTest    INPUT FEATURE_TYPE GeometryFilter_8___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter_8___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter_8___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_8_Deagg    INPUT FEATURE_TYPE GeometryFilter_8___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW Yes    OUTPUT POINT FEATURE_TYPE GeometryFilter_8___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter_8___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter_8___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter_8___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter_8___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_8_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_8___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_8___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_8___Input___    OUTPUT FEATURE_TYPE GeometryFilter_8___Prepped___        GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c36_targetFeatureType @Lookup(GeometryFilter_8_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_8_Router    INPUT FEATURE_TYPE GeometryFilter_8___Prepped___    TEST @Value(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c36_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c36_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c36_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_8_<UNFILTERED>        @RemoveAttributes(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c36_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_8_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter_8___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter_8___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter_8___Input___    OUTPUT FEATURE_TYPE GeometryFilter_8___Prepped___        GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c45_targetFeatureType @Lookup(GeometryFilter_8_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_8_Router    INPUT FEATURE_TYPE GeometryFilter_8___Prepped___    TEST @Value(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c45_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c45_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c45_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_8_<UNFILTERED>        @RemoveAttributes(GeometryFilter_8_52767e51_60cb_458f_a5ab_24f155d81b6c45_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter_8 <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_8_<UNFILTERED>
 # -------------------------------------------------------------------------
@@ -15028,8 +15070,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_InputPassThrough    INPU
 FACTORY_DEF $(INSTANCE_FILTERING) TestFactory    FACTORY_NAME GeometryFilter_InstanceTest    INPUT FEATURE_TYPE GeometryFilter___Input___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT PASSED FEATURE_TYPE $(OUTPUT_INSTANCE_FTYPE)    OUTPUT FAILED FEATURE_TYPE GeometryFilter___Input___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME GeometryFilter_CollectionTest    INPUT FEATURE_TYPE GeometryFilter___Input___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE GeometryFilter___Not_Collection___    OUTPUT PASSED FEATURE_TYPE GeometryFilter___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME GeometryFilter_Deagg    INPUT FEATURE_TYPE GeometryFilter___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    INSTANTIATE_GEOMETRY_INSTANCES_NEW <Unused>    OUTPUT POINT FEATURE_TYPE GeometryFilter___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE GeometryFilter___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE GeometryFilter___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE GeometryFilter___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE GeometryFilter___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter___Input___    OUTPUT FEATURE_TYPE GeometryFilter___Prepped___        GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab335_targetFeatureType @Lookup(GeometryFilter_RouterTable,&fme_type)
-FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_Router    INPUT FEATURE_TYPE GeometryFilter___Prepped___    TEST @Value(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab335_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab335_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab335_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_<UNFILTERED>        @RemoveAttributes(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab335_targetFeatureType)
+FACTORY_DEF * TeeFactory    FACTORY_NAME GeometryFilter_RouterPrepper    INPUT FEATURE_TYPE GeometryFilter___HomogeneousAggregate___    INPUT FEATURE_TYPE GeometryFilter___Not_Collection___    INPUT FEATURE_TYPE GeometryFilter___Input___    OUTPUT FEATURE_TYPE GeometryFilter___Prepped___        GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab344_targetFeatureType @Lookup(GeometryFilter_RouterTable,&fme_type)
+FACTORY_DEF * TestFactory    FACTORY_NAME GeometryFilter_Router    INPUT FEATURE_TYPE GeometryFilter___Prepped___    TEST @Value(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab344_targetFeatureType) != "not_selected"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(@Value(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab344_targetFeatureType))                                 @RemoveAttributes(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab344_targetFeatureType)    OUTPUT FAILED FEATURE_TYPE GeometryFilter_<UNFILTERED>        @RemoveAttributes(GeometryFilter_b9e21432_e178_4a2a_bb4a_37f69d201ab344_targetFeatureType)
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter TEXT Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_TEXT
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GeometryFilter <UNFILTERED> Output Nuker"   INPUT FEATURE_TYPE GeometryFilter_<UNFILTERED>
@@ -15137,11 +15179,11 @@ FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Corr
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
 
 # -------------------------------------------------------------------------
-ESRISHAPE_1_DEF imgeo_extractie.vw_imgeo_kunstwerkdeel_point   SHAPE_GEOMETRY               shape_point   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bgttype                      char(200)   plustype                     char(200)
+ESRISHAPE_1_DEF imgeo_extractie.vw_imgeo_kunstwerkdeel_point   SHAPE_GEOMETRY               shape_point   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bgttype                      char(200)   plustype                     char(200)   bagpndid                     char(20)   bagvbolgst                   char(20)   bagvbohgst                   char(20)   labeltekst                   char(200)   hoek                         float   bagoprid                     char(20)   oprtype                      char(200)
 # -------------------------------------------------------------------------
-ESRISHAPE_1_DEF imgeo_extractie.vw_imgeo_kunstwerkdeel_polygon   SHAPE_GEOMETRY               shape_polygon   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bgttype                      char(200)   plustype                     char(200)
+ESRISHAPE_1_DEF imgeo_extractie.vw_imgeo_kunstwerkdeel_polygon   SHAPE_GEOMETRY               shape_polygon   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bgtfunctie                   char(200)   bgtfysvkn                    char(200)   optalud                      char(1)   plusfunct                    char(200)   plusfysvkn                   char(200)   bgttype                      char(200)   plustype                     char(200)   bagpndid                     char(20)   hoortbij                     char(200)   isbeweegb                    char(1)   naam                         char(200)
 # -------------------------------------------------------------------------
-ESRISHAPE_1_DEF imgeo_extractie.vw_imgeo_kunstwerkdeel_line   SHAPE_GEOMETRY               shape_polyline   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bgttype                      char(200)   plustype                     char(200)
+ESRISHAPE_1_DEF imgeo_extractie.vw_imgeo_kunstwerkdeel_line   SHAPE_GEOMETRY               shape_polyline   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bgttype                      char(200)   plustype                     char(200)   bgtfunctie                   char(200)   plusfunct                    char(200)
 # -------------------------------------------------------------------------
 ESRISHAPE_2_DEF Shapefile1000000010000000000000000   SHAPE_GEOMETRY               shape_point   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bagpndid                     char(20)   bagvbolgst                   char(20)   bagvbohgst                   char(20)   labeltekst                   char(200)   hoek                         float
 # -------------------------------------------------------------------------
@@ -15181,11 +15223,11 @@ ESRISHAPE_2_DEF Shapefile1000000   SHAPE_GEOMETRY               shape_point   sh
 # -------------------------------------------------------------------------
 ESRISHAPE_2_DEF Shapefile10000   SHAPE_GEOMETRY               shape_polygon   shape_dimension              auto   namespace                    char(8)   lokaalid                     char(38)   begintijd                    date   eindtijd                     date   tijdreg                      char(20)   eindreg                      char(20)   lv_pubdat                    char(20)   bronhoud                     char(40)   inonderzk                    char(1)   hoogtelig                    short   bgtstatus                    char(8)   plusstatus                   char(8)   bgttype                      char(200)   plustype                     char(200)
 # -------------------------------------------------------------------------
-CSV_1_DEF imgeo_extractie.vw_imgeo_scheiding   csv_append_mode              INHERIT_FROM_WRITER   csv_field_names              INHERIT_FROM_WRITER   identificatie_namespace      char(8)   identificatie_lokaalid       char(38)   objectbegintijd              char(8)   objecteindtijd               char(8)   tijdstipregistratie          char(20)   eindregistratie              char(20)   lv-publicatiedatum           char(20)   bronhouder                   char(40)   inonderzoek                  char(1)   relatievehoogteligging       int   bgt-status                   char(8)   plus-status                  char(8)   bgt-type                     char(200)   plus-type                    char(200)   geometry                     float
+CSV_1_DEF imgeo_extractie.vw_imgeo_scheiding   csv_append_mode              INHERIT_FROM_WRITER   csv_field_names              INHERIT_FROM_WRITER   identificatie_namespace      char(8)   identificatie_lokaalid       char(38)   objectbegintijd              char(8)   objecteindtijd               char(8)   tijdstipregistratie          char(20)   eindregistratie              char(20)   lv-publicatiedatum           char(20)   bronhouder                   char(40)   inonderzoek                  char(1)   relatievehoogteligging       int   bgt-status                   char(8)   plus-status                  char(8)   bgt-type                     char(200)   plus-type                    char(200)   bgt_pand_id                  auto   id_bagvbolaagste_huisnummer  auto   id_bagvbohoogste_huisnummer  auto   label_tekst                  auto   hoek                         float   identificatieBAGOPR          auto   openbareruimtetype           auto   geometry                     float
 # -------------------------------------------------------------------------
-CSV_1_DEF imgeo_extractie.vw_imgeo_scheiding0001   csv_append_mode              INHERIT_FROM_WRITER   csv_field_names              INHERIT_FROM_WRITER   identificatie_namespace      char(8)   identificatie_lokaalid       char(38)   objectbegintijd              char(8)   objecteindtijd               char(8)   tijdstipregistratie          char(20)   eindregistratie              char(20)   lv-publicatiedatum           char(20)   bronhouder                   char(40)   inonderzoek                  char(1)   relatievehoogteligging       int   bgt-status                   char(8)   plus-status                  char(8)   bgt-type                     char(200)   plus-type                    char(200)   geometry                     float
+CSV_1_DEF imgeo_extractie.vw_imgeo_scheiding0001   csv_append_mode              INHERIT_FROM_WRITER   csv_field_names              INHERIT_FROM_WRITER   identificatie_namespace      char(8)   identificatie_lokaalid       char(38)   objectbegintijd              char(8)   objecteindtijd               char(8)   tijdstipregistratie          char(20)   eindregistratie              char(20)   lv-publicatiedatum           char(20)   bronhouder                   char(40)   inonderzoek                  char(1)   relatievehoogteligging       int   bgt-status                   char(8)   plus-status                  char(8)   bgtfunctie                   text   bgtfysvkn                    text   optalud                      text   plusfunct                    text   plusfysvkn                   text   bgt-type                     char(200)   plus-type                    char(200)   bagpndid                     text   hoortbij                     text   isbeweegb                    text   naam                         char(20)   geometry                     float
 # -------------------------------------------------------------------------
-CSV_1_DEF imgeo_extractie.vw_imgeo_scheiding00   csv_append_mode              INHERIT_FROM_WRITER   csv_field_names              INHERIT_FROM_WRITER   identificatie_namespace      char(8)   identificatie_lokaalid       char(38)   objectbegintijd              char(8)   objecteindtijd               char(8)   tijdstipregistratie          char(20)   eindregistratie              char(20)   lv-publicatiedatum           char(20)   bronhouder                   char(40)   inonderzoek                  char(1)   relatievehoogteligging       int   bgt-status                   char(8)   plus-status                  char(8)   bgt-type                     char(200)   plus-type                    char(200)   geometry                     float
+CSV_1_DEF imgeo_extractie.vw_imgeo_scheiding00   csv_append_mode              INHERIT_FROM_WRITER   csv_field_names              INHERIT_FROM_WRITER   identificatie_namespace      char(8)   identificatie_lokaalid       char(38)   objectbegintijd              char(8)   objecteindtijd               char(8)   tijdstipregistratie          char(20)   eindregistratie              char(20)   lv-publicatiedatum           char(20)   bronhouder                   char(40)   inonderzoek                  char(1)   relatievehoogteligging       int   bgt-status                   char(8)   plus-status                  char(8)   bgt-type                     char(200)   plus-type                    char(200)   bgtfunctie                   text   plusfunct                    text   geometry                     float
 # -------------------------------------------------------------------------
 CSV_2_DEF imgeo_extractie.vw_bgt_waterdeel00090000   csv_append_mode              INHERIT_FROM_WRITER   csv_field_names              INHERIT_FROM_WRITER   identificatie_namespace      char(8)   identificatie_lokaalid       char(38)   objectbegintijd              char(8)   objecteindtijd               char(8)   tijdstipregistratie          char(20)   eindregistratie              char(20)   lv-publicatiedatum           char(20)   bronhouder                   char(40)   inonderzoek                  char(1)   relatievehoogteligging       int   bgt-status                   char(8)   plus-status                  char(8)   bgt-fysiekvoorkomen          char(200)   optalud                      char(1)   plus-fysiekvoorkomen         char(200)   geometry                     float
 # -------------------------------------------------------------------------
