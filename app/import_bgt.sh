@@ -2,6 +2,9 @@
 #
 # Make sure we have the ENV set correctly
 #
+set -e
+set -u
+
 pushd /src
 echo "create of database started"
 export PYTHONPATH=$PYTHONPATH:`pwd`
