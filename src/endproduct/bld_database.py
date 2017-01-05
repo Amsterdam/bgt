@@ -1,11 +1,10 @@
-import zipfile
+import csv
 import logging
+import zipfile
+from io import StringIO, BytesIO
 
 import bgt_setup
 from fme.sql_utils import SQLRunner
-from io import StringIO, BytesIO
-import csv
-
 from objectstore.objectstore import ObjectStore
 
 logging.basicConfig(level=logging.INFO)
@@ -17,7 +16,7 @@ NAMEMAPPING = {'BGT_LBL_terrein.csv': 'bgt_openbareruimtelabel',
                'BGT_LBL_water.csv': 'bgt_openbareruimtelabel',
                'BGT_LBL_weg.csv': 'bgt_openbareruimtelabel',
                'BGT_LBL_kunstwerk.csv': 'bgt_openbareruimtelabel',
-               'BGT_LBL_landschappelijk_gebied.csv': 'bgt_openbareruimtelabel',}
+               'BGT_LBL_landschappelijk_gebied.csv': 'bgt_openbareruimtelabel', }
 
 TABLEMAPPING = {'BGTPLUS_BAK': 'imgeo_bak',
                 'BGTPLUS_FGD': 'imgeo_functioneelgebied',
@@ -57,12 +56,12 @@ TABLEMAPPING = {'BGTPLUS_BAK': 'imgeo_bak',
                 'BGT_WGL': 'bgt_wegdeel',
                 }
 
-FIELDMAPPING =    { 'geometry':'geometrie',
-                    'hoek':'opr_label_hoek',
-                    'label_tekst': 'opr_label_tekst'
-                    }
+FIELDMAPPING = {'geometry': 'geometrie',
+                'hoek': 'opr_label_hoek',
+                'label_tekst': 'opr_label_tekst'
+                }
 
-SRID=28992
+SRID = 28992
 
 RESULT_DATABASE_dbname = 'bgt'
 
@@ -81,15 +80,14 @@ class FinalDB:
         self.port = bgt_setup.BGT_PORT
         self.bgt_loc_pgsql = None
 
-
     def create_tables(self):
         """
         Create tables in the database including postgis extension
 
         :return: connection to database
         """
-        bgt_loc_pgsql = SQLRunner(host=self.host, dbname=self.dbname, user=self.dbuser,
-                         password=self.password, port=self.port)
+        bgt_loc_pgsql = SQLRunner(
+            host=self.host, dbname=self.dbname, user=self.dbuser, password=self.password, port=self.port)
 
         root = bgt_setup.SCRIPT_ROOT
         bgt_loc_pgsql.run_sql_script("{app}/bgt_source_sql/010_create_database.sql".format(app=root))
@@ -138,9 +136,8 @@ class FinalDB:
             dialect = 'csvshapes'
 
             with StringIO(self.decodedata(inzip.read(process_file_info.filename))) as file_in_zip:
-                self.bgt_loc_pgsql.import_csv_fixture(file_in_zip, table_name, truncate=False,
-                                                  converthdrs=FIELDMAPPING,
-                                                  srid=SRID, dialect=dialect)
+                self.bgt_loc_pgsql.import_csv_fixture(
+                    file_in_zip, table_name, truncate=False, converthdrs=FIELDMAPPING, srid=SRID, dialect=dialect)
 
     def decodedata(self, filebytes):
         """
@@ -178,7 +175,7 @@ class FinalDB:
 
         return zipfile.ZipFile(content)
 
-    def map_csv_to_table(self, csvname:str) -> str:
+    def map_csv_to_table(self, csvname: str) -> str:
         """
         Translate found tablename in csv to sqlname
 
@@ -196,6 +193,7 @@ class FinalDB:
             except KeyError:
                 log.error('%s not found in mapping, file ignored', csvname)
         return mapped_name
+
 
 if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')

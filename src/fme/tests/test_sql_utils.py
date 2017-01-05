@@ -2,8 +2,8 @@ import logging
 
 import pytest
 
-from fme.sql_utils import SQLRunner
 import bgt_setup
+from fme.sql_utils import SQLRunner
 
 log = logging.getLogger(__name__)
 
@@ -11,10 +11,9 @@ log = logging.getLogger(__name__)
 @pytest.fixture
 def sql_runner():
     # 5401 / localhost
-    runner = SQLRunner(host=bgt_setup.DB_FME_HOST,
-                        port=bgt_setup.DB_FME_PORT,
-                        dbname=bgt_setup.DB_FME_DBNAME,
-                        user=bgt_setup.DB_FME_USER)
+    runner = SQLRunner(
+        host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
+        dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER)
     runner.run_sql("DROP TABLE IF EXISTS public.sql_utils;")
     return runner
 

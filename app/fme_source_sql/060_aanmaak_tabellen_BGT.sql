@@ -184,3 +184,24 @@ COMMENT ON TABLE imgeo_controle.vergelijk_gml_db
 COMMENT ON COLUMN imgeo_controle.vergelijk_gml_db.aantal_gml IS 'aantal rijen van gml tabellen in dbase';
 COMMENT ON COLUMN imgeo_controle.vergelijk_gml_db.aantal_db IS 'aantal rijen van imgeo-tabellen in dbase';
 COMMENT ON COLUMN imgeo_controle.vergelijk_gml_db.verschil IS 'verschil gml-tabellen met imgeo-tabellen in dbase';
+
+DROP TABLE IF EXISTS imgeo.bgt_begroeidterreindeel CASCADE;
+CREATE TABLE imgeo.bgt_begroeidterreindeel (
+    identificatie_namespace character varying(8),
+    identificatie_lokaalid character varying(38),
+    objectbegintijd date,
+    objecteindtijd date,
+    tijdstipregistratie timestamp without time zone,
+    eindregistratie timestamp without time zone,
+    lv_publicatiedatum timestamp without time zone,
+    bronhouder character varying(40),
+    inonderzoek character varying(1),
+    relatievehoogteligging smallint,
+    bgt_status character varying(8),
+    plus_status character varying(8),
+    bgt_fysiekvoorkomen character varying(200),
+    optalud character varying(1),
+    plus_fysiekvoorkomen character varying(200),
+    geometrie public.geometry(CurvePolygon,28992)
+);
+CREATE INDEX imgeo.bgt_begroeidterreindeel_geometrie_1474551421494 ON imgeo.bgt_begroeidterreindeel USING gist (geometrie);

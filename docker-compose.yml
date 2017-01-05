@@ -15,3 +15,22 @@ database_BGT:
     POSTGRES_DB: bgt
     POSTGRES_USER: bgt
     POSTGRES_PASSWORD: insecure
+
+importer_fme:
+  build: .
+  links:
+    - database_FME:database_FME
+  env_file: keys.env
+#  environment:
+#    FMESERVER:
+#    FMESERVERAPI:
+#    FMEAPI:
+#    FMEDBPASS:
+#    FMEINSTANCE:
+#    DEBUG:
+#    OBJECTSTORE_PASSWORD:
+  volumes:
+    - /tmp/data:/tmp/data
+  command: >
+    bash -c "/app/docker-wait_fme.sh \
+            && /app/import_fme.sh"
