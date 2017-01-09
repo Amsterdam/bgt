@@ -271,6 +271,19 @@ def download_bgt():
     log.info("Download complete")
     return 0
 
+def create_sql_connections():
+
+    print(dict(host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
+                dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER))
+    loc_pgsql = fme_sql_utils.SQLRunner(
+        host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
+        dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER)
+
+    fme_pgsql = fme_sql_utils.SQLRunner(
+        host=bgt_setup.FME_SERVER.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
+        user=bgt_setup.DB_FME_USER, password=bgt_setup.FME_DBPASS)
+
+    return loc_pgsql, fme_pgsql
 
 if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
@@ -281,12 +294,7 @@ if __name__ == '__main__':
 
     log.info("Starting script, current server status is %s", server_manager.get_status())
     # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(
-        host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
-        dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER)
-    fme_pgsql = fme_sql_utils.SQLRunner(
-        host=bgt_setup.FME_SERVER.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
-        user=bgt_setup.DB_FME_USER, password=bgt_setup.FME_DBPASS)
+    loc_pgsql, fme_pgsql = create_sql_connections()
 
     download_bgt()
     try:
@@ -315,6 +323,8 @@ if __name__ == '__main__':
             logging.exception("Exception during FME transformation {}".format(e))
             sys.exit(1)
 
+        # make sure sql connections are up
+        loc_pgsql, fme_pgsql = create_sql_connections()
         fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
         # aanmaak db-views shapes_bgt
@@ -338,6 +348,9 @@ if __name__ == '__main__':
         except Exception as e:
             logging.exception("Exception during FME transformation to shapes {}".format(e))
             sys.exit(1)
+
+        # make sure sql connections are up
+        loc_pgsql, fme_pgsql = create_sql_connections()
 
         # upload the resulting shapes an the source GML zip to objectstore
         upload_resulting_shapes_to_objectstore()
@@ -368,5 +381,5 @@ if __name__ == '__main__':
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
     finally:
-        # server_manager.stop()
+        server_manager.stop()
         sys.exit(0)

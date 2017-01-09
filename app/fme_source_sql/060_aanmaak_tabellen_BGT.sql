@@ -204,4 +204,3 @@ CREATE TABLE imgeo.bgt_begroeidterreindeel (
     plus_fysiekvoorkomen character varying(200),
     geometrie public.geometry(CurvePolygon,28992)
 );
-CREATE INDEX imgeo.bgt_begroeidterreindeel_geometrie_1474551421494 ON imgeo.bgt_begroeidterreindeel USING gist (geometrie);

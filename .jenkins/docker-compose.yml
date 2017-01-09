@@ -6,24 +6,24 @@ database_FME:
     POSTGRES_PASSWORD: insecure
 
 database_BGT:
-  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
-  environment:
-    POSTGRES_DB: basiskaart
-    POSTGRES_USER: basiskaart
-    POSTGRES_PASSWORD: insecure
+ image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+ environment:
+   POSTGRES_DB: basiskaart
+   POSTGRES_USER: basiskaart
+   POSTGRES_PASSWORD: insecure
 
 tests:
-  build: ..
-  links:
-    - database_FME:database_FME
-    - database_BGT:database_BGT
-  command: >
-    bash -c "/app/docker-wait_bgt.sh \
-            && /app/docker-wait_fme.sh \
-            && cd /src \
-            && pip install -r requirements.txt \
-            && export TEST=1 \
-            && py.test /src"
+ build: ..
+ links:
+   - database_FME:database_FME
+   - database_BGT:database_BGT
+ command: >
+   bash -c "/app/docker-wait_bgt.sh \
+           && /app/docker-wait_fme.sh \
+           && cd /src \
+           && pip install -r requirements.txt \
+           && export TEST=1 \
+           && py.test /src"
 
 importer_fme:
   build: ..
@@ -44,39 +44,39 @@ importer_fme:
             && /app/import_fme.sh"
 
 importer_bgt:
-  build: ..
-  links:
-    - database_BGT:database_BGT
-  environment:
-    FMESERVER:
-    FMESERVERAPI:
-    FMEAPI:
-    FMEDBPASS:
-    FMEINSTANCE:
-    DEBUG:
-    BGT_OBJECTSTORE_PASSWORD:
-  volumes:
-    - /tmp/data:/tmp/data
-  command: >
-    bash -c "echo db:5432:bgt:bgt:insecure > ~/.pgpass \
-            && chmod 600 ~/.pgpass \
-            && /app/docker-wait_bgt.sh \
-            && /app/import_bgt.sh"
+ build: ..
+ links:
+   - database_BGT:database_BGT
+ environment:
+   FMESERVER:
+   FMESERVERAPI:
+   FMEAPI:
+   FMEDBPASS:
+   FMEINSTANCE:
+   DEBUG:
+   BGT_OBJECTSTORE_PASSWORD:
+ volumes:
+   - /tmp/data:/tmp/data
+ command: >
+   bash -c "echo db:5432:bgt:bgt:insecure > ~/.pgpass \
+           && chmod 600 ~/.pgpass \
+           && /app/docker-wait_bgt.sh \
+           && /app/import_bgt.sh"
 
 
 db-backup_bgt:
-  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
-  links:
-    - database_BGT:db
-  volumes:
-    - ./backups:/tmp/backups
-  command: >
-    bash -c "echo db:5432:bgt:bgt:insecure > ~/.pgpass \
-            && chmod 600 ~/.pgpass \
-            && pg_dump --clean \
-                        -Fc \
-                        -t imgeo* \
-                        -t bgt* \
-                        -U basiskaart \
-                        -h db -p 5432 \
-                        bgt > /tmp/backups/database.dump"
+ image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+ links:
+   - database_BGT:db
+ volumes:
+   - ./backups:/tmp/backups
+ command: >
+   bash -c "echo db:5432:bgt:bgt:insecure > ~/.pgpass \
+           && chmod 600 ~/.pgpass \
+           && pg_dump --clean \
+                       -Fc \
+                       -t imgeo* \
+                       -t bgt* \
+                       -U basiskaart \
+                       -h db -p 5432 \
+                       bgt > /tmp/backups/database.dump"

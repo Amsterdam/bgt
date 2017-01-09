@@ -122,7 +122,8 @@ def _register_fmejobsubmitter_service(repo_name, filename):
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)
     }
-    reg_service_res = requests.post(reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
+    reg_service_res = requests.post(
+        reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
     reg_service_res.raise_for_status()
     log.debug("Registered `fmejobsubmitter` service")
     return True
@@ -203,7 +204,8 @@ def run_transformation_job(repository, workspace, params):
                 "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
                 "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
                 "Content-Type": "application/json",
-                "Accept": "application/json"}, data=json.dumps(params))
+                "Accept": "application/json"},
+            data=json.dumps(params))
 
         log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
         log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
