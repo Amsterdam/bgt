@@ -55,15 +55,15 @@ class FMEServer(object):
         :return:
         """
         log.info("Starting server %s", self.server_name)
+        res = requests.put(self._url("/start"), headers=self._headers())
+        res.raise_for_status()
+
         while self.get_status() in ['PENDING', 'STOPPING']:
             time.sleep(1)
 
         if self.get_status() == 'RUNNING':
             log.debug("Already running")
             return
-
-        res = requests.put(self._url("/start"), headers=self._headers())
-        res.raise_for_status()
 
         while self.get_status() != 'RUNNING':
             time.sleep(10)

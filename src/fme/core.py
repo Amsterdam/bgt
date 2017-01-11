@@ -259,8 +259,8 @@ def download_bgt():
         approximate = ''
         if total_size == -1:
             # evil PDOK not telling us the content size :-(
-            # educated guess is ~350Mb
-            total_size = 350 * 1024 * 1024
+            # educated guess is ~365Mb
+            total_size = 365 * 1024 * 1024
             approximate = '~'
 
         percentage = float(count * block_size * 100.0 / total_size)
@@ -273,7 +273,7 @@ def download_bgt():
 
 def create_sql_connections():
 
-    print(dict(host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
+    log.info(dict(host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
                 dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER))
     loc_pgsql = fme_sql_utils.SQLRunner(
         host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
@@ -296,58 +296,58 @@ if __name__ == '__main__':
     # localhost / 5401
     loc_pgsql, fme_pgsql = create_sql_connections()
 
-    download_bgt()
+    # download_bgt()
     try:
-        # start the fme server
+        # # start the fme server
         server_manager.start()
-        fme_pgsql.run_sql_script("{app}/fme_source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
-
-        # upload the GML files and FMW scripts
-        fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
-        fme_utils.upload_repository(
-            '{app}/source_data/fme'.format(app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*',
-            register_fmejob=True)
-
-        # When setting up a new FME instance a
-        # DB Connection in FMECLoud needs to be set manually - NOT POSSIBLE IN CURRENT API VERSION
-        fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
-                         'Import_XSD',
-                         'imgeo.xsd')
-        fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
-                         'Import_kaartbladen',
-                         '*.*')
-        try:
-            fme_utils.wait_for_job_to_complete(start_transformation_db())
-            fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-        except Exception as e:
-            logging.exception("Exception during FME transformation {}".format(e))
-            sys.exit(1)
-
-        # make sure sql connections are up
-        loc_pgsql, fme_pgsql = create_sql_connections()
-        fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
-
-        # aanmaak db-views shapes_bgt
-        fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
-        fme_pgsql.run_sql_script(
-            "{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
-
-        # upload shapes fmw scripts naar reposiory
-        fme_utils.upload_repository(
-            '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
-            'BGT-SHAPES', '*.*', register_fmejob=True)
-
-        # upload resources
-        fme_utils.upload_repository(
-            '{app}/source_data/aanmaake_producten_bgt/resource'.format(
-                app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DGN', '*.*', register_fmejob=True)
-
-        # run the `aanmaak_esrishape_uit_DB_BGT` script
-        try:
-            fme_utils.wait_for_job_to_complete(start_transformation_shapes())
-        except Exception as e:
-            logging.exception("Exception during FME transformation to shapes {}".format(e))
-            sys.exit(1)
+        # fme_pgsql.run_sql_script("{app}/fme_source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        #
+        # # upload the GML files and FMW scripts
+        # fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*', recreate_dir=True)
+        # fme_utils.upload_repository(
+        #     '{app}/source_data/fme'.format(app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*',
+        #     register_fmejob=True)
+        #
+        # # When setting up a new FME instance a
+        # # DB Connection in FMECLoud needs to be set manually - NOT POSSIBLE IN CURRENT API VERSION
+        # fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
+        #                  'Import_XSD',
+        #                  'imgeo.xsd')
+        # fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
+        #                  'Import_kaartbladen',
+        #                  '*.*')
+        # try:
+        #     fme_utils.wait_for_job_to_complete(start_transformation_db())
+        #     fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+        # except Exception as e:
+        #     logging.exception("Exception during FME transformation {}".format(e))
+        #     sys.exit(1)
+        #
+        # # make sure sql connections are up
+        # loc_pgsql, fme_pgsql = create_sql_connections()
+        # fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        #
+        # # aanmaak db-views shapes_bgt
+        # fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        # fme_pgsql.run_sql_script(
+        #     "{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
+        #
+        # # upload shapes fmw scripts naar reposiory
+        # fme_utils.upload_repository(
+        #     '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
+        #     'BGT-SHAPES', '*.*', register_fmejob=True)
+        #
+        # # upload resources
+        # fme_utils.upload_repository(
+        #     '{app}/source_data/aanmaake_producten_bgt/resource'.format(
+        #         app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DGN', '*.*', register_fmejob=True)
+        #
+        # # run the `aanmaak_esrishape_uit_DB_BGT` script
+        # try:
+        #     fme_utils.wait_for_job_to_complete(start_transformation_shapes())
+        # except Exception as e:
+        #     logging.exception("Exception during FME transformation to shapes {}".format(e))
+        #     sys.exit(1)
 
         # make sure sql connections are up
         loc_pgsql, fme_pgsql = create_sql_connections()
