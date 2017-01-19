@@ -36,9 +36,9 @@ class SQLRunner(object):
         :param script:
         :return:
         """
-        self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
-        dbcur = self.conn.cursor()
         try:
+            self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
+            dbcur = self.conn.cursor()
             dbcur.execute(script)
             if dbcur.rowcount > 0:
                 return dbcur.fetchall()
@@ -46,7 +46,7 @@ class SQLRunner(object):
 
         except psycopg2.DatabaseError as e:
             log.debug("Database script exception: procedures :%s" % str(e))
-            raise Exception(e)
+            raise(e)
 
     def run_sql_script(self, script_name) -> list:
         """
@@ -76,10 +76,10 @@ class SQLRunner(object):
         """
         log.info("Import CSV {} to table {}".format(filename, table_name))
 
-        self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
-        dbcur = self.conn.cursor()
-        rows = 0
         try:
+            self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
+            dbcur = self.conn.cursor()
+            rows = 0
             if truncate:
                 dbcur.execute('TRUNCATE TABLE {};'.format(table_name))
             if isinstance(filename, str):       # complete path
@@ -115,7 +115,7 @@ class SQLRunner(object):
             data = csvfile.read(1024)
             try:
                 dialect = csv.Sniffer().sniff(data)
-            except csv.Error:
+            except csv.Error as e:
                 log.info('CSV Dialect not found by sniffer, fallback to csvshapes dialect')
                 csv.register_dialect('csvshapes', delimiter=';', doublequote=False, quoting=csv.QUOTE_NONE)
                 dialect = 'csvshapes'

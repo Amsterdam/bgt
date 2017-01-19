@@ -22,8 +22,8 @@ class FMEServer(object):
             socket.gethostbyname(self.server_name.split('//')[-1])
             log.debug('DNS is available for server')
             return True
-        except:
-            log.warn("No DNS available for server")
+        except socket.gaierror:
+            log.warning("No DNS available for server")
             return False
 
     def _headers(self) -> dict:
