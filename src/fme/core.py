@@ -352,9 +352,6 @@ if __name__ == '__main__':
     logging.getLogger('requests').setLevel('WARNING')
     log.info("Starting import script")
 
-    with servermanager.start():
-        ...
-
     try:
         server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
