@@ -1,11 +1,11 @@
 import csv
+import datetime
 import glob
 import io
 import logging
 import os
 import subprocess
 import sys
-import datetime
 
 import psycopg2
 import psycopg2.extensions
@@ -46,7 +46,7 @@ class SQLRunner(object):
 
         except psycopg2.DatabaseError as e:
             log.debug("Database script exception: procedures :%s" % str(e))
-            raise(e)
+            raise (e)
 
     def run_sql_script(self, script_name) -> list:
         """
@@ -82,11 +82,11 @@ class SQLRunner(object):
             rows = 0
             if truncate:
                 dbcur.execute('TRUNCATE TABLE {};'.format(table_name))
-            if isinstance(filename, str):       # complete path
+            if isinstance(filename, str):  # complete path
                 with open(filename) as csvfile:
                     rows = self.process_csvfile(csvfile, table_name, dbcur,
                                                 converthdrs, emptynone, srid, dialect)
-            else:                               # file like object
+            else:  # file like object
                 rows = self.process_csvfile(filename, table_name, dbcur,
                                             converthdrs, emptynone, srid, dialect)
         except psycopg2.DatabaseError as e:
@@ -109,7 +109,7 @@ class SQLRunner(object):
         :param srid: coordinate system
         :return: number of rows
         """
-        csv.field_size_limit(sys.maxsize)                   # required for extremely large shapes (BGT_OTRN_erf.csv)
+        csv.field_size_limit(sys.maxsize)  # required for extremely large shapes (BGT_OTRN_erf.csv)
         rows = 0
         if dialect is None:
             data = csvfile.read(1024)
@@ -129,9 +129,9 @@ class SQLRunner(object):
         for line in reader:
             # insert to db table
             values = self.process_values(line, emptynone, dateconvert, srid, geo_dict)
-            placeholders =['%s']* len(values)
-            for pos, value in  [(idx, value) for idx, value in enumerate(values)
-                                if isinstance(value, str) and 'ST_GeomFromText' in value]:
+            placeholders = ['%s'] * len(values)
+            for pos, value in [(idx, value) for idx, value in enumerate(values)
+                               if isinstance(value, str) and 'ST_GeomFromText' in value]:
                 placeholders[pos] = value
                 del values[pos]
             sqlstmt = 'insert into {} {} values ({})'.format(
@@ -140,7 +140,7 @@ class SQLRunner(object):
             rows += 1
         return rows
 
-    def process_values(self, line:list, emptynone:bool, dateconvert:list, srid:int, geo_dict:dict) -> list:
+    def process_values(self, line: list, emptynone: bool, dateconvert: list, srid: int, geo_dict: dict) -> list:
         """
         Process values in a single row in csv, modify them to allow for proper import
 
@@ -155,15 +155,15 @@ class SQLRunner(object):
         for idx, value in enumerate(line):
             if value == '' and emptynone:
                 newvalues.append(None)
-            elif idx in dateconvert:                # datefield
-                if len(value) > 12:                 # datetime
+            elif idx in dateconvert:  # datefield
+                if len(value) > 12:  # datetime
                     newvalues.append(datetime.datetime(int(value[0:4]), int(value[4:6]),
                                                        int(value[6:8]), int(value[8:10]),
                                                        int(value[10:12]), int(value[12:])))
-                else:                               # date
+                else:  # date
                     newvalues.append(
                         datetime.datetime(int(value[0:4]), int(value[4:6]), int(value[6:8])))
-            elif idx in geo_dict:                   # Geometry fields
+            elif idx in geo_dict:  # Geometry fields
                 if geo_dict[idx] == 'GEOMETRY':
                     newvalues.append("ST_GeomFromText('{}',{})".format(value, srid))
                 elif geo_dict[idx] == 'COMPOUNDCURVE':
@@ -174,16 +174,16 @@ class SQLRunner(object):
             else:
                 try:
                     intvalue = int(value)
-                    newvalues.append(intvalue)      # integer
+                    newvalues.append(intvalue)  # integer
                 except ValueError:
                     try:
-                        flvalue = float(value)      # floate
+                        flvalue = float(value)  # floate
                         newvalues.append(flvalue)
                     except ValueError:
-                        newvalues.append(value)     # string
+                        newvalues.append(value)  # string
         return newvalues
 
-    def process_hdr(self, headers:list, converthdrs:dict, dbcur, table_name:str) -> (str, list, dict):
+    def process_hdr(self, headers: list, converthdrs: dict, dbcur, table_name: str) -> (str, list, dict):
         """
         Convert headers in csv to fieldnames in sql including type information retrieved from
         the database
@@ -205,7 +205,7 @@ class SQLRunner(object):
         error_matching = False
         new_hdr = []
         for idx, h in enumerate(headers):
-            h = h.lower().replace('-','_')                  # convert to lowercase
+            h = h.lower().replace('-', '_')  # convert to lowercase
             if h in columns:
                 columns[h] = True
                 new_hdr.append(h)
@@ -233,7 +233,7 @@ class SQLRunner(object):
 
         return '("' + '","'.join(new_hdr) + '")', dfs, geo_dict
 
-    def get_columninfo(self, dbcur, table_name:str) -> (dict, list, dict):
+    def get_columninfo(self, dbcur, table_name: str) -> (dict, list, dict):
         """
         Retrieves columninfo from the database to allow modifying the data properly
 
@@ -246,18 +246,18 @@ class SQLRunner(object):
         dbcur.execute("""SELECT current_schema();""")
         schema = dbcur.fetchall()[0][0]
         column_info_query = \
-                        """SELECT column_name, data_type FROM information_schema.columns
-                            WHERE
-                            table_schema = '{}' AND
-                            table_name = '{}';""".format(schema, table_name)
+            """SELECT column_name, data_type FROM information_schema.columns
+                WHERE
+                table_schema = '{}' AND
+                table_name = '{}';""".format(schema, table_name)
         dbcur.execute(column_info_query)
         columninfo = dbcur.fetchall()
         datefields = [column_name for column_name, data_type in columninfo
                       if 'date' in data_type or 'timestamp' in data_type]
-        columns = {column_name:False for column_name, data_type in columninfo}
+        columns = {column_name: False for column_name, data_type in columninfo}
         dbcur.execute("""SELECT f_geometry_column, type from geometry_columns WHERE f_table_name = '{}'
                         and f_table_schema = '{}';""".format(table_name, schema))
-        geometry_columns = {column:geometrytype for column, geometrytype in dbcur.fetchall()}
+        geometry_columns = {column: geometrytype for column, geometrytype in dbcur.fetchall()}
         return columns, datefields, geometry_columns
 
     def get_ogr2_ogr_login(self, schema):
