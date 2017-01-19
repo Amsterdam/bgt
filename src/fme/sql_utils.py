@@ -1,7 +1,6 @@
 import csv
 import datetime
 import glob
-import io
 import logging
 import os
 import subprocess
@@ -46,7 +45,7 @@ class SQLRunner(object):
 
         except psycopg2.DatabaseError as e:
             log.debug("Database script exception: procedures :%s" % str(e))
-            raise (e)
+            raise e
 
     def run_sql_script(self, script_name) -> list:
         """
@@ -76,10 +75,10 @@ class SQLRunner(object):
         """
         log.info("Import CSV {} to table {}".format(filename, table_name))
 
+        rows = 0
         try:
             self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
             dbcur = self.conn.cursor()
-            rows = 0
             if truncate:
                 dbcur.execute('TRUNCATE TABLE {};'.format(table_name))
             if isinstance(filename, str):  # complete path
@@ -276,25 +275,3 @@ class SQLRunner(object):
                     LCO='-lco SPATIAL_INDEX=OFF',
                     CONF='--config PG_USE_COPY YES',
                     FNAME=file), shell=True)
-
-    def p_import_gml_control_db(self):
-        ON_POSIX = 'posix' in sys.builtin_module_names
-        os.putenv('PGCLIENTENCODING', 'UTF8')
-
-        # create a pipe to get data
-        input_fd, output_fd = os.pipe()
-        # start several subprocesses
-        processes = [subprocess.Popen(
-            ['ogr2ogr', '-skipfailures', '-overwrite', '-f', 'PostgreSQL',
-             'PG:{PG}'.format(PG=self.get_ogr2_ogr_login('imgeo_gml')),
-             '-gt', '655360', '-lco', 'SPATIAL_INDEX=OFF', '--config',
-             'PG_USE_COPY', 'YES', '{FNAME}'.format(FNAME=fname)],
-            stdout=output_fd, close_fds=ON_POSIX) for fname in glob.glob('/tmp/data/*.gml')]
-        os.close(output_fd)  # close unused end of the pipe
-
-        # read output line by line as soon as it is available
-        with io.open(input_fd, 'r', buffering=1) as file:
-            for line in file:
-                print(line, end='')
-        for p in processes:
-            p.wait()

@@ -214,7 +214,7 @@ def run_transformation_job(repository, workspace, params):
         return {'jobid': res['id'], 'urltransform': urltransform}
     except requests.exceptions.RequestException as e:
         log.debug('HTTP Request failed')
-        raise(e)
+        raise e
 
 
 def fetch_log_for_job(job):

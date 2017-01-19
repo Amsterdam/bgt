@@ -1,6 +1,5 @@
 import json
 import logging
-import sys
 import urllib.parse
 import urllib.request
 from datetime import datetime
@@ -44,7 +43,7 @@ def start_transformation_db():
     :return: dict with 'jobid' and 'urltransform'
     """
     log.info("Starting transformation")
-    return fme_utils.run_transfxormation_job(
+    return fme_utils.run_transformation_job(
         'BGT-DB',
         'inlezen_DB_BGT_uit_citygml.fmw',
         {
@@ -150,7 +149,7 @@ def start_test_transformation():
                     "$(FME_SHAREDRESOURCE_DATA)/TestExportTotaalgebied.zip"}]})
 
 
-def upload_bgt_source_zip():
+def upload_pdok_zip_to_objectstore():
     """
     Upload the PDOK/bgt source zip to the objecstore
     :return:
@@ -270,105 +269,126 @@ def download_bgt():
     log.info("Download complete")
 
 
-def create_sql_connections():
-
-    log.info(dict(host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
-                dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER))
-    loc_pgsql = fme_sql_utils.SQLRunner(
-        host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
-        dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER)
-
-    fme_pgsql = fme_sql_utils.SQLRunner(
+def create_fme_sql_connection():
+    log.info("create dbconnection for FME database")
+    return fme_sql_utils.SQLRunner(
         host=bgt_setup.FME_SERVER.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
         user=bgt_setup.DB_FME_USER, password=bgt_setup.FME_DBPASS)
 
-    return loc_pgsql, fme_pgsql
+
+def create_loc_sql_connection():
+    log.info("create dbconnection for Local database")
+    return fme_sql_utils.SQLRunner(
+        host=bgt_setup.DB_FME_HOST, port=bgt_setup.DB_FME_PORT,
+        dbname=bgt_setup.DB_FME_DBNAME, user=bgt_setup.DB_FME_USER)
+
+
+def create_sql_connections():
+    return create_loc_sql_connection(), create_fme_sql_connection()
+
+
+def upload_data():
+    "Upload the GML files, XSD and kaartbladen/shapes"
+    fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*')
+    fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
+                     'Import_XSD',
+                     'imgeo.xsd')
+    fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
+                     'Import_kaartbladen',
+                     '*.*')
+
+
+def upload_script_resources():
+    """
+    Upload script resources
+    :return:
+    """
+    fme_utils.upload_repository(
+        '{app}/source_data/fme'.format(app=bgt_setup.SCRIPT_ROOT),
+        'repositories', 'BGT-DB', '*.*',
+        register_fmejob=True)
+    fme_utils.upload_repository(
+        '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
+        'BGT-SHAPES', '*.*', register_fmejob=True)
+    fme_utils.upload_repository(
+        '{app}/source_data/aanmaak_producten_bgt/resource'.format(
+            app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DGN', '*.*', register_fmejob=True)
+
+
+def create_fme_dbschema_and_shape_views():
+    # create FME schema
+    fme_pgsql = create_fme_sql_connection()
+    fme_pgsql.run_sql_script("{app}/fme_source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
+    fme_pgsql.close()
+
+    fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
+
+    # aanmaak db-views shapes_bgt
+    fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
+    fme_pgsql.run_sql_script(
+        "{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
+
+    fme_pgsql.close()
+
+
+def run_before_after_comparisons():
+    # import controle db using /tmp/data/*.gml
+    # make sure sql connections are up
+    loc_pgsql = create_loc_sql_connection()
+    loc_pgsql.import_gml_control_db()
+
+    # import csv / mapping db
+    loc_pgsql.import_csv_fixture('../app/source_data/075_mapping.csv', 'imgeo_controle.mapping_gml_db')
+
+    # comparisons FKA: 040...
+    fme_comparison.compare_before_after_counts_csv()
+
+    # comparisons FKA 080...
+    fme_comparison.create_comparison_data()
+
 
 if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
     log.info("Starting import script")
 
-    server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
+    with servermanager.start():
+        ...
 
-    log.info("Starting script, current server status is %s", server_manager.get_status())
-    # localhost / 5401
-    loc_pgsql, fme_pgsql = create_sql_connections()
-
-    download_bgt()
     try:
+        server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
+
+        log.info("Starting script, current server status is %s", server_manager.get_status())
+
+        download_bgt()
+
         # start the fme server
         server_manager.start()
-        fme_pgsql.run_sql_script("{app}/fme_source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
-        loc_pgsql.close()
-        fme_pgsql.close()
 
-        # upload the GML files and FMW scripts
-        fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*')
-        fme_utils.upload_repository(
-            '{app}/source_data/fme'.format(app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DB', '*.*',
-            register_fmejob=True)
+        # upload data and FMW scripts
+        upload_data()
+        upload_script_resources()
 
-        # When setting up a new FME instance a
-        # DB Connection in FMECLoud needs to be set manually - NOT POSSIBLE IN CURRENT API VERSION
-        fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
-                         'Import_XSD',
-                         'imgeo.xsd')
-        fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
-                         'Import_kaartbladen',
-                         '*.*')
         fme_utils.wait_for_job_to_complete(start_transformation_db())
         fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
 
-        # make sure sql connections are up
-        loc_pgsql, fme_pgsql = create_sql_connections()
-        fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
-
-        # aanmaak db-views shapes_bgt
-        fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
-        fme_pgsql.run_sql_script(
-            "{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
-
-        loc_pgsql.close()
-        fme_pgsql.close()
-
-        # upload shapes fmw scripts naar reposiory
-        fme_utils.upload_repository(
-            '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
-            'BGT-SHAPES', '*.*', register_fmejob=True)
-
-        # upload resources
-        fme_utils.upload_repository(
-            '{app}/source_data/aanmaake_producten_bgt/resource'.format(
-                app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DGN', '*.*', register_fmejob=True)
+        create_fme_dbschema_and_shape_views()
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         fme_utils.wait_for_job_to_complete(start_transformation_shapes())
+        # run transformation to `DGN` format
+        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
+        # run transformation to `NLCS` format
+        fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
 
         # upload the resulting shapes an the source GML zip to objectstore
         upload_resulting_shapes_to_objectstore()
-        upload_bgt_source_zip()
+        upload_pdok_zip_to_objectstore()
 
-        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
-        fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
+        run_before_after_comparisons()
 
-        # import controle db vanuit /tmp/data/*.gml
-        # make sure sql connections are up
-        loc_pgsql, fme_pgsql = create_sql_connections()
-        loc_pgsql.import_gml_control_db()
-
-        # import csv / mapping db
-        loc_pgsql.import_csv_fixture('../app/source_data/075_mapping.csv', 'imgeo_controle.mapping_gml_db')
-
-        # comparisons FKA: 040...
-        fme_comparison.compare_before_after_counts_csv()
-
-        # comparisons FKA 080...
-        fme_comparison.create_comparison_data()
-        loc_pgsql.close()
-        fme_pgsql.close()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
-        raise(e)
+        raise (e)
     finally:
         server_manager.stop()
