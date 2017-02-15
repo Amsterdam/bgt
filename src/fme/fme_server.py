@@ -56,7 +56,11 @@ class FMEServer(object):
         """
         log.info("Starting server %s", self.server_name)
         res = requests.put(self._url("/start"), headers=self._headers())
-        res.raise_for_status()
+        if res.status_code == 402:
+            # prevent incorrect payment error
+            log.info(res)
+        else:
+            res.raise_for_status()
 
         while self.get_status() in ['PENDING', 'STOPPING']:
             time.sleep(1)

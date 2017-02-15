@@ -388,4 +388,5 @@ if __name__ == '__main__':
         log.exception("Could not process server jobs {}".format(e))
         raise (e)
     finally:
-        server_manager.stop()
+        log.info("Stopping FME service")
+        # server_manager.stop()
