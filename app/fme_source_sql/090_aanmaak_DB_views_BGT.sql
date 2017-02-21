@@ -48,26 +48,26 @@ FROM imgeo.bgt_kruinlijn);
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_bgt_nummeraanduidingreeks AS (
 SELECT
-    identificatie_namespace     AS NAMESPACE,
-    identificatie_lokaalid      AS LOKAALID,
-    objectbegintijd             AS BEGINTIJD,
-    objecteindtijd              AS EINDDTIJD,
-    tijdstipregistratie         AS TIJDREG,
-    eindregistratie             AS EINDREG,
-    lv_publicatiedatum          AS LV_PUBDAT,
-    bronhouder                  AS BRONHOUD,
-    inonderzoek                 AS INONDERZK,
-    relatievehoogteligging      AS HOOGTELIG,
-    bgt_status                  AS BGTSTATUS,
-    plus_status                 AS PLUSSTATUS,
-    REPLACE(identificatie_namespace ,'NL.IMGeo','BGT_LBL_nummeraanduidingreeks')
-                                AS BESTANDSNAAM,
-    identificatiebagpnd         AS BAGPNDID,
-    id_bagvbolaagste_huisnummer AS BAGVBOLGST,
-    id_bagvbohoogste_huisnummer AS BAGVBOHGST,
-    hnr_label_tekst             AS LABELTEKST,
-    hnr_label_hoek              AS HOEK,
-    geometrie                   AS GEOMETRIE
+        bgt_nummeraanduidingreeks.identificatie_namespace AS namespace,
+        bgt_nummeraanduidingreeks.identificatie_lokaalid AS lokaalid,
+        bgt_nummeraanduidingreeks.objectbegintijd AS begintijd,
+        bgt_nummeraanduidingreeks.objecteindtijd AS einddtijd,
+        bgt_nummeraanduidingreeks.tijdstipregistratie AS tijdreg,
+        bgt_nummeraanduidingreeks.eindregistratie AS eindreg,
+        bgt_nummeraanduidingreeks.lv_publicatiedatum AS lv_pubdat,
+        bgt_nummeraanduidingreeks.bronhouder AS bronhoud,
+        bgt_nummeraanduidingreeks.inonderzoek AS inonderzk,
+        bgt_nummeraanduidingreeks.relatievehoogteligging AS hoogtelig,
+        bgt_nummeraanduidingreeks.bgt_status AS bgtstatus,
+        bgt_nummeraanduidingreeks.plus_status AS plusstatus,
+        replace(bgt_nummeraanduidingreeks.identificatie_namespace::text, 'NL.IMGeo'::text, 'BGT_LBL_nummeraanduidingreeks'::text) AS bestandsnaam,
+        bgt_nummeraanduidingreeks."identificatieBAGPND" AS bagpndid,
+        bgt_nummeraanduidingreeks."identificatieBAGVBOLaagsteHuisnummer" AS bagvbolgst,
+        bgt_nummeraanduidingreeks."identificatieBAGVBOHoogsteHuisnummer" AS bagbvohgst,
+        bgt_nummeraanduidingreeks.tekst,
+        bgt_nummeraanduidingreeks.tekst_afgekort AS tekst_afk,
+        bgt_nummeraanduidingreeks.hnr_label_hoek AS hoek,
+        bgt_nummeraanduidingreeks.geometrie
 FROM imgeo.bgt_nummeraanduidingreeks);
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_bgt_onbegroeidterreindeel AS (
