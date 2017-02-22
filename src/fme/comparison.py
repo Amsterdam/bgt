@@ -70,7 +70,7 @@ def _compare_counts():
     }
 
     # localhost / 5401
-    def count_table_rows(table, host='database_FME', database='gisdb', port='5432', user='dbuser', password='insecure'):
+    def count_table_rows(table, host='database', database='gisdb', port='5432', user='dbuser', password='insecure'):
         res = -1
         conn = psycopg2.connect(
             "host={} port={} dbname={} user={}  password={}".format(host, port, database, user, password)
