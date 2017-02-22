@@ -54,28 +54,26 @@ class FMEServer(object):
         Start the FME server instance
         :return:
         """
-        log.info("Starting server %s", self.server_name)
-        res = requests.put(self._url("/start"), headers=self._headers())
-        if res.status_code == 402:
-            # prevent incorrect payment error
-            log.info(res)
-        else:
+        if self.get_status() != "RUNNING":
+            # Only start the service when it is not running
+            log.info("Starting server %s", self.server_name)
+            res = requests.put(self._url("/start"), headers=self._headers())
             res.raise_for_status()
 
-        while self.get_status() in ['PENDING', 'STOPPING']:
-            time.sleep(1)
+            while self.get_status() in ['PENDING', 'STOPPING']:
+                time.sleep(1)
 
-        if self.get_status() == 'RUNNING':
-            log.debug("Already running")
-            return
+            if self.get_status() == 'RUNNING':
+                log.debug("Already running")
+                return
 
-        while self.get_status() != 'RUNNING':
-            time.sleep(10)
+            while self.get_status() != 'RUNNING':
+                time.sleep(10)
 
-        log.debug("Waiting for DNS availability of server")
+            log.debug("Waiting for DNS availability of server")
 
-        while not self._in_dns():
-            time.sleep(2)
+            while not self._in_dns():
+                time.sleep(2)
 
         log.info("Server started")
 

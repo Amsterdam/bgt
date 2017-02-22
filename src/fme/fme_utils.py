@@ -146,7 +146,7 @@ def upload(source_directory, repo, directory, files, recreate_dir=True):
         create_directory(directory)
 
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}? \
-          createDirectories=false&detail=low&overwrite=false'.format(
+          createDirectories=false&detail=low&overwrite=true'.format(
         DIR=directory, FME_SERVER=FME_SERVER, url_connect=url_connect)
 
     for infile in glob.glob(os.path.join(source_directory, files)):

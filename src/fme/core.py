@@ -1,3 +1,4 @@
+
 import json
 import logging
 import urllib.parse
@@ -74,11 +75,12 @@ def start_transformation_dgn():
          "FMEDirectives": {},
          "NMDirectives": {"successTopics": [], "failureTopics": []},
          "TMDirectives": {"tag": "linux", "description": "Aanmaak NLCS uit DB"},
-         "publishedParameters": [{"name": "SourceDataset_POSTGIS", "value": "bgt"},
-                                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-                                 {"name": "OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)/DGN.zip"},
-                                 {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)/BGT_NLCS.cel"},
-                                 {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-GBKAseed_v8.dgn"}]})
+         "publishedParameters": [
+             {"name": "SourceDataset_POSTGIS", "value": "bgt"},
+             {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
+             {"name": "P_OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)/DGN.zip"},
+             {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)/resources/BGT_NLCS.cel"},
+             {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)/resources/GBKAseed_v8.dgn"}]})
 
 
 def start_transformation_nlcs():
@@ -95,12 +97,13 @@ def start_transformation_nlcs():
          "FMEDirectives": {},
          "NMDirectives": {"successTopics": [], "failureTopics": []},
          "TMDirectives": {"tag": "linux", "description": "Aanmaak NLCS uit DB"},
-         "publishedParameters": [{"name": "SourceDataset_POSTGIS", "value": "bgt"},
-                                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-                                 {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)/BGT_NLCS.cel"},
-                                 {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-ISO.ttf"},
-                                 {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS.zip"},
-                                 {"name": "SEED_FILE_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-Seed2d.dgn"}]})
+         "publishedParameters": [
+             {"name": "SourceDataset_POSTGIS", "value": "bgt"},
+             {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
+             {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)/BGT_NLCS.cel"]},
+             {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-ISO.ttf"},
+             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS.zip"},
+             {"name": "SEED_FILE_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/resources/NLCS-Seed2d.dgn"}]})
 
 
 def start_transformation_shapes():
@@ -211,21 +214,23 @@ def pdok_url():
     :return:
     """
     pdok_extract = "https://www.pdok.nl/download/service/extract.zip"
+    tile_codes = [
+        38121, 38115, 38120, 38077, 38076, 38078, 38079, 38421, 38423, 38429, 38431, 38474, 38475, 38478,
+        38479, 38490, 38491, 38494, 38516, 38518, 38690, 38525, 38696, 38688, 38666, 38667, 38670, 38671,
+        38682, 38680, 38681, 38675, 38673, 38331, 38329, 38323, 38321, 38299, 38298, 38287, 38285, 38284,
+        38281, 38275, 38274, 38103, 38109, 38280, 38108, 38105, 38104, 38093, 38092, 38094, 38116, 38674,
+        38672, 38330, 38328, 38317, 38476, 38477, 38488, 38489, 38492, 38493, 38495, 38664, 38665, 38668,
+        38517, 38466, 38467, 38118, 38119, 38117, 38095, 38106, 38107, 38110, 38111, 38282, 38283, 38316,
+        38319, 38472, 38464, 38465, 38122, 38470, 38471, 38468, 38469, 38126, 38127, 38124, 38125, 38482,
+        38480, 38138, 38136, 38483, 38481, 38139, 38140, 38142, 38484, 38486, 38487, 38485, 38143, 38141,
+        38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
+        38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
+        38309, 38320, 38322]
+
     tiles = {
         "layers": [
             {"aggregateLevel": 0,
-             "codes": [
-                 38121, 38115, 38120, 38077, 38076, 38078, 38079, 38421, 38423, 38429, 38431, 38474, 38475, 38478,
-                 38479, 38490, 38491, 38494, 38516, 38518, 38690, 38525, 38696, 38688, 38666, 38667, 38670, 38671,
-                 38682, 38680, 38681, 38675, 38673, 38331, 38329, 38323, 38321, 38299, 38298, 38287, 38285, 38284,
-                 38281, 38275, 38274, 38103, 38109, 38280, 38108, 38105, 38104, 38093, 38092, 38094, 38116, 38674,
-                 38672, 38330, 38328, 38317, 38476, 38477, 38488, 38489, 38492, 38493, 38495, 38664, 38665, 38668,
-                 38517, 38466, 38467, 38118, 38119, 38117, 38095, 38106, 38107, 38110, 38111, 38282, 38283, 38316,
-                 38319, 38472, 38464, 38465, 38122, 38470, 38471, 38468, 38469, 38126, 38127, 38124, 38125, 38482,
-                 38480, 38138, 38136, 38483, 38481, 38139, 38140, 38142, 38484, 38486, 38487, 38485, 38143, 38141,
-                 38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
-                 38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
-                 38309, 38320, 38322]}]}
+             "codes": tile_codes}]}
     tiles_as_json = json.dumps(tiles)
     datum = datetime.now().strftime("%d-%m-%Y")
     return pdok_extract + "?" + urllib.parse.urlencode({
@@ -233,6 +238,8 @@ def pdok_url():
         "excludedtypes": "plaatsbepalingspunt",
         "history": "false",
         "enddate": datum,
+
+
         "tiles": tiles_as_json})
 
 
@@ -288,14 +295,13 @@ def create_sql_connections():
 
 
 def upload_data():
-    "Upload the GML files, XSD and kaartbladen/shapes"
-    fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*')
-    fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
-                     'Import_XSD',
-                     'imgeo.xsd')
-    fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT), 'resources/connections',
-                     'Import_kaartbladen',
-                     '*.*')
+    """Upload the GML files, XSD and kaartbladen/shapes"""
+    fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT),
+                     'resources/connections', 'Import_XSD', 'imgeo.xsd')
+    fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT),
+                     'resources/connections', 'Import_kaartbladen', '*.*')
+    fme_utils.upload('{app}/source_data/aanmaak_producten_bgt/resource'.format(app=bgt_setup.SCRIPT_ROOT),
+                     'resources/connections', 'resources', '*.*')
 
 
 def upload_script_resources():
@@ -305,35 +311,45 @@ def upload_script_resources():
     """
     fme_utils.upload_repository(
         '{app}/source_data/fme'.format(app=bgt_setup.SCRIPT_ROOT),
-        'repositories', 'BGT-DB', '*.*',
-        register_fmejob=True)
+        'BGT-DB', '*.*', register_fmejob=True)
+
     fme_utils.upload_repository(
         '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
-        'BGT-SHAPES', '*.*', register_fmejob=True)
+        'BGT-SHAPES', '*shape*.*', register_fmejob=True)
+
     fme_utils.upload_repository(
-        '{app}/source_data/aanmaak_producten_bgt/resource'.format(
-            app=bgt_setup.SCRIPT_ROOT), 'repositories', 'BGT-DGN', '*.*', register_fmejob=True)
+        '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
+        'BGT-DGN', '*dgn*.*', register_fmejob=True)
 
 
-def create_fme_dbschema_and_shape_views():
-    # create FME schema
+def create_fme_dbschema():
+    """
+    create FME schema
+    :return:
+    """
     fme_pgsql = create_fme_sql_connection()
     fme_pgsql.run_sql_script("{app}/fme_source_sql/020_create_schema.sql".format(app=bgt_setup.SCRIPT_ROOT))
+    fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
     fme_pgsql.close()
 
-    fme_pgsql.run_sql_script("{app}/fme_source_sql/060_aanmaak_tabellen_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
 
-    # aanmaak db-views shapes_bgt
+def create_fme_shape_views():
+    """
+    aanmaak db-views shapes_bgt
+    :return:
+    """
+    fme_pgsql = create_fme_sql_connection()
     fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
     fme_pgsql.run_sql_script(
         "{app}/fme_source_sql/090_aanmaak_DB_views_IMGEO.sql".format(app=bgt_setup.SCRIPT_ROOT))
-
     fme_pgsql.close()
 
 
 def run_before_after_comparisons():
-    # import controle db using /tmp/data/*.gml
-    # make sure sql connections are up
+    """
+    import controle db using /tmp/data/*.gml
+    make sure sql connections are up
+    """
     loc_pgsql = create_loc_sql_connection()
     loc_pgsql.import_gml_control_db()
 
@@ -353,14 +369,15 @@ if __name__ == '__main__':
     log.info("Starting import script")
 
     try:
-        server_manager = fme_server.FMEServer(bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
+        server_manager = fme_server.FMEServer(
+            bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
         log.info("Starting script, current server status is %s", server_manager.get_status())
 
-        download_bgt()
-
         # start the fme server
         server_manager.start()
+
+        download_bgt()
 
         # upload data and FMW scripts
         upload_data()
@@ -369,24 +386,26 @@ if __name__ == '__main__':
         fme_utils.wait_for_job_to_complete(start_transformation_db())
         fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
 
-        create_fme_dbschema_and_shape_views()
+        create_fme_dbschema()
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         fme_utils.wait_for_job_to_complete(start_transformation_shapes())
         # run transformation to `DGN` format
-        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
+        ## Do not run the DGN and NLCS transforms because of unclear error reporting about params.
+        # fme_utils.wait_for_job_to_complete(start_transformation_dgn())
         # run transformation to `NLCS` format
-        fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
+        # fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
+
+        # create_fme_shape_views()
 
         # upload the resulting shapes an the source GML zip to objectstore
-        upload_resulting_shapes_to_objectstore()
+        # upload_resulting_shapes_to_objectstore()
         upload_pdok_zip_to_objectstore()
 
         run_before_after_comparisons()
-
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
-        raise (e)
+        raise e
     finally:
         log.info("Stopping FME service")
-        # server_manager.stop()
+        server_manager.stop()
