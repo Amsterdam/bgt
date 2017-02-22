@@ -382,6 +382,7 @@ SELECT
     lv_publicatiedatum          AS LV_PUBDAT,
     bronhouder                  AS BRONHOUD,
     inonderzoek                 AS INONDERZK,
+    hectometeraanduiding        AS hm_aand,
     relatievehoogteligging      AS HOOGTELIG,
     bgt_status                  AS BGTSTATUS,
     plus_status                 AS PLUSSTATUS,
@@ -703,3 +704,29 @@ SELECT
     end                         AS BESTANDSNAAM_PLUS,
     geometrie                   AS GEOMETRIE
 FROM imgeo.imgeo_weginrichtingselement);
+
+CREATE OR REPLACE VIEW imgeo_extractie.vw_bag_ligplaats AS
+ SELECT "BAG_Ligplaats"."BAGID" AS bagid,
+    "BAG_Ligplaats".bestandsnaam,
+    "BAG_Ligplaats".geometrie
+   FROM imgeo."BAG_Ligplaats";
+
+CREATE OR REPLACE VIEW imgeo_extractie.vw_bag_standplaats AS
+ SELECT "BAG_Standplaats"."BAGID" AS bagid,
+    "BAG_Standplaats".bestandsnaam,
+    "BAG_Standplaats".geometrie
+   FROM imgeo."BAG_Standplaats";
+
+CREATE OR REPLACE VIEW imgeo_extractie.vw_cft_onderbouw AS
+ SELECT "CFT_Onderbouw".eindregistratie AS eindreg,
+    "CFT_Onderbouw".relatievehoogteligging AS hoogtelig,
+    "CFT_Onderbouw".bestandsnaam,
+    "CFT_Onderbouw".geometrie
+   FROM imgeo."CFT_Onderbouw";
+
+CREATE OR REPLACE VIEW imgeo_extractie.vw_cft_overbouw AS
+ SELECT "CFT_Overbouw".eindregistratie AS eindreg,
+    "CFT_Overbouw".relatievehoogteligging AS hoogtelig,
+    "CFT_Overbouw".bestandsnaam,
+    "CFT_Overbouw".geometrie
+   FROM imgeo."CFT_Overbouw";
