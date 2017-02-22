@@ -12,8 +12,7 @@ services:
    links:
      - database:database
    command: >
-     bash -c "/app/docker-wait_bgt.sh \
-             && /app/docker-wait_fme.sh \
+     bash -c "/app/docker-wait.sh \
              && cd /src \
              && pip install -r requirements.txt \
              && export TEST=1 \
