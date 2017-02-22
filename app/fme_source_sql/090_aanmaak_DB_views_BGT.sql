@@ -186,7 +186,7 @@ SELECT
     REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
     openbareruimtetype ,',',''),'/ ',''),':',''),'(',''),')',''),'/','_'),' ','_'))
                             AS BESTANDSNAAM,
-    opr_label_tekst         AS LABELTEKST,
+    opr_label_tekst         AS TEKST,
     opr_label_hoek          AS HOEK,
     geometrie               AS geometrie
 FROM imgeo.bgt_openbareruimtelabel);
