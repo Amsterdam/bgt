@@ -1,36 +1,28 @@
-database_FME:
-  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
-  ports:
-    - "5401:5432"
-  environment:
-    POSTGRES_DB: gisdb
-    POSTGRES_USER: dbuser
-    POSTGRES_PASSWORD: insecure
+version: "2.1"
+services:
+  database:
+    image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+    ports:
+      - "5401:5432"
+    environment:
+      POSTGRES_DB: gisdb
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: insecure
 
-database_BGT:
-  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
-  ports:
-    - "5402:5432"
-  environment:
-    POSTGRES_DB: bgt
-    POSTGRES_USER: bgt
-    POSTGRES_PASSWORD: insecure
-
-importer_fme:
-  build: .
-  links:
-    - database_FME:database_FME
-  env_file: keys.env
-#  environment:
-#    FMESERVER:
-#    FMESERVERAPI:
-#    FMEAPI:
-#    FMEDBPASS:
-#    FMEINSTANCE:
-#    DEBUG:
-#    OBJECTSTORE_PASSWORD:
-  volumes:
-    - /tmp/data:/tmp/data
-  command: >
-    bash -c "/app/docker-wait_fme.sh \
-            && /app/import_fme.sh"
+  importer:
+    build: .
+    links:
+      - database:database
+    environment:
+      FMESERVER: ${FMESERVER}
+      FMESERVERAPI: ${FMESERVERAPI}
+      FMEAPI: ${FMEAPI}
+      FMEDBPASS: ${FMEDBPASS:-insecure}
+      FMEINSTANCE: ${FMEINSTANCE:-2493}
+      DEBUG: ${DEBUG:-0}
+      BGT_OBJECTSTORE_PASSWORD: ${BGT_OBJECTSTORE_PASSWORD:-insecure}
+    volumes:
+      - /tmp/data:/tmp/data
+    command: >
+      bash -c "/app/docker-wait.sh \
+              && /app/import_fme.sh"

@@ -22,8 +22,8 @@ class FMEServer(object):
             socket.gethostbyname(self.server_name.split('//')[-1])
             log.debug('DNS is available for server')
             return True
-        except:
-            log.warn("No DNS available for server")
+        except socket.gaierror:
+            log.warning("No DNS available for server")
             return False
 
     def _headers(self) -> dict:
@@ -54,24 +54,26 @@ class FMEServer(object):
         Start the FME server instance
         :return:
         """
-        log.info("Starting server %s", self.server_name)
-        while self.get_status() in ['PENDING', 'STOPPING']:
-            time.sleep(1)
+        if self.get_status() != "RUNNING":
+            # Only start the service when it is not running
+            log.info("Starting server %s", self.server_name)
+            res = requests.put(self._url("/start"), headers=self._headers())
+            res.raise_for_status()
 
-        if self.get_status() == 'RUNNING':
-            log.debug("Already running")
-            return
+            while self.get_status() in ['PENDING', 'STOPPING']:
+                time.sleep(1)
 
-        res = requests.put(self._url("/start"), headers=self._headers())
-        res.raise_for_status()
+            if self.get_status() == 'RUNNING':
+                log.debug("Already running")
+                return
 
-        while self.get_status() != 'RUNNING':
-            time.sleep(10)
+            while self.get_status() != 'RUNNING':
+                time.sleep(10)
 
-        log.debug("Waiting for DNS availability of server")
+            log.debug("Waiting for DNS availability of server")
 
-        while not self._in_dns():
-            time.sleep(2)
+            while not self._in_dns():
+                time.sleep(2)
 
         log.info("Server started")
 

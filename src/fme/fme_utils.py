@@ -122,7 +122,8 @@ def _register_fmejobsubmitter_service(repo_name, filename):
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)
     }
-    reg_service_res = requests.post(reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
+    reg_service_res = requests.post(
+        reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
     reg_service_res.raise_for_status()
     log.debug("Registered `fmejobsubmitter` service")
     return True
@@ -145,7 +146,7 @@ def upload(source_directory, repo, directory, files, recreate_dir=True):
         create_directory(directory)
 
     url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}? \
-          createDirectories=false&detail=low&overwrite=false'.format(
+          createDirectories=false&detail=low&overwrite=true'.format(
         DIR=directory, FME_SERVER=FME_SERVER, url_connect=url_connect)
 
     for infile in glob.glob(os.path.join(source_directory, files)):
@@ -203,15 +204,17 @@ def run_transformation_job(repository, workspace, params):
                 "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
                 "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
                 "Content-Type": "application/json",
-                "Accept": "application/json"}, data=json.dumps(params))
+                "Accept": "application/json"},
+            data=json.dumps(params))
 
         log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
         log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
         res = response.json()
         log.debug('Job started! Job ID: {}'.format(res['id']))
         return {'jobid': res['id'], 'urltransform': urltransform}
-    except requests.exceptions.RequestException:
+    except requests.exceptions.RequestException as e:
         log.debug('HTTP Request failed')
+        raise e
 
 
 def fetch_log_for_job(job):

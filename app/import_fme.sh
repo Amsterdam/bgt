@@ -6,6 +6,6 @@ set -e
 set -u
 pushd /src
 echo "import of bgt started"
-export PYTHONPATH=$PYTHONPATH:`pwd`
+export PYTHONPATH=`pwd` # $PYTHONPATH:
 python fme/core.py
 popd

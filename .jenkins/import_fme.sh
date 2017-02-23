@@ -15,8 +15,6 @@ rm -rf ${DIR}/backups
 mkdir -p ${DIR}/backups
 
 dc build
-dc up -d database_FME
-#dc run --rm tests
-dc run --rm importer_fme
-dc run --rm db-backup_fme
+dc up -d database
+dc run --rm importer
 
