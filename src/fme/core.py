@@ -402,7 +402,7 @@ if __name__ == '__main__':
         # upload_resulting_shapes_to_objectstore()
         upload_pdok_zip_to_objectstore()
 
-        run_before_after_comparisons()
+        # run_before_after_comparisons()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
