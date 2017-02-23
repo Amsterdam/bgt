@@ -350,7 +350,7 @@ def run_before_after_comparisons():
     import controle db using /tmp/data/*.gml
     make sure sql connections are up
     """
-    loc_pgsql = create_loc_sql_connection()
+    loc_pgsql = create_fme_sql_connection()
     loc_pgsql.import_gml_control_db()
 
     # import csv / mapping db
@@ -402,7 +402,7 @@ if __name__ == '__main__':
         # upload_resulting_shapes_to_objectstore()
         upload_pdok_zip_to_objectstore()
 
-        # run_before_after_comparisons()
+        run_before_after_comparisons()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
