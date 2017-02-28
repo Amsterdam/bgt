@@ -1,16 +1,11 @@
-FROM ubuntu:xenial
+FROM python:3.6
 MAINTAINER datapunt.ois@amsterdam.nl
 
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
 	&& apt-get install -y \
-        python3 \
-        python3-dev \
-        python3-pip \
         libpq-dev \
-		gdal-bin \
-		libgeos-dev \
 		postgresql-client \
 		netcat \
 	&& apt-get clean \
