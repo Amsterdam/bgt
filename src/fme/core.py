@@ -396,10 +396,10 @@ if __name__ == '__main__':
         # run transformation to `NLCS` format
         # fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
 
-        # create_fme_shape_views()
+        create_fme_shape_views()
 
         # upload the resulting shapes an the source GML zip to objectstore
-        # upload_resulting_shapes_to_objectstore()
+        upload_resulting_shapes_to_objectstore()
         upload_pdok_zip_to_objectstore()
 
         run_before_after_comparisons()
