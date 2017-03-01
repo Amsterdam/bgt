@@ -230,4 +230,4 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE imgeo.bgt_kruinlijn
-  OWNER TO bgt;
+  OWNER TO dbuser;
