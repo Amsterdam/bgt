@@ -1,4 +1,3 @@
-
 import json
 import logging
 import urllib.parse
@@ -24,7 +23,7 @@ def start_transformation_gebieden():
     calls `inlezen_gebieden_uit_Shape_en_WFS.fmw` on FME server
     :return: dict with 'jobid' and 'urltransform'
     """
-    log.info("Starting transformation")
+    log.info("Starting transformation gebieden shape & wms -:> db_bgt")
     return fme_utils.run_transformation_job(
         'BGT-DB',
         'inlezen_gebieden_uit_Shape_en_WFS.fmw',
@@ -43,7 +42,7 @@ def start_transformation_db():
     calls `inlezen_DB_BGT_uit_citygml.fmw` on FME server
     :return: dict with 'jobid' and 'urltransform'
     """
-    log.info("Starting transformation")
+    log.info("Starting transformation GML -:> db_bgt")
     return fme_utils.run_transformation_job(
         'BGT-DB',
         'inlezen_DB_BGT_uit_citygml.fmw',
@@ -60,12 +59,55 @@ def start_transformation_db():
                                      "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/*.gml"]}, ]})
 
 
+def start_transformation_over_en_onderbouw():
+    """
+    calls `over_obnerbouw2postgres.fmw` on FME server
+    :return: dict with 'jobid' and 'urltransform'
+    """
+    log.info("Starting transformation over- en onderbouw =:> db_bgt")
+    return fme_utils.run_transformation_job(
+        'BGT-DB',
+        'over_onderbouw2postgres.fmw',
+        {
+            "subsection": "REST_SERVICE",
+            "FMEDirectives": {},
+            "NMDirectives": {"successTopics": [], "failureTopics": []},
+            "TMDirectives": {"tag": "linux", "description": "Over en onderbouw -> DB"
+                             },
+            "publishedParameters": [
+                {"name": "SourceDataset_ORACLE_SPATIAL_3", "value": "DBIGKP01"},
+                {"name": "DestDataset_POSTGIS", "value": "bgt"},
+                {"name": "DestDataset_POSTGIS_6", "value": "bgt"}, ]})
+
+
+def start_transformation_stand_ligplaatsen():
+    """
+    calls `SPS_LPS2postgres.fmw` on FME server
+    :return: dict with 'jobid' and 'urltransform'
+    """
+    log.info("Starting transformation stand- en ligplaatsen =:> db_bgt")
+    return fme_utils.run_transformation_job(
+        'BGT-DB',
+        'SPS_LPS2postgres.fmw',
+        {
+            "subsection": "REST_SERVICE",
+            "FMEDirectives": {},
+            "NMDirectives": {"successTopics": [], "failureTopics": []},
+            "TMDirectives": {"tag": "linux", "description": "Over en onderbouw -> DB"},
+            "publishedParameters": [
+
+                {"name": "SourceDataset_WFS", "value": "https://map.datapunt.amsterdam.nl/maps/bag"},
+                {"name": "_API_PAGESIZE", "value": "3000"},
+                {"name": "DestDataset_POSTGIS_5", "value": "db_bgt"},
+                {"name": "DestDataset_POSTGIS_7", "value": "db_bgt"}]})
+
+
 def start_transformation_dgn():
     """
     calls `aanmaak_dgnNLCS_uit_DB_BGT.fmw` on FME server
     :return: dict with 'jobid' and 'urltransform'
     """
-    log.info("Starting transformation")
+    log.info("Starting transformation -:> DGN")
 
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
     return fme_utils.run_transformation_job(
@@ -88,7 +130,7 @@ def start_transformation_nlcs():
     calls `aanmaak_esrishape_uit_DB_BGT.fmw` on FME server
     :return: dict with 'jobid' and 'urltransform'
     """
-    log.info("Starting transformation")
+    log.info("Starting transformation -:> NLCS")
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
     return fme_utils.run_transformation_job(
         'BGT-DGN',
@@ -111,7 +153,7 @@ def start_transformation_shapes():
     calls `aanmaak_esrishape_uit_DB_BGT.fmw` on FME server
     :return: dict with 'jobid' and 'urltransform'
     """
-    log.info("Starting transformation")
+    log.info("Starting transformation -:> Shapes")
 
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
     return fme_utils.run_transformation_job(
@@ -124,11 +166,11 @@ def start_transformation_shapes():
             "TMDirectives": {"tag": "linux", "description": "Aanmaak Shapes uit DB"},
             "publishedParameters": [
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
-                {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/shp_gebied.zip"},
-                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)/shp_totaal.zip"},
-                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/csv_gebieden.zip"},
-                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/csv_totaal.zip"}]})
+                {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/Esri_Shape_gebied.zip"},
+                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)/Esri_Shape_totaal.zip"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_gebied.zip"},
+                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_totaal.zip"}]})
 
 
 def start_test_transformation():
@@ -239,7 +281,6 @@ def pdok_url():
         "history": "false",
         "enddate": datum,
 
-
         "tiles": tiles_as_json})
 
 
@@ -265,7 +306,7 @@ def download_bgt():
         if total_size == -1:
             # evil PDOK not telling us the content size :-(
             # educated guess is ~365Mb
-            total_size = 365 * 1024 * 1024
+            total_size = 380 * 1024 * 1024
             approximate = '~'
 
         percentage = float(count * block_size * 100.0 / total_size)
@@ -385,11 +426,14 @@ if __name__ == '__main__':
 
         fme_utils.wait_for_job_to_complete(start_transformation_db())
         fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+        fme_utils.wait_for_job_to_complete(start_transformation_over_en_onderbouw())
+        fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
 
         create_fme_dbschema()
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         fme_utils.wait_for_job_to_complete(start_transformation_shapes())
+
         # run transformation to `DGN` format
         ## Do not run the DGN and NLCS transforms because of unclear error reporting about params.
         # fme_utils.wait_for_job_to_complete(start_transformation_dgn())
