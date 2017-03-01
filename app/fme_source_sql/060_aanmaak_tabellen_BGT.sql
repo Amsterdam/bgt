@@ -204,3 +204,30 @@ CREATE TABLE imgeo.bgt_begroeidterreindeel (
     plus_fysiekvoorkomen character varying(200),
     geometrie public.geometry(CurvePolygon,28992)
 );
+-- Table: imgeo.bgt_kruinlijn
+
+DROP TABLE IF EXISTS imgeo.bgt_kruinlijn;
+
+CREATE TABLE imgeo.bgt_kruinlijn
+(
+  identificatie_namespace character varying(8),
+  identificatie_lokaalid character varying(38),
+  objectbegintijd date,
+  objecteindtijd date,
+  tijdstipregistratie timestamp without time zone,
+  eindregistratie timestamp without time zone,
+  lv_publicatiedatum timestamp without time zone,
+  bronhouder character varying(40),
+  inonderzoek character varying(1),
+  relatievehoogteligging smallint,
+  bgt_status character varying(8),
+  plus_status character varying(8),
+  optalud character varying(1),
+  objectklasse_kruinlijn character varying(200),
+  geometrie geometry(CompoundCurve,28992)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE imgeo.bgt_kruinlijn
+  OWNER TO bgt;
