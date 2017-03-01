@@ -166,11 +166,11 @@ def start_transformation_shapes():
             "TMDirectives": {"tag": "linux", "description": "Aanmaak Shapes uit DB"},
             "publishedParameters": [
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
-                {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/shp_gebied.zip"},
-                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)/shp_totaal.zip"},
-                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/csv_gebieden.zip"},
-                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/csv_totaal.zip"}]})
+                {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/Esri_Shape_gebied.zip"},
+                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)/Esri_Shape_totaal.zip"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_gebied.zip"},
+                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_totaal.zip"}]})
 
 
 def start_test_transformation():
@@ -306,7 +306,7 @@ def download_bgt():
         if total_size == -1:
             # evil PDOK not telling us the content size :-(
             # educated guess is ~365Mb
-            total_size = 365 * 1024 * 1024
+            total_size = 380 * 1024 * 1024
             approximate = '~'
 
         percentage = float(count * block_size * 100.0 / total_size)
