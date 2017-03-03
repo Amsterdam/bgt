@@ -173,7 +173,7 @@ def start_transformation_shapes():
                 {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_totaal.zip"}]})
 
 
-def resolve_chunk_coordinates()
+def resolve_chunk_coordinates():
     """
     calls `00_kaartbladen_coordinatenbepaler.fmw` on FME server
     output csv is used to split dgnNCS job in smaller chunks
@@ -454,7 +454,7 @@ if __name__ == '__main__':
         create_fme_dbschema()
 
         fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-        
+
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         fme_utils.wait_for_job_to_complete(start_transformation_shapes())
 
