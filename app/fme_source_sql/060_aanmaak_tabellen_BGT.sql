@@ -4,10 +4,10 @@ CREATE TABLE imgeo."BAG_Ligplaats"
 (
   "BAGID" character varying(18),
   bestandsnaam character varying(15),
-  geometrie geometry(Geometry,28992)
+  geometrie geometry(Geometry, 28992)
 );
 ALTER TABLE imgeo."BAG_Ligplaats" OWNER TO dbuser;
-DROP INDEX imgeo."BAG_Ligplaats_geometrie_1487779941374";
+DROP INDEX IF EXISTS imgeo."BAG_Ligplaats_geometrie_1487779941374";
 CREATE INDEX "BAG_Ligplaats_geometrie_1487779941374"  ON imgeo."BAG_Ligplaats"  USING gist  (geometrie);
 
 -- Table: imgeo."BAG_Standplaats"
@@ -19,7 +19,7 @@ CREATE TABLE imgeo."BAG_Standplaats"
   geometrie geometry(Geometry,28992)
 );
 ALTER TABLE imgeo."BAG_Standplaats" OWNER TO dbuser;
-DROP INDEX imgeo."BAG_Standplaats_geometrie_148777994161";
+DROP INDEX IF EXISTS imgeo."BAG_Standplaats_geometrie_148777994161";
 CREATE INDEX "BAG_Standplaats_geometrie_148777994161"  ON imgeo."BAG_Standplaats" USING gist  (geometrie);
 
 -- Table: imgeo."CFT_Onderbouw"
@@ -32,7 +32,7 @@ CREATE TABLE imgeo."CFT_Onderbouw"
   geometrie geometry(Geometry,28992)
 );
 ALTER TABLE imgeo."CFT_Onderbouw" OWNER TO dbuser;
-DROP INDEX imgeo."CFT_Onderbouw_geometrie_1487603335675";
+DROP INDEX IF EXISTS imgeo."CFT_Onderbouw_geometrie_1487603335675";
 CREATE INDEX "CFT_Onderbouw_geometrie_1487603335675"  ON imgeo."CFT_Onderbouw" USING gist (geometrie);
 
 -- Table: imgeo."CFT_Overbouw"
@@ -45,7 +45,7 @@ CREATE TABLE imgeo."CFT_Overbouw"
   geometrie geometry(Geometry,28992)
 );
 ALTER TABLE imgeo."CFT_Overbouw"  OWNER TO dbuser;
-DROP INDEX imgeo."CFT_Overbouw_geometrie_14876030788";
+DROP INDEX IF EXISTS imgeo."CFT_Overbouw_geometrie_14876030788";
 CREATE INDEX "CFT_Overbouw_geometrie_14876030788"  ON imgeo."CFT_Overbouw"  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_begroeidterreindeel
@@ -70,8 +70,8 @@ CREATE TABLE imgeo.bgt_begroeidterreindeel
   geometrie geometry(CurvePolygon,28992)
 );
 ALTER TABLE imgeo.bgt_begroeidterreindeel
-  OWNER TO bgt;
-DROP INDEX imgeo.bgt_begroeidterreindeel_geometrie_1474551421494;
+  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_begroeidterreindeel_geometrie_1474551421494;
 CREATE INDEX bgt_begroeidterreindeel_geometrie_1474551421494  ON imgeo.bgt_begroeidterreindeel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_kruinlijn
@@ -95,7 +95,7 @@ CREATE TABLE imgeo.bgt_kruinlijn
   geometrie geometry(CompoundCurve,28992)
 );
 ALTER TABLE imgeo.bgt_kruinlijn  OWNER TO dbuser;
-DROP INDEX imgeo.bgt_kruinlijn_geometrie_1474551421465;
+DROP INDEX IF EXISTS imgeo.bgt_kruinlijn_geometrie_1474551421465;
 CREATE INDEX bgt_kruinlijn_geometrie_1474551421465  ON imgeo.bgt_kruinlijn  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_nummeraanduidingreeks
@@ -124,7 +124,7 @@ CREATE TABLE imgeo.bgt_nummeraanduidingreeks
 );
 ALTER TABLE imgeo.bgt_nummeraanduidingreeks
   OWNER TO postgres;
-DROP INDEX imgeo.bgt_nummeraanduidingreeks_geometrie_1488299979304;
+DROP INDEX IF EXISTS imgeo.bgt_nummeraanduidingreeks_geometrie_1488299979304;
 CREATE INDEX bgt_nummeraanduidingreeks_geometrie_1488299979304  ON imgeo.bgt_nummeraanduidingreeks  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_onbegroeidterreindeel
@@ -150,8 +150,8 @@ CREATE TABLE imgeo.bgt_onbegroeidterreindeel
   plus_fysiekvoorkomen character varying(200),
   geometrie geometry(CurvePolygon,28992)
 );
-ALTER TABLE imgeo.bgt_onbegroeidterreindeel  OWNER TO bgt;
-DROP INDEX imgeo.bgt_onbegroeidterreindeel_geometrie_1474551429771;
+ALTER TABLE imgeo.bgt_onbegroeidterreindeel  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_onbegroeidterreindeel_geometrie_1474551429771;
 CREATE INDEX bgt_onbegroeidterreindeel_geometrie_1474551429771  ON imgeo.bgt_onbegroeidterreindeel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_ondersteunendwaterdeel
@@ -175,8 +175,8 @@ CREATE TABLE imgeo.bgt_ondersteunendwaterdeel
   plus_type character varying(200),
   geometrie geometry(CurvePolygon,28992)
 );
-ALTER TABLE imgeo.bgt_ondersteunendwaterdeel  OWNER TO bgt;
-DROP INDEX imgeo.bgt_ondersteunendwaterdeel_geometrie_1474551427579;
+ALTER TABLE imgeo.bgt_ondersteunendwaterdeel  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_ondersteunendwaterdeel_geometrie_1474551427579;
 CREATE INDEX bgt_ondersteunendwaterdeel_geometrie_1474551427579  ON imgeo.bgt_ondersteunendwaterdeel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_ondersteunendwegdeel
@@ -203,8 +203,8 @@ CREATE TABLE imgeo.bgt_ondersteunendwegdeel
   plus_fysiekvoorkomen character varying(200),
   geometrie geometry(CurvePolygon,28992)
 );
-ALTER TABLE imgeo.bgt_ondersteunendwegdeel  OWNER TO bgt;
-DROP INDEX imgeo.bgt_ondersteunendwegdeel_geometrie_1474551437656;
+ALTER TABLE imgeo.bgt_ondersteunendwegdeel  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_ondersteunendwegdeel_geometrie_1474551437656;
 CREATE INDEX bgt_ondersteunendwegdeel_geometrie_1474551437656  ON imgeo.bgt_ondersteunendwegdeel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_ongeclassificeerdobject
@@ -226,8 +226,8 @@ CREATE TABLE imgeo.bgt_ongeclassificeerdobject
   plus_status character varying(8),
   geometrie geometry(CurvePolygon,28992)
 );
-ALTER TABLE imgeo.bgt_ongeclassificeerdobject  OWNER TO bgt;
-DROP INDEX imgeo.bgt_ongeclassificeerdobject_geometrie_1474551426167;
+ALTER TABLE imgeo.bgt_ongeclassificeerdobject  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_ongeclassificeerdobject_geometrie_1474551426167;
 CREATE INDEX bgt_ongeclassificeerdobject_geometrie_1474551426167  ON imgeo.bgt_ongeclassificeerdobject  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_openbareruimtelabel
@@ -253,8 +253,8 @@ CREATE TABLE imgeo.bgt_openbareruimtelabel
   opr_label_hoek real,
   geometrie geometry(Point,28992)
 );
-ALTER TABLE imgeo.bgt_openbareruimtelabel  OWNER TO bgt;
-DROP INDEX imgeo.bgt_openbareruimtelabel_geometrie_1474551417685;
+ALTER TABLE imgeo.bgt_openbareruimtelabel  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_openbareruimtelabel_geometrie_1474551417685;
 CREATE INDEX bgt_openbareruimtelabel_geometrie_1474551417685  ON imgeo.bgt_openbareruimtelabel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_overbruggingsdeel
@@ -280,8 +280,8 @@ CREATE TABLE imgeo.bgt_overbruggingsdeel
   geometrie geometry(CurvePolygon,28992)
 );
 ALTER TABLE imgeo.bgt_overbruggingsdeel
-  OWNER TO bgt;
-DROP INDEX imgeo.bgt_overbruggingsdeel_geometrie_147455141867;
+  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_overbruggingsdeel_geometrie_147455141867;
 CREATE INDEX bgt_overbruggingsdeel_geometrie_147455141867  ON imgeo.bgt_overbruggingsdeel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_pand
@@ -305,7 +305,7 @@ CREATE TABLE imgeo.bgt_pand
   geometrie geometry(Geometry,28992)
 );
 ALTER TABLE imgeo.bgt_pand  OWNER TO postgres;
-DROP INDEX imgeo.bgt_pand_geometrie_1488195514270;
+DROP INDEX IF EXISTS imgeo.bgt_pand_geometrie_1488195514270;
 CREATE INDEX bgt_pand_geometrie_1488195514270  ON imgeo.bgt_pand  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_tunneldeel
@@ -328,8 +328,8 @@ CREATE TABLE imgeo.bgt_tunneldeel
   geometrie geometry(CurvePolygon,28992)
 );
 ALTER TABLE imgeo.bgt_tunneldeel
-  OWNER TO bgt;
-DROP INDEX imgeo.bgt_tunneldeel_geometrie_1474551427963;
+  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_tunneldeel_geometrie_1474551427963;
 CREATE INDEX bgt_tunneldeel_geometrie_1474551427963  ON imgeo.bgt_tunneldeel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_waterdeel
@@ -353,8 +353,8 @@ CREATE TABLE imgeo.bgt_waterdeel
   plus_type character varying(200),
   geometrie geometry(CurvePolygon,28992)
 );
-ALTER TABLE imgeo.bgt_waterdeel  OWNER TO bgt;
-DROP INDEX imgeo.bgt_waterdeel_geometrie_1474551438760;
+ALTER TABLE imgeo.bgt_waterdeel  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_waterdeel_geometrie_1474551438760;
 CREATE INDEX bgt_waterdeel_geometrie_1474551438760  ON imgeo.bgt_waterdeel  USING gist  (geometrie);
 
 -- Table: imgeo.bgt_wegdeel
@@ -381,8 +381,8 @@ CREATE TABLE imgeo.bgt_wegdeel
   plus_fysiekvoorkomen character varying(200),
   geometrie geometry(CurvePolygon,28992)
 );
-ALTER TABLE imgeo.bgt_wegdeel  OWNER TO bgt;
-DROP INDEX imgeo.bgt_wegdeel_geometrie_1474551433914;
+ALTER TABLE imgeo.bgt_wegdeel  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.bgt_wegdeel_geometrie_1474551433914;
 CREATE INDEX bgt_wegdeel_geometrie_1474551433914  ON imgeo.bgt_wegdeel  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_bak
@@ -406,8 +406,8 @@ CREATE TABLE imgeo.imgeo_bak
   plus_type character varying(200),
   geometrie geometry(Point,28992)
 );
-ALTER TABLE imgeo.imgeo_bak  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_bak_geometrie_1474551417568;
+ALTER TABLE imgeo.imgeo_bak  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_bak_geometrie_1474551417568;
 CREATE INDEX imgeo_bak_geometrie_1474551417568  ON imgeo.imgeo_bak  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_bord
@@ -478,8 +478,8 @@ CREATE TABLE imgeo.imgeo_gebouwinstallatie
   plus_type character varying(200),
   geometrie geometry(CurvePolygon,28992)
 );
-ALTER TABLE imgeo.imgeo_gebouwinstallatie  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_gebouwinstallatie_geometrie_1474551418282;
+ALTER TABLE imgeo.imgeo_gebouwinstallatie  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_gebouwinstallatie_geometrie_1474551418282;
 CREATE INDEX imgeo_gebouwinstallatie_geometrie_1474551418282  ON imgeo.imgeo_gebouwinstallatie  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_installatie
@@ -503,8 +503,8 @@ CREATE TABLE imgeo.imgeo_installatie
   plus_type character varying(200),
   geometrie geometry(Point,28992)
 );
-ALTER TABLE imgeo.imgeo_installatie  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_installatie_geometrie_1474551439125;
+ALTER TABLE imgeo.imgeo_installatie  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_installatie_geometrie_1474551439125;
 CREATE INDEX imgeo_installatie_geometrie_1474551439125  ON imgeo.imgeo_installatie  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_kast
@@ -528,8 +528,8 @@ CREATE TABLE imgeo.imgeo_kast
   plus_type character varying(200),
   geometrie geometry(Point,28992)
 );
-ALTER TABLE imgeo.imgeo_kast  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_kast_geometrie_1474551421374;
+ALTER TABLE imgeo.imgeo_kast  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_kast_geometrie_1474551421374;
 CREATE INDEX imgeo_kast_geometrie_1474551421374  ON imgeo.imgeo_kast  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_kunstwerkdeel
@@ -553,8 +553,8 @@ CREATE TABLE imgeo.imgeo_kunstwerkdeel
   plus_type character varying(200),
   geometrie geometry(Geometry,28992)
 );
-ALTER TABLE imgeo.imgeo_kunstwerkdeel  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_kunstwerkdeel_geometrie_1474551427480;
+ALTER TABLE imgeo.imgeo_kunstwerkdeel  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_kunstwerkdeel_geometrie_1474551427480;
 CREATE INDEX imgeo_kunstwerkdeel_geometrie_1474551427480  ON imgeo.imgeo_kunstwerkdeel  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_mast
@@ -601,8 +601,8 @@ CREATE TABLE imgeo.imgeo_overigbouwwerk
   plus_type character varying(200),
   geometrie geometry(MultiSurface,28992)
 );
-ALTER TABLE imgeo.imgeo_overigbouwwerk  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_overigbouwwerk_geometrie_147455142617;
+ALTER TABLE imgeo.imgeo_overigbouwwerk  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_overigbouwwerk_geometrie_147455142617;
 CREATE INDEX imgeo_overigbouwwerk_geometrie_147455142617  ON imgeo.imgeo_overigbouwwerk  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_overigescheiding
@@ -626,8 +626,8 @@ CREATE TABLE imgeo.imgeo_overigescheiding
   plus_type character varying(200),
   geometrie geometry(Geometry,28992)
 );
-ALTER TABLE imgeo.imgeo_overigescheiding  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_overigescheiding_geometrie_1474551438643;
+ALTER TABLE imgeo.imgeo_overigescheiding  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_overigescheiding_geometrie_1474551438643;
 CREATE INDEX imgeo_overigescheiding_geometrie_1474551438643  ON imgeo.imgeo_overigescheiding  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_paal
@@ -652,8 +652,8 @@ CREATE TABLE imgeo.imgeo_paal
   plus_type character varying(200),
   geometrie geometry(Point,28992)
 );
-ALTER TABLE imgeo.imgeo_paal  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_paal_geometrie_1474551432557;
+ALTER TABLE imgeo.imgeo_paal  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_paal_geometrie_1474551432557;
 CREATE INDEX imgeo_paal_geometrie_1474551432557  ON imgeo.imgeo_paal  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_put
@@ -678,8 +678,8 @@ CREATE TABLE imgeo.imgeo_put
   geometrie geometry(Point,28992)
 );
 ALTER TABLE imgeo.imgeo_put
-  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_put_geometrie_1474551437533;
+  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_put_geometrie_1474551437533;
 CREATE INDEX imgeo_put_geometrie_1474551437533  ON imgeo.imgeo_put  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_scheiding
@@ -702,8 +702,8 @@ CREATE TABLE imgeo.imgeo_scheiding
   plus_type character varying(200),
   geometrie geometry(Geometry,28992)
 );
-ALTER TABLE imgeo.imgeo_scheiding  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_scheiding_geometrie_1474551426190;
+ALTER TABLE imgeo.imgeo_scheiding  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_scheiding_geometrie_1474551426190;
 CREATE INDEX imgeo_scheiding_geometrie_1474551426190  ON imgeo.imgeo_scheiding  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_sensor
@@ -750,8 +750,8 @@ CREATE TABLE imgeo.imgeo_spoor
   plus_functie character varying(200),
   geometrie geometry(CompoundCurve,28992)
 );
-ALTER TABLE imgeo.imgeo_spoor  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_spoor_geometrie_1474551438674;
+ALTER TABLE imgeo.imgeo_spoor  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_spoor_geometrie_1474551438674;
 CREATE INDEX imgeo_spoor_geometrie_1474551438674  ON imgeo.imgeo_spoor  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_straatmeubilair
@@ -775,8 +775,8 @@ CREATE TABLE imgeo.imgeo_straatmeubilair
   bgt_type character varying(200),
   geometrie geometry(Point,28992)
 );
-ALTER TABLE imgeo.imgeo_straatmeubilair  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_straatmeubilair_geometrie_1474551432511;
+ALTER TABLE imgeo.imgeo_straatmeubilair  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_straatmeubilair_geometrie_1474551432511;
 CREATE INDEX imgeo_straatmeubilair_geometrie_1474551432511  ON imgeo.imgeo_straatmeubilair  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_vegetatieobject
@@ -800,8 +800,8 @@ CREATE TABLE imgeo.imgeo_vegetatieobject
   bgt_type character varying(200),
   geometrie geometry(Geometry,28992)
 );
-ALTER TABLE imgeo.imgeo_vegetatieobject  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_vegetatieobject_geometrie_14745514289;
+ALTER TABLE imgeo.imgeo_vegetatieobject  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_vegetatieobject_geometrie_14745514289;
 CREATE INDEX imgeo_vegetatieobject_geometrie_14745514289  ON imgeo.imgeo_vegetatieobject  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_waterinrichtingselement
@@ -825,8 +825,8 @@ CREATE TABLE imgeo.imgeo_waterinrichtingselement
   plus_type character varying(200),
   geometrie geometry(Geometry,28992)
 );
-ALTER TABLE imgeo.imgeo_waterinrichtingselement  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_waterinrichtingselement_geometrie_1474551427938;
+ALTER TABLE imgeo.imgeo_waterinrichtingselement  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_waterinrichtingselement_geometrie_1474551427938;
 CREATE INDEX imgeo_waterinrichtingselement_geometrie_1474551427938  ON imgeo.imgeo_waterinrichtingselement  USING gist  (geometrie);
 
 -- Table: imgeo.imgeo_weginrichtingselement
@@ -850,8 +850,8 @@ CREATE TABLE imgeo.imgeo_weginrichtingselement
   plus_type character varying(200),
   geometrie geometry(Geometry,28992)
 );
-ALTER TABLE imgeo.imgeo_weginrichtingselement  OWNER TO bgt;
-DROP INDEX imgeo.imgeo_weginrichtingselement_geometrie_1474551427986;
+ALTER TABLE imgeo.imgeo_weginrichtingselement  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.imgeo_weginrichtingselement_geometrie_1474551427986;
 CREATE INDEX imgeo_weginrichtingselement_geometrie_1474551427986  ON imgeo.imgeo_weginrichtingselement  USING gist  (geometrie);
 
 DROP TABLE IF EXISTS imgeo_controle.frequentieverdeling_db CASCADE;
