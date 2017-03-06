@@ -173,6 +173,28 @@ def start_transformation_shapes():
                 {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_totaal.zip"}]})
 
 
+def resolve_chunk_coordinates():
+    """
+    calls `00_kaartbladen_coordinatenbepaler.fmw` on FME server
+    output csv is used to split dgnNCS job in smaller chunks
+
+    :return: dict with 'jobid' and 'urltransform'
+    """
+    log.info("Starting transformation -:> Resolve Chunk Coordinates")
+
+    return fme_utils.run_transformation_job(
+        'BGT-DGN',
+        '00_kaartbladen_coordinatenbepaler.fmw',
+        {
+            "subsection": "REST_SERVICE",
+            "FMEDirectives": {},
+            "NMDirectives": {"successTopics": [], "failureTopics": []},
+            "TMDirectives": {"tag": "linux", "description": "Bepaal coordinaten"},
+            "publishedParameters": [
+                {"name": "SourceDataset_POSTGIS_BGT", "value": "bgt"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/BGT_uitwissel"}]})
+
+
 def start_test_transformation():
     """
     calls `aanmaak_esrishape_test_zip.fmw` on FME server
@@ -430,6 +452,8 @@ if __name__ == '__main__':
         fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
 
         create_fme_dbschema()
+
+        fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         fme_utils.wait_for_job_to_complete(start_transformation_shapes())
