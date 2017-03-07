@@ -1,5 +1,7 @@
 import json
 import logging
+import sys
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime
@@ -350,35 +352,31 @@ def pdok_url():
 
 def is_bgt_updated():
     """
-    Check new pdok.nl functionality / for th emoment we get 500 server errors form pdok.
+    Check new pdok.nl functionality / for the moment we get 500 server errors form pdok.
     """
     res = requests.head(pdok_url())
     print(res)
 
 
 def download_bgt():
-    """
-    Downloads the PDOK files to extract_bgt.zip and calls unzip_pdok_file()
-    :return: 0
-    """
     target = "extract_bgt.zip"
-
     log.info("Starting download from %s to %s", pdok_url(), target)
-
-    def progress(count, block_size, total_size):
-        approximate = ''
-        if total_size == -1:
-            # evil PDOK not telling us the content size :-(
-            # educated guess is ~365Mb
-            total_size = 380 * 1024 * 1024
-            approximate = '~'
-
-        percentage = float(count * block_size * 100.0 / total_size)
-        log.info("%s%2.2f%%", approximate, percentage)
-
-    urllib.request.urlretrieve(pdok_url(), target, reporthook=progress)
+    response = requests.get(pdok_url(), stream=True)
+    start = time.clock()
+    # total_length = response.headers.get('content-length')
+    # PDOK does not send a content-length header so we make an educated guess of ~ 420 MB
+    total_length = 420 * 1024 * 1024
+    downloaded_length = 0
+    with open(target, 'wb') as newfile:
+        for chunk in response.iter_content(chunk_size=1024):
+            downloaded_length += len(chunk)
+            newfile.write(chunk)
+            done = int(50 * downloaded_length / total_length)
+            sys.stdout.write("\r[%s%s] %s bps" % (
+                '=' * done, ' ' * (50 - done), downloaded_length // (time.clock() - start)))
+    log.info("Download complete, time elapsed: {}".format(time.clock() - start))
     unzip_pdok_file()
-    log.info("Download complete")
+    log.info("Unzip complete")
 
 
 def create_fme_sql_connection():
