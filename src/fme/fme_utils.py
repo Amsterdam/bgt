@@ -129,6 +129,26 @@ def _register_fmejobsubmitter_service(repo_name, filename):
     return True
 
 
+def download(path, disposition='inline'):
+
+    log.info(f"Download {path}")
+
+    headers = {
+        'Content-Type': "application/json",
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
+    }
+
+    url_connect = f'fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/'
+    url = f'{FME_SERVER}/{url_connect}{path}?disposition={disposition}&accept=contents'
+
+    try:
+        response = requests.get(url, headers=headers)
+        return response.text
+    except requests.exceptions.RequestException as e:
+        log.debug('HTTP Request failed')
+        raise e
+
+
 def upload(source_directory, repo, directory, files, recreate_dir=True):
     """
     Upload one or more files to FME
@@ -145,9 +165,8 @@ def upload(source_directory, repo, directory, files, recreate_dir=True):
         delete_directory(directory)
         create_directory(directory)
 
-    url = '{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}? \
-          createDirectories=false&detail=low&overwrite=true'.format(
-        DIR=directory, FME_SERVER=FME_SERVER, url_connect=url_connect)
+    url = f'{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{directory}? \
+          createDirectories=false&detail=low&overwrite=true'
 
     for infile in glob.glob(os.path.join(source_directory, files)):
         log.debug('upload {}'.format(infile))

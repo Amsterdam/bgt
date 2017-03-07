@@ -39,7 +39,7 @@ class SQLRunner(object):
             self.conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
             dbcur = self.conn.cursor()
             dbcur.execute(script)
-            if dbcur.rowcount > 0:
+            if dbcur.rowcount > 0 and dbcur.lastrowid > 0:
                 return dbcur.fetchall()
             return []
 
