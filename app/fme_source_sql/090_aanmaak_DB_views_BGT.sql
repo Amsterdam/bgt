@@ -232,19 +232,6 @@ SELECT
     geometrie               AS GEOMETRIE
 FROM imgeo.bgt_pand);
 
-CREATE OR REPLACE VIEW imgeo_extractie.vw_bgt_PLAATSBEPALINGSPUNT AS (
-SELECT
-    identificatie_namespace         AS NAMESPACE,
-    identificatie_lokaalid          AS LOKAALID,
-    nauwkeurigheid                  AS NAUWKEURIG,
-    datum_inwinning                 AS DAT_INWINN,
-    inwinnende_instantie            AS INW_INSTAN,
-    inwinningsmethode_id            AS INW_METHID,
-    REPLACE (identificatie_namespace ,'NL.IMGeo','BGT_PPT')
-                                    AS BESTANDSNAAM,
-    geometrie                       AS GEOMETRIE
-FROM imgeo.BGT_PLAATSBEPALINGSPUNT);
-
 CREATE OR REPLACE VIEW imgeo_extractie.vw_bgt_tunneldeel AS (
 SELECT
     identificatie_namespace     AS NAMESPACE,
