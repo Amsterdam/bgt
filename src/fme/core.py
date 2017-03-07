@@ -34,7 +34,7 @@ def start_transformation_gebieden():
             "TMDirectives": {"tag": "linux", "description": "DB BGT kaartbladen"},
             "publishedParameters": [{"name": "DestDataset_POSTGIS_4", "value": "bgt"},
                                     {"name": "bron_BGT_kaartbladen",
-                                     "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_kaartbladen/BGT_kaartbladen.shp"]}]})
+                                     "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/BGT_kaartbladen.shp"]}]})
 
 
 def start_transformation_db():
@@ -56,9 +56,9 @@ def start_transformation_db():
                 {"name": "DestDataset_POSTGIS_4", "value": "bgt"},
                 {"name": "DestDataset_POSTGIS", "value": "bgt"},
                 {"name": "CITYGML_IN_ADE_XSD_DOC_CITYGML",
-                 "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_XSD/imgeo.xsd"]},
+                 "value": ["$(FME_SHAREDRESOURCE_DATA)Import_XSD/imgeo.xsd"]},
                 {"name": "SourceDataset_CITYGML",
-                 "value": ["$(FME_SHAREDRESOURCE_DATA)/Import_GML/*.gml"]}, ]})
+                 "value": ["$(FME_SHAREDRESOURCE_DATA)Import_GML/*.gml"]}, ]})
 
 
 def start_transformation_over_en_onderbouw():
@@ -100,8 +100,8 @@ def start_transformation_stand_ligplaatsen():
 
                 {"name": "SourceDataset_WFS", "value": "https://map.datapunt.amsterdam.nl/maps/bag"},
                 {"name": "_API_PAGESIZE", "value": "3000"},
-                {"name": "DestDataset_POSTGIS_5", "value": "db_bgt"},
-                {"name": "DestDataset_POSTGIS_7", "value": "db_bgt"}]})
+                {"name": "DestDataset_POSTGIS_5", "value": "bgt"},
+                {"name": "DestDataset_POSTGIS_7", "value": "bgt"}]})
 
 
 def start_transformation_dgn():
@@ -111,7 +111,6 @@ def start_transformation_dgn():
     """
     log.info("Starting transformation -:> DGN")
 
-    # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
     return fme_utils.run_transformation_job(
         'BGT-DGN',
         'aanmaak_dgn_uit_DB_BGT.fmw',
@@ -120,20 +119,23 @@ def start_transformation_dgn():
          "NMDirectives": {"successTopics": [], "failureTopics": []},
          "TMDirectives": {"tag": "linux", "description": "Aanmaak NLCS uit DB"},
          "publishedParameters": [
+
              {"name": "SourceDataset_POSTGIS", "value": "bgt"},
-             {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-             {"name": "P_OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)/DGN.zip"},
-             {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)/resources/BGT_NLCS.cel"},
-             {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)/resources/GBKAseed_v8.dgn"}]})
+             {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
+             {"name": "P_OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)DGN.zip"},
+             # {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"},
+             {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)resources/DGNv8_seed.dgn"}
+         ]})
 
 
-def start_transformation_nlcs():
+def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
     """
-    calls `aanmaak_esrishape_uit_DB_BGT.fmw` on FME server
+    calls `aanpassen.fmw` on FME server
     :return: dict with 'jobid' and 'urltransform'
     """
     log.info("Starting transformation -:> NLCS")
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
+
     return fme_utils.run_transformation_job(
         'BGT-DGN',
         'aanmaak_dgnNLCS_uit_DB_BGT.fmw',
@@ -144,10 +146,13 @@ def start_transformation_nlcs():
          "publishedParameters": [
              {"name": "SourceDataset_POSTGIS", "value": "bgt"},
              {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-             {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)/BGT_NLCS.cel"]},
-             {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS-ISO.ttf"},
-             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/NLCS.zip"},
-             {"name": "SEED_FILE_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)/resources/NLCS-Seed2d.dgn"}]})
+             {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCS-ISO.ttf"},
+             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_NLCS"},
+             {"name": "SEED_FILE_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCSvlakken_seed.dgn"},
+             {"name": "ENVELOPE_MINX", "value": min_x},
+             {"name": "ENVELOPE_MINY", "value": min_y},
+             {"name": "ENVELOPE_MAXX", "value": max_x},
+             {"name": "ENVELOPE_MAXY", "value": max_y}, ]})
 
 
 def start_transformation_shapes():
@@ -158,6 +163,7 @@ def start_transformation_shapes():
     log.info("Starting transformation -:> Shapes")
 
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
+
     return fme_utils.run_transformation_job(
         'BGT-SHAPES',
         'aanmaak_esrishape_csv_zip.fmw',
@@ -169,10 +175,10 @@ def start_transformation_shapes():
             "publishedParameters": [
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
                 {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/Esri_Shape_gebied.zip"},
-                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)/Esri_Shape_totaal.zip"},
-                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_gebied.zip"},
-                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)/ASCII_totaal.zip"}]})
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_gebied.zip"},
+                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_totaal.zip"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_gebied.zip"},
+                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_totaal.zip"}]})
 
 
 def resolve_chunk_coordinates():
@@ -193,8 +199,22 @@ def resolve_chunk_coordinates():
             "NMDirectives": {"successTopics": [], "failureTopics": []},
             "TMDirectives": {"tag": "linux", "description": "Bepaal coordinaten"},
             "publishedParameters": [
-                {"name": "SourceDataset_POSTGIS_BGT", "value": "bgt"},
-                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)/BGT_uitwissel"}]})
+                {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)BGT_uitwissel"}]})
+
+
+def retrieve_chunk_coordinates():
+    """
+    Retrieve the chunck coordinates stored in
+    $(FME_SHAREDRESOURCE_DATA)BGT_uitwissel/Kaartbladen_coordinaten.csv
+    and return an iterator with the coordinates
+
+    :return:
+    """
+    content = fme_utils.download("BGT_uitwissel/Kaartbladen_coordinaten.csv")
+
+    coords = [row.split(',') for row in content.split('\n')[1:-1]]
+    return coords
 
 
 def start_test_transformation():
@@ -213,9 +233,9 @@ def start_test_transformation():
             "publishedParameters": [
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
                 {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)/TestExport.zip"},
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)TestExport.zip"},
                 {"name": "DestDataset_ESRISHAPE3", "value":
-                    "$(FME_SHAREDRESOURCE_DATA)/TestExportTotaalgebied.zip"}]})
+                    "$(FME_SHAREDRESOURCE_DATA)TestExportTotaalgebied.zip"}]})
 
 
 def upload_pdok_zip_to_objectstore():
@@ -261,6 +281,26 @@ def upload_resulting_shapes_to_objectstore():
                                      res.headers['Content-Type'])
             log.info("Uploaded {} to objectstore BGT/shapes".format(res_name))
     log.info("Uploaded resulting shapes to BGT objectstore")
+
+
+def upload_over_onderbouw_backup():
+    """
+    Upload Over- en Onderbouw data
+
+    :return:
+    """
+    log.info("Upload Onder- en Overbouw data")
+    store = ObjectStore('BGT')
+    dumpfile = "/tmp/data/over_onderbouw.pg_dump"
+
+    file_name_to_fetch = "CFT_OverOnderbouw_latest.backup"
+    with open(dumpfile, 'wb') as newfile:
+        data = store.get_store_object(f"OverOnderbouw/{file_name_to_fetch}")
+        newfile.write(data)
+
+    fme_pgsql = create_fme_sql_connection()
+    fme_pgsql.run_sql_script(dumpfile)
+    log.info("Uploading Onder- en Overbouw data gereed.")
 
 
 def unzip_pdok_file():
@@ -386,6 +426,10 @@ def upload_script_resources():
         '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
         'BGT-DGN', '*dgn*.*', register_fmejob=True)
 
+    fme_utils.upload_repository(
+        '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
+        'BGT-DGN', '*kaartbladen*.*', recreate_repo=False, register_fmejob=True)
+
 
 def create_fme_dbschema():
     """
@@ -448,25 +492,27 @@ if __name__ == '__main__':
         upload_data()
         upload_script_resources()
 
+        create_fme_dbschema()
+        upload_over_onderbouw_backup()
+        create_fme_shape_views()
+
         fme_utils.wait_for_job_to_complete(start_transformation_db())
         fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
         fme_utils.wait_for_job_to_complete(start_transformation_over_en_onderbouw())
         fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
 
-        create_fme_dbschema()
-
+        # create coordinate search envelopes
         fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         fme_utils.wait_for_job_to_complete(start_transformation_shapes())
 
-        # run transformation to `DGN` format
-        ## Do not run the DGN and NLCS transforms because of unclear error reporting about params.
-        # fme_utils.wait_for_job_to_complete(start_transformation_dgn())
         # run transformation to `NLCS` format
-        # fme_utils.wait_for_job_to_complete(start_transformation_nlcs())
+        for a in retrieve_chunk_coordinates():
+            start_transformation_nlcs_chunk(*a)
 
-        create_fme_shape_views()
+        # run transformation to `DGN` format
+        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
 
         # upload the resulting shapes an the source GML zip to objectstore
         upload_resulting_shapes_to_objectstore()
