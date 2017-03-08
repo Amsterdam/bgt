@@ -468,35 +468,35 @@ if __name__ == '__main__':
         # start the fme server
         server_manager.start()
 
-        # download_bgt()
+        download_bgt()
+        
+        # upload data and FMW scripts
+        upload_data()
+        upload_script_resources()
+        
+        create_fme_dbschema()
+        upload_over_onderbouw_backup()
+        create_fme_shape_views()
         #
-        # # upload data and FMW scripts
-        # upload_data()
-        # upload_script_resources()
-        #
-        # create_fme_dbschema()
-        # upload_over_onderbouw_backup()
-        # create_fme_shape_views()
-        #
-        # fme_utils.wait_for_job_to_complete(start_transformation_db())
-        # fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-        # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
-        #
-        # # create coordinate search envelopes
-        # fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-        #
-        # # run the `aanmaak_esrishape_uit_DB_BGT` script
-        # fme_utils.wait_for_job_to_complete(start_transformation_shapes())
-        #
-        # # run transformation to `NLCS` format
-        # for a in retrieve_chunk_coordinates():
-        #     start_transformation_nlcs_chunk(*a)
-        #
-        # # run transformation to `DGN` format
-        # fme_utils.wait_for_job_to_complete(start_transformation_dgn())
+        fme_utils.wait_for_job_to_complete(start_transformation_db())
+        fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+        fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+        
+        # create coordinate search envelopes
+        fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
+        
+        # run the `aanmaak_esrishape_uit_DB_BGT` script
+        fme_utils.wait_for_job_to_complete(start_transformation_shapes())
+        
+        # run transformation to `NLCS` format
+        for a in retrieve_chunk_coordinates():
+            start_transformation_nlcs_chunk(*a)
+        
+        # run transformation to `DGN` format
+        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
 
         # upload the resulting shapes an the source GML zip to objectstore
-        #upload_pdok_zip_to_objectstore()
+        upload_pdok_zip_to_objectstore()
 
         upload_resulting_shapes_to_objectstore()
 
