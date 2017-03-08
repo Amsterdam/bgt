@@ -63,27 +63,6 @@ def start_transformation_db():
                  "value": ["$(FME_SHAREDRESOURCE_DATA)Import_GML/*.gml"]}, ]})
 
 
-def start_transformation_over_en_onderbouw():
-    """
-    calls `over_obnerbouw2postgres.fmw` on FME server
-    :return: dict with 'jobid' and 'urltransform'
-    """
-    log.info("Starting transformation over- en onderbouw =:> db_bgt")
-    return fme_utils.run_transformation_job(
-        'BGT-DB',
-        'over_onderbouw2postgres.fmw',
-        {
-            "subsection": "REST_SERVICE",
-            "FMEDirectives": {},
-            "NMDirectives": {"successTopics": [], "failureTopics": []},
-            "TMDirectives": {"tag": "linux", "description": "Over en onderbouw -> DB"
-                             },
-            "publishedParameters": [
-                {"name": "SourceDataset_ORACLE_SPATIAL_3", "value": "DBIGKP01"},
-                {"name": "DestDataset_POSTGIS", "value": "bgt"},
-                {"name": "DestDataset_POSTGIS_6", "value": "bgt"}, ]})
-
-
 def start_transformation_stand_ligplaatsen():
     """
     calls `SPS_LPS2postgres.fmw` on FME server
@@ -135,7 +114,7 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
     calls `aanpassen.fmw` on FME server
     :return: dict with 'jobid' and 'urltransform'
     """
-    log.info("Starting transformation -:> NLCS")
+    log.info(f"Starting transformation -:> NLCS {min_x} {min_y} {max_x} {max_y}")
     # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
 
     return fme_utils.run_transformation_job(
@@ -263,12 +242,12 @@ def upload_resulting_shapes_to_objectstore():
     store = ObjectStore('BGT')
     log.info("Upload resulting shapes to BGT objectstore")
 
-    files = ['shp_gebied.zip', 'shp_totaal.zip', 'csv_gebieden.zip', 'csv_totaal.zip']
+    files = ['Esri_Shape_totaal.zip', 'Esri_Shape_gebied.zip', 'ASCII_totaal.zip', 'ASCII_gebied.zip']
 
     for path in files:
         log.info("Download {} for storing in objectstore".format(path))
-        download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low' \
-                       'createDirectories=false&detail=low&overwrite=false'.format(
+        download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low&' \
+                       'createDirectories=true&detail=low&overwrite=true'.format(
             DIR=path, FME_SERVER=bgt_setup.FME_SERVER, url_connect="/fmerest/v2/resources/connections")
         res = requests.get(download_url, headers=fme_utils.fme_api_auth())
         res.raise_for_status()
@@ -278,10 +257,11 @@ def upload_resulting_shapes_to_objectstore():
             store.put_to_objectstore('shapes/{}-{}.{}'.format(res_name[0], timestamp, res_name[-1]),
                                      res.content,
                                      res.headers['Content-Type'])
+            store.delete_from_objectstore('shapes/{}-latest'.format(path.split('/')[-1]))
             store.put_to_objectstore('shapes/{}-latest'.format(path.split('/')[-1]),
                                      res.content,
                                      res.headers['Content-Type'])
-            log.info("Uploaded {} to objectstore BGT/shapes".format(res_name))
+            log.info("Uploaded {} to objectstore BGT/shapes".format(res_name[0], timestamp, res_name[-1]))
     log.info("Uploaded resulting shapes to BGT objectstore")
 
 
@@ -461,6 +441,10 @@ def run_before_after_comparisons():
     loc_pgsql.import_gml_control_db()
 
     # import csv / mapping db
+    # incorrect in 075_mappings
+    # ;;BGT_KRUINLIJN;vw_bgt_kruinlijn;vw_ngt_kruinlijn
+    # ;;BGT_NUMMERAANDUIDINGREEKS;vw_bgt_nummeraanduidingreeks
+
     loc_pgsql.import_csv_fixture('../app/source_data/075_mapping.csv', 'imgeo_controle.mapping_gml_db')
 
     # comparisons FKA: 040...
@@ -484,39 +468,39 @@ if __name__ == '__main__':
         # start the fme server
         server_manager.start()
 
-        download_bgt()
-
-        # upload data and FMW scripts
-        upload_data()
-        upload_script_resources()
-
-        create_fme_dbschema()
-        upload_over_onderbouw_backup()
-        create_fme_shape_views()
-
-        fme_utils.wait_for_job_to_complete(start_transformation_db())
-        fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-        fme_utils.wait_for_job_to_complete(start_transformation_over_en_onderbouw())
-        fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
-
-        # create coordinate search envelopes
-        fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-
-        # run the `aanmaak_esrishape_uit_DB_BGT` script
-        fme_utils.wait_for_job_to_complete(start_transformation_shapes())
-
-        # run transformation to `NLCS` format
-        for a in retrieve_chunk_coordinates():
-            start_transformation_nlcs_chunk(*a)
-
-        # run transformation to `DGN` format
-        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
+        # download_bgt()
+        #
+        # # upload data and FMW scripts
+        # upload_data()
+        # upload_script_resources()
+        #
+        # create_fme_dbschema()
+        # upload_over_onderbouw_backup()
+        # create_fme_shape_views()
+        #
+        # fme_utils.wait_for_job_to_complete(start_transformation_db())
+        # fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+        # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+        #
+        # # create coordinate search envelopes
+        # fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
+        #
+        # # run the `aanmaak_esrishape_uit_DB_BGT` script
+        # fme_utils.wait_for_job_to_complete(start_transformation_shapes())
+        #
+        # # run transformation to `NLCS` format
+        # for a in retrieve_chunk_coordinates():
+        #     start_transformation_nlcs_chunk(*a)
+        #
+        # # run transformation to `DGN` format
+        # fme_utils.wait_for_job_to_complete(start_transformation_dgn())
 
         # upload the resulting shapes an the source GML zip to objectstore
-        upload_resulting_shapes_to_objectstore()
-        upload_pdok_zip_to_objectstore()
+        #upload_pdok_zip_to_objectstore()
 
-        run_before_after_comparisons()
+        upload_resulting_shapes_to_objectstore()
+
+        #run_before_after_comparisons()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
