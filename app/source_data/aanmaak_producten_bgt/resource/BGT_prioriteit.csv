@@ -1,0 +1,203 @@
+BGT_Object;bgt;plus;prioriteit
+bgt_wegdeel;gesloten verharding;onbekend;2300
+bgt_wegdeel;gesloten verharding;asfalt;2295
+bgt_wegdeel;gesloten verharding;cementbeton;2290
+bgt_wegdeel;open verharding;onbekend;2285
+bgt_wegdeel;open verharding;betonstraatstenen;2280
+bgt_wegdeel;open verharding;gebakken klinkers;2275
+bgt_wegdeel;open verharding;tegels;2270
+bgt_wegdeel;open verharding;sierbestrating;2265
+bgt_wegdeel;open verharding;beton element;2260
+bgt_wegdeel;half verhard;onbekend;2255
+bgt_wegdeel;half verhard;grasklinkers;2250
+bgt_wegdeel;half verhard;schelpen;2245
+bgt_wegdeel;half verhard;puin;2240
+bgt_wegdeel;half verhard;grind;2235
+bgt_wegdeel;half verhard;gravel;2230
+bgt_wegdeel;onverhard;onbekend;2225
+bgt_wegdeel;onverhard;boomschors;2220
+bgt_wegdeel;onverhard;zand;2215
+bgt_wegdeel;transitie;onbekend;2210
+bgt_ondersteunendwegdeel;gesloten verharding;onbekend;2200
+bgt_ondersteunendwegdeel;gesloten verharding;asfalt;2198
+bgt_ondersteunendwegdeel;gesloten verharding;cementbeton;2196
+bgt_ondersteunendwegdeel;open verharding;onbekend;2194
+bgt_ondersteunendwegdeel;open verharding;betonstraatstenen;2192
+bgt_ondersteunendwegdeel;open verharding;gebakken klinkers;2190
+bgt_ondersteunendwegdeel;open verharding;tegels;2188
+bgt_ondersteunendwegdeel;open verharding;sierbestrating;2186
+bgt_ondersteunendwegdeel;open verharding;beton element;2184
+bgt_ondersteunendwegdeel;half verhard;onbekend;2182
+bgt_ondersteunendwegdeel;half verhard;grasklinkers;2180
+bgt_ondersteunendwegdeel;half verhard;schelpen;2178
+bgt_ondersteunendwegdeel;half verhard;puin;2176
+bgt_ondersteunendwegdeel;half verhard;grind;2174
+bgt_ondersteunendwegdeel;half verhard;gravel;2172
+bgt_ondersteunendwegdeel;onverhard;onbekend;2170
+bgt_ondersteunendwegdeel;onverhard;boomschors;2168
+bgt_ondersteunendwegdeel;onverhard;zand;2166
+bgt_ondersteunendwegdeel;groenvoorziening;onbekend;2164
+bgt_ondersteunendwegdeel;groenvoorziening;gravel;2162
+bgt_ondersteunendwegdeel;groenvoorziening;bosplantsoen;2160
+bgt_ondersteunendwegdeel;groenvoorziening;gras- en kruidachtigen;2158
+bgt_ondersteunendwegdeel;groenvoorziening;planten;2156
+bgt_ondersteunendwegdeel;groenvoorziening;struikrozen;2154
+bgt_ondersteunendwegdeel;groenvoorziening;heesters;2152
+bgt_ondersteunendwegdeel;groenvoorziening;bodembedekkers;2150
+bgt_ondersteunendwegdeel;transitie;onbekend;2148
+bgt_onbegroeidterreindeel;gesloten verharding;onbekend;2100
+bgt_onbegroeidterreindeel;gesloten verharding;asfalt;2098
+bgt_onbegroeidterreindeel;gesloten verharding;cementbeton;2096
+bgt_onbegroeidterreindeel;gesloten verharding;kunststof;2094
+bgt_onbegroeidterreindeel;open verharding;onbekend;2092
+bgt_onbegroeidterreindeel;open verharding;betonstraatstenen;2090
+bgt_onbegroeidterreindeel;open verharding;gebakken klinkers;2088
+bgt_onbegroeidterreindeel;open verharding;tegels;2086
+bgt_onbegroeidterreindeel;open verharding;sierbestrating;2084
+bgt_onbegroeidterreindeel;open verharding;beton element;2082
+bgt_onbegroeidterreindeel;half verhard;onbekend;2080
+bgt_onbegroeidterreindeel;half verhard;grasklinkers;2078
+bgt_onbegroeidterreindeel;half verhard;schelpen;2076
+bgt_onbegroeidterreindeel;half verhard;puin;2074
+bgt_onbegroeidterreindeel;half verhard;grind;2072
+bgt_onbegroeidterreindeel;half verhard;gravel;2070
+bgt_onbegroeidterreindeel;onverhard;onbekend;2068
+bgt_onbegroeidterreindeel;onverhard;boomschors;2066
+bgt_onbegroeidterreindeel;onverhard;zand;2064
+bgt_onbegroeidterreindeel;erf;onbekend;2062
+bgt_onbegroeidterreindeel;zand;onbekend;2060
+bgt_onbegroeidterreindeel;zand;strand en strandwal;2058
+bgt_onbegroeidterreindeel;zand;zandverstuiving;2056
+bgt_onbegroeidterreindeel;transitie;onbekend;2054
+bgt_begroeidterreindeel;loofbos;onbekend;2000
+bgt_begroeidterreindeel;loofbos;griend en hakhout;1998
+bgt_begroeidterreindeel;gemengd bos;onbekend;1996
+bgt_begroeidterreindeel;naaldbos;onbekend;1994
+bgt_begroeidterreindeel;heide;onbekend;1992
+bgt_begroeidterreindeel;struiken;onbekend;1990
+bgt_begroeidterreindeel;houtwal;onbekend;1988
+bgt_begroeidterreindeel;duin;onbekend;1986
+bgt_begroeidterreindeel;duin;open duinvegetatie;1984
+bgt_begroeidterreindeel;duin;gesloten duinvegetatie;1982
+bgt_begroeidterreindeel;grasland overig;onbekend;1980
+bgt_begroeidterreindeel;moeras;onbekend;1978
+bgt_begroeidterreindeel;rietland;onbekend;1976
+bgt_begroeidterreindeel;kwelder;onbekend;1974
+bgt_begroeidterreindeel;fruitteelt;onbekend;1972
+bgt_begroeidterreindeel;fruitteelt;laagstam boomgaarden;1970
+bgt_begroeidterreindeel;fruitteelt;hoogstam boomgaarden;1968
+bgt_begroeidterreindeel;fruitteelt;wijngaarden;1966
+bgt_begroeidterreindeel;fruitteelt;klein fruit;1964
+bgt_begroeidterreindeel;boomteelt;onbekend;1962
+bgt_begroeidterreindeel;bouwland;onbekend;1960
+bgt_begroeidterreindeel;bouwland;akkerbouw;1958
+bgt_begroeidterreindeel;bouwland;braakliggend;1956
+bgt_begroeidterreindeel;bouwland;vollegrondsteelt;1954
+bgt_begroeidterreindeel;bouwland;bollenteelt;1952
+bgt_begroeidterreindeel;grasland agrarisch;onbekend;1950
+bgt_begroeidterreindeel;groenvoorziening;onbekend;1948
+bgt_begroeidterreindeel;groenvoorziening;bosplantsoen;1946
+bgt_begroeidterreindeel;groenvoorziening;gras- en kruidachtigen;1944
+bgt_begroeidterreindeel;groenvoorziening;planten;1942
+bgt_begroeidterreindeel;groenvoorziening;struikrozen;1940
+bgt_begroeidterreindeel;groenvoorziening;heesters;1938
+bgt_begroeidterreindeel;groenvoorziening;bodembedekkers;1936
+bgt_begroeidterreindeel;transitie;onbekend;1934
+bgt_waterdeel;zee;onbekend;1900
+bgt_waterdeel;waterloop;onbekend;1895
+bgt_waterdeel;waterloop;rivier;1890
+bgt_waterdeel;waterloop;sloot;1885
+bgt_waterdeel;waterloop;kanaal;1880
+bgt_waterdeel;waterloop;beek;1875
+bgt_waterdeel;waterloop;gracht;1870
+bgt_waterdeel;waterloop;bron;1865
+bgt_waterdeel;watervlakte;onbekend;1860
+bgt_waterdeel;watervlakte;haven;1855
+bgt_waterdeel;watervlakte;meer, plas, ven, vijver;1850
+bgt_waterdeel;greppel, droge sloot;onbekend;1845
+bgt_waterdeel;transitie;onbekend;1840
+bgt_ondersteunendwaterdeel;oever, slootkant;onbekend;1800
+bgt_ondersteunendwaterdeel;slik;onbekend;1795
+bgt_ondersteunendwaterdeel;transitie;onbekend;1790
+bgt_pand;;;3000
+imgeo_overigbouwwerk;overkapping;onbekend;2900
+imgeo_overigbouwwerk;open loods;onbekend;2895
+imgeo_overigbouwwerk;opslagtank;onbekend;2890
+imgeo_overigbouwwerk;bezinkbak;onbekend;2885
+imgeo_overigbouwwerk;windturbine;onbekend;2880
+imgeo_overigbouwwerk;lage trafo;onbekend;2875
+imgeo_overigbouwwerk;bassin;onbekend;2870
+imgeo_overigbouwwerk;niet-bgt;bunker;2865
+imgeo_overigbouwwerk;niet-bgt;voedersilo;2860
+imgeo_overigbouwwerk;niet-bgt;schuur;2855
+imgeo_overigbouwwerk;transitie;onbekend;2850
+bgt_overbruggingsdeel;;dek;2700
+bgt_overbruggingsdeel;;landhoofd;2695
+bgt_overbruggingsdeel;;pijler;2690
+bgt_overbruggingsdeel;;sloof;2685
+bgt_overbruggingsdeel;;pyloon;2680
+bgt_overbruggingsdeel;;onbekend;2675
+bgt_tunneldeel;;;2305
+imgeo_kunstwerkdeel;hoogspanningsmast;onbekend;2600
+imgeo_kunstwerkdeel;gemaal;onbekend;2595
+imgeo_kunstwerkdeel;perron;onbekend;2590
+imgeo_kunstwerkdeel;sluis;onbekend;2585
+imgeo_kunstwerkdeel;strekdam;onbekend;2580
+imgeo_kunstwerkdeel;steiger;onbekend;2575
+imgeo_kunstwerkdeel;stuw;onbekend;2570
+imgeo_kunstwerkdeel;niet-bgt;keermuur;2560
+imgeo_kunstwerkdeel;niet-bgt;overkluizing;2555
+imgeo_kunstwerkdeel;niet-bgt;duiker;2545
+imgeo_kunstwerkdeel;niet-bgt;faunavoorziening;2540
+imgeo_kunstwerkdeel;niet-bgt;vispassage;2535
+imgeo_kunstwerkdeel;niet-bgt;bodemval;2530
+imgeo_kunstwerkdeel;niet-bgt;coupure;2525
+imgeo_kunstwerkdeel;niet-bgt;ponton;2520
+imgeo_kunstwerkdeel;niet-bgt;voorde;2515
+imgeo_kunstwerkdeel;transitie;onbekend;2510
+imgeo_scheiding;muur;onbekend;2500
+imgeo_scheiding;kademuur;onbekend;2495
+imgeo_scheiding;hek;onbekend;2490
+imgeo_functioneelgebied;kering;onbekend;1600
+imgeo_functioneelgebied;niet-bgt;bedrijvigheid;1598
+imgeo_functioneelgebied;niet-bgt;natuur en landschap;1596
+imgeo_functioneelgebied;niet-bgt;landbouw;1594
+imgeo_functioneelgebied;niet-bgt;bewoning;1592
+imgeo_functioneelgebied;niet-bgt;infrastructuur: verkeer en vervoer;1590
+imgeo_functioneelgebied;niet-bgt;infrastructuur: waterstaatswerken;1588
+imgeo_functioneelgebied;niet-bgt;waterbergingsgebied;1586
+imgeo_functioneelgebied;niet-bgt;maatschappelijke en/of publieksvoorziening;1584
+imgeo_functioneelgebied;niet-bgt;recreatie;1582
+imgeo_functioneelgebied;niet-bgt;begraafplaats;1580
+imgeo_functioneelgebied;niet-bgt;functioneel beheer;1578
+imgeo_functioneelgebied;niet-bgt;functioneel beheer: hondenuitlaatplaats;1576
+imgeo_functioneelgebied;niet-bgt;recreatie: speeltuin;1574
+imgeo_functioneelgebied;niet-bgt;recreatie: park;1572
+imgeo_functioneelgebied;niet-bgt;recreatie: sportterrein;1570
+imgeo_functioneelgebied;niet-bgt;recreatie: camping;1568
+imgeo_functioneelgebied;niet-bgt;recreatie: bungalowpark;1566
+imgeo_functioneelgebied;niet-bgt;recreatie: volkstuin;1564
+imgeo_functioneelgebied;niet-bgt;bushalte;1562
+imgeo_functioneelgebied;niet-bgt;carpoolplaats;1560
+imgeo_functioneelgebied;niet-bgt;benzinestation;1558
+imgeo_functioneelgebied;niet-bgt;verzorgingsplaats;1556
+imgeo_functioneelgebied;niet-bgt;onbekend;1554
+imgeo_overigescheiding;niet-bgt;muur;2400
+imgeo_overigescheiding;niet-bgt;kademuur;2395
+imgeo_overigescheiding;niet-bgt;onbekend;2390
+imgeo_gebouwinstallatie;niet-bgt;bordes;2800
+imgeo_gebouwinstallatie;niet-bgt;luifel;2795
+imgeo_gebouwinstallatie;niet-bgt;toegangstrap;2790
+imgeo_gebouwinstallatie;niet-bgt;onbekend;2785
+imgeo_weginrichtingselement;niet-bgt;wegmarkering;2209
+imgeo_weginrichtingselement;niet-bgt;wildrooster;2208
+imgeo_weginrichtingselement;niet-bgt;rooster;2206
+imgeo_weginrichtingselement;niet-bgt;geleideconstructie;2204
+imgeo_weginrichtingselement;niet-bgt;boomspiegel;2203
+imgeo_weginrichtingselement;niet-bgt;onbekend;2201
+imgeo_vegetatieobject;niet-bgt;haag;1500
+imgeo_vegetatieobject;niet-bgt;onbekend;1495
+CFT_Overbouw;CFT_Overbouw;onbekend;2995
+CFT_Onderbouw;CFT_Onderbouw;onbekend;2994
+BAG_Standplaats;BAG_Standplaats;onbekend;2990
+BAG_Ligplaats;BAG_Ligplaats;onbekend;2985
