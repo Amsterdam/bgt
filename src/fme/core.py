@@ -100,11 +100,10 @@ def start_transformation_dgn():
          "NMDirectives": {"successTopics": [], "failureTopics": []},
          "TMDirectives": {"tag": "linux", "description": "Aanmaak NLCS uit DB"},
          "publishedParameters": [
-
              {"name": "SourceDataset_POSTGIS", "value": "bgt"},
              {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
              {"name": "P_OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)DGN.zip"},
-             # {"name": "P_CEL", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"},
+             {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"]},
              {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)resources/DGNv8_seed.dgn"}
          ]})
 
@@ -128,8 +127,12 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
              {"name": "SourceDataset_POSTGIS", "value": "bgt"},
              {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
              {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCS-ISO.ttf"},
-             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_NLCS"},
-             {"name": "SEED_FILE_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCSvlakken_seed.dgn"},
+             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_vlakken_NLCS"},
+             {"name": "DestDataset_DGNV8_5", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_lijnen_NLCS"},
+             {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"]},
+             {"name": "SEED_vlakken_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCSvlakken_seed.dgn"},
+             {"name": "SourceDataset_CSV", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/BGT_prioriteit.csv"]},
+             {"name": "SEED_lijnen_DGNv8", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCSlijnen_seed.dgn"},
              {"name": "ENVELOPE_MINX", "value": min_x},
              {"name": "ENVELOPE_MINY", "value": min_y},
              {"name": "ENVELOPE_MAXX", "value": max_x},
@@ -469,11 +472,11 @@ if __name__ == '__main__':
         server_manager.start()
 
         download_bgt()
-        
+
         # upload data and FMW scripts
         upload_data()
         upload_script_resources()
-        
+
         create_fme_dbschema()
         upload_over_onderbouw_backup()
         create_fme_shape_views()
@@ -481,17 +484,17 @@ if __name__ == '__main__':
         fme_utils.wait_for_job_to_complete(start_transformation_db())
         fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
         fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
-        
+
         # create coordinate search envelopes
         fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-        
+
         # run the `aanmaak_esrishape_uit_DB_BGT` script
         fme_utils.wait_for_job_to_complete(start_transformation_shapes())
-        
+
         # run transformation to `NLCS` format
         for a in retrieve_chunk_coordinates():
             start_transformation_nlcs_chunk(*a)
-        
+
         # run transformation to `DGN` format
         fme_utils.wait_for_job_to_complete(start_transformation_dgn())
 
