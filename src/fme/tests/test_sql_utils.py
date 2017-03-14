@@ -17,7 +17,7 @@ def sql_runner():
     runner.run_sql("DROP TABLE IF EXISTS public.sql_utils;")
     return runner
 
-
+@pytest.mark.skip(reason='integration test')
 def test_sql_runner_run_sql(sql_runner):
     dml_tekst = "CREATE TABLE public.sql_utils(field1 CHARACTER VARYING(8), field2 CHARACTER VARYING(38), field3 DATE);"
     sql_runner.run_sql(dml_tekst)
@@ -32,6 +32,7 @@ def test_sql_runner_run_sql(sql_runner):
     assert len(res) == 2
 
 
+@pytest.mark.skip(reason='integration test')
 def test_run_sql_script(sql_runner):
     res = sql_runner.run_sql_script('{app}/fme/tests/fixtures/test_pg.sql'.format(app=bgt_setup.SCRIPT_SRC))
     assert len(res) == 0
@@ -39,6 +40,7 @@ def test_run_sql_script(sql_runner):
     assert len(res) == 2
 
 
+@pytest.mark.skip(reason='integration test')
 def test_failing_query(sql_runner):
     with pytest.raises(Exception) as e:
         res = sql_runner.run_sql("SELECT * FROM unknown_table")
