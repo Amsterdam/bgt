@@ -17,7 +17,7 @@ OBJECTSTORE = {
     'os_options': {
         'tenant_id': '1776010a62684386a08b094d89ce08d9',
         'region_name': 'NL',
-        # 'endpoint_type': 'internalURL'
+        'endpoint_type': 'internalURL'
     }}
 
 bgt_connection = Connection(**OBJECTSTORE)
@@ -67,30 +67,7 @@ class ObjectStore():
         return self.conn.put_object(self.container, object_name, contents=object_content, content_type=content_type)
 
     def delete_from_objectstore(self, object_name):
-        return self.conn.delete_object(self.container, object_name)
-
-    def download_file(container_name, file_path, target_path=None):
-        """
-        Download diva file
-        :param container_name:
-        :return:
-        """
-
-        path = file_path.split('/')
-
-        file_name = path[-1]
-        log.info("Create file {} in {}".format(DIVA_DIR, file_name))
-        file_name = path[-1]
-
-        if target_path:
-            newfilename = '{}/{}'.format(DIVA_DIR, target_path)
-        else:
-            newfilename = '{}/{}'.format(DIVA_DIR, file_name)
-
-        if file_exists(newfilename):
-            log.debug('Skipped file exists: %s', newfilename)
-            return
-
-        with open(newfilename, 'wb') as newfile:
-            zipdata = get_conn().get_object(container_name, file_path)[1]
-            newfile.write(zipdata)
+        try:
+            return self.conn.delete_object(self.container, object_name)
+        except:
+            pass

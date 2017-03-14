@@ -102,7 +102,7 @@ def start_transformation_dgn():
          "publishedParameters": [
              {"name": "SourceDataset_POSTGIS", "value": "bgt"},
              {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
-             {"name": "P_OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)DGN.zip"},
+             {"name": "P_OUTPUT_DGN", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8.zip"},
              {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"]},
              {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)resources/DGNv8_seed.dgn"}
          ]})
@@ -127,8 +127,8 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
              {"name": "SourceDataset_POSTGIS", "value": "bgt"},
              {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
              {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCS-ISO.ttf"},
-             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_vlakken_NLCS"},
-             {"name": "DestDataset_DGNV8_5", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_lijnen_NLCS"},
+             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_vlakken_NLCS.zip"},
+             {"name": "DestDataset_DGNV8_5", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_lijnen_NLCS.zip"},
              {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"]},
              {"name": "SEED_vlakken_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCSvlakken_seed.dgn"},
              {"name": "SourceDataset_CSV", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/BGT_prioriteit.csv"]},
@@ -236,17 +236,58 @@ def upload_pdok_zip_to_objectstore():
     store.put_to_objectstore(filename, content, 'application/octet-stream')
     log.info("Uploaded {} to objectstore BGT/bron-gml".format(filename))
 
+def upload_nlcs_vlakken_files():
+    store = ObjectStore('BGT')
+    headers = {
+        'Content-Type': "application/json",
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+    }
+    url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/DGNv8_vlakken_NLCS/BGT_NLCS_V?accept=json&depth=1&detail=low'
 
-def upload_resulting_shapes_to_objectstore():
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        for entry in json.loads(response.content)['contents']:
+            filename = entry['name']
+            path = entry['path']
+            upload_path = "DGNv8_vlakken"
+            log.info(f"Upload file {upload_path}/{filename}")
+            file_content = fme_utils.download(f'FME_SHAREDRESOURCE_DATA{path}/{filename}')
+            store.put_to_objectstore(f'{upload_path}/{filename}',
+                                     file_content,
+                                     'application/octet-stream')
+
+def upload_nlcs_lijnen_files():
+    store = ObjectStore('BGT')
+    headers = {
+        'Content-Type': "application/json",
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+    }
+    url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/DGNv8_lijnen_NLCS/BGT_NLCS_L?accept=json&depth=1&detail=low'
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        for entry in json.loads(response.content)['contents']:
+            filename = entry['name']
+            path = entry['path']
+            upload_path = "DGNv8_lijnen"
+            log.info(f"Upload file {upload_path}/{filename}")
+            file_content = fme_utils.download(f'FME_SHAREDRESOURCE_DATA{path}/{filename}')
+            store.put_to_objectstore(f'{upload_path}/{filename}',
+                                     file_content,
+                                     'application/octet-stream')
+
+def upload_results_to_objectstore():
     """
     Uploads the resulting shapes to BGT objectstore
     :return:
     """
     store = ObjectStore('BGT')
-    log.info("Upload resulting shapes to BGT objectstore")
+    log.info("Upload resulting products to BGT objectstore")
 
-    files = ['Esri_Shape_totaal.zip', 'Esri_Shape_gebied.zip', 'ASCII_totaal.zip', 'ASCII_gebied.zip']
-
+    files = ['Esri_Shape_totaal.zip', 'Esri_Shape_gebied.zip',
+             'ASCII_totaal.zip', 'ASCII_gebied.zip',
+             'DGNv8.zip',
+             'DGNv8_lijnen_NLCS.zip',  'DGNv8_vlakken_NLCS.zip']
     for path in files:
         log.info("Download {} for storing in objectstore".format(path))
         download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low&' \
@@ -257,15 +298,15 @@ def upload_resulting_shapes_to_objectstore():
         if res.status_code == 200:
             res_name = path.split('/')[-1].split('.')
             timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-            store.put_to_objectstore('shapes/{}-{}.{}'.format(res_name[0], timestamp, res_name[-1]),
+            store.put_to_objectstore('producten/{}-{}.{}'.format(res_name[0], timestamp, res_name[-1]),
                                      res.content,
                                      res.headers['Content-Type'])
-            store.delete_from_objectstore('shapes/{}-latest'.format(path.split('/')[-1]))
-            store.put_to_objectstore('shapes/{}-latest'.format(path.split('/')[-1]),
+            store.delete_from_objectstore('producten/{}-latest'.format(path.split('/')[-1]))
+            store.put_to_objectstore('producten/{}-latest'.format(path.split('/')[-1]),
                                      res.content,
                                      res.headers['Content-Type'])
-            log.info("Uploaded {} to objectstore BGT/shapes".format(res_name[0], timestamp, res_name[-1]))
-    log.info("Uploaded resulting shapes to BGT objectstore")
+            log.info("Uploaded {} to objectstore BGT/producten".format(res_name[0], timestamp, res_name[-1]))
+    log.info("Uploaded resulting products to BGT objectstore")
 
 
 def upload_over_onderbouw_backup():
@@ -501,7 +542,7 @@ if __name__ == '__main__':
         # upload the resulting shapes an the source GML zip to objectstore
         upload_pdok_zip_to_objectstore()
 
-        upload_resulting_shapes_to_objectstore()
+        upload_results_to_objectstore()
 
         #run_before_after_comparisons()
     except Exception as e:

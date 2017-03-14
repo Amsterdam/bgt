@@ -13,5 +13,6 @@ trap 'dc kill ; dc rm -f' EXIT
 
 dc build
 dc up -d database
+dc test
 dc run --rm importer
 
