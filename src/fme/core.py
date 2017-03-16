@@ -436,6 +436,7 @@ def create_sql_connections():
 
 def upload_data():
     """Upload the GML files, XSD and kaartbladen/shapes"""
+    fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*')    
     fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT),
                      'resources/connections', 'Import_XSD', 'imgeo.xsd')
     fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT),
