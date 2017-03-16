@@ -1,9 +1,11 @@
 import json
 import logging
+import os
 import sys
 import time
 import urllib.parse
 import urllib.request
+import zipfile
 from datetime import datetime
 from zipfile import ZipFile
 
@@ -127,8 +129,8 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
              {"name": "SourceDataset_POSTGIS", "value": "bgt"},
              {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
              {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCS-ISO.ttf"},
-             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_vlakken_NLCS.zip"},
-             {"name": "DestDataset_DGNV8_5", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_lijnen_NLCS.zip"},
+             {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_vlakken_NLCS"},
+             {"name": "DestDataset_DGNV8_5", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_lijnen_NLCS"},
              {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"]},
              {"name": "SEED_vlakken_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCSvlakken_seed.dgn"},
              {"name": "SourceDataset_CSV", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/BGT_prioriteit.csv"]},
@@ -236,45 +238,76 @@ def upload_pdok_zip_to_objectstore():
     store.put_to_objectstore(filename, content, 'application/octet-stream')
     log.info("Uploaded {} to objectstore BGT/bron-gml".format(filename))
 
+
 def upload_nlcs_vlakken_files():
+    log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore")
+
     store = ObjectStore('BGT')
     headers = {
         'Content-Type': "application/json",
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
     }
-    url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/DGNv8_vlakken_NLCS/BGT_NLCS_V?accept=json&depth=1&detail=low'
+    url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
+          'FME_SHAREDRESOURCE_DATA/filesys/DGNv8_vlakken_NLCS/BGT_NLCS_V?accept=json&depth=1&detail=low'
+
+    zip_filename = '/tmp/data/DGNv8_vlakken.zip'
+    zf = zipfile.ZipFile(zip_filename, mode='w')
 
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        for entry in json.loads(response.content)['contents']:
-            filename = entry['name']
-            path = entry['path']
-            upload_path = "DGNv8_vlakken"
-            log.info(f"Upload file {upload_path}/{filename}")
-            file_content = fme_utils.download(f'FME_SHAREDRESOURCE_DATA{path}/{filename}')
-            store.put_to_objectstore(f'{upload_path}/{filename}',
-                                     file_content,
-                                     'application/octet-stream')
+        try:
+            for entry in json.loads(response.content)['contents']:
+                filename = entry['name']
+                path = entry['path']
+                upload_path = "DGNv8_vlakken"
+                log.info(f"Upload file {upload_path}/{filename}")
+                file_content = fme_utils.download(f'{path}/{filename}', text=False)
+                zf.writestr(filename, file_content)
+        finally:
+            zf.close()
+
+        with open(zip_filename, mode='rb') as f:
+            store.put_to_objectstore(
+                'producten/DGNv8_vlakken.zip', f.read(), 'application/octet-stream')
+
+        os.remove(zip_filename)
+    log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore done")
+
 
 def upload_nlcs_lijnen_files():
+    log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore")
+
     store = ObjectStore('BGT')
     headers = {
         'Content-Type': "application/json",
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
     }
-    url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/DGNv8_lijnen_NLCS/BGT_NLCS_L?accept=json&depth=1&detail=low'
+    url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
+          'FME_SHAREDRESOURCE_DATA/filesys/DGNv8_lijnen_NLCS/BGT_NLCS_L?accept=json&depth=1&detail=low'
+
+    zip_filename = '/tmp/data/DGNv8_lijnen.zip'
+    zf = zipfile.ZipFile(zip_filename, mode='w')
+    upload_path = "DGNv8_lijnen"
 
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        for entry in json.loads(response.content)['contents']:
-            filename = entry['name']
-            path = entry['path']
-            upload_path = "DGNv8_lijnen"
-            log.info(f"Upload file {upload_path}/{filename}")
-            file_content = fme_utils.download(f'FME_SHAREDRESOURCE_DATA{path}/{filename}')
-            store.put_to_objectstore(f'{upload_path}/{filename}',
-                                     file_content,
-                                     'application/octet-stream')
+        try:
+            for entry in json.loads(response.content)['contents']:
+                filename = entry['name']
+                path = entry['path']
+                log.info(f"Upload file {upload_path}/{filename}")
+                file_content = fme_utils.download(f'{path}/{filename}', text=False)
+                zf.writestr(filename, file_content)
+        finally:
+            zf.close()
+
+        with open(zip_filename, mode='rb') as f:
+            store.put_to_objectstore(
+                'producten/DGNv8_lijnen.zip', f.read(), 'application/octet-stream')
+
+        os.remove(zip_filename)
+    log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore done")
+
 
 def upload_results_to_objectstore():
     """
@@ -284,10 +317,10 @@ def upload_results_to_objectstore():
     store = ObjectStore('BGT')
     log.info("Upload resulting products to BGT objectstore")
 
-    files = ['Esri_Shape_totaal.zip', 'Esri_Shape_gebied.zip',
-             'ASCII_totaal.zip', 'ASCII_gebied.zip',
+    files = ['Esri_Shape_totaal.zip', 'Esri_Shape_gebieden.zip',
+             'ASCII_totaal.zip', 'ASCII_gebieden.zip',
              'DGNv8.zip',
-             'DGNv8_lijnen_NLCS.zip',  'DGNv8_vlakken_NLCS.zip']
+             'DGNv8_lijnen_NLCS.zip', 'DGNv8_vlakken_NLCS.zip']
     for path in files:
         log.info("Download {} for storing in objectstore".format(path))
         download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low&' \
@@ -306,6 +339,9 @@ def upload_results_to_objectstore():
                                      res.content,
                                      res.headers['Content-Type'])
             log.info("Uploaded {} to objectstore BGT/producten".format(res_name[0], timestamp, res_name[-1]))
+
+    upload_nlcs_lijnen_files()
+    upload_nlcs_vlakken_files()
     log.info("Uploaded resulting products to BGT objectstore")
 
 
@@ -544,7 +580,7 @@ if __name__ == '__main__':
 
         upload_results_to_objectstore()
 
-        #run_before_after_comparisons()
+        # run_before_after_comparisons()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e

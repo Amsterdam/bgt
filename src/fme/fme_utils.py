@@ -129,7 +129,7 @@ def _register_fmejobsubmitter_service(repo_name, filename):
     return True
 
 
-def download(path, disposition='inline'):
+def download(path, disposition='inline', text=True):
 
     log.info(f"Download {path}")
 
@@ -143,7 +143,9 @@ def download(path, disposition='inline'):
 
     try:
         response = requests.get(url, headers=headers)
-        return response.text
+        if text:
+            return response.text
+        return response.content
     except requests.exceptions.RequestException as e:
         log.debug('HTTP Request failed')
         raise e
