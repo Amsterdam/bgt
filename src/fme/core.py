@@ -116,7 +116,6 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
     :return: dict with 'jobid' and 'urltransform'
     """
     log.info(f"Starting transformation -:> NLCS {min_x} {min_y} {max_x} {max_y}")
-    # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
 
     return fme_utils.run_transformation_job(
         'BGT-DGN',
@@ -148,7 +147,7 @@ def start_transformation_shapes():
     """
     log.info("Starting transformation -:> Shapes")
 
-    # update data in `Export shapes` and  `Export_Shapes_Totaalgebied` directories
+    # update data in `Export shapes` and  `Export_Shapes` directories
 
     return fme_utils.run_transformation_job(
         'BGT-SHAPES',
@@ -161,9 +160,9 @@ def start_transformation_shapes():
             "publishedParameters": [
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
                 {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_gebied.zip"},
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_gebieden.zip"},
                 {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_totaal.zip"},
-                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_gebied.zip"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_gebieden.zip"},
                 {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_totaal.zip"}]})
 
 
@@ -201,27 +200,6 @@ def retrieve_chunk_coordinates():
 
     coords = [row.split(',') for row in content.split('\n')[1:-1]]
     return coords
-
-
-def start_test_transformation():
-    """
-    calls `aanmaak_esrishape_test_zip.fmw` on FME server
-    :return: dict with 'jobid' and 'urltransform'
-    """
-    return fme_utils.run_transformation_job(
-        'BGT-SHAPES',
-        'aanmaak_esrishape_test_zip.fmw',
-        {
-            "subsection": "REST_SERVICE",
-            "FMEDirectives": {},
-            "NMDirectives": {"successTopics": [], "failureTopics": []},
-            "TMDirectives": {"tag": "linux", "description": "Aanmaak Shapes uit DB"},
-            "publishedParameters": [
-                {"name": "SourceDataset_POSTGIS", "value": "bgt"},
-                {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)TestExport.zip"},
-                {"name": "DestDataset_ESRISHAPE3", "value":
-                    "$(FME_SHAREDRESOURCE_DATA)TestExportTotaalgebied.zip"}]})
 
 
 def upload_pdok_zip_to_objectstore():
