@@ -244,9 +244,12 @@ def upload_nlcs_vlakken_files():
         finally:
             zf.close()
 
+        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
-                'producten/DGNv8_vlakken.zip', f.read(), 'application/octet-stream')
+                'producten/DGNv8_vlakken-latest.zip', f.read(), 'application/octet-stream')
+            store.put_to_objectstore(
+                f'producten/DGNv8_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
     log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore done")
@@ -279,9 +282,12 @@ def upload_nlcs_lijnen_files():
         finally:
             zf.close()
 
+        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
-                'producten/DGNv8_lijnen.zip', f.read(), 'application/octet-stream')
+                'producten/DGNv8_lijnen-latest.zip', f.read(), 'application/octet-stream')
+            store.put_to_objectstore(
+                f'producten/DGNv8_lijnen-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
     log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore done")
@@ -436,7 +442,7 @@ def create_sql_connections():
 
 def upload_data():
     """Upload the GML files, XSD and kaartbladen/shapes"""
-    fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*')    
+    fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*')
     fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT),
                      'resources/connections', 'Import_XSD', 'imgeo.xsd')
     fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT),
