@@ -297,8 +297,7 @@ def upload_results_to_objectstore():
 
     files = ['Esri_Shape_totaal.zip', 'Esri_Shape_gebieden.zip',
              'ASCII_totaal.zip', 'ASCII_gebieden.zip',
-             'DGNv8.zip',
-             'DGNv8_lijnen_NLCS.zip', 'DGNv8_vlakken_NLCS.zip']
+             'DGNv8.zip']
     for path in files:
         log.info("Download {} for storing in objectstore".format(path))
         download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low&' \
