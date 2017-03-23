@@ -285,29 +285,29 @@ def zip_upload_and_cleanup_shape_results():
     # log.info("Zip Shape results")
     store = ObjectStore('BGT')
     names = [datetime.now().strftime('%Y%m%d%H%M%S'), "latest"]
-    zipfile_name = "/tmp/data/shapes-results.zip"
     cwd = os.getcwd()
 
-    os.chdir('/tmp/data')
-    # with ZipFile(zipfile_name, "w") as zf:
-    #     for dirname, subdirs, files in os.walk("shaperesults"):
-    #         zf.write(dirname)
-    #         for filename in files:
-    #             zf.write(os.path.join(dirname, filename))
+    os.chdir('/tmp/data/shaperesults')
+    for folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
+        zipfile_name = f"/tmp/data/shaperesults/{folder}.zip"
+        with ZipFile(f'{folder}.zip', "w") as zf:
+            for dirname, subdirs, files in os.walk(folder):
+                zf.write(dirname)
+                for filename in files:
+                    zf.write(os.path.join(dirname, filename))
 
-
-    log.info("Upload Zip Shape results")
-    for name in names:
-        log.info(f"Upload shapes-results-{name}.zip to object store")
-        store.put_to_objectstore(
-            'products/shapes-results-{}.zip'.format(name),
-            open(zipfile_name, 'rb').read(),
-            'application/octet-stream')
-    try:
-        log.info("Clean up results")
-        os.remove(zipfile_name)
-    except:
-        pass
+        log.info("Upload Zip Shape results")
+        for name in names:
+            log.info(f"{zipfile_name}.zip to object store")
+            store.put_to_objectstore(
+                'products/{}-{}.zip'.format(folder, name),
+                open(zipfile_name, 'rb').read(),
+                'application/octet-stream')
+        try:
+            log.info("Clean up results")
+            os.remove(zipfile_name)
+        except:
+            pass
     shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
     os.chdir(cwd)
     log.info("Zipped results and uploaded them to the objectstore")
@@ -622,11 +622,10 @@ if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
     log.info("Starting import script")
+    server_manager = fme_server.FMEServer(
+        bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
 
     try:
-        server_manager = fme_server.FMEServer(
-            bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
-
         log.info("Starting script, current server status is %s", server_manager.get_status())
 
         # start the fme server
