@@ -282,26 +282,29 @@ def remove_shape_results(shape_type):
 
 
 def zip_upload_and_cleanup_shape_results():
+    # log.info("Zip Shape results")
     store = ObjectStore('BGT')
     names = [datetime.now().strftime('%Y%m%d%H%M%S'), "latest"]
     zipfile_name = "/tmp/data/shapes-results.zip"
     cwd = os.getcwd()
 
     os.chdir('/tmp/data')
-    with ZipFile(zipfile_name, "w") as zf:
-        for dirname, subdirs, files in os.walk("shaperesults"):
-            zf.write(dirname)
-            for filename in files:
-                zf.write(os.path.join(dirname, filename))
+    # with ZipFile(zipfile_name, "w") as zf:
+    #     for dirname, subdirs, files in os.walk("shaperesults"):
+    #         zf.write(dirname)
+    #         for filename in files:
+    #             zf.write(os.path.join(dirname, filename))
 
-    content = open(zipfile_name, 'rb').read()
+
+    log.info("Upload Zip Shape results")
     for name in names:
         log.info(f"Upload shapes-results-{name}.zip to object store")
         store.put_to_objectstore(
             'products/shapes-results-{}.zip'.format(name),
-            content,
+            open(zipfile_name, 'rb').read(),
             'application/octet-stream')
     try:
+        log.info("Clean up results")
         os.remove(zipfile_name)
     except:
         pass
@@ -629,25 +632,27 @@ if __name__ == '__main__':
         # start the fme server
         server_manager.start()
 
-        download_bgt()
-
-        # upload data and FMW scripts
-        upload_data()
-        upload_script_resources()
-
-        create_fme_dbschema()
-        upload_over_onderbouw_backup()
-        create_fme_shape_views()
+        # download_bgt()
         #
-        fme_utils.wait_for_job_to_complete(start_transformation_db())
-        fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-        fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+        # # upload data and FMW scripts
+        # upload_data()
+        # upload_script_resources()
+        #
+        # create_fme_dbschema()
+        # upload_over_onderbouw_backup()
+        # create_fme_shape_views()
+        # #
+        # fme_utils.wait_for_job_to_complete(start_transformation_db())
+        # fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+        # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+        #
+        # # create coordinate search envelopes
+        # fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
+        #
+        # # run the `aanmaak_esrishape_uit_DB_BGT` script
+        # start_transformation_shapes()
 
-        # create coordinate search envelopes
-        fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-
-        # run the `aanmaak_esrishape_uit_DB_BGT` script
-        start_transformation_shapes()
+        zip_upload_and_cleanup_shape_results()
 
         # run transformation to `NLCS` format
         for a in retrieve_chunk_coordinates():
