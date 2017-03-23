@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import shutil
 import sys
 import time
 import urllib.parse
@@ -20,6 +21,46 @@ from objectstore.objectstore import ObjectStore
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
+
+shape_object_types = [
+    'imgeo_extractie.vw_bgt_begroeidterreindeel',
+    'imgeo_extractie.vw_bgt_kruinlijn',
+    'imgeo_extractie.vw_bgt_onbegroeidterreindeel',
+    'imgeo_extractie.vw_bgt_ondersteunendwaterdeel',
+    'imgeo_extractie.vw_bgt_ondersteunendwegdeel',
+    'imgeo_extractie.vw_bgt_ongeclassificeerdobject',
+    'imgeo_extractie.vw_bgt_overbruggingsdeel',
+    'imgeo_extractie.vw_bgt_tunneldeel',
+    'imgeo_extractie.vw_bgt_wegdeel',
+    'imgeo_extractie.vw_imgeo_bak',
+    'imgeo_extractie.vw_imgeo_functioneelgebied',
+    'imgeo_extractie.vw_imgeo_gebouwinstallatie',
+    'imgeo_extractie.vw_imgeo_installatie',
+    'imgeo_extractie.vw_imgeo_kast',
+    'imgeo_extractie.vw_imgeo_kunstwerkdeel',
+    'imgeo_extractie.vw_imgeo_overigbouwwerk',
+    'imgeo_extractie.vw_imgeo_overigescheiding',
+    'imgeo_extractie.vw_imgeo_put',
+    'imgeo_extractie.vw_imgeo_scheiding',
+    'imgeo_extractie.vw_imgeo_spoor',
+    'imgeo_extractie.vw_imgeo_straatmeubilair',
+    'imgeo_extractie.vw_imgeo_vegetatieobject',
+    'imgeo_extractie.vw_imgeo_waterinrichtingselement',
+    'imgeo_extractie.vw_imgeo_weginrichtingselement',
+    'imgeo_extractie.vw_dgn_bgt_wegdeel',
+    'imgeo_extractie.vw_imgeo_mast',
+    'imgeo_extractie.vw_imgeo_sensor',
+    'imgeo_extractie.vw_imgeo_bord',
+    'imgeo_extractie.vw_bgt_waterdeel',
+    'imgeo_extractie.vw_imgeo_paal',
+    'imgeo_extractie.vw_cft_overbouw',
+    'imgeo_extractie.vw_cft_onderbouw',
+    'imgeo_extractie.vw_bgt_openbareruimtelabel',
+    'imgeo_extractie.vw_bag_ligplaats',
+    'imgeo_extractie.vw_bag_standplaats',
+    'imgeo_extractie.vw_bgt_pand',
+    'imgeo_extractie.vw_bgt_nummeraanduidingreeks',
+]
 
 
 def start_transformation_gebieden():
@@ -142,12 +183,24 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
 
 def start_transformation_shapes():
     """
+    Transform the shapes per shape object type
+    :return:
+    """
+    for shape_type in shape_object_types:
+        fme_utils.wait_for_job_to_complete(start_transformation_shapes_for(shape_type))
+        download_shape_files(shape_type)
+        remove_shape_results(shape_type)
+
+    # upload and cleanup results
+    zip_upload_and_cleanup_shape_results()
+
+
+def start_transformation_shapes_for(shape_type):
+    """
     calls `aanmaak_esrishape_uit_DB_BGT.fmw` on FME server
-    :return: dict with 'jobid' and 'urltransform'
+    :return: dict with 'jstart_transformation_shapesobid' and 'urltransform'
     """
     log.info("Starting transformation -:> Shapes")
-
-    # update data in `Export shapes` and  `Export_Shapes` directories
 
     return fme_utils.run_transformation_job(
         'BGT-SHAPES',
@@ -160,10 +213,101 @@ def start_transformation_shapes():
             "publishedParameters": [
                 {"name": "SourceDataset_POSTGIS", "value": "bgt"},
                 {"name": "SourceDataset_POSTGIS_5", "value": "bgt"},
-                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_gebieden.zip"},
-                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_totaal.zip"},
-                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_gebieden.zip"},
-                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_totaal.zip"}]})
+                {"name": "DestDataset_ESRISHAPE2", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_gebieden"},
+                {"name": "DestDataset_ESRISHAPE3", "value": "$(FME_SHAREDRESOURCE_DATA)Esri_Shape_totaal"},
+                {"name": "DestDataset_CSV", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_gebieden"},
+                {"name": "DestDataset_CSV_3", "value": "$(FME_SHAREDRESOURCE_DATA)ASCII_totaal"},
+                {"name": "bgt_view", "value": shape_type}]})
+
+
+def collect_shape_files_to_fetch():
+    """
+    Get the filenames of all the shapefiles in fme cloud
+    :return:
+    """
+
+    def get_dir_contents(contents):
+        res = []
+        for file_result in contents:
+            if file_result['type'] == 'DIR':
+                return get_dir_contents(file_result['contents'])
+            res.append('{}{}'.format(file_result['path'], file_result['name']))
+        return res
+
+    headers = {
+        'Content-Type': "application/json",
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+    }
+    files_to_fetch = []
+
+    for folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
+        url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
+              'FME_SHAREDRESOURCE_DATA/filesys/{}?accept=json&depth=4&detail=low'.format(folder)
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            files_to_fetch += get_dir_contents(response.json()['contents'])
+    return files_to_fetch
+
+
+def download_shape_files(shape_type):
+    log.info(f"download results for {shape_type}")
+
+    for filename in collect_shape_files_to_fetch():
+
+        dirname = '/'.join(filename.split('/')[:-1])
+        directory = f'/tmp/data/shaperesults{dirname}'
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        with open(f'/tmp/data/shaperesults{filename}', 'wb') as file:
+            file.write(fme_utils.download(filename, text=False))
+
+    log.info(f"downloaded results for {shape_type}")
+
+
+def remove_shape_results(shape_type):
+    log.info(f"remove results for {shape_type}")
+    headers = {
+        'Content-Type': "application/json",
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+    }
+    for folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
+        url = "https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/" \
+              "FME_SHAREDRESOURCE_DATA/filesys/{}?detail=low".format(folder)
+        response = requests.delete(url, headers=headers)
+        if response.status_code == 204:
+            log.info(f"removed folder {folder}")
+        else:
+            log.info(f"Removing folder {folder} failed {response.status_code}")
+
+
+def zip_upload_and_cleanup_shape_results():
+    store = ObjectStore('BGT')
+    names = [datetime.now().strftime('%Y%m%d%H%M%S'), "latest"]
+    zipfile_name = "/tmp/data/shapes-results.zip"
+    cwd = os.getcwd()
+
+    os.chdir('/tmp/data')
+    with ZipFile(zipfile_name, "w") as zf:
+        for dirname, subdirs, files in os.walk("shaperesults"):
+            zf.write(dirname)
+            for filename in files:
+                zf.write(os.path.join(dirname, filename))
+
+    content = open(zipfile_name, 'rb').read()
+    for name in names:
+        log.info(f"Upload shapes-results-{name}.zip to object store")
+        store.put_to_objectstore(
+            'products/shapes-results-{}.zip'.format(name),
+            content,
+            'application/octet-stream')
+    try:
+        os.remove(zipfile_name)
+    except:
+        pass
+    shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
+    os.chdir(cwd)
+    log.info("Zipped results and uploaded them to the objectstore")
 
 
 def resolve_chunk_coordinates():
@@ -293,59 +437,12 @@ def upload_nlcs_lijnen_files():
     log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore done")
 
 
-def upload_results_to_objectstore():
-    """
-    Uploads the resulting shapes to BGT objectstore
-    :return:
-    """
-    store = ObjectStore('BGT')
-    log.info("Upload resulting products to BGT objectstore")
-
-    files = ['Esri_Shape_totaal.zip', 'Esri_Shape_gebieden.zip',
-             'ASCII_totaal.zip', 'ASCII_gebieden.zip',
-             'DGNv8.zip']
-    for path in files:
-        log.info("Download {} for storing in objectstore".format(path))
-        download_url = '{FME_SERVER}{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{DIR}?detail=low&' \
-                       'createDirectories=true&detail=low&overwrite=true'.format(
-            DIR=path, FME_SERVER=bgt_setup.FME_SERVER, url_connect="/fmerest/v2/resources/connections")
-        res = requests.get(download_url, headers=fme_utils.fme_api_auth())
-        res.raise_for_status()
-        if res.status_code == 200:
-            res_name = path.split('/')[-1].split('.')
-            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-            store.put_to_objectstore('producten/{}-{}.{}'.format(res_name[0], timestamp, res_name[-1]),
-                                     res.content,
-                                     res.headers['Content-Type'])
-            store.delete_from_objectstore('producten/{}-latest'.format(path.split('/')[-1]))
-            store.put_to_objectstore('producten/{}-latest'.format(path.split('/')[-1]),
-                                     res.content,
-                                     res.headers['Content-Type'])
-            log.info("Uploaded {} to objectstore BGT/producten".format(res_name[0], timestamp, res_name[-1]))
-
-    upload_nlcs_lijnen_files()
-    upload_nlcs_vlakken_files()
-    log.info("Uploaded resulting products to BGT objectstore")
-
-
 def upload_over_onderbouw_backup():
     """
     Upload Over- en Onderbouw data
 
     :return:
     """
-    log.info("Upload Onder- en Overbouw data")
-    store = ObjectStore('BGT')
-    dumpfile = "/tmp/data/over_onderbouw.pg_dump"
-
-    file_name_to_fetch = "CFT_OverOnderbouw_latest.backup"
-    with open(dumpfile, 'wb') as newfile:
-        data = store.get_store_object(f"OverOnderbouw/{file_name_to_fetch}")
-        newfile.write(data)
-
-    fme_pgsql = create_fme_sql_connection()
-    fme_pgsql.run_sql_script(dumpfile)
-    log.info("Uploading Onder- en Overbouw data gereed.")
 
 
 def unzip_pdok_file():
@@ -550,7 +647,7 @@ if __name__ == '__main__':
         fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script
-        fme_utils.wait_for_job_to_complete(start_transformation_shapes())
+        start_transformation_shapes()
 
         # run transformation to `NLCS` format
         for a in retrieve_chunk_coordinates():
@@ -561,10 +658,10 @@ if __name__ == '__main__':
 
         # upload the resulting shapes an the source GML zip to objectstore
         upload_pdok_zip_to_objectstore()
+        upload_nlcs_lijnen_files()
+        upload_nlcs_vlakken_files()
 
-        upload_results_to_objectstore()
-
-        # run_before_after_comparisons()
+        run_before_after_comparisons()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
