@@ -8,6 +8,7 @@ RUN apt-get update \
         libpq-dev \
 		postgresql-client \
 		netcat \
+		gdal-bin \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

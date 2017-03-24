@@ -656,8 +656,8 @@ if __name__ == '__main__':
         #
         # # upload the resulting shapes an the source GML zip to objectstore
         # upload_pdok_zip_to_objectstore()
-        upload_nlcs_lijnen_files()
-        upload_nlcs_vlakken_files()
+        # upload_nlcs_lijnen_files()
+        # upload_nlcs_vlakken_files()
 
         run_before_after_comparisons()
     except Exception as e:
