@@ -282,12 +282,12 @@ def remove_shape_results(shape_type):
 
 
 def zip_upload_and_cleanup_shape_results():
-    # log.info("Zip Shape results")
     store = ObjectStore('BGT')
     names = [datetime.now().strftime('%Y%m%d%H%M%S'), "latest"]
     cwd = os.getcwd()
 
     os.chdir('/tmp/data/shaperesults')
+    log.info("Upload Zip Shape results")
     for folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
         zipfile_name = f"/tmp/data/shaperesults/{folder}.zip"
         with ZipFile(f'{folder}.zip', "w") as zf:
@@ -296,20 +296,16 @@ def zip_upload_and_cleanup_shape_results():
                 for filename in files:
                     zf.write(os.path.join(dirname, filename))
 
-        log.info("Upload Zip Shape results")
         for name in names:
-            log.info(f"{zipfile_name}.zip to object store")
+            log.info(f"upload {zipfile_name}:{name} to object store")
             store.put_to_objectstore(
                 'products/{}-{}.zip'.format(folder, name),
                 open(zipfile_name, 'rb').read(),
                 'application/octet-stream')
-        try:
-            log.info("Clean up results")
-            os.remove(zipfile_name)
-        except:
-            pass
-    shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
+
     os.chdir(cwd)
+    log.info("Clean up results")
+    shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
     log.info("Zipped results and uploaded them to the objectstore")
 
 
@@ -650,18 +646,16 @@ if __name__ == '__main__':
         #
         # # run the `aanmaak_esrishape_uit_DB_BGT` script
         # start_transformation_shapes()
-
-        zip_upload_and_cleanup_shape_results()
-
-        # run transformation to `NLCS` format
-        for a in retrieve_chunk_coordinates():
-            start_transformation_nlcs_chunk(*a)
-
-        # run transformation to `DGN` format
-        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
-
-        # upload the resulting shapes an the source GML zip to objectstore
-        upload_pdok_zip_to_objectstore()
+        #
+        # # run transformation to `NLCS` format
+        # for a in retrieve_chunk_coordinates():
+        #     start_transformation_nlcs_chunk(*a)
+        #
+        # # run transformation to `DGN` format
+        # fme_utils.wait_for_job_to_complete(start_transformation_dgn())
+        #
+        # # upload the resulting shapes an the source GML zip to objectstore
+        # upload_pdok_zip_to_objectstore()
         upload_nlcs_lijnen_files()
         upload_nlcs_vlakken_files()
 
