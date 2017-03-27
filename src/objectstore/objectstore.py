@@ -17,7 +17,7 @@ OBJECTSTORE = {
     'os_options': {
         'tenant_id': '1776010a62684386a08b094d89ce08d9',
         'region_name': 'NL',
-        'endpoint_type': 'internalURL'
+        # 'endpoint_type': 'internalURL'
     }}
 
 bgt_connection = Connection(**OBJECTSTORE)

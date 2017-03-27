@@ -20,11 +20,11 @@ def create_work_dir():
     return workdir
 
 
-def compare_before_after_counts_csv():
+def compare_before_after_counts_csv(host, dbname, user, password):
     log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
     workdir = create_work_dir()
     csv_name = '{}/results/vergelijkings_resultaat-{}.csv'.format(workdir, datetime.now().strftime("%Y%m%d-%H%M%S"))
-    results_table = [[k, v['db'], v['file']] for k, v in _compare_counts().items()]
+    results_table = [[k, v['db'], v['file']] for k, v in _compare_counts(host, dbname, user, password).items()]
     with open(csv_name, 'w') as csvfile:
         my_writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         my_writer.writerow(['name', 'database', 'file'])
@@ -33,7 +33,7 @@ def compare_before_after_counts_csv():
     log.info('csv bestand {} aangemaakt'.format(csv_name))
 
 
-def _compare_counts():
+def _compare_counts(host, dbname, user, password):
     workdir = create_work_dir()
     gml_dispatch = {
         'bgt_begroeidterreindeel': ['plantcover', 'bgt_begroeidterreindeel'],
@@ -70,7 +70,7 @@ def _compare_counts():
     }
 
     # localhost / 5401
-    def count_table_rows(table, host='database', database='gisdb', port='5432', user='dbuser', password='insecure'):
+    def count_table_rows(table, host=host, database=dbname, port='5432', user=user, password=password):
         res = -1
         conn = psycopg2.connect(
             "host={} port={} dbname={} user={}  password={}".format(host, port, database, user, password)
@@ -144,8 +144,10 @@ def create_comparison_data():
         else:
             log.info("No data found by comparison.{voor}`".format(voor=voor))
 
-    for script in ['080_frequentieverdeling_db.sql', '080_frequentieverdeling_gml.sql',
-                   '080_tel_db.sql', '080_tel_gml.sql']:
+    for script in [
+        '080_frequentieverdeling_db.sql', '080_frequentieverdeling_gml.sql',
+        '080_tel_db.sql', '080_tel_gml.sql'
+    ]:
         generate_and_run_sql(script)
 
     # Output results of the comparison of GML and DB

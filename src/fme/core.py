@@ -390,9 +390,9 @@ def upload_nlcs_vlakken_files():
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
-                'producten/DGNv8_vlakken-latest.zip', f.read(), 'application/octet-stream')
+                'products/DGNv8_vlakken-latest.zip', f.read(), 'application/octet-stream')
             store.put_to_objectstore(
-                f'producten/DGNv8_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
+                f'products/DGNv8_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
     log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore done")
@@ -409,6 +409,8 @@ def upload_nlcs_lijnen_files():
     url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
           'FME_SHAREDRESOURCE_DATA/filesys/DGNv8_lijnen_NLCS/BGT_NLCS_L?accept=json&depth=1&detail=low'
 
+    if not os.path.exists('/tmp/data'):
+        os.makedirs('/tmp/data')
     zip_filename = '/tmp/data/DGNv8_lijnen.zip'
     zf = zipfile.ZipFile(zip_filename, mode='w')
     upload_path = "DGNv8_lijnen"
@@ -427,10 +429,11 @@ def upload_nlcs_lijnen_files():
 
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
+            file_content = f.read()
             store.put_to_objectstore(
-                'producten/DGNv8_lijnen-latest.zip', f.read(), 'application/octet-stream')
+                'products/DGNv8_lijnen-latest.zip', file_content, 'application/octet-stream')
             store.put_to_objectstore(
-                f'producten/DGNv8_lijnen-{timestamp}.zip', f.read(), 'application/octet-stream')
+                f'products/DGNv8_lijnen-{timestamp}.zip', file_content, 'application/octet-stream')
 
         os.remove(zip_filename)
     log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore done")
@@ -510,9 +513,10 @@ def download_bgt():
         for chunk in response.iter_content(chunk_size=1024):
             downloaded_length += len(chunk)
             newfile.write(chunk)
-            done = int(50 * downloaded_length / total_length)
-            sys.stdout.write("\r[%s%s] %s bps" % (
-                '=' * done, ' ' * (50 - done), downloaded_length // (time.clock() - start)))
+            # removed the printing of progress.
+            # done = int(50 * downloaded_length / total_length)
+            # sys.stdout.write("\r[%s%s] %s bps" % (
+            #     '=' * done, ' ' * (50 - done), downloaded_length // (time.clock() - start)))
     log.info("Download complete, time elapsed: {}".format(time.clock() - start))
     unzip_pdok_file()
     log.info("Unzip complete")
@@ -599,16 +603,13 @@ def run_before_after_comparisons():
     """
     loc_pgsql = create_fme_sql_connection()
     loc_pgsql.import_gml_control_db()
-
-    # import csv / mapping db
-    # incorrect in 075_mappings
-    # ;;BGT_KRUINLIJN;vw_bgt_kruinlijn;vw_ngt_kruinlijn
-    # ;;BGT_NUMMERAANDUIDINGREEKS;vw_bgt_nummeraanduidingreeks
-
     loc_pgsql.import_csv_fixture('../app/source_data/075_mapping.csv', 'imgeo_controle.mapping_gml_db')
 
     # comparisons FKA: 040...
-    fme_comparison.compare_before_after_counts_csv()
+    fme_comparison.compare_before_after_counts_csv(
+        host=loc_pgsql.host, dbname=loc_pgsql.dbname,
+        user=loc_pgsql.user, password=loc_pgsql.password
+    )
 
     # comparisons FKA 080...
     fme_comparison.create_comparison_data()
@@ -627,39 +628,38 @@ if __name__ == '__main__':
         # start the fme server
         server_manager.start()
 
-        download_bgt()
-
-        # upload data and FMW scripts
-        upload_data()
-        upload_script_resources()
-
-        create_fme_dbschema()
-        upload_over_onderbouw_backup()
-        create_fme_shape_views()
+        # download_bgt()
         #
-        fme_utils.wait_for_job_to_complete(start_transformation_db())
-        fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-        fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+        # # upload data and FMW scripts
+        # upload_data()
+        # upload_script_resources()
+        #
+        # create_fme_dbschema()
+        # upload_over_onderbouw_backup()
+        # create_fme_shape_views()
+        # #
+        # fme_utils.wait_for_job_to_complete(start_transformation_db())
+        # fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+        # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+        #
+        # # create coordinate search envelopes
+        # fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
+        #
+        # # run the `aanmaak_esrishape_uit_DB_BGT` script
+        # start_transformation_shapes()
+        #
+        # # run transformation to `NLCS` format
+        #
+        #
+        # # run transformation to `DGN` format
+        # fme_utils.wait_for_job_to_complete(start_transformation_dgn())
+        #
+        # # upload the resulting shapes an the source GML zip to objectstore
+        # upload_pdok_zip_to_objectstore()
+        # upload_nlcs_lijnen_files()
+        # upload_nlcs_vlakken_files()
 
-        # create coordinate search envelopes
-        fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-
-        # run the `aanmaak_esrishape_uit_DB_BGT` script
-        start_transformation_shapes()
-
-        # run transformation to `NLCS` format
-        for a in retrieve_chunk_coordinates():
-            start_transformation_nlcs_chunk(*a)
-
-        # run transformation to `DGN` format
-        fme_utils.wait_for_job_to_complete(start_transformation_dgn())
-
-        # upload the resulting shapes an the source GML zip to objectstore
-        upload_pdok_zip_to_objectstore()
-        upload_nlcs_lijnen_files()
-        upload_nlcs_vlakken_files()
-
-        # run_before_after_comparisons()
+        run_before_after_comparisons()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
