@@ -446,6 +446,32 @@ def upload_over_onderbouw_backup():
     :return:
     """
 
+    # 1. fetch `GBKA_OVERBOUW.dat from objectstore
+    log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore")
+
+    store = ObjectStore('BGT')
+    headers = {
+        'Content-Type': "application/json",
+        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+    }
+    # import ipdb;ipdb.set_trace()
+    data = store.get_store_object('GBKA_OVERBOUW.dat')
+
+    # 2. cut column [0:4]
+    db = create_fme_sql_connection()
+    for line in str(data).split('\\r\\n'):
+        fields = line.split('|')[3:]
+        if len(fields) > 0:
+            if int(fields[0]) > 0:
+                # overbouw
+                sql = "insert into imgeo.\"CFT_Overbouw\" (relatievehoogteligging, bestandsnaam, geometrie) " \
+                      "values ({}, 'CFT_Overbouw', ST_GeomFromText('{}', 28992));".format(int(fields[0]), fields[1])
+            else:
+                # onderbouw
+                sql = "insert into imgeo.\"CFT_Onderbouw\" (relatievehoogteligging, bestandsnaam, geometrie) " \
+                      "values ({}, 'CFT_Onderbouw', ST_GeomFromText('{}', 28992));".format(int(fields[0]), fields[1])
+            db.run_sql(sql)
+
 
 def unzip_pdok_file():
     """
@@ -607,12 +633,15 @@ def run_before_after_comparisons():
 
     # comparisons FKA: 040...
     fme_comparison.compare_before_after_counts_csv(
-        host=loc_pgsql.host, dbname=loc_pgsql.dbname,
-        user=loc_pgsql.user, password=loc_pgsql.password
+        loc_pgsql.host, loc_pgsql.port, loc_pgsql.dbname,
+        loc_pgsql.user, loc_pgsql.password
     )
 
     # comparisons FKA 080...
-    fme_comparison.create_comparison_data()
+    fme_comparison.create_comparison_data(
+        loc_pgsql.host, loc_pgsql.port, loc_pgsql.dbname,
+        loc_pgsql.user, loc_pgsql.password
+    )
 
 
 if __name__ == '__main__':
@@ -635,7 +664,7 @@ if __name__ == '__main__':
         # upload_script_resources()
         #
         # create_fme_dbschema()
-        # upload_over_onderbouw_backup()
+        upload_over_onderbouw_backup()
         # create_fme_shape_views()
         # #
         # fme_utils.wait_for_job_to_complete(start_transformation_db())

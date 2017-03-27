@@ -111,7 +111,7 @@ def _compare_counts(host, port, dbname, user, password):
     return result_items
 
 
-def create_comparison_data( host, port, dbname, user, password):
+def create_comparison_data(host, port, dbname, user, password):
     """
     creates tables for checking value distribution and summing.
     This is done bij dynamically generating a SQL/DML script. That in in turn is populates the database with values
