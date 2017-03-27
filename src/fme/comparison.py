@@ -20,11 +20,11 @@ def create_work_dir():
     return workdir
 
 
-def compare_before_after_counts_csv(host, dbname, user, password):
+def compare_before_after_counts_csv(host, port, dbname, user, password):
     log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
     workdir = create_work_dir()
     csv_name = '{}/results/vergelijkings_resultaat-{}.csv'.format(workdir, datetime.now().strftime("%Y%m%d-%H%M%S"))
-    results_table = [[k, v['db'], v['file']] for k, v in _compare_counts(host, dbname, user, password).items()]
+    results_table = [[k, v['db'], v['file']] for k, v in _compare_counts(host, port, dbname, user, password).items()]
     with open(csv_name, 'w') as csvfile:
         my_writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         my_writer.writerow(['name', 'database', 'file'])
@@ -33,7 +33,7 @@ def compare_before_after_counts_csv(host, dbname, user, password):
     log.info('csv bestand {} aangemaakt'.format(csv_name))
 
 
-def _compare_counts(host, dbname, user, password):
+def _compare_counts(host, port, dbname, user, password):
     workdir = create_work_dir()
     gml_dispatch = {
         'bgt_begroeidterreindeel': ['plantcover', 'bgt_begroeidterreindeel'],
@@ -69,8 +69,7 @@ def _compare_counts(host, dbname, user, password):
         'bgt_weginrichtingselement': ['weginrichtingselement', 'imgeo_weginrichtingselement']
     }
 
-    # localhost / 5401
-    def count_table_rows(table, host=host, database=dbname, port='5432', user=user, password=password):
+    def count_table_rows(table, host=host, port=port, database=dbname, user=user, password=password):
         res = -1
         conn = psycopg2.connect(
             "host={} port={} dbname={} user={}  password={}".format(host, port, database, user, password)
@@ -112,18 +111,16 @@ def _compare_counts(host, dbname, user, password):
     return result_items
 
 
-def create_comparison_data():
+def create_comparison_data( host, port, dbname, user, password):
     """
     creates tables for checking value distribution and summing.
     This is done bij dynamically generating a SQL/DML script. That in in turn is populates the database with values
     for comparison
     :return:
     """
-    # localhost / 5401
-    loc_pgsql = fme_sql_utils.SQLRunner(host=bgt_setup.DB_FME_HOST,
-                                        port=bgt_setup.DB_FME_PORT,
-                                        dbname=bgt_setup.DB_FME_DBNAME,
-                                        user=bgt_setup.DB_FME_USER)
+    loc_pgsql = fme_sql_utils.SQLRunner(
+        host=host, port=port, dbname=dbname,
+        user=user, password=password)
 
     def create_freq_csv(rows, name):
         log.info('Aanmaken csv bestand met vergelijking aantallen database vs. gml bstanden.')
