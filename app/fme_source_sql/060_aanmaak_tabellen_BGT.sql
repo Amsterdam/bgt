@@ -599,7 +599,7 @@ CREATE TABLE imgeo.imgeo_overigbouwwerk
   plus_status character varying(8),
   bgt_type character varying(200),
   plus_type character varying(200),
-  geometrie geometry(MultiSurface,28992)
+  geometrie geometry(Geometry,28992)
 );
 ALTER TABLE imgeo.imgeo_overigbouwwerk  OWNER TO dbuser;
 DROP INDEX IF EXISTS imgeo.imgeo_overigbouwwerk_geometrie_147455142617;
