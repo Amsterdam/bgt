@@ -265,14 +265,14 @@ def get_job_status(job):
     return res.json()['status']
 
 
-def wait_for_job_to_complete(job):
+def wait_for_job_to_complete(job, sleep_time=60):
     """
     Monitors the job, waits for it to complete and reports in log.
     :param job:  dictionary with `jobid` and `urltransform`
     :return:
     """
     while get_job_status(job) in ['SUBMITTED', 'QUEUED', 'PULLED']:
-        time.sleep(60)
+        time.sleep(sleep_time)
 
     # Job is completed or has failed, check and report
     job_status = get_job_status(job)
