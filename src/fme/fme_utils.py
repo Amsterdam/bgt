@@ -195,7 +195,7 @@ def upload_repository(source_directory, directory, files, recreate_repo=True, re
         with open(infile, 'rb') as f:
             url = '{FME_SERVER}/{url_connect}/items?detail=low&accept=json'.format(
                 FME_SERVER=FME_SERVER, url_connect=url_connect)
-            _post_file(url, infile, os.path.split(infile)[-1], f.read())
+            _post_file(url, infile, os.path.split(infile)[-1], f)
             if register_fmejob:
                 _register_fmejobsubmitter_service(directory, os.path.split(infile)[-1])
 
