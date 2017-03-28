@@ -169,7 +169,7 @@ def upload(source_directory, repo, directory, files, recreate_dir=True):
     for infile in glob.glob(os.path.join(source_directory, files)):
         log.debug('upload {}'.format(infile))
         with open(infile, 'rb') as f:
-            _post_file(url, infile, os.path.split(infile)[-1], f.read())
+            _post_file(url, infile, os.path.split(infile)[-1], f)
 
     log.debug("Upload {} completed".format(files))
 
