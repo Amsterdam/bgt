@@ -290,7 +290,7 @@ if __name__ == '__main__':
         fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
         fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
 
-        # create coordinate search envelopesxx
+        # create coordinate search envelopes
         fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
 
         # run the `aanmaak_esrishape_uit_DB_BGT` script

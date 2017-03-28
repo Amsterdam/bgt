@@ -90,13 +90,9 @@ def _post_file(url, full_path, filename, payload):
     :param payload: the payload data
     :return:
     """
-    content_type = mimetypes.MimeTypes().guess_type(str(payload))[0]
-    if not content_type:
-        content_type = "application/octet-stream"
-
     headers = {
         'Content-Disposition': 'attachment; filename="{}"'.format(filename),
-        'Content-Type': content_type,
+        'Content-Type': "application/octet-stream",
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
     }
     log.debug('Uploading {} to {}'.format(full_path, filename))
