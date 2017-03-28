@@ -14,7 +14,7 @@ import fme.fme_server as fme_server
 import fme.fme_utils as fme_utils
 import fme.sql_utils as fme_sql_utils
 from fme.transform_db import start_transformation_db
-from fme.transform_dgn import start_transformation_dgn
+from fme.transform_dgn import start_transformation_dgn, upload_dgn_files
 from fme.transform_gebieden import start_transformation_gebieden
 from fme.transform_nlcs import (
     start_transformation_nlcs_chunk, upload_nlcs_lijnen_files, upload_nlcs_vlakken_files)
@@ -151,7 +151,6 @@ def pdok_url():
         "excludedtypes": "plaatsbepalingspunt",
         "history": "false",
         "enddate": datum,
-
         "tiles": tiles_as_json})
 
 
@@ -301,15 +300,14 @@ if __name__ == '__main__':
         last_job_in_queue = {}
         for a in retrieve_chunk_coordinates():
             start_transformation_nlcs_chunk(*a)
-            j1 = start_transformation_dgn(*a)
-            # collect job info
-            last_job_in_queue = j1
+            last_job_in_queue = start_transformation_dgn(*a)
         fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
 
         # upload the resulting shapes an the source GML zip to objectstore
         upload_pdok_zip_to_objectstore()
         upload_nlcs_lijnen_files()
         upload_nlcs_vlakken_files()
+        upload_dgn_files()
 
         run_before_after_comparisons()
     except Exception as e:
