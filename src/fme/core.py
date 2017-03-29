@@ -280,7 +280,7 @@ if __name__ == '__main__':
         #
         # # upload data and FMW scripts
         # upload_data()
-        # upload_script_resources()
+        upload_script_resources()
         #
         # create_fme_dbschema()
         # upload_over_onderbouw_backup()

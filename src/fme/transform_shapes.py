@@ -157,10 +157,11 @@ def zip_upload_and_cleanup_shape_results():
 
         for name in names:
             log.info(f"upload {zipfile_name}:{name} to object store")
-            store.put_to_objectstore(
-                'products/{}-{}.zip'.format(folder, name),
-                open(zipfile_name, 'rb').read(),
-                'application/octet-stream')
+            with open(zipfile_name, 'rb') as uploadfile:
+                store.put_to_objectstore(
+                    'products/{}-{}.zip'.format(folder, name),
+                    uploadfile,
+                    'application/octet-stream')
 
     os.chdir(cwd)
     log.info("Clean up results")
@@ -175,7 +176,7 @@ def start_transformation_shapes():
     """
     log.info("Start transformation of shapes")
     for shape_type in shape_object_types:
-        fme_utils.wait_for_job_to_complete(start_transformation_shapes_for(shape_type))
+        fme_utils.wait_for_job_to_complete(start_transformation_shapes_for(shape_type), sleep_time=10)
         download_shape_files(shape_type)
         remove_shape_results(shape_type)
 
