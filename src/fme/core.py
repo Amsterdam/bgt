@@ -276,17 +276,17 @@ if __name__ == '__main__':
         # start the fme server
         server_manager.start()
 
-        # download_bgt()
-        #
-        # # upload data and FMW scripts
+        download_bgt()
+
+        # upload data and FMW scripts
         upload_data()
         upload_script_resources()
-        #
-        # create_fme_dbschema()
-        # upload_over_onderbouw_backup()
-        # create_fme_shape_views()
-        #
-        # fme_utils.wait_for_job_to_complete(start_transformation_db())
+
+        create_fme_dbschema()
+        upload_over_onderbouw_backup()
+        create_fme_shape_views()
+
+        fme_utils.wait_for_job_to_complete(start_transformation_db())
         fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
         fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
 
