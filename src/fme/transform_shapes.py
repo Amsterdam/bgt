@@ -176,7 +176,7 @@ def start_transformation_shapes():
     """
     log.info("Start transformation of shapes")
     for shape_type in shape_object_types:
-        fme_utils.wait_for_job_to_complete(start_transformation_shapes_for(shape_type), sleep_time=10)
+        fme_utils.wait_for_job_to_complete(start_transformation_shapes_for(shape_type), sleep_time=1)
         download_shape_files(shape_type)
         remove_shape_results(shape_type)
 
