@@ -276,32 +276,32 @@ if __name__ == '__main__':
         # start the fme server
         server_manager.start()
 
-        # download_bgt()
-        #
+        download_bgt()
+
         # # upload data and FMW scripts
         # upload_data()
-        upload_script_resources()
+        # upload_script_resources()
         #
         # create_fme_dbschema()
         # upload_over_onderbouw_backup()
         # create_fme_shape_views()
         #
         # fme_utils.wait_for_job_to_complete(start_transformation_db())
-        fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-        fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+        # fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+        # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
 
         # create coordinate search envelopes
-        fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-
-        # run the `aanmaak_esrishape_uit_DB_BGT` script
-        start_transformation_shapes()
-
-        # run transformation to `NLCS` and `DGN` format
-        last_job_in_queue = {}
-        for a in retrieve_chunk_coordinates():
-            start_transformation_nlcs_chunk(*a)
-            last_job_in_queue = start_transformation_dgn(*a)
-        fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
+        # fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
+        #
+        # # run the `aanmaak_esrishape_uit_DB_BGT` script
+        # start_transformation_shapes()
+        #
+        # # run transformation to `NLCS` and `DGN` format
+        # last_job_in_queue = {}
+        # for a in retrieve_chunk_coordinates():
+        #     start_transformation_nlcs_chunk(*a)
+        #     last_job_in_queue = start_transformation_dgn(*a)
+        # fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
 
         # upload the resulting shapes an the source GML zip to objectstore
         upload_pdok_zip_to_objectstore()
