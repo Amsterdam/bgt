@@ -5,55 +5,55 @@
 #    Command-line to run this workspace:
 #    
 #    
-#    "C:\Program Files\FME\fme.exe" C:\BGT\FME\over_onderbouw2postgres.fmw
+#    "C:\Program Files\FME\fme.exe" C:\BGT\code\app\source_data\fme\over_onderbouw2postgres.fmw
 #          --SourceDataset_ORACLE_SPATIAL_3 "DBIGKP01"
 #          --DestDataset_POSTGIS "bgt_dev_local"
 #          --DestDataset_POSTGIS_6 "bgt_dev_local"
 #    
 #    
-#!   REDIRECT_TERMINATORS="NONE"
-#!   LAST_SAVE_DATE="2017-02-28T13:29:01"
-#!   USAGE=""
-#!   DOC_TOP_LEFT="505.382 -1352.51"
-#!   PYTHON_COMPATIBILITY="27"
-#!   END_TCL=""
-#!   CATEGORY=""
-#!   ZOOM_SCALE="100"
-#!   HISTORY=""
-#!   DESTINATION="NONE"
-#!   VIEW_POSITION="-1002.51 1000.01"
-#!   DOC_EXTENTS="3679.66 936.307"
-#!   DESTINATION_ROUTING_FILE=""
-#!   MAX_LOG_FEATURES="200"
-#!   REQUIREMENTS_KEYWORD=""
-#!   SHOW_INFO_NODES="true"
-#!   BEGIN_PYTHON=""
-#!   WORKSPACE_VERSION="1"
-#!   LEGAL_TERMS_CONDITIONS=""
-#!   ATTR_TYPE_ENCODING="SDF"
-#!   SOURCE_ROUTING_FILE=""
-#!   BEGIN_TCL=""
 #!   MULTI_WRITER_DATASET_ORDER="BY_ID"
-#!   FME_DOCUMENT_GUID="fa11b51c-de68-4a75-93fd-991f6c39a0a6"
+#!   MAX_LOG_FEATURES="200"
+#!   DESTINATION="NONE"
+#!   VIEW_POSITION="-320.003 2.50003"
+#!   FME_DOCUMENT_GUID="4fcd4b3b-931d-4825-a7ef-81c5057f394f"
 #!   FME_REPROJECTION_ENGINE="FME"
-#!   LOG_MAX_RECORDED_FEATURES="200"
-#!   REQUIREMENTS=""
-#!   FME_DOCUMENT_PRIORGUID="df81aaf2-00d3-468c-b59f-d4640ec03cec,f17798c6-494d-447c-bc2d-b94d4383a0da,1b25df16-4ce0-4a42-abc7-38f4a05fe04e,76f3cd35-8eb6-4395-a0bf-309f749e23ae,ea6963b2-58c0-4c34-aa1c-4187f31fc2de,4045cb7a-455f-4d4d-9918-a441e1190799,bd919360-702e-40b7-b7ae-2a9a912f39d6"
+#!   SHOW_ANNOTATIONS="true"
+#!   USAGE=""
+#!   WORKSPACE_VERSION="1"
+#!   FME_DOCUMENT_PRIORGUID="df81aaf2-00d3-468c-b59f-d4640ec03cec,f17798c6-494d-447c-bc2d-b94d4383a0da,1b25df16-4ce0-4a42-abc7-38f4a05fe04e,76f3cd35-8eb6-4395-a0bf-309f749e23ae,ea6963b2-58c0-4c34-aa1c-4187f31fc2de,4045cb7a-455f-4d4d-9918-a441e1190799,bd919360-702e-40b7-b7ae-2a9a912f39d6,fa11b51c-de68-4a75-93fd-991f6c39a0a6"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_BUILD_NUM="16178"
+#!   SHOW_INFO_NODES="true"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   PYTHON_COMPATIBILITY="27"
+#!   LAST_SAVE_BUILD="FME(R) 2016.0.1.2 (20160318 - Build 16178 - WIN64)"
+#!   DOC_EXTENTS="3679.66 936.307"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   TITLE=""
+#!   BEGIN_TCL=""
+#!   END_PYTHON=""
+#!   SOURCE="NONE"
 #!   FME_SERVER_SERVICES=""
 #!   PASSWORD=""
-#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   LEGAL_TERMS_CONDITIONS=""
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_TOP_LEFT="505.382 -1352.51"
 #!   DESCRIPTION=""
-#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
-#!   FME_GEOMETRY_HANDLING="Enhanced"
-#!   END_PYTHON=""
-#!   IGNORE_READER_FAILURE="No"
-#!   SHOW_ANNOTATIONS="true"
-#!   TITLE=""
+#!   LAST_SAVE_DATE="2017-04-03T17:36:43"
+#!   HISTORY=""
+#!   CATEGORY=""
+#!   BEGIN_PYTHON=""
+#!   ZOOM_SCALE="100"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   END_TCL=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
 #!   LOG_FILE=""
-#!   LAST_SAVE_BUILD="FME(R) 2016.0.1.2 (20160318 - Build 16178 - WIN64)"
-#!   FME_STROKE_MAX_DEVIATION="0"
-#!   SOURCE="NONE"
-#!   FME_BUILD_NUM="16178"
+#!   IGNORE_READER_FAILURE="No"
+#!   REQUIREMENTS=""
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   REQUIREMENTS_KEYWORD=""
+#!   SOURCE_ROUTING_FILE=""
 #! >
 #! <DATASETS>
 #! <DATASET
@@ -69,7 +69,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="oracle_geom_column &quot;&quot; oracle_sql_encoded &quot;&quot; oracle_where_clause_encoded &quot;&quot; oracle_envelope_min_x 0 oracle_envelope_min_y 0 oracle_envelope_max_x 0 oracle_envelope_max_y 0 oracle_mapinfo_symbology_style_column &quot;&quot;"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="multi_reader_keyword char(50) geomedia_orient_j float multi_reader_id integer fme_primary_axis float fme_color char(50) geomedia_text_string char(50) mapinfo_pen_pattern integer fme_rotation float mif_brush_background integer multi_reader_full_id integer geomedia_orient_k float mapinfo_pen_color integer oracle_sdo_point.z float fme_text_string char(50) geomedia_text_font char(50) mapinfo_brush_foreground integer oracle_sweep_angle float geomedia_justification integer oracle_orient_k float oracle_rotation float geomedia_type char(50) mapinfo_brush_background integer oracle_orient_i float multi_reader_type char(50) fme_type char(50) oracle_type char(50) fme_sweep_angle float geomedia_rotation float fme_basename char(50) oracle_secondary_radius float mapinfo_pen_width integer geomedia_orient_i float fme_feature_type char(50) mif_pen_pattern integer oracle_srid char(50) geomedia_rtf_text_string char(50) mif_pen_width integer oracle_sdo_point.x float mif_brush_foreground integer fme_fill_color char(50) fme_secondary_axis float oracle_start_angle float oracle_structured_geom char(50) fme_start_angle float geomedia_text_font_size integer oracle_orient_j float oracle_sdo_point.y float oracle_radius float mapinfo_brush_pattern integer fme_geometry fme_char(50) mif_pen_color integer fme_text_size float oracle_orientation float mif_brush_pattern integer fme_dataset char(50) oracle_primary_radius float"
+#!   EXPOSABLE_ATTRS="oracle_rotation float mif_brush_background integer multi_reader_full_id integer fme_sweep_angle float geomedia_rtf_text_string char(50) mapinfo_pen_pattern integer oracle_type char(50) geomedia_orient_k float oracle_sdo_point.z float oracle_radius float mapinfo_brush_background integer fme_color char(50) fme_text_size float fme_feature_type char(50) oracle_orientation float geomedia_orient_i float mapinfo_pen_width integer fme_primary_axis float oracle_orient_j float fme_dataset char(50) fme_start_angle float fme_secondary_axis float mif_brush_pattern integer mapinfo_brush_foreground integer mapinfo_brush_pattern integer geomedia_text_font char(50) mif_pen_pattern integer mif_pen_color integer mapinfo_pen_color integer mif_brush_foreground integer fme_text_string char(50) geomedia_text_font_size integer multi_reader_id integer oracle_orient_k float oracle_start_angle float geomedia_type char(50) oracle_structured_geom char(50) mif_pen_width integer oracle_orient_i float oracle_sweep_angle float geomedia_justification integer fme_type char(50) oracle_srid char(50) fme_basename char(50) fme_rotation float fme_fill_color char(50) fme_geometry fme_char(50) geomedia_rotation float multi_reader_type char(50) oracle_secondary_radius float multi_reader_keyword char(50) oracle_sdo_point.x float oracle_primary_radius float oracle_sdo_point.y float geomedia_text_string char(50) geomedia_orient_j float"
 #!   DEFLINE_PARMS="&quot;GUI NAMEDGROUP oracle_table_settings_group oracle_general_group%oracle_spatial_group%oracle_mapinfo_symbology_group Table Settings&quot; &quot;&quot; &quot;GUI NAMEDGROUP oracle_general_group oracle_where_clause_encoded%oracle_sql_encoded General&quot; &quot;&quot; &quot;GUI NAMEDGROUP oracle_spatial_group oracle_geom_column%oracle_search_envelope_group Spatial&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP oracle_mapinfo_symbology_group oracle_mapinfo_symbology_style_column MapInfo Symbology&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP oracle_search_envelope_group oracle_envelope_min_x%oracle_envelope_min_y%oracle_envelope_max_x%oracle_envelope_max_y Search Envelope&quot; &quot;&quot; &quot;GUI OPTIONAL WHOLE_LINE TEXT oracle_geom_column Spatial Column&quot; &quot;&quot; &quot;GUI OPTIONAL WHOLE_LINE TEXT_EDIT_SQL_CFG oracle_sql_encoded MODE,SQL SELECT Statement&quot; &quot;&quot; &quot;GUI OPTIONAL WHOLE_LINE TEXT_EDIT_SQL_CFG oracle_where_clause_encoded MODE,WHERE WHERE Clause&quot; &quot;&quot; &quot;GUI OPTIONAL FLOAT oracle_envelope_min_x Minimum X&quot; &quot;&quot; &quot;GUI OPTIONAL FLOAT oracle_envelope_min_y Minimum Y&quot; &quot;&quot; &quot;GUI OPTIONAL FLOAT oracle_envelope_max_x Maximum X&quot; &quot;&quot; &quot;GUI OPTIONAL FLOAT oracle_envelope_max_y Maximum Y&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT oracle_mapinfo_symbology_style_column Style Column&quot; &quot;&quot; "
 #!   ATTR_INDEX_TYPES="BTree Bitmap PrimaryKey Unique"
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -78,16 +78,32 @@
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
 #!   DATASET_TYPE="DATABASE"
 #!   GENERATE_FME_BUILD_NUM="16174"
-#!   COORDSYS=""
-#!   MAX_FEATURES=""
 #!   START_FEATURE=""
+#!   MAX_FEATURES=""
+#!   COORDSYS=""
 #!   MAX_FEATURES_PER_FEATURE_TYPE=""
-#!   FEATURE_TYPES=""
 #!   MIN_FEATURES=""
+#!   FEATURE_TYPES=""
 #! >
+#! <METAFILE_PARAMETER
+#!   NAME="PARAMS_TO_NOT_PROPAGATE_ON_INSPECT"
+#!   VALUE="BEGIN_SQL{0} END_SQL{0}"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
 #! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_NAME"
 #!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE_ATTRS"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="Database"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="NETWORK_PROXY"
@@ -98,24 +114,8 @@
 #!   VALUE="ORACLE_SPATIAL_IN_SEARCH_ENVELOPE_MINX ORACLE_SPATIAL_IN_SEARCH_ENVELOPE_MINY ORACLE_SPATIAL_IN_SEARCH_ENVELOPE_MAXX ORACLE_SPATIAL_IN_SEARCH_ENVELOPE_MAXY ORACLE_SPATIAL_IN_CLIP_TO_ENVELOPE ORACLE_SPATIAL_IN_PERSISTENT_CONNECTION ORACLE_SPATIAL_IN_REMOVE_SCHEMA_QUALIFIER ORACLE_SPATIAL_IN_READ_3D_POLYGON_AS_FACE ORACLE_SPATIAL_IN_INTERACTION ORACLE_SPATIAL_IN_INTERRESULT ORACLE_SPATIAL_IN_CHUNK_SIZE ORACLE_SPATIAL_IN_BEGIN_SQL{0} ORACLE_SPATIAL_IN_END_SQL{0} ORACLE_SPATIAL_IN_HANDLE_MULTIPLE_SPATIAL_COLUMNS ORACLE_SPATIAL_IN_SHOW_SYSTEM_TABLES"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="ATTRIBUTE_READING"
-#!   VALUE="DEFLINE_ATTRS"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="PARAMS_TO_NOT_PROPAGATE_ON_INSPECT"
-#!   VALUE="BEGIN_SQL{0} END_SQL{0}"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="Database"
-#! />
-#! <METAFILE_PARAMETER
 #!   NAME="NETWORK_AUTHENTICATION"
 #!   VALUE="NO"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="Table1"
 #! />
 #! </DATASET>
 #! <DATASET
@@ -131,7 +131,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="postgis_type postgis_geometry postgis_mode &quot;&quot; postgis_sql_key_columns &quot;&quot; postgis_drop_table &quot;&quot; postgis_truncate_table &quot;&quot; fme_feature_operation INSERT fme_table_handling CREATE_IF_MISSING fme_selection_method MATCH_COLUMNS fme_match_columns &quot;&quot; fme_where_builder_clause &quot;&quot; fme_update_geometry YES postgis_create_with_oids NO postgis_create_gist_index YES postgis_spatial_column_type geometry postgis_spatial_column geom postgis_srid &quot;&quot; postgis_vacuum_analyze no postgis_allow_serial_writing NO"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="postgis_type char(50) fme_type char(50) postgis_collection_part_id int4 fme_color char(50) fme_sweep_angle float8 fme_text_string char(50) fme_feature_type char(50) fme_text_size float8 fme_primary_axis float8 fme_basename char(50) fme_rotation float8 fme_fill_color char(50) fme_dataset char(50) postgis_collection_id int4 fme_geometry fme_char(50) fme_secondary_axis float8 fme_db_operation char(8) fme_start_angle float8"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_feature_type char(50) fme_text_size float8 fme_rotation float8 fme_start_angle float8 fme_type char(50) postgis_collection_id int4 fme_color char(50) fme_fill_color char(50) fme_geometry fme_char(50) fme_text_string char(50) fme_secondary_axis float8 postgis_type char(50) fme_sweep_angle float8 fme_db_operation char(8) fme_dataset char(50) postgis_collection_part_id int4 fme_primary_axis float8"
 #!   DEFLINE_PARMS="&quot;GUI NAMEDGROUP fme_configuration_group fme_configuration_common_group%fme_spatial_group%fme_advanced_group%oracle_advanced_group Table Settings&quot; &quot;&quot; &quot;GUI NAMEDGROUP fme_configuration_common_group fme_feature_operation%fme_table_handling%oracle_model%fme_update_geometry%fme_selection_group%fme_table_creation_group General&quot; &quot;&quot; &quot;GUI ACTIVECHOICE_LOOKUP fme_feature_operation Insert,INSERT,fme_update_geometry,fme_selection_group%Update,UPDATE,++fme_table_handling+USE_EXISTING,++fme_selection_group+FME_DISCLOSURE_OPEN%Delete,DELETE,++fme_table_handling+USE_EXISTING,fme_update_geometry,++fme_selection_group+FME_DISCLOSURE_OPEN,fme_spatial_group,fme_advanced_group,oracle_sequenced_cols%&lt;at&gt;Value&lt;openparen&gt;fme_db_operation&lt;closeparen&gt;,MULTIPLE,++fme_selection_group+FME_DISCLOSURE_OPEN Feature Operation&quot; INSERT &quot;GUI ACTIVECHOICE_LOOKUP fme_table_handling Use&lt;space&gt;Existing,USE_EXISTING,fme_table_creation_group%Create&lt;space&gt;If&lt;space&gt;Needed,CREATE_IF_MISSING%Drop&lt;space&gt;and&lt;space&gt;Create,DROP_CREATE%Truncate&lt;space&gt;Existing,TRUNCATE_EXISTING,fme_table_creation_group Table Handling&quot; CREATE_IF_MISSING &quot;GUI WHOLE_LINE LOOKUP_CHOICE fme_update_geometry Yes,YES%No,NO Update Spatial Column(s)&quot; YES &quot;GUI DISCLOSUREGROUP fme_selection_group fme_selection_method Row Selection&quot; &quot;&quot; &quot;GUI WHOLE_LINE RADIOPARAMETERGROUP fme_selection_method fme_match_columns,MATCH_COLUMNS%fme_where_builder_clause,BUILDER Row Selection Method&quot; MATCH_COLUMNS &quot;GUI WHOLE_LINE ATTRLIST_COMMAS fme_match_columns Match Columns&quot; &quot;&quot; &quot;GUI WHOLE_LINE TEXT_EDIT_SQL_CFG_OR_ATTR fme_where_builder_clause MODE,WHERE WHERE Clause&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_table_creation_group postgis_create_with_oids%postgis_create_gist_index Table Creation Parameters&quot; &quot;&quot; &quot;GUI CHOICE postgis_create_with_oids YES%NO Create With OIDs&quot; NO &quot;GUI CHOICE postgis_create_gist_index YES%NO Create GiST Index&quot; YES &quot;GUI NAMEDGROUP fme_spatial_group postgis_spatial_column_type%postgis_spatial_column%postgis_srid Spatial&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE postgis_spatial_column_type Geometry,geometry%Geography,geography Spatial Type&quot; geometry &quot;GUI OPTIONAL WHOLE_LINE TEXT postgis_spatial_column Spatial Column&quot; geom &quot;GUI OPTIONAL FLOAT postgis_srid Spatial Column SRID&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_advanced_group postgis_vacuum_analyze%postgis_allow_serial_writing Advanced&quot; &quot;&quot; &quot;GUI CHOICE postgis_vacuum_analyze YES%NO Vacuum Analyze Table&quot; NO &quot;GUI CHOICE postgis_allow_serial_writing YES%NO Allow Serial Column Writing&quot; NO "
 #!   ATTR_INDEX_TYPES="BTREE RTREE HASH PRIKEY"
 #!   ATTR_NAME_INVALID_CHARS=". %-#[]&quot;()!?*&apos;&amp;+\/"
@@ -140,13 +140,21 @@
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
 #!   DATASET_TYPE="DATABASE"
 #!   GENERATE_FME_BUILD_NUM="16178"
-#!   COORDSYS="EPSG:28992"
 #!   FANOUT_GROUP="NO"
+#!   COORDSYS="EPSG:28992"
 #!   FANOUT_EXPRESSION=""
 #! >
 #! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_NAME"
 #!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="Database"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="NETWORK_PROXY"
@@ -157,16 +165,8 @@
 #!   VALUE="POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="Database"
-#! />
-#! <METAFILE_PARAMETER
 #!   NAME="NETWORK_AUTHENTICATION"
 #!   VALUE="NO"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="Table1"
 #! />
 #! </DATASET>
 #! <DATASET
@@ -182,7 +182,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="postgis_type postgis_geometry postgis_mode &quot;&quot; postgis_sql_key_columns &quot;&quot; postgis_drop_table &quot;&quot; postgis_truncate_table &quot;&quot; fme_feature_operation INSERT fme_table_handling CREATE_IF_MISSING fme_selection_method MATCH_COLUMNS fme_match_columns &quot;&quot; fme_where_builder_clause &quot;&quot; fme_update_geometry YES postgis_create_with_oids NO postgis_create_gist_index YES postgis_spatial_column_type geometry postgis_spatial_column geom postgis_srid &quot;&quot; postgis_vacuum_analyze no postgis_allow_serial_writing NO"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="postgis_type char(50) fme_type char(50) postgis_collection_part_id int4 fme_color char(50) fme_sweep_angle float8 fme_text_string char(50) fme_feature_type char(50) fme_text_size float8 fme_primary_axis float8 fme_basename char(50) fme_rotation float8 fme_fill_color char(50) fme_dataset char(50) postgis_collection_id int4 fme_geometry fme_char(50) fme_secondary_axis float8 fme_db_operation char(8) fme_start_angle float8"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_feature_type char(50) fme_text_size float8 fme_rotation float8 fme_start_angle float8 fme_type char(50) postgis_collection_id int4 fme_color char(50) fme_fill_color char(50) fme_geometry fme_char(50) fme_text_string char(50) fme_secondary_axis float8 postgis_type char(50) fme_sweep_angle float8 fme_db_operation char(8) fme_dataset char(50) postgis_collection_part_id int4 fme_primary_axis float8"
 #!   DEFLINE_PARMS="&quot;GUI NAMEDGROUP fme_configuration_group fme_configuration_common_group%fme_spatial_group%fme_advanced_group%oracle_advanced_group Table Settings&quot; &quot;&quot; &quot;GUI NAMEDGROUP fme_configuration_common_group fme_feature_operation%fme_table_handling%oracle_model%fme_update_geometry%fme_selection_group%fme_table_creation_group General&quot; &quot;&quot; &quot;GUI ACTIVECHOICE_LOOKUP fme_feature_operation Insert,INSERT,fme_update_geometry,fme_selection_group%Update,UPDATE,++fme_table_handling+USE_EXISTING,++fme_selection_group+FME_DISCLOSURE_OPEN%Delete,DELETE,++fme_table_handling+USE_EXISTING,fme_update_geometry,++fme_selection_group+FME_DISCLOSURE_OPEN,fme_spatial_group,fme_advanced_group,oracle_sequenced_cols%&lt;at&gt;Value&lt;openparen&gt;fme_db_operation&lt;closeparen&gt;,MULTIPLE,++fme_selection_group+FME_DISCLOSURE_OPEN Feature Operation&quot; INSERT &quot;GUI ACTIVECHOICE_LOOKUP fme_table_handling Use&lt;space&gt;Existing,USE_EXISTING,fme_table_creation_group%Create&lt;space&gt;If&lt;space&gt;Needed,CREATE_IF_MISSING%Drop&lt;space&gt;and&lt;space&gt;Create,DROP_CREATE%Truncate&lt;space&gt;Existing,TRUNCATE_EXISTING,fme_table_creation_group Table Handling&quot; CREATE_IF_MISSING &quot;GUI WHOLE_LINE LOOKUP_CHOICE fme_update_geometry Yes,YES%No,NO Update Spatial Column(s)&quot; YES &quot;GUI DISCLOSUREGROUP fme_selection_group fme_selection_method Row Selection&quot; &quot;&quot; &quot;GUI WHOLE_LINE RADIOPARAMETERGROUP fme_selection_method fme_match_columns,MATCH_COLUMNS%fme_where_builder_clause,BUILDER Row Selection Method&quot; MATCH_COLUMNS &quot;GUI WHOLE_LINE ATTRLIST_COMMAS fme_match_columns Match Columns&quot; &quot;&quot; &quot;GUI WHOLE_LINE TEXT_EDIT_SQL_CFG_OR_ATTR fme_where_builder_clause MODE,WHERE WHERE Clause&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_table_creation_group postgis_create_with_oids%postgis_create_gist_index Table Creation Parameters&quot; &quot;&quot; &quot;GUI CHOICE postgis_create_with_oids YES%NO Create With OIDs&quot; NO &quot;GUI CHOICE postgis_create_gist_index YES%NO Create GiST Index&quot; YES &quot;GUI NAMEDGROUP fme_spatial_group postgis_spatial_column_type%postgis_spatial_column%postgis_srid Spatial&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE postgis_spatial_column_type Geometry,geometry%Geography,geography Spatial Type&quot; geometry &quot;GUI OPTIONAL WHOLE_LINE TEXT postgis_spatial_column Spatial Column&quot; geom &quot;GUI OPTIONAL FLOAT postgis_srid Spatial Column SRID&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_advanced_group postgis_vacuum_analyze%postgis_allow_serial_writing Advanced&quot; &quot;&quot; &quot;GUI CHOICE postgis_vacuum_analyze YES%NO Vacuum Analyze Table&quot; NO &quot;GUI CHOICE postgis_allow_serial_writing YES%NO Allow Serial Column Writing&quot; NO "
 #!   ATTR_INDEX_TYPES="BTREE RTREE HASH PRIKEY"
 #!   ATTR_NAME_INVALID_CHARS=". %-#[]&quot;()!?*&apos;&amp;+\/"
@@ -191,13 +191,21 @@
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
 #!   DATASET_TYPE="DATABASE"
 #!   GENERATE_FME_BUILD_NUM="16178"
-#!   COORDSYS="EPSG:28992"
 #!   FANOUT_GROUP="NO"
+#!   COORDSYS="EPSG:28992"
 #!   FANOUT_EXPRESSION=""
 #! >
 #! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_NAME"
 #!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="Database"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="NETWORK_PROXY"
@@ -208,16 +216,8 @@
 #!   VALUE="POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="Database"
-#! />
-#! <METAFILE_PARAMETER
 #!   NAME="NETWORK_AUTHENTICATION"
 #!   VALUE="NO"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="Table1"
 #! />
 #! </DATASET>
 #! </DATASETS>
@@ -911,18 +911,18 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="OBJECTBEGINTIJD" ATTR_TYPE="date" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="TIJDSTIP_REGISTRATIE" ATTR_TYPE="date" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="oracle_mapinfo_symbology_style_column" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_table_settings_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_min_y" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_max_x" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_max_y" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_mapinfo_symbology_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_geom_column" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_sql_encoded" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_min_x" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_general_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="oracle_search_envelope_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="oracle_where_clause_encoded" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_max_y" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_general_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_sql_encoded" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="oracle_spatial_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_max_x" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_min_y" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_geom_column" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_search_envelope_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_mapinfo_symbology_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_envelope_min_x" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="oracle_table_settings_group" PARM_VALUE=""/>
 #! </FEATURE_TYPE>
 #! <FEATURE_TYPE
 #!   IS_SOURCE="false"
@@ -944,25 +944,25 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="eindregistratie" ATTR_TYPE="date" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="relatievehoogteligging" ATTR_TYPE="int2" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bestandsnaam" ATTR_TYPE="varchar(15)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_srid" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="CREATE_IF_MISSING"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="CREATE_IF_MISSING"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
 #! </FEATURE_TYPE>
 #! <FEATURE_TYPE
 #!   IS_SOURCE="false"
@@ -984,25 +984,25 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="eindregistratie" ATTR_TYPE="date" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="relatievehoogteligging" ATTR_TYPE="int2" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bestandsnaam" ATTR_TYPE="varchar(15)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_srid" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="CREATE_IF_MISSING"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="CREATE_IF_MISSING"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
 #! </FEATURE_TYPE>
 #! </FEATURE_TYPES>
 #! <FMESERVER>
@@ -1027,11 +1027,11 @@
 #! <COMMENTS>
 #! <COMMENT
 #!   IDENTIFIER="2"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;BGT.DGDTW_TOPOGRAFIE: DBIGKP01 [ORACLE_SPATIAL] &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="539.135 -501.206"
-#!   TOP_LEFT="539.135 -501.206"
-#!   BOTTOM_RIGHT="538.135 -500.206"
-#!   BOUNDING_RECT="539.135 -501.206 -1 -1"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;BGT.DGDTW_TOPOGRAFIE: DBIGKP01 [objectcode=612]&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;userproxy: BGT_PROXY &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="531.635 -526.206"
+#!   TOP_LEFT="531.635 -526.206"
+#!   BOTTOM_RIGHT="530.635 -525.206"
+#!   BOUNDING_RECT="531.635 -526.206 -1 -1"
 #!   ORDER="5e+14"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -1083,7 +1083,7 @@
 #!   BOUNDING_RECT="505.382 -416.207 3679.66 936.307"
 #!   STICKY="true"
 #!   COLOUR="0.701961,0.47451,0.2"
-#!   CONTENTS="13 4 1 11 5 31 14 29 16 3 9 15 12 32 30 2 "
+#!   CONTENTS="29 30 16 3 15 4 31 2 13 9 14 32 1 12 11 5 "
 #! />
 #! </BOOKMARKS>
 #! <TRANSFORMERS>
@@ -1131,12 +1131,12 @@
 #!     <XFORM_ATTR ATTR_NAME="OBJECTBEGINTIJD" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="TIJDSTIP_REGISTRATIE" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_4"/>
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE="&quot;&quot;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST VERVAL ATTRIBUTE_VALUE_NULL &quot;&quot;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_4"/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="4"
@@ -1182,12 +1182,12 @@
 #!     <XFORM_ATTR ATTR_NAME="OBJECTBEGINTIJD" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="TIJDSTIP_REGISTRATIE" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_5"/>
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE="&quot;&quot;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;NIVO&lt;closeparen&gt; &gt; 0"/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_5"/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="5"
@@ -1205,16 +1205,16 @@
 #!     <XFORM_ATTR ATTR_NAME="eindregistratie" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="relatievehoogteligging" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_52"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="ID ID  REMOVE OBJECTCODE OBJECTCODE  REMOVE PARAMETERS PARAMETERS  REMOVE BRON BRON  REMOVE INWIN INWIN  REMOVE VERVAL eindregistratie  RENAME_SET_VALUE LOCKNR LOCKNR  REMOVE XMLATTRIBUTEN XMLATTRIBUTEN  REMOVE NIVO relatievehoogteligging  RENAME_SET_VALUE GTABLE GTABLE  REMOVE GUID GUID  REMOVE LOKAAL_ID LOKAAL_ID  REMOVE OBJECTBEGINTIJD OBJECTBEGINTIJD  REMOVE TIJDSTIP_REGISTRATIE TIJDSTIP_REGISTRATIE  REMOVE  bestandsnaam CFT_Overbouw SET_TO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="29"
@@ -1232,16 +1232,16 @@
 #!     <XFORM_ATTR ATTR_NAME="eindregistratie" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="relatievehoogteligging" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_2"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="ID ID  REMOVE OBJECTCODE OBJECTCODE  REMOVE PARAMETERS PARAMETERS  REMOVE BRON BRON  REMOVE INWIN INWIN  REMOVE VERVAL eindregistratie  RENAME_SET_VALUE LOCKNR LOCKNR  REMOVE XMLATTRIBUTEN XMLATTRIBUTEN  REMOVE NIVO relatievehoogteligging  RENAME_SET_VALUE GTABLE GTABLE  REMOVE GUID GUID  REMOVE LOKAAL_ID LOKAAL_ID  REMOVE OBJECTBEGINTIJD OBJECTBEGINTIJD  REMOVE TIJDSTIP_REGISTRATIE TIJDSTIP_REGISTRATIE  REMOVE  bestandsnaam CFT_Onderbouw SET_TO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <FEAT_LINKS>
@@ -1362,10 +1362,10 @@ ORACLE_SPATIAL_1_QUERY_SUFFIX $(_ORACLE_SPATIAL_QUERY_SUFFIX_ORACLE_SPATIAL_1)
 ORACLE_SPATIAL_1_SERVER_TYPE ORACLE8i
 DEFAULT_MACRO ORACLE_SPATIAL_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_ORACLE_SPATIAL_1 Yes
 ORACLE_SPATIAL_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(ORACLE_SPATIAL_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_ORACLE_SPATIAL_1)"
-DEFAULT_MACRO ORACLE_SPATIAL_IN_USER_NAME_ORACLE_SPATIAL_1 bgt_proxy
+DEFAULT_MACRO ORACLE_SPATIAL_IN_USER_NAME_ORACLE_SPATIAL_1 BGT_PROXY
 ORACLE_SPATIAL_1_USER_NAME "$(ORACLE_SPATIAL_IN_USER_NAME_ORACLE_SPATIAL_1)"
 GUI OPTIONAL TEXT_ENCODED ORACLE_SPATIAL_IN_USER_NAME_ORACLE_SPATIAL_1 Username:
-DEFAULT_MACRO ORACLE_SPATIAL_IN_PASSWORD_ORACLE_SPATIAL_1 fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMszHtSTuvlnOMHkWsqO1eUhoVrDVBXq3X1a5mVEhCXW3/hr/I5lFugTxF/8PxAHjGeIe3gLb42LLlgCLZF4AKY/W+pBEVcaBSDmeyNNPRbUDujlMrQkVHBZAOCkbtjMBrw5gsyAiEo2bcmo67xmVdLfS/sJJqdW3e1Dy/jUQgKSW5x4Q0A5jY4SVbTjklVVrdN1mmHZ5cb3SdGBO9L3DbVKEvMyhcwcs9vj7QkpCG7H3MD1cNAFUsJg4cHQKv8vma4myvZBoHijDuHicE2r7nkaJCOydv2oWRclJJlwqAqxzNzwJxPQG+6zIAjTxZkdcD/Iopq9gsUGxB5L+xm8mAQC8gVyg1nuqNTE)
+DEFAULT_MACRO ORACLE_SPATIAL_IN_PASSWORD_ORACLE_SPATIAL_1 fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMsze52v3srZl3bly41+VzatFX0lA8iT7xnQxojBm2xJ/Ns2Q5RXmnr60Il9tc9QOHAF6v/79KmzpG2RpHkh9aWZ16uEBbC2n6pJRjynYmmi5zLt4W6XAioHv3SYysKwu/wJv6NhhTzayb2m2IB/yEda789cFrsR0/66RYOjrvfXWFy+RBJB929Zx+5FekRmN3G4nvjijuO7UGaj6SlVdMJjLVvakOQgVg/mXkMyxIAXdykfWt2JauLKXeHdYWNoHcWzeRG/mZO0AiUtCHrLgnYNlUDIjGDgPMgUn/ODKSmyRzs92ESzDPanf1TwiT4MQcvNt/I8+/eMbP62WFEQhnCWWVGnTZiI1eU9)
 ORACLE_SPATIAL_1_PASSWORD "$(ORACLE_SPATIAL_IN_PASSWORD_ORACLE_SPATIAL_1)"
 GUI OPTIONAL PASSWORD_ENCODED ORACLE_SPATIAL_IN_PASSWORD_ORACLE_SPATIAL_1 Password:
 # ==============================================================================
@@ -1643,7 +1643,7 @@ FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager_52    INPUT  FEATU
 
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_2_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.CFT_Onderbouw<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeManager_52_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.CFT_Overbouw<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_52_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.CFT_Overbouw<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeManager_2_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.CFT_Onderbouw<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
