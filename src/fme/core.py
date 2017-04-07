@@ -138,7 +138,7 @@ def pdok_url():
         38480, 38138, 38136, 38483, 38481, 38139, 38140, 38142, 38484, 38486, 38487, 38485, 38143, 38141,
         38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
         38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
-        38309, 38320, 38322, 38305, 38669, 38473, 38123, 38519, 38286 ]
+        38309, 38320, 38322, 38305, 38669, 38473, 38123, 38519, 38286]
 
     tiles = {
         "layers": [
@@ -263,6 +263,42 @@ def run_before_after_comparisons():
     )
 
 
+def run_all():
+    download_bgt()
+
+    # upload data and FMW scripts
+    upload_data()
+    upload_script_resources()
+
+    create_fme_dbschema()
+    upload_over_onderbouw_backup()
+    create_fme_shape_views()
+
+    fme_utils.wait_for_job_to_complete(start_transformation_db())
+    fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+    fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+
+    # create coordinate search envelopes
+    fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
+
+    # run the `aanmaak_esrishape_uit_DB_BGT` script
+    start_transformation_shapes()
+
+    # run transformation to `NLCS` and `DGN` format
+    last_job_in_queue = {}
+    for a in retrieve_chunk_coordinates():
+        start_transformation_nlcs_chunk(*a)
+        last_job_in_queue = start_transformation_dgn(*a)
+    fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
+
+    # upload the resulting shapes an the source GML zip to objectstore
+    upload_pdok_zip_to_objectstore()
+    upload_nlcs_lijnen_files()
+    upload_nlcs_vlakken_files()
+    upload_dgn_files()
+    run_before_after_comparisons()
+
+
 if __name__ == '__main__':
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
@@ -276,40 +312,8 @@ if __name__ == '__main__':
         # start the fme server
         server_manager.start()
 
-        download_bgt()
+        run_all()
 
-        # upload data and FMW scripts
-        upload_data()
-        upload_script_resources()
-
-        create_fme_dbschema()
-        upload_over_onderbouw_backup()
-        create_fme_shape_views()
-
-        fme_utils.wait_for_job_to_complete(start_transformation_db())
-        fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-        fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
-
-        # create coordinate search envelopes
-        fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-
-        # run the `aanmaak_esrishape_uit_DB_BGT` script
-        start_transformation_shapes()
-
-        # run transformation to `NLCS` and `DGN` format
-        last_job_in_queue = {}
-        for a in retrieve_chunk_coordinates():
-            start_transformation_nlcs_chunk(*a)
-            last_job_in_queue = start_transformation_dgn(*a)
-        fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
-
-        # upload the resulting shapes an the source GML zip to objectstore
-        upload_pdok_zip_to_objectstore()
-        upload_nlcs_lijnen_files()
-        upload_nlcs_vlakken_files()
-        upload_dgn_files()
-
-        run_before_after_comparisons()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e

@@ -101,12 +101,19 @@ def collect_shape_files_to_fetch():
     :return:
     """
 
-    def get_dir_contents(contents):
+    def get_paths(dir_tree):
         res = []
-        for file_result in contents:
-            if file_result['type'] == 'DIR':
-                return get_dir_contents(file_result['contents'])
-            res.append('{}{}'.format(file_result['path'], file_result['name']))
+        for file_object in dir_tree:
+            if [file_object['type'] == 'FILE']:
+                res.append('{}{}'.format(file_object['path'], file_object['name']))
+        return res
+
+    def get_paths2(dir_tree):
+        res = []
+        for dir_object in dir_tree:
+            if [dir_object['type'] == 'DIR']:
+                for file_object in dir_object['contents']:
+                    res.append('{}{}'.format(file_object['path'], file_object['name']))
         return res
 
     headers = {
@@ -120,7 +127,10 @@ def collect_shape_files_to_fetch():
               'FME_SHAREDRESOURCE_DATA/filesys/{}?accept=json&depth=4&detail=low'.format(folder)
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
-            files_to_fetch += get_dir_contents(response.json()['contents'])
+            if '_gebieden' in folder:
+                files_to_fetch += get_paths2(response.json()['contents'])
+            else:
+                files_to_fetch += get_paths(response.json()['contents'])
     return files_to_fetch
 
 
