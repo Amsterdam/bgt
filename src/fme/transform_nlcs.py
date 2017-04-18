@@ -45,7 +45,7 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
 
 
 def upload_nlcs_vlakken_files():
-    log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore")
+    log.info("ZIP and upload NLCS vlakken products to BGT objectstore")
 
     store = ObjectStore('BGT')
     headers = {
@@ -55,7 +55,7 @@ def upload_nlcs_vlakken_files():
     url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
           'FME_SHAREDRESOURCE_DATA/filesys/DGNv8_vlakken_NLCS/BGT_NLCS_V?accept=json&depth=1&detail=low'
 
-    zip_filename = '/tmp/data/DGNv8_vlakken.zip'
+    zip_filename = '/tmp/data/NLCS_vlakken.zip'
     zf = ZipFile(zip_filename, mode='w')
 
     response = requests.get(url, headers=headers)
@@ -64,7 +64,7 @@ def upload_nlcs_vlakken_files():
             for entry in json.loads(response.content)['contents']:
                 filename = entry['name']
                 path = entry['path']
-                upload_path = "DGNv8_vlakken"
+                upload_path = "NLCS_vlakken"
                 log.info(f"Upload file {upload_path}/{filename}")
                 file_content = fme_utils.download(f'{path}/{filename}', text=False)
                 zf.writestr(filename, file_content)
@@ -73,17 +73,20 @@ def upload_nlcs_vlakken_files():
 
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
+            log.info("store latest")
             store.put_to_objectstore(
-                'products/DGNv8_vlakken-latest.zip', f.read(), 'application/octet-stream')
+                'products/NLCS_vlakken-latest.zip', f.read(), 'application/octet-stream')
+        with open(zip_filename, mode='rb') as f:
+            log.info("store timestamped")
             store.put_to_objectstore(
-                f'products/DGNv8_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
+                f'products/NLCS_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
-    log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore done")
+    log.info("ZIP and upload NLCS vlakken products to BGT objectstore done")
 
 
 def upload_nlcs_lijnen_files():
-    log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore")
+    log.info("ZIP and upload NLCS lijnen products to BGT objectstore")
 
     store = ObjectStore('BGT')
     headers = {
@@ -95,9 +98,9 @@ def upload_nlcs_lijnen_files():
 
     if not os.path.exists('/tmp/data'):
         os.makedirs('/tmp/data')
-    zip_filename = '/tmp/data/DGNv8_lijnen.zip'
+    zip_filename = '/tmp/data/NLCS_lijnen.zip'
     zf = ZipFile(zip_filename, mode='w')
-    upload_path = "DGNv8_lijnen"
+    upload_path = "NLCS_lijnen"
 
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
@@ -113,11 +116,13 @@ def upload_nlcs_lijnen_files():
 
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
-            file_content = f.read()
+            log.info("store latest")
             store.put_to_objectstore(
-                'products/DGNv8_lijnen-latest.zip', file_content, 'application/octet-stream')
+                'products/NLCS_lijnen-latest.zip', f.read(), 'application/octet-stream')
+        with open(zip_filename, mode='rb') as f:
+            log.info("store timestamped")
             store.put_to_objectstore(
-                f'products/DGNv8_lijnen-{timestamp}.zip', file_content, 'application/octet-stream')
+                f'products/NLCS_lijnen-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
-    log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore done")
+    log.info("ZIP and upload NLCS lijnen products to BGT objectstore done")

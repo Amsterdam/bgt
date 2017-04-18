@@ -40,7 +40,7 @@ def start_transformation_dgn(min_x, min_y, max_x, max_y):
 
 
 def upload_dgn_files():
-    log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore")
+    log.info("ZIP and upload DGNv8 products to BGT objectstore")
 
     store = ObjectStore('BGT')
     headers = {
@@ -69,9 +69,10 @@ def upload_dgn_files():
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
-                'products/DGNv8_vlakken-latest.zip', f.read(), 'application/octet-stream')
+                'products/DGNv8-latest.zip', f.read(), 'application/octet-stream')
+        with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
-                f'products/DGNv8_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
+                f'products/DGNv8-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
-    log.info("ZIP and upload DGNv8 vlakken products to BGT objectstore done")
+    log.info("ZIP and upload DGNv8 products to BGT objectstore done")
