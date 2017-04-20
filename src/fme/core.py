@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import time
 import urllib.parse
 import urllib.request
@@ -84,7 +85,7 @@ def upload_over_onderbouw_backup():
     :return:
     """
 
-    # 1. fetch `GBKA_OVERBOUW.dat from objectstore
+    # 1. fetch latest `GBKA_OVERBOUW.dat from objectstore
     log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore")
 
     store = ObjectStore('BGT')
@@ -92,11 +93,27 @@ def upload_over_onderbouw_backup():
         'Content-Type': "application/json",
         'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
     }
-    data = store.get_store_object('GBKA_OVERBOUW.dat')
 
-    # 2. cut column [0:4]
+    # determine the latest upload filename
+    latest_upload = sorted(
+        [c['name'] for c in store._get_full_container_list([]) if c['name'].endswith('_GBKA_OVERBOUW.zip')])[-1]
+
+    if not os.path.exists('/tmp/data'):
+        os.makedirs('/tmp/data')
+
+    # download the latest `GBKA_OVERBOUW.dat` zipfile and temporary store it
+    with open("/tmp/data/GBKA_OVERBOUW.dat.zip", 'wb') as f:
+        f.write(store.get_store_object(latest_upload))
+
+    # unzip the GBKA_OVERBOUW.dat.zip file
+    with ZipFile('/tmp/data/GBKA_OVERBOUW.dat.zip', 'r') as myzip:
+        myzip.extractall('/tmp/data/')
+
+    # get the data and process
+    data = open("/tmp/data/Alle_Producten/GBKA_A/Objecten/WKT/GBKA_OVERBOUW.dat").read()
+    # cut column [0:4], create sql insert statements and exec.
     db = create_fme_sql_connection()
-    for line in str(data).split('\\r\\n'):
+    for line in str(data).split(os.linesep):
         fields = line.split('|')[3:]
         if len(fields) > 0:
             if int(fields[0]) > 0:
