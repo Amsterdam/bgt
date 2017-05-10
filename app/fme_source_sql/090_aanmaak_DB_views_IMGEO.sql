@@ -718,14 +718,16 @@ CREATE OR REPLACE VIEW imgeo_extractie.vw_bag_standplaats AS (
    FROM imgeo."BAG_Standplaats");
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_cft_onderbouw AS (
- SELECT "CFT_Onderbouw".eindregistratie AS eindreg,
+ SELECT "CFT_Onderbouw".guid,
+    "CFT_Onderbouw".eindregistratie AS eindreg,
     "CFT_Onderbouw".relatievehoogteligging AS hoogtelig,
     "CFT_Onderbouw".bestandsnaam,
     "CFT_Onderbouw".geometrie
    FROM imgeo."CFT_Onderbouw");
 
 CREATE OR REPLACE VIEW imgeo_extractie.vw_cft_overbouw AS (
- SELECT "CFT_Overbouw".eindregistratie AS eindreg,
+ SELECT "CFT_Overbouw".guid,
+    "CFT_Overbouw".eindregistratie AS eindreg,
     "CFT_Overbouw".relatievehoogteligging AS hoogtelig,
     "CFT_Overbouw".bestandsnaam,
     "CFT_Overbouw".geometrie
