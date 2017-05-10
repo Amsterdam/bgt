@@ -26,6 +26,7 @@ CREATE INDEX "BAG_Standplaats_geometrie_148777994161"  ON imgeo."BAG_Standplaats
 DROP TABLE IF EXISTS imgeo."CFT_Onderbouw" CASCADE;
 CREATE TABLE imgeo."CFT_Onderbouw"
 (
+  guid character varying(38),
   eindregistratie date,
   relatievehoogteligging smallint,
   bestandsnaam character varying(15),
@@ -39,6 +40,7 @@ CREATE INDEX "CFT_Onderbouw_geometrie_1487603335675"  ON imgeo."CFT_Onderbouw" U
 DROP TABLE IF EXISTS imgeo."CFT_Overbouw" CASCADE;
 CREATE TABLE imgeo."CFT_Overbouw"
 (
+  guid character varying(38),
   eindregistratie date,
   relatievehoogteligging smallint,
   bestandsnaam character varying(12),
