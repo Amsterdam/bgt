@@ -114,16 +114,18 @@ def upload_over_onderbouw_backup():
     # cut column [0:4], create sql insert statements and exec.
     db = create_fme_sql_connection()
     for line in str(data).split(os.linesep):
-        fields = line.split('|')[3:]
+        fields = line.split('|')[1:]
         if len(fields) > 0:
             if int(fields[0]) > 0:
                 # overbouw
-                sql = "insert into imgeo.\"CFT_Overbouw\" (relatievehoogteligging, bestandsnaam, geometrie) " \
-                      "values ({}, 'CFT_Overbouw', ST_GeomFromText('{}', 28992));".format(int(fields[0]), fields[1])
+                sql = "insert into imgeo.\"CFT_Overbouw\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
+                      "values ({}, 'CFT_Overbouw', ST_GeomFromText('{}', 28992));".format(
+                    fields[0], int(fields[2]), fields[3])
             else:
                 # onderbouw
-                sql = "insert into imgeo.\"CFT_Onderbouw\" (relatievehoogteligging, bestandsnaam, geometrie) " \
-                      "values ({}, 'CFT_Onderbouw', ST_GeomFromText('{}', 28992));".format(int(fields[0]), fields[1])
+                sql = "insert into imgeo.\"CFT_Onderbouw\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
+                      "values ({}, 'CFT_Onderbouw', ST_GeomFromText('{}', 28992));".format(
+                    fields[0], int(fields[2]), fields[3])
             db.run_sql(sql)
 
 
