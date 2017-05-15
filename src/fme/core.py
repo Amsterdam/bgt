@@ -116,7 +116,7 @@ def upload_over_onderbouw_backup():
     for line in str(data).split(os.linesep):
         fields = line.split('|')[1:]
         if len(fields) > 0:
-            if int(fields[0]) > 0:
+            if int(fields[2]) > 0:
                 # overbouw
                 sql = "insert into imgeo.\"CFT_Overbouw\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
                       "values ({}, {}, 'CFT_Overbouw', ST_GeomFromText('{}', 28992));".format(
