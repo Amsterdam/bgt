@@ -119,12 +119,12 @@ def upload_over_onderbouw_backup():
             if int(fields[2]) > 0:
                 # overbouw
                 sql = "insert into imgeo.\"CFT_Overbouw\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
-                      "values ({}, {}, 'CFT_Overbouw', ST_GeomFromText('{}', 28992));".format(
+                      "values ('{}', {}, 'CFT_Overbouw', ST_GeomFromText('{}', 28992));".format(
                     fields[0].replace('$$', ''), int(fields[2]), fields[3])
             else:
                 # onderbouw
                 sql = "insert into imgeo.\"CFT_Onderbouw\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
-                      "values ({}, {}, 'CFT_Onderbouw', ST_GeomFromText('{}', 28992));".format(
+                      "values ('{}', {}, 'CFT_Onderbouw', ST_GeomFromText('{}', 28992));".format(
                     fields[0].replace('$$', ''), int(fields[2]), fields[3])
             db.run_sql(sql)
 
