@@ -285,25 +285,25 @@ def run_before_after_comparisons():
 
 
 def run_all():
-    # download_bgt()
+    download_bgt()
 
     # upload data and FMW scripts
-    # upload_data()
-    # upload_script_resources()
+    upload_data()
+    upload_script_resources()
 
-    # create_fme_dbschema()
-    # upload_over_onderbouw_backup()
+    create_fme_dbschema()
+    upload_over_onderbouw_backup()
     # create_fme_shape_views()
 
-    # fme_utils.wait_for_job_to_complete(start_transformation_db())
-    # fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-    # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+    fme_utils.wait_for_job_to_complete(start_transformation_db())
+    fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+    fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
 
     # create coordinate search envelopes
     fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
 
     # run the `aanmaak_esrishape_uit_DB_BGT` script
-    # start_transformation_shapes()
+    start_transformation_shapes()
 
     # run transformation to `NLCS` and `DGN` format
     last_job_in_queue = {}
@@ -313,11 +313,11 @@ def run_all():
     fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
 
     # upload the resulting shapes an the source GML zip to objectstore
-    # upload_pdok_zip_to_objectstore()
-    # upload_nlcs_lijnen_files()
-    # upload_nlcs_vlakken_files()
-    # upload_dgn_files()
-    # run_before_after_comparisons()
+    upload_pdok_zip_to_objectstore()
+    upload_nlcs_lijnen_files()
+    upload_nlcs_vlakken_files()
+    upload_dgn_files()
+    run_before_after_comparisons()
 
 
 if __name__ == '__main__':
