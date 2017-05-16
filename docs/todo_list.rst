@@ -3,5 +3,3 @@
 Todo list
 =========
 
-.. todolist::
-
