@@ -29,7 +29,6 @@ def start_transformation_nlcs_chunk(min_x, min_y, max_x, max_y):
          "NMDirectives": {"successTopics": [], "failureTopics": []},
          "TMDirectives": {"tag": "linux", "description": "Aanmaak NLCS uit DB"},
          "publishedParameters": [
-             {"name": "SourceDataset_POSTGIS", "value": "bgt"},
              {"name": "SourceDataset_POSTGIS_3", "value": "bgt"},
              {"name": "p_font", "value": "$(FME_SHAREDRESOURCE_DATA)resources/NLCS-ISO.ttf"},
              {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)DGNv8_vlakken_NLCS"},
