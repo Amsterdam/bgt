@@ -29,7 +29,7 @@ log = logging.getLogger(__name__)
 
 def resolve_chunk_coordinates():
     """
-    calls `00_kaartbladen_coordinatenbepaler.fmw` on FME server
+    calls :file:`00_kaartbladen_coordinatenbepaler.fmw` on FME server
     output csv is used to split dgnNCS job in smaller chunks
 
     :return: dict with 'jobid' and 'urltransform'
@@ -252,6 +252,7 @@ def create_fme_shape_views():
     """
     aanmaak db-views shapes_bgt
     :return:
+    
     """
     fme_pgsql = create_fme_sql_connection()
     fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
@@ -262,8 +263,9 @@ def create_fme_shape_views():
 
 def run_before_after_comparisons():
     """
-    import controle db using /tmp/data/*.gml
-    make sure sql connections are up
+    Import controle db using :file:`/tmp/data/*.gml`.
+    
+    Make sure sql connections are up
     """
     loc_pgsql = create_fme_sql_connection()
     loc_pgsql.import_gml_control_db()

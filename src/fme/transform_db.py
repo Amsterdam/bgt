@@ -8,8 +8,9 @@ log = logging.getLogger(__name__)
 
 def start_transformation_db():
     """
-    calls `inlezen_DB_BGT_uit_citygml.fmw` on FME server
-    :return: dict with 'jobid' and 'urltransform'
+    Calls `inlezen_DB_BGT_uit_citygml.fmw` on FME server
+
+    :rtype: dict[jobid, urltransform]
     """
     log.info("Starting transformation GML -:> db_bgt")
 

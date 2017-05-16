@@ -1,5 +1,4 @@
 pgpass.txt
-.idea
 .jenkins/backups
 *.recover
 data
@@ -13,3 +12,25 @@ app/work/*
 .cache
 *.pyc
 __pycache__
+
+
+# Generated documentation:
+/docs/_build/
+# Downloaded intersphinx inventory files:
+/docs/*.inv
+
+
+# IntelliJ stuff:
+/.idea
+/*.iml
+/.editorconfig
+
+
+# PyDev/Eclipse
+.project
+.pydevproject
+
+
+# Python virtual environement:
+# --PvB:
+/.venv
