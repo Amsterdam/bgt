@@ -1,3 +1,16 @@
+
+-- Table: imgeo.pdt_kaartblad
+DROP TABLE IF EXISTS imgeo.pdt_kaartblad CASCADE;
+CREATE TABLE imgeo.pdt_kaartblad
+(
+  naam character varying(200),
+  big_id integer,
+  geometrie geometry(Geometry,28992)
+);
+ALTER TABLE imgeo.pdt_kaartblad  OWNER TO dbuser;
+DROP INDEX IF EXISTS imgeo.pdt_kaartblad_geometrie_1490878985679;
+CREATE INDEX pdt_kaartblad_geometrie_1490878985679  ON imgeo.pdt_kaartblad  USING gist  (geometrie);
+
 -- Table: imgeo."BAG_Ligplaats"
 DROP TABLE IF EXISTS imgeo."BAG_Ligplaats" CASCADE;
 CREATE TABLE imgeo."BAG_Ligplaats"
