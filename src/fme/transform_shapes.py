@@ -174,8 +174,8 @@ def zip_upload_and_cleanup_shape_results():
                     'application/octet-stream')
 
     os.chdir(cwd)
-    log.info("Clean up results")
-    shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
+    # log.info("Clean up results")
+    # shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
     log.info("Zipped results and uploaded them to the objectstore")
 
 
