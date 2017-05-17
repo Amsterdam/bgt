@@ -223,8 +223,8 @@ def run_transformation_job(repository, workspace, params):
                 "Accept": "application/json"},
             data=json.dumps(params))
 
-        log.info('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
-        log.info('Response HTTP Response Body: {content}'.format(content=response.content))
+        log.debug('Response HTTP Status Code: {status_code}'.format(status_code=response.status_code))
+        log.debug('Response HTTP Response Body: {content}'.format(content=response.content))
         res = response.json()
         log.debug('Job started! Job ID: {}'.format(res['id']))
         return {'jobid': res['id'], 'urltransform': urltransform}
