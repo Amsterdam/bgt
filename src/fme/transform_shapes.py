@@ -174,8 +174,8 @@ def zip_upload_and_cleanup_shape_results():
                     'application/octet-stream')
 
     os.chdir(cwd)
-    # log.info("Clean up results")
-    # shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
+    log.info("Clean up results")
+    shutil.rmtree('/tmp/data/shaperesults', ignore_errors=True)
     log.info("Zipped results and uploaded them to the objectstore")
 
 
@@ -187,8 +187,8 @@ def start_transformation_shapes():
     log.info("Start transformation of shapes")
     for shape_type in shape_object_types:
         fme_utils.wait_for_job_to_complete(start_transformation_shapes_for(shape_type), sleep_time=1)
-        # download_shape_files(shape_type)
-        # remove_shape_results(shape_type)
+        download_shape_files(shape_type)
+        remove_shape_results(shape_type)
 
     # upload and cleanup results
-    # zip_upload_and_cleanup_shape_results()
+    zip_upload_and_cleanup_shape_results()
