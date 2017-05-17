@@ -1,4 +1,4 @@
 .. _genindex:
 
-General Index
-=============
+Index
+=====

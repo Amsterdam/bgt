@@ -14,7 +14,7 @@ services:
    command: >
      bash -c "/app/docker-wait.sh \
              && cd /src \
-             && pip install -r requirements.txt \
+             && pip install -e . \
              && export TEST=1 \
              && py.test /src"
 

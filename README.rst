@@ -1,35 +1,51 @@
+.. reference this page as :ref:`index` (from which it's included)
+
 Basiskaart Grootschalige Topografie
 ===================================
 
+.. highlight:: bash
 
-Python development
-------------------
 
-Dit project maakt gebruik van Python 3.
+Development environment
+-----------------------
 
-.. code-block:: bash
+Dit project maakt gebruik van Python3. Enige wenken om van start te gaan::
 
-    cd src
-    pip install -r requirements.txt
-    export PYTHONPATH=`pwd`
-    python fme/core.py
+    # Virtual environment maken op je eigen lievelingsmanier.
+    # PvB doet altijd:
+    python3 -m venv --copies --prompt "`basename "$PWD"`" .venv
+
+    # Dependencies installeren, ook voor documentatie:
+    pip install -e .[doc]
+
+    # Statische documentatie builden in ./docs/_build/html/:
+    make -C docs html
+
+    # Documentatie-server starten op http://localhost:8000/:
+    make -C docs server
+
+    # Voor meer documentatie-opties:
+    make -C docs
+
+    # Runnen van de transformaties:
+    python -m fme.core
+
+Installatie van psycopg2 op OSX sierra::
+
+    LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" \
+        pip install psycopg2
+
+.. todo::
+
+    @thijs Kan dit niet weg? Het is heel specifiek voor ``homebrew`` gebruikers
+    die hun homebrew-openssl versie niet standaard in hun LDFLAGS hebben staan.
 
 
 Docker development
 ------------------
 
-Om de applicatie te starten vanuit Docker.
-
-.. code-block:: bash
+Om de applicatie te starten vanuit Docker::
 
     docker-compose build
     docker-compose run importer
 
-
-Installatie van psycopg2 op OSX sierra
---------------------------------------
-
-.. code-block:: bash
-
-    LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" \
-        pip install psycopg2

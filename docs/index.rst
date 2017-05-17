@@ -1,24 +1,12 @@
 .. _index:
 
-Basiskaart Grootschalige Topografie
-===================================
-
-
-Contents
---------
+.. include:: ../README.rst
 
 .. toctree::
-   :glob:
+   :hidden:
 
-   self
    api
    sphinx101
    todo_list
+   license
    genindex
-
-
-To Do List
-----------
-
-.. todolist::
-
