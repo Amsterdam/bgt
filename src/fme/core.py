@@ -293,7 +293,7 @@ def run_all():
 
     create_fme_dbschema()
     upload_over_onderbouw_backup()
-    # create_fme_shape_views()
+    create_fme_shape_views()
 
     fme_utils.wait_for_job_to_complete(start_transformation_db())
     fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
