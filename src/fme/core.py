@@ -336,7 +336,7 @@ def main() -> int:
 
         # start the fme server
         server_manager.start()
-        # run_all()
+        run_all()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
