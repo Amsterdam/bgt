@@ -29,7 +29,8 @@ setup(
         'requests',
         'psycopg2',
         'python_swiftclient',
-        'python-keystoneclient'
+        'python-keystoneclient',
+        'Babel'
     ],
     extras_require={
         'doc': [
