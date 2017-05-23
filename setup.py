@@ -39,7 +39,7 @@ setup(
         ],
         'test': [
             'pytest',
-            'pytest-cov'
+            'pytest-cov',
             'pytest-mock',
             'requests-mock',
         ],
