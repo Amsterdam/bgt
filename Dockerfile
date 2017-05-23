@@ -16,7 +16,7 @@ RUN mkdir /data /app /src /dump
 
 COPY ./ /bgt
 WORKDIR /bgt
-RUN pip3 install -e . \
+RUN pip3 install -e .[test] \
     && chmod -R 755 app/*.sh
 
 ENV PGCLIENTENCODING='UTF-8'

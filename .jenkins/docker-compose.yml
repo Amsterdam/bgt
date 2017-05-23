@@ -13,5 +13,4 @@ services:
     #volumes:
     #  - /tmp/data:/tmp/data
     command: >
-      bash -c "/bgt/app/docker-wait.sh \
-              && /bgt/app/import_fme.sh"
+      bash -c "/bgt/app/import_fme.sh"

@@ -37,7 +37,7 @@ setup(
             'sphinx-rtd-theme',
             'sphinx-autobuild'
         ],
-        'test':[
+        'test': [
             'pytest',
             'pytest-cov'
             'pytest-mock',
