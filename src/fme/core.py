@@ -320,7 +320,11 @@ def run_all():
     run_before_after_comparisons()
 
 
-if __name__ == '__main__':
+def main() -> int:
+    """
+    This function is defined as an **entry-point** in :file:`setup.py`.
+
+    """
     logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
     log.info("Starting import script")
@@ -332,12 +336,15 @@ if __name__ == '__main__':
 
         # start the fme server
         server_manager.start()
-
-        run_all()
-
+        # run_all()
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
     finally:
         log.info("Stopping FME service")
         server_manager.stop()
+    return 0
+
+
+if __name__ == '__main__':
+    main()

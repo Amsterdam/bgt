@@ -38,10 +38,11 @@ sys.path.insert(0, str(PROJECT_PATH / 'src'))
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
+    # 'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
+    'sphinx.ext.autosectionlabel'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -58,7 +59,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Datapunt BGT'
-copyright = '2017, Datapunt'
+# noinspection PyShadowingBuiltins
+copyright = '2017, Gemeente Amsterdam'
 author = 'Datapunt'
 
 # The version info for the project you're documenting, acts as replacement for

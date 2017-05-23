@@ -14,10 +14,9 @@ RUN apt-get update \
 
 RUN mkdir /data /app /src /dump
 
-COPY app /app
-COPY src /src
-WORKDIR /src
-RUN pip3 install --no-cache-dir -r requirements.txt \
-    && chmod -R 755 /app/*.sh
+COPY ./ /bgt
+WORKDIR /bgt
+RUN pip3 install -e . \
+    && chmod -R 755 app/*.sh
 
 ENV PGCLIENTENCODING='UTF-8'
