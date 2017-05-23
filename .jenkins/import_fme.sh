@@ -12,6 +12,6 @@ dc() {
 trap 'dc kill ; dc rm -f' EXIT
 
 dc build
-dc run --rm tests
+#dc run --rm tests
 dc run --rm importer
 
