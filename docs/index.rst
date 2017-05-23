@@ -3,10 +3,11 @@
 .. include:: ../README.rst
 
 .. toctree::
-   :hidden:
+    :hidden:
+    :glob:
 
-   api
-   sphinx101
-   todo_list
-   license
-   genindex
+    api
+    sphinx101
+    todo_list
+    License <license>
+    Index <genindex>

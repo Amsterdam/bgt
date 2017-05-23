@@ -1,27 +1,7 @@
 version: "2.1"
 services:
-  database:
-    image: build.datapunt.amsterdam.nl:5000/atlas/postgres
-    environment:
-      POSTGRES_DB: gisdb
-      POSTGRES_USER: dbuser
-      POSTGRES_PASSWORD: insecure
-
-  tests:
-   build: ..
-   links:
-     - database:database
-   command: >
-     bash -c "/app/docker-wait.sh \
-             && cd /src \
-             && pip install -r requirements.txt \
-             && export TEST=1 \
-             && py.test /src"
-
   importer:
     build: ..
-    links:
-      - database:database
     environment:
       FMESERVER: ${FMESERVER}
       FMESERVERAPI: ${FMESERVERAPI}
@@ -30,9 +10,8 @@ services:
       FMEINSTANCE: ${FMEINSTANCE:-2493}
       DEBUG: ${DEBUG:-0}
       BGT_OBJECTSTORE_PASSWORD: ${BGT_OBJECTSTORE_PASSWORD:-insecure}
-    volumes:
-      - /tmp/data:/tmp/data
+    #volumes:
+    #  - /tmp/data:/tmp/data
     command: >
-      bash -c "/app/docker-wait.sh \
-              && /app/import_fme.sh"
-
+      bash -c "/bgt/app/docker-wait.sh \
+              && /bgt/app/import_fme.sh"

@@ -3,34 +3,36 @@ pgpass.txt
 *.recover
 data
 dump
-dump/bgt.dump
-keys.env
-set_local_env.sh
+
+# Thijs Creemers:
 set_env_local*
+
+# Runtime artifacts:
 src/extract_bgt.zip
 app/work/*
-.cache
+
+# Python ephemerals:
 *.pyc
 __pycache__
 
+# setuptools stuff:
+/build
+/dist
+*.egg-info
+.eggs
 
 # Generated documentation:
 /docs/_build/
 # Downloaded intersphinx inventory files:
 /docs/*.inv
 
-
-# IntelliJ stuff:
+# PyCharm/IntelliJ:
 /.idea
 /*.iml
 /.editorconfig
 
-
-# PyDev/Eclipse
-.project
-.pydevproject
-
-
-# Python virtual environement:
-# --PvB:
+# Python venv: --PvB
 /.venv
+
+# Credentials: --PvB
+/keys.env

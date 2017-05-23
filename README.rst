@@ -28,7 +28,9 @@ Dit project maakt gebruik van Python3. Enige wenken om van start te gaan::
     make -C docs
 
     # Runnen van de transformaties:
-    python -m fme.core
+    run_fme
+
+Dit laatste commando wordt door ``setuptools`` gemaakt. Zie :file:`setup.py`.
 
 Installatie van psycopg2 op OSX sierra::
 
