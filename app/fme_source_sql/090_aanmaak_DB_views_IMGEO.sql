@@ -732,3 +732,21 @@ CREATE OR REPLACE VIEW imgeo_extractie.vw_cft_overbouw AS (
     "CFT_Overbouw".bestandsnaam,
     "CFT_Overbouw".geometrie
    FROM imgeo."CFT_Overbouw");
+
+CREATE OR REPLACE VIEW imgeo_extractie.vw_lps_nummeraanduiding AS (
+ SELECT lps_nummeraanduiding."BAGID" AS bagid,
+    lps_nummeraanduiding.bestandsnaam,
+    lps_nummeraanduiding.display AS adres,
+    lps_nummeraanduiding.tekst,
+    lps_nummeraanduiding.hoek,
+    lps_nummeraanduiding.geometrie
+   FROM imgeo.lps_nummeraanduiding);
+
+CREATE OR REPLACE VIEW imgeo_extractie.vw_sps_nummeraanduiding AS (
+ SELECT sps_nummeraanduiding."BAGID" AS bagid,
+    sps_nummeraanduiding.bestandsnaam,
+    sps_nummeraanduiding.display AS adres,
+    sps_nummeraanduiding.tekst,
+    sps_nummeraanduiding.hoek,
+    sps_nummeraanduiding.geometrie
+   FROM imgeo.sps_nummeraanduiding);

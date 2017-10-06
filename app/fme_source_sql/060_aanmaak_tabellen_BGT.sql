@@ -11,6 +11,36 @@ ALTER TABLE imgeo.pdt_kaartblad  OWNER TO dbuser;
 DROP INDEX IF EXISTS imgeo.pdt_kaartblad_geometrie_1490878985679;
 CREATE INDEX pdt_kaartblad_geometrie_1490878985679  ON imgeo.pdt_kaartblad  USING gist  (geometrie);
 
+-- Table: imgeo.lps_nummeraanduiding
+DROP TABLE IF EXISTS imgeo.lps_nummeraanduiding CASCADE;
+CREATE TABLE imgeo.lps_nummeraanduiding
+(
+  "BAGID" character varying(18),
+  bestandsnaam character varying(40),
+  display text,
+  tekst character varying(10),
+  hoek real,
+  geometrie geometry(Geometry,28992)
+);
+ALTER TABLE imgeo.lps_nummeraanduiding OWNER TO dbuser;
+DROP INDEX IF EXISTS lps_nummeraanduiding_geometrie_1506607347268;
+CREATE INDEX lps_nummeraanduiding_geometrie_1506607347268 ON imgeo.lps_nummeraanduiding  USING gist  (geometrie);
+
+-- Table: imgeo.sps_nummeraanduiding
+DROP TABLE IF EXISTS imgeo.sps_nummeraanduiding CASCADE;
+CREATE TABLE imgeo.sps_nummeraanduiding
+(
+  "BAGID" character varying(18),
+  bestandsnaam character varying(40),
+  display text,
+  tekst character varying(10),
+  hoek real,
+  geometrie geometry(Geometry,28992)
+);
+ALTER TABLE imgeo.sps_nummeraanduiding OWNER TO dbuser;
+DROP INDEX IF EXISTS sps_nummeraanduiding_geometrie_1506607346958;
+CREATE INDEX sps_nummeraanduiding_geometrie_1506607346958  ON imgeo.sps_nummeraanduiding  USING gist  (geometrie);
+
 -- Table: imgeo."BAG_Ligplaats"
 DROP TABLE IF EXISTS imgeo."BAG_Ligplaats" CASCADE;
 CREATE TABLE imgeo."BAG_Ligplaats"
