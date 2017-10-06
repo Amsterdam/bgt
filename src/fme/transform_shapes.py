@@ -51,6 +51,8 @@ shape_object_types = [
     'imgeo_extractie.vw_bag_standplaats',
     'imgeo_extractie.vw_bgt_pand',
     'imgeo_extractie.vw_bgt_nummeraanduidingreeks',
+    'imgeo_extractie.vw_lps_nummeraanduiding',
+    'imgeo_extractie.vw_sps_nummeraanduiding',
 ]
 
 
