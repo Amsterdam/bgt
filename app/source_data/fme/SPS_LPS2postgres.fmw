@@ -14,49 +14,49 @@
 #          --ENVELOPE_MINY ""
 #    
 #    
-#!   DOC_TOP_LEFT="-823.997 -13153.3"
-#!   REDIRECT_TERMINATORS="NONE"
-#!   LOG_FILE=""
-#!   BEGIN_PYTHON=""
-#!   REQUIREMENTS_KEYWORD=""
-#!   VIEW_POSITION="-1088.28 -8350.37"
-#!   FME_DOCUMENT_PRIORGUID="b4c87af2-87d8-4ee7-ab28-044261686d24,03501f70-c6dc-4876-8470-1e3ea438b73a,49ff8b5f-30cc-431a-bef5-8fcd5a3b4ed9,a4092c40-e299-491c-be5d-44a44e8bc1ea,a9154ed5-a1bc-412f-a624-ed27910de397,1b6bb26d-2a89-4d34-8921-622126d13478,106ada55-65fa-48cd-843d-4b8e49d57f10,0e0d878b-dd2d-4ed5-91fc-0ae3eb705f92,254eea53-252f-47c4-ac40-a468b0713d28,5aa49c7a-58f9-42d1-80f1-ffd95df8f665,9345fadf-8aef-49a2-9da8-fd3429d09014,cc5e4f76-f4a7-4af7-b51f-2c91755676e5,d93a7893-c177-46aa-9914-abb8ad3c3fa8,a567bd17-0e6b-4e17-a082-70f15ea51780,d2486f6f-063a-47d7-855f-12855178ad01,ee3bc4fa-2870-4c7c-bba7-f69d16df150c,62332979-98c8-4e37-9dbf-555e8a1b4743,be31d0a2-b17f-48bf-891d-38689946bede,607f3ced-c48a-4d4e-a60e-300e6b4f2a16,a1326d0c-c27c-4465-8642-95e526a0db70,661dd5b3-0d10-4680-8983-4eb069a9f809,78e0f540-80ea-43af-bd03-91ae23af38dd"
-#!   WORKSPACE_VERSION="1"
-#!   FME_SERVER_SERVICES=""
-#!   REQUIREMENTS=""
-#!   IGNORE_READER_FAILURE="No"
-#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
-#!   ZOOM_SCALE="60"
-#!   DOC_EXTENTS="10496.4 13153.3"
-#!   LEGAL_TERMS_CONDITIONS=""
-#!   PYTHON_COMPATIBILITY="27"
-#!   LAST_SAVE_DATE="2017-10-09T16:36:46"
-#!   BEGIN_TCL=""
-#!   END_PYTHON=""
-#!   DESTINATION_ROUTING_FILE=""
-#!   DESCRIPTION=""
-#!   END_TCL=""
-#!   LOG_MAX_RECORDED_FEATURES="200"
-#!   CATEGORY=""
-#!   FME_REPROJECTION_ENGINE="FME"
-#!   ATTR_TYPE_ENCODING="SDF"
-#!   FME_BUILD_NUM="16178"
-#!   MAX_LOG_FEATURES="200"
-#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
-#!   WARN_INVALID_XFORM_PARAM="Yes"
-#!   HISTORY=""
-#!   PASSWORD=""
-#!   USAGE=""
-#!   SHOW_INFO_NODES="true"
-#!   FME_STROKE_MAX_DEVIATION="0"
 #!   SOURCE="NONE"
+#!   WORKSPACE_VERSION="1"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   SHOW_INFO_NODES="true"
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   FME_SERVER_SERVICES=""
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   FME_DOCUMENT_PRIORGUID="b4c87af2-87d8-4ee7-ab28-044261686d24,03501f70-c6dc-4876-8470-1e3ea438b73a,49ff8b5f-30cc-431a-bef5-8fcd5a3b4ed9,a4092c40-e299-491c-be5d-44a44e8bc1ea,a9154ed5-a1bc-412f-a624-ed27910de397,1b6bb26d-2a89-4d34-8921-622126d13478,106ada55-65fa-48cd-843d-4b8e49d57f10,0e0d878b-dd2d-4ed5-91fc-0ae3eb705f92,254eea53-252f-47c4-ac40-a468b0713d28,5aa49c7a-58f9-42d1-80f1-ffd95df8f665,9345fadf-8aef-49a2-9da8-fd3429d09014,cc5e4f76-f4a7-4af7-b51f-2c91755676e5,d93a7893-c177-46aa-9914-abb8ad3c3fa8,a567bd17-0e6b-4e17-a082-70f15ea51780,d2486f6f-063a-47d7-855f-12855178ad01,ee3bc4fa-2870-4c7c-bba7-f69d16df150c,62332979-98c8-4e37-9dbf-555e8a1b4743,be31d0a2-b17f-48bf-891d-38689946bede,607f3ced-c48a-4d4e-a60e-300e6b4f2a16,a1326d0c-c27c-4465-8642-95e526a0db70,661dd5b3-0d10-4680-8983-4eb069a9f809,78e0f540-80ea-43af-bd03-91ae23af38dd,2b19e407-472e-431d-8d97-a95bed64d3d8"
 #!   TITLE=""
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   PYTHON_COMPATIBILITY="27"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   LAST_SAVE_DATE="2017-10-16T11:05:40"
+#!   MAX_LOG_FEATURES="200"
+#!   BEGIN_PYTHON=""
+#!   VIEW_POSITION="-883.342 -5525.06"
+#!   LEGAL_TERMS_CONDITIONS=""
+#!   LOG_FILE=""
+#!   USAGE=""
+#!   DESTINATION="NONE"
+#!   FME_BUILD_NUM="16178"
+#!   DESTINATION_ROUTING_FILE=""
+#!   SOURCE_ROUTING_FILE=""
+#!   HISTORY=""
+#!   ZOOM_SCALE="60"
 #!   SHOW_ANNOTATIONS="true"
 #!   LAST_SAVE_BUILD="FME(R) 2016.0.1.2 (20160318 - Build 16178 - WIN64)"
-#!   FME_DOCUMENT_GUID="2b19e407-472e-431d-8d97-a95bed64d3d8"
-#!   FME_GEOMETRY_HANDLING="Enhanced"
-#!   DESTINATION="NONE"
-#!   SOURCE_ROUTING_FILE=""
+#!   END_TCL=""
+#!   END_PYTHON=""
+#!   DOC_TOP_LEFT="-823.997 -13153.3"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   CATEGORY=""
+#!   REQUIREMENTS=""
+#!   PASSWORD=""
+#!   DESCRIPTION=""
+#!   BEGIN_TCL=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   DOC_EXTENTS="10496.4 13153.3"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_DOCUMENT_GUID="d2268520-1c31-4e3f-9891-a39b239ff0ff"
+#!   IGNORE_READER_FAILURE="No"
+#!   REQUIREMENTS_KEYWORD=""
 #! >
 #! <DATASETS>
 #! <DATASET
@@ -72,7 +72,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="xml_type {FME_GEN_GEOMETRY}"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_sweep_angle xml_real64 fme_color xml_char(50) fme_primary_axis xml_real64 multi_reader_id xml_int32 fme_feature_type xml_char(50) fme_geometry fme_char(50) multi_reader_type xml_char(50) fme_start_angle xml_real64 xml_type xml_char(50) fme_text_size xml_real64 fme_secondary_axis xml_real64 multi_reader_keyword xml_char(50) fme_basename xml_char(50) fme_rotation xml_real64 fme_dataset xml_char(50) multi_reader_full_id xml_int32 fme_fill_color xml_char(50) fme_type xml_char(50) fme_text_string xml_char(50)"
+#!   EXPOSABLE_ATTRS="xml_type xml_char(50) multi_reader_id xml_int32 fme_basename xml_char(50) fme_dataset xml_char(50) fme_sweep_angle xml_real64 fme_rotation xml_real64 fme_secondary_axis xml_real64 fme_text_size xml_real64 fme_geometry fme_char(50) fme_type xml_char(50) fme_primary_axis xml_real64 multi_reader_type xml_char(50) fme_fill_color xml_char(50) multi_reader_keyword xml_char(50) fme_color xml_char(50) fme_start_angle xml_real64 fme_text_string xml_char(50) fme_feature_type xml_char(50) multi_reader_full_id xml_int32"
 #!   DEFLINE_PARMS=""
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -82,27 +82,27 @@
 #!   DATASET_TYPE="URL"
 #!   GENERATE_FME_BUILD_NUM="16174"
 #!   MAX_FEATURES=""
-#!   MIN_FEATURES=""
-#!   COORDSYS="EPSG:28992"
-#!   START_FEATURE=""
-#!   FEATURE_TYPES=""
 #!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   START_FEATURE=""
+#!   MIN_FEATURES=""
+#!   FEATURE_TYPES=""
+#!   COORDSYS="EPSG:28992"
 #! >
-#! <METAFILE_PARAMETER
-#!   NAME="READER_DATASET_HINT"
-#!   VALUE="Specify the WFS URL"
-#! />
 #! <METAFILE_PARAMETER
 #!   NAME="NETWORK_AUTHENTICATION"
 #!   VALUE="ALWAYS"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="NETWORK_PROXY"
+#!   VALUE="NO"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="DATASET_NAME"
 #!   VALUE="URL"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="NETWORK_PROXY"
-#!   VALUE="NO"
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Specify the WFS URL"
 #! />
 #! </DATASET>
 #! <DATASET
@@ -118,7 +118,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="postgis_type postgis_geometry postgis_mode &quot;&quot; postgis_sql_key_columns &quot;&quot; postgis_drop_table &quot;&quot; postgis_truncate_table &quot;&quot; fme_feature_operation INSERT fme_table_handling CREATE_IF_MISSING fme_selection_method MATCH_COLUMNS fme_match_columns &quot;&quot; fme_where_builder_clause &quot;&quot; fme_update_geometry YES postgis_create_with_oids NO postgis_create_gist_index YES postgis_spatial_column_type geometry postgis_spatial_column geom postgis_srid &quot;&quot; postgis_vacuum_analyze no postgis_allow_serial_writing NO"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_sweep_angle float8 fme_db_operation char(8) fme_color char(50) fme_primary_axis float8 fme_geometry fme_char(50) postgis_collection_part_id int4 fme_feature_type char(50) fme_start_angle float8 fme_text_size float8 fme_secondary_axis float8 fme_basename char(50) fme_rotation float8 postgis_collection_id int4 fme_dataset char(50) fme_fill_color char(50) fme_type char(50) fme_text_string char(50) postgis_type char(50)"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_dataset char(50) fme_sweep_angle float8 fme_rotation float8 fme_secondary_axis float8 fme_text_size float8 fme_geometry fme_char(50) postgis_type char(50) fme_type char(50) fme_primary_axis float8 fme_fill_color char(50) fme_color char(50) fme_start_angle float8 fme_text_string char(50) fme_db_operation char(8) postgis_collection_part_id int4 fme_feature_type char(50) postgis_collection_id int4"
 #!   DEFLINE_PARMS="&quot;GUI NAMEDGROUP fme_configuration_group fme_configuration_common_group%fme_spatial_group%fme_advanced_group%oracle_advanced_group Table Settings&quot; &quot;&quot; &quot;GUI NAMEDGROUP fme_configuration_common_group fme_feature_operation%fme_table_handling%oracle_model%fme_update_geometry%fme_selection_group%fme_table_creation_group General&quot; &quot;&quot; &quot;GUI ACTIVECHOICE_LOOKUP fme_feature_operation Insert,INSERT,fme_update_geometry,fme_selection_group%Update,UPDATE,++fme_table_handling+USE_EXISTING,++fme_selection_group+FME_DISCLOSURE_OPEN%Delete,DELETE,++fme_table_handling+USE_EXISTING,fme_update_geometry,++fme_selection_group+FME_DISCLOSURE_OPEN,fme_spatial_group,fme_advanced_group,oracle_sequenced_cols%&lt;at&gt;Value&lt;openparen&gt;fme_db_operation&lt;closeparen&gt;,MULTIPLE,++fme_selection_group+FME_DISCLOSURE_OPEN Feature Operation&quot; INSERT &quot;GUI ACTIVECHOICE_LOOKUP fme_table_handling Use&lt;space&gt;Existing,USE_EXISTING,fme_table_creation_group%Create&lt;space&gt;If&lt;space&gt;Needed,CREATE_IF_MISSING%Drop&lt;space&gt;and&lt;space&gt;Create,DROP_CREATE%Truncate&lt;space&gt;Existing,TRUNCATE_EXISTING,fme_table_creation_group Table Handling&quot; CREATE_IF_MISSING &quot;GUI WHOLE_LINE LOOKUP_CHOICE fme_update_geometry Yes,YES%No,NO Update Spatial Column(s)&quot; YES &quot;GUI DISCLOSUREGROUP fme_selection_group fme_selection_method Row Selection&quot; &quot;&quot; &quot;GUI WHOLE_LINE RADIOPARAMETERGROUP fme_selection_method fme_match_columns,MATCH_COLUMNS%fme_where_builder_clause,BUILDER Row Selection Method&quot; MATCH_COLUMNS &quot;GUI WHOLE_LINE ATTRLIST_COMMAS fme_match_columns Match Columns&quot; &quot;&quot; &quot;GUI WHOLE_LINE TEXT_EDIT_SQL_CFG_OR_ATTR fme_where_builder_clause MODE,WHERE WHERE Clause&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_table_creation_group postgis_create_with_oids%postgis_create_gist_index Table Creation Parameters&quot; &quot;&quot; &quot;GUI CHOICE postgis_create_with_oids YES%NO Create With OIDs&quot; NO &quot;GUI CHOICE postgis_create_gist_index YES%NO Create GiST Index&quot; YES &quot;GUI NAMEDGROUP fme_spatial_group postgis_spatial_column_type%postgis_spatial_column%postgis_srid Spatial&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE postgis_spatial_column_type Geometry,geometry%Geography,geography Spatial Type&quot; geometry &quot;GUI OPTIONAL WHOLE_LINE TEXT postgis_spatial_column Spatial Column&quot; geom &quot;GUI OPTIONAL FLOAT postgis_srid Spatial Column SRID&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_advanced_group postgis_vacuum_analyze%postgis_allow_serial_writing Advanced&quot; &quot;&quot; &quot;GUI CHOICE postgis_vacuum_analyze YES%NO Vacuum Analyze Table&quot; NO &quot;GUI CHOICE postgis_allow_serial_writing YES%NO Allow Serial Column Writing&quot; NO "
 #!   ATTR_INDEX_TYPES="BTREE RTREE HASH PRIKEY"
 #!   ATTR_NAME_INVALID_CHARS=". %-#[]&quot;()!?*&apos;&amp;+\/"
@@ -136,24 +136,24 @@
 #!   VALUE="NO"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="Database"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="ADVANCED_PARMS"
-#!   VALUE="POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING"
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="NETWORK_PROXY"
 #!   VALUE="NO"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_NAME"
-#!   VALUE="Table"
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_DEFAULT_NAME"
 #!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="Database"
 #! />
 #! </DATASET>
 #! <DATASET
@@ -169,7 +169,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="postgis_type postgis_geometry postgis_mode &quot;&quot; postgis_sql_key_columns &quot;&quot; postgis_drop_table &quot;&quot; postgis_truncate_table &quot;&quot; fme_feature_operation INSERT fme_table_handling CREATE_IF_MISSING fme_selection_method MATCH_COLUMNS fme_match_columns &quot;&quot; fme_where_builder_clause &quot;&quot; fme_update_geometry YES postgis_create_with_oids NO postgis_create_gist_index YES postgis_spatial_column_type geometry postgis_spatial_column geom postgis_srid &quot;&quot; postgis_vacuum_analyze no postgis_allow_serial_writing NO"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_sweep_angle float8 fme_db_operation char(8) fme_color char(50) fme_primary_axis float8 fme_geometry fme_char(50) postgis_collection_part_id int4 fme_feature_type char(50) fme_start_angle float8 fme_text_size float8 fme_secondary_axis float8 fme_basename char(50) fme_rotation float8 postgis_collection_id int4 fme_dataset char(50) fme_fill_color char(50) fme_type char(50) fme_text_string char(50) postgis_type char(50)"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_dataset char(50) fme_sweep_angle float8 fme_rotation float8 fme_secondary_axis float8 fme_text_size float8 fme_geometry fme_char(50) postgis_type char(50) fme_type char(50) fme_primary_axis float8 fme_fill_color char(50) fme_color char(50) fme_start_angle float8 fme_text_string char(50) fme_db_operation char(8) postgis_collection_part_id int4 fme_feature_type char(50) postgis_collection_id int4"
 #!   DEFLINE_PARMS="&quot;GUI NAMEDGROUP fme_configuration_group fme_configuration_common_group%fme_spatial_group%fme_advanced_group%oracle_advanced_group Table Settings&quot; &quot;&quot; &quot;GUI NAMEDGROUP fme_configuration_common_group fme_feature_operation%fme_table_handling%oracle_model%fme_update_geometry%fme_selection_group%fme_table_creation_group General&quot; &quot;&quot; &quot;GUI ACTIVECHOICE_LOOKUP fme_feature_operation Insert,INSERT,fme_update_geometry,fme_selection_group%Update,UPDATE,++fme_table_handling+USE_EXISTING,++fme_selection_group+FME_DISCLOSURE_OPEN%Delete,DELETE,++fme_table_handling+USE_EXISTING,fme_update_geometry,++fme_selection_group+FME_DISCLOSURE_OPEN,fme_spatial_group,fme_advanced_group,oracle_sequenced_cols%&lt;at&gt;Value&lt;openparen&gt;fme_db_operation&lt;closeparen&gt;,MULTIPLE,++fme_selection_group+FME_DISCLOSURE_OPEN Feature Operation&quot; INSERT &quot;GUI ACTIVECHOICE_LOOKUP fme_table_handling Use&lt;space&gt;Existing,USE_EXISTING,fme_table_creation_group%Create&lt;space&gt;If&lt;space&gt;Needed,CREATE_IF_MISSING%Drop&lt;space&gt;and&lt;space&gt;Create,DROP_CREATE%Truncate&lt;space&gt;Existing,TRUNCATE_EXISTING,fme_table_creation_group Table Handling&quot; CREATE_IF_MISSING &quot;GUI WHOLE_LINE LOOKUP_CHOICE fme_update_geometry Yes,YES%No,NO Update Spatial Column(s)&quot; YES &quot;GUI DISCLOSUREGROUP fme_selection_group fme_selection_method Row Selection&quot; &quot;&quot; &quot;GUI WHOLE_LINE RADIOPARAMETERGROUP fme_selection_method fme_match_columns,MATCH_COLUMNS%fme_where_builder_clause,BUILDER Row Selection Method&quot; MATCH_COLUMNS &quot;GUI WHOLE_LINE ATTRLIST_COMMAS fme_match_columns Match Columns&quot; &quot;&quot; &quot;GUI WHOLE_LINE TEXT_EDIT_SQL_CFG_OR_ATTR fme_where_builder_clause MODE,WHERE WHERE Clause&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_table_creation_group postgis_create_with_oids%postgis_create_gist_index Table Creation Parameters&quot; &quot;&quot; &quot;GUI CHOICE postgis_create_with_oids YES%NO Create With OIDs&quot; NO &quot;GUI CHOICE postgis_create_gist_index YES%NO Create GiST Index&quot; YES &quot;GUI NAMEDGROUP fme_spatial_group postgis_spatial_column_type%postgis_spatial_column%postgis_srid Spatial&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE postgis_spatial_column_type Geometry,geometry%Geography,geography Spatial Type&quot; geometry &quot;GUI OPTIONAL WHOLE_LINE TEXT postgis_spatial_column Spatial Column&quot; geom &quot;GUI OPTIONAL FLOAT postgis_srid Spatial Column SRID&quot; &quot;&quot; &quot;GUI DISCLOSUREGROUP fme_advanced_group postgis_vacuum_analyze%postgis_allow_serial_writing Advanced&quot; &quot;&quot; &quot;GUI CHOICE postgis_vacuum_analyze YES%NO Vacuum Analyze Table&quot; NO &quot;GUI CHOICE postgis_allow_serial_writing YES%NO Allow Serial Column Writing&quot; NO "
 #!   ATTR_INDEX_TYPES="BTREE RTREE HASH PRIKEY"
 #!   ATTR_NAME_INVALID_CHARS=". %-#[]&quot;()!?*&apos;&amp;+\/"
@@ -187,24 +187,24 @@
 #!   VALUE="NO"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="Database"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="ADVANCED_PARMS"
-#!   VALUE="POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING"
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="NETWORK_PROXY"
 #!   VALUE="NO"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_NAME"
-#!   VALUE="Table"
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_DEFAULT_NAME"
 #!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="Database"
 #! />
 #! </DATASET>
 #! </DATASETS>
@@ -834,7 +834,7 @@
 #!   KEYWORD="WFS_1"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   HIDDEN_USER_ATTRS="gml_parent_property type gml_parent_id msGeometry gml_id"
+#!   HIDDEN_USER_ATTRS="gml_id type gml_parent_property msGeometry gml_parent_id"
 #!   MERGE_FILTER="*"
 #!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
 #!   MERGE_FILTER_CASE_SENSITIVE="false"
@@ -864,7 +864,7 @@
 #!   KEYWORD="WFS_1"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   HIDDEN_USER_ATTRS="gml_parent_property type gml_parent_id msGeometry gml_id"
+#!   HIDDEN_USER_ATTRS="gml_id type gml_parent_property msGeometry gml_parent_id"
 #!   MERGE_FILTER="*"
 #!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
 #!   MERGE_FILTER_CASE_SENSITIVE="false"
@@ -901,25 +901,25 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="display" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="tekst" ATTR_TYPE="varchar(10)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="hoek" ATTR_TYPE="float4" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_srid" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="TRUNCATE_EXISTING"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
 #! </FEATURE_TYPE>
 #! <FEATURE_TYPE
 #!   IS_SOURCE="false"
@@ -943,25 +943,25 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="display" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="tekst" ATTR_TYPE="varchar(10)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="hoek" ATTR_TYPE="float4" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_srid" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="TRUNCATE_EXISTING"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
 #! </FEATURE_TYPE>
 #! <FEATURE_TYPE
 #!   IS_SOURCE="false"
@@ -982,25 +982,25 @@
 #! >
 #!     <FEAT_ATTRIBUTE ATTR_NAME="BAGID" ATTR_TYPE="varchar(18)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bestandsnaam" ATTR_TYPE="varchar(15)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_srid" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="TRUNCATE_EXISTING"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
 #! </FEATURE_TYPE>
 #! <FEATURE_TYPE
 #!   IS_SOURCE="false"
@@ -1021,25 +1021,25 @@
 #! >
 #!     <FEAT_ATTRIBUTE ATTR_NAME="BAGID" ATTR_TYPE="varchar(18)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="bestandsnaam" ATTR_TYPE="varchar(15)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_spatial_group" PARM_VALUE=""/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_srid" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
-#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column" PARM_VALUE="geometrie"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_allow_serial_writing" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_gist_index" PARM_VALUE="YES"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_vacuum_analyze" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_create_with_oids" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="postgis_spatial_column_type" PARM_VALUE="geometry"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_table_creation_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
 #!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="TRUNCATE_EXISTING"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_update_geometry" PARM_VALUE="&lt;Unused&gt;"/>
 #! </FEATURE_TYPE>
 #! </FEATURE_TYPES>
 #! <FMESERVER>
@@ -1315,7 +1315,7 @@
 #!   BOUNDING_RECT="-661.943 -10288.3 6870.34 2865.04"
 #!   STICKY="true"
 #!   COLOUR="0.27451,0.564706,0.227451"
-#!   CONTENTS="60 98 55 88 69 17 27 19 25 35 61 91 38 33 1 31 29 15 "
+#!   CONTENTS="29 31 91 61 33 25 19 1 69 83 70 98 38 55 15 27 35 88 17 60 "
 #! />
 #! </BOOKMARKS>
 #! <TRANSFORMERS>
@@ -1331,21 +1331,22 @@
 #!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="BAGID" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tekst" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE  bestandsnaam BAG_LBL_Standplaatsnummeraanduidingreeks SET_TO uri uri  REMOVE display display  NO_OP _first_match tekst  RENAME_SET_VALUE  hoek 0 SET_TO"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_44"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE  bestandsnaam BAG_LBL_Standplaatsnummeraanduidingreeks SET_TO uri uri  REMOVE display display  NO_OP _first_match tekst  RENAME_SET_VALUE  hoek 0 SET_TO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="104"
@@ -1359,21 +1360,22 @@
 #!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="BAGID" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tekst" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE uri uri  REMOVE  bestandsnaam BAG_LBL_Ligplaatsnummeraanduidingreeks SET_TO display display  NO_OP _first_match tekst  RENAME_SET_VALUE  hoek 0 SET_TO"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_47"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE uri uri  REMOVE  bestandsnaam BAG_LBL_Ligplaatsnummeraanduidingreeks SET_TO display display  NO_OP _first_match tekst  RENAME_SET_VALUE  hoek 0 SET_TO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="28"
@@ -1397,16 +1399,16 @@
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="MATCHES_ATTR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringSearcher"/>
-#!     <XFORM_PARM PARM_NAME="STRING_TO_SEARCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;display&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="MATCHED_RESULT_ATTR" PARM_VALUE="_first_match"/>
-#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="&lt;openbracket&gt;0-9&lt;closebracket&gt;+&lt;openbracket&gt;A-Z&lt;closebracket&gt;|&lt;openbracket&gt;0-9&lt;closebracket&gt;+"/>
-#!     <XFORM_PARM PARM_NAME="MATCHED_PARTS_ATTR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
 #!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="MATCHED_RESULT_ATTR" PARM_VALUE="_first_match"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="STRING_TO_SEARCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;display&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MATCHED_PARTS_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MATCHES_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="&lt;openbracket&gt;0-9&lt;closebracket&gt;+&lt;openbracket&gt;A-Z&lt;closebracket&gt;|&lt;openbracket&gt;0-9&lt;closebracket&gt;+"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringSearcher"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="25"
@@ -1430,16 +1432,16 @@
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="MATCHES_ATTR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringSearcher_2"/>
-#!     <XFORM_PARM PARM_NAME="STRING_TO_SEARCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;display&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="MATCHED_RESULT_ATTR" PARM_VALUE="_first_match"/>
-#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="&lt;openbracket&gt;0-9&lt;closebracket&gt;+&lt;openbracket&gt;A-Z&lt;closebracket&gt;|&lt;openbracket&gt;0-9&lt;closebracket&gt;+"/>
-#!     <XFORM_PARM PARM_NAME="MATCHED_PARTS_ATTR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
 #!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="MATCHED_RESULT_ATTR" PARM_VALUE="_first_match"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="STRING_TO_SEARCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;display&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MATCHED_PARTS_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MATCHES_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="&lt;openbracket&gt;0-9&lt;closebracket&gt;+&lt;openbracket&gt;A-Z&lt;closebracket&gt;|&lt;openbracket&gt;0-9&lt;closebracket&gt;+"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringSearcher_2"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="26"
@@ -1468,9 +1470,9 @@
 #!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="MODE" PARM_VALUE="Inside Point"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="CenterPointReplacer"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="33"
@@ -1499,9 +1501,9 @@
 #!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="MODE" PARM_VALUE="Inside Point"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="CenterPointReplacer_2"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="40"
@@ -1526,9 +1528,9 @@
 #!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="MODE" PARM_VALUE="Medial Axis"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="CenterLineReplacer"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="41"
@@ -1556,15 +1558,15 @@
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="APPROX_LENGTH" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GRID_AREAS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MAX_VERTICES" PARM_VALUE="2"/>
+#!     <XFORM_PARM PARM_NAME="CHOPPED_ATTR" PARM_VALUE="_chopped"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMNANT_ATTR" PARM_VALUE="_remnant"/>
 #!     <XFORM_PARM PARM_NAME="MODE" PARM_VALUE="By Vertex"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Chopper"/>
-#!     <XFORM_PARM PARM_NAME="CHOPPED_ATTR" PARM_VALUE="_chopped"/>
-#!     <XFORM_PARM PARM_NAME="MAX_VERTICES" PARM_VALUE="2"/>
-#!     <XFORM_PARM PARM_NAME="REMNANT_ATTR" PARM_VALUE="_remnant"/>
-#!     <XFORM_PARM PARM_NAME="GRID_AREAS" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="APPROX_LENGTH" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="42"
@@ -1598,10 +1600,10 @@
 #!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="acAzimuth" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AzimuthCalculator"/>
 #!     <XFORM_PARM PARM_NAME="SUB_DOC_NAME" PARM_VALUE="AzimuthCalculator"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AzimuthCalculator"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="43"
@@ -1660,20 +1662,20 @@
 #!     <XFORM_ATTR ATTR_NAME="acAzimuth" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_overlaps" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="OV_ATTR" PARM_VALUE="_overlaps"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="FME_PROCESS_COUNTDISP" PARM_VALUE="No Parallelism"/>
-#!     <XFORM_PARM PARM_NAME="TOLERANCE" PARM_VALUE="1.5"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PointOnLineOverlayer"/>
-#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP1" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Original"/>
+#!     <XFORM_PARM PARM_NAME="OV_ATTR" PARM_VALUE="_overlaps"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Incoming"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="FME_PROCESS_GROUPS_ORDERED" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="FME_PROCESS_COUNTDISP" PARM_VALUE="No Parallelism"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP1" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PointOnLineOverlayer"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TOLERANCE" PARM_VALUE="1.5"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Original"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="44"
@@ -1717,12 +1719,12 @@
 #!     <XFORM_ATTR ATTR_NAME="acAzimuth" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_overlaps" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE="&quot;&quot;"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_overlaps&lt;closeparen&gt; != 1"/>
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE="&quot;&quot;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
-#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_overlaps&lt;closeparen&gt; != 1"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="45"
@@ -1743,12 +1745,12 @@
 #!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="MULT" PARM_VALUE="1"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LengthCalculator"/>
 #!     <XFORM_PARM PARM_NAME="DIM" PARM_VALUE="2"/>
 #!     <XFORM_PARM PARM_NAME="LEN_ATTR" PARM_VALUE="_length"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LengthCalculator"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULT" PARM_VALUE="1"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="46"
@@ -1778,12 +1780,12 @@
 #!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE="&quot;&quot;"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_length&lt;closeparen&gt; &gt; 1"/>
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE="&quot;&quot;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
-#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_length&lt;closeparen&gt; &gt; 1"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="48"
@@ -1803,41 +1805,12 @@
 #!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tekst" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRounder"/>
 #!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="hoek"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRounder"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PLACES" PARM_VALUE="2"/>
 #!     <XFORM_PARM PARM_NAME="ROUND_TYPE" PARM_VALUE="up"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="59"
-#!   TYPE="AttributeManager"
-#!   VERSION="1"
-#!   POSITION="7079.2 -8659.47"
-#!   BOUNDING_RECT="7079.2 -8659.47 -1 -1"
-#!   ORDER="5e+14"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="16178"
-#! >
-#!     <OUTPUT_FEAT NAME="OUTPUT"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="BAGID" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tekst" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="BAGID BAGID  NO_OP bestandsnaam bestandsnaam  NO_OP display display  NO_OP tekst tekst  NO_OP hoek hoek &quot;FME_CONDITIONAL:DEFAULT_VALUE&apos;360-&lt;at&gt;Value&lt;openparen&gt;acAngle&lt;closeparen&gt;&apos;BOOL_OP;OR;COMPOSITE_TEST;&lt;Unused&gt;;TEST &lt;at&gt;Value&lt;openparen&gt;hoek&lt;closeparen&gt; RANGE &lt;openparen&gt;90&lt;comma&gt;270&lt;closeparen&gt;&apos;&lt;at&gt;Evaluate&lt;openparen&gt;360-&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;acAngle&lt;closeparen&gt;+180&lt;closeparen&gt;&lt;closeparen&gt;&apos;FME_NUM_CONDITIONS2___&quot; SET_TO id id  REMOVE uri uri  REMOVE _chopped _chopped  REMOVE _remnant _remnant  REMOVE _length _length  REMOVE acAngle acAngle  REMOVE acAzimuth acAzimuth  REMOVE _overlaps _overlaps  REMOVE"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="62"
@@ -1857,10 +1830,10 @@
 #!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tekst" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRounder_2"/>
 #!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="hoek"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRounder_2"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PLACES" PARM_VALUE="2"/>
 #!     <XFORM_PARM PARM_NAME="ROUND_TYPE" PARM_VALUE="up"/>
 #! </TRANSFORMER>
@@ -1882,16 +1855,16 @@
 #!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tekst" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="BAGID BAGID  NO_OP bestandsnaam bestandsnaam  NO_OP display display  NO_OP tekst tekst  NO_OP hoek hoek 0 SET_TO id id  REMOVE uri uri  REMOVE _chopped _chopped  REMOVE _remnant _remnant  REMOVE _length _length  REMOVE acAngle acAngle  REMOVE acAzimuth acAzimuth  REMOVE _overlaps _overlaps  REMOVE"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_2"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="BAGID BAGID  NO_OP bestandsnaam bestandsnaam  NO_OP display display  NO_OP tekst tekst  NO_OP hoek hoek 0 SET_TO id id  REMOVE uri uri  REMOVE _chopped _chopped  REMOVE _remnant _remnant  REMOVE _length _length  REMOVE acAngle acAngle  REMOVE acAzimuth acAzimuth  REMOVE _overlaps _overlaps  REMOVE"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="69"
@@ -1908,16 +1881,16 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="BAGID" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE display display  REMOVE uri uri  REMOVE  bestandsnaam BAG_Standplaats SET_TO"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_3"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE display display  REMOVE uri uri  REMOVE  bestandsnaam BAG_Standplaats SET_TO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="76"
@@ -1931,18 +1904,48 @@
 #!   LAST_PARM_EDIT="16178"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="BAGID" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE uri uri  REMOVE  bestandsnaam BAG_Ligplaats SET_TO display display  REMOVE"/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_4"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id BAGID  RENAME_SET_VALUE uri uri  REMOVE  bestandsnaam BAG_Ligplaats SET_TO display display  REMOVE"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="73"
+#!   TYPE="AttributeManager"
+#!   VERSION="1"
+#!   POSITION="7091.74 -8850"
+#!   BOUNDING_RECT="7091.74 -8850 -1 -1"
+#!   ORDER="5e+14"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="16178"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="BAGID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="bestandsnaam" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tekst" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hoek" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="BAGID BAGID  NO_OP bestandsnaam bestandsnaam  NO_OP display display  NO_OP tekst tekst  NO_OP hoek hoek &quot;FME_CONDITIONAL:DEFAULT_VALUE&apos;&lt;at&gt;Value&lt;openparen&gt;acAngle&lt;closeparen&gt;&apos;BOOL_OP;OR;COMPOSITE_TEST;&lt;Unused&gt;;TEST &lt;at&gt;Value&lt;openparen&gt;acAngle&lt;closeparen&gt; RANGE &lt;openparen&gt;90&lt;comma&gt;270&lt;closeparen&gt;&apos;&lt;at&gt;Evaluate&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;acAngle&lt;closeparen&gt;+180&lt;closeparen&gt;&apos;FME_NUM_CONDITIONS2___&quot; SET_TO id id  REMOVE uri uri  REMOVE _chopped _chopped  REMOVE _remnant _remnant  REMOVE _length _length  REMOVE acAngle acAngle  REMOVE acAzimuth acAzimuth  REMOVE _overlaps _overlaps  REMOVE"/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_5"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <FEAT_LINKS>
@@ -2057,7 +2060,7 @@
 #! <FEAT_LINK
 #!   IDENTIFIER="56"
 #!   SOURCE_NODE="44"
-#!   TARGET_NODE="59"
+#!   TARGET_NODE="73"
 #!   SOURCE_PORT_DESC="fo 1"
 #!   TARGET_PORT_DESC="fi 0"
 #!   ENABLED="true"
@@ -2101,7 +2104,7 @@
 #! />
 #! <FEAT_LINK
 #!   IDENTIFIER="92"
-#!   SOURCE_NODE="59"
+#!   SOURCE_NODE="73"
 #!   TARGET_NODE="48"
 #!   SOURCE_PORT_DESC="fo 0"
 #!   TARGET_PORT_DESC="fi 0"
@@ -2178,29 +2181,398 @@
 #! </ATTR_LINKS>
 #! <SUBDOCUMENTS>
 #! <SUBDOCUMENT
-#!   NAME="AzimuthCalculator"
-#!   FME_PROCESS_GROUPS_ORDERED="No"
-#!   DOC_TOP_LEFT="3 -2026"
-#!   TITLE="AzimuthCalculator"
-#!   HISTORY="13-06-2005,Dean&lt;space&gt;Hintz,Original&lt;space&gt;Implementation,30-06-2005,Dmitri&lt;space&gt;Bagh,Minor&lt;space&gt;Edits,16-02-2012,Arash&lt;space&gt;Ouji,Updated&lt;space&gt;for&lt;space&gt;FME&lt;space&gt;Store"
-#!   CATEGORY="Calculated Values"
-#!   LEGAL_TERMS_CONDITIONS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright (c) 2012 Safe Software Inc.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Permission is granted to anyone, free of charge, to use, modify and distribute the object code form of this transformer for any purpose, subject to the following restrictions:&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1) The origin of this transformer and associated FME(R) software must not be misrepresented.&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2) This transformer may only be used in conjunction with a validly licensed copy of FME software.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;THIS SOFTWARE IS PROVIDED BY SAFE SOFTWARE INC. &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SAFE SOFTWARE INC. BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&#10;"
-#!   REQUIREMENTS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;FME 2012+ &lt;/p&gt;&#10;"
+#!   NAME="LoopFilter"
 #!   FME_DOCUMENT_PRIORGUID=""
-#!   GUID="F2BD9680-0464-4355-A3C0-FB6DC0DF3F99"
-#!   ZOOM_SCALE="81"
+#!   LEGAL_TERMS_CONDITIONS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright (c) 2012 Safe Software Inc.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Permission is granted to anyone, free of charge, to use, modify and distribute the object code form of this transformer for any purpose, subject to the following restrictions:&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1) The origin of this transformer and associated FME(R) software must not be misrepresented.&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2) This transformer may only be used in conjunction with a validly licensed copy of FME software.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;THIS SOFTWARE IS PROVIDED BY SAFE SOFTWARE INC. &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SAFE SOFTWARE INC. BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&#10;"
+#!   DOC_TOP_LEFT="35 -902"
 #!   REQUIREMENTS_KEYWORD="none"
-#!   FME_PROCESS_GROUP_BY=""
-#!   VIEW_POSITION="0 -60"
-#!   IS_VISIBLE="false"
-#!   FME_DOCUMENT_GUID="F2BD9680-0464-4355-A3C0-FB6DC0DF3F99"
-#!   DOC_EXTENTS="3153 2018"
-#!   FME_PROCESS_COUNT="NO_PARALLELISM"
-#!   DOC_DYNAMIC_INPUT_ATTRS="0"
-#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#!   DESCRIPTION="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests whether a line is a loop, i.e. whether its end matches the beginning.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The transformers outputs loops through PASSED port, and non-loops through FAILED port.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;An isLoop attribute is added to each feature. 1 means the feature is loop, and zero means it is not.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;"
+#!   FME_DOCUMENT_GUID=""
+#!   TITLE="LoopFilter"
+#!   VIEW_POSITION="0 0"
 #!   SUPPRESS_UPGRADE="false"
-#!   DESCRIPTION="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Calculates the angle and the azimuth of a line or a polyline.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;An Azimuth value can range from -180 to 180 With North as zero, South as -180, East as 90 and West as -90. &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Angles increase counterclockwise from the reference point of East (which represents zero degrees).&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For polylines it returns the angle and azimuth of a line connecting the first and the last verteices of the polyline. &lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The resultant lines have two new attributes - acAngle and acAzimuth.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For getting information about each segment of the polyline use PolylineAnalyzer.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This transformer uses an embedded version of &quot; LoopFilter &quot; custom transformer. &lt;/p&gt;&#10;"
+#!   REQUIREMENTS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;FME 2012+ &lt;/p&gt;&#10;"
+#!   DOC_EXTENTS="2070 890"
+#!   DOC_DYNAMIC_INPUT_ATTRS="1"
 #!   USAGE=""
+#!   CATEGORY="Filters"
+#!   IS_VISIBLE="false"
+#!   HISTORY="11-07-2005,Dmitri&lt;space&gt;Bagh,Original&lt;space&gt;Implementation"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   XFORM_DEPRECATED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#! >
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="19"
+#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;LoopFilter&#13;&lt;br&gt;Dmitri Bagh&#13;&lt;br&gt;July 11, 2005&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="67 -836"
+#!   TOP_LEFT="67 -836"
+#!   BOTTOM_RIGHT="67 -836"
+#!   BOUNDING_RECT="67 -836 0 0"
+#!   ORDER="16"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.784314,0.192157"
+#!   SIZE_POLICY="10"
+#!   COMMENT_TYPE="REGULAR"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="20"
+#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;Evaluates to 0 if feature is loop, and 1, if it is not.&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1150 -604"
+#!   TOP_LEFT="1150 -604"
+#!   BOTTOM_RIGHT="1150 -604"
+#!   BOUNDING_RECT="1150 -604 0 0"
+#!   ORDER="17"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.784314,0.192157"
+#!   SIZE_POLICY="8"
+#!   COMMENT_TYPE="REGULAR"
+#!   ANCHORED_NODE="1"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="21"
+#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;LoopTester [ExpressionEvaluator:1]&lt;br&gt;_isLoop = (@Coordinate(x,0)-@Coordinate(x,-1))||(@Coordinate(y,0)-@Coordinate(y,-1))&lt;br&gt;Version: 1&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="447 -35"
+#!   TOP_LEFT="447 -35"
+#!   BOTTOM_RIGHT="447 -35"
+#!   BOUNDING_RECT="447 -35 0 0"
+#!   ORDER="14"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="true"
+#!   COLOUR="0.666667,0.901961,1,0.294118"
+#!   COMMENT_TYPE="REGULAR"
+#!   ANCHORED_NODE="1"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="22"
+#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;TESTER [Tester:1]&lt;br&gt;Test Description: &amp;lt;not set&amp;gt;&lt;br&gt;TEST &amp;amp;_isLoop = 0&lt;br&gt;Condition: OR&lt;br&gt;Composite Test Expression: &amp;lt;not set&amp;gt;&lt;br&gt;Version: 1&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1810 -12"
+#!   TOP_LEFT="1810 -12"
+#!   BOTTOM_RIGHT="1810 -12"
+#!   BOUNDING_RECT="1810 -12 0 0"
+#!   ORDER="15"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="true"
+#!   COLOUR="0.666667,0.901961,1,0.294118"
+#!   COMMENT_TYPE="REGULAR"
+#!   ANCHORED_NODE="3"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="1"
+#!   TYPE="ExpressionEvaluator"
+#!   VERSION="1"
+#!   POSITION="1044 -236"
+#!   BOUNDING_RECT="1044 -236 0 0"
+#!   ORDER="11"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="12254"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_isLoop" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="(@Coordinate(x,0)-@Coordinate(x,-1))||(@Coordinate(y,0)-@Coordinate(y,-1))"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LoopTester"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_isLoop"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="GeometryFilter"
+#!   VERSION="0"
+#!   POSITION="391 -224"
+#!   BOUNDING_RECT="391 -224 0 0"
+#!   ORDER="12"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="12254"
+#! >
+#!     <OUTPUT_FEAT NAME="POINT"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="LINE"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="ARC"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="AREA"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="ELLIPSE"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <OUTPUT_FEAT NAME="TEXT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="5"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="fme_text_string" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rotation" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="fme_text_size" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <OUTPUT_FEAT NAME="NULL"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LineFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="Tester"
+#!   VERSION="1"
+#!   POSITION="1546 -242"
+#!   BOUNDING_RECT="1546 -242 0 0"
+#!   ORDER="13"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="12254"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_isLoop" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_isLoop" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&amp;_isLoop,=,0"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &amp;_isLoop = 0"/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TESTER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="LINE"
+#!   POSITION="35 -81"
+#!   BOUNDING_RECT="35 -81 0 0"
+#!   COLLAPSED="false"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="5"
+#!   NAME="PASSED"
+#!   POSITION="2084 -229"
+#!   BOUNDING_RECT="2084 -229 0 0"
+#!   COLLAPSED="false"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="6"
+#!   NAME="FAILED"
+#!   POSITION="2084 -463"
+#!   BOUNDING_RECT="2084 -463 0 0"
+#!   COLLAPSED="false"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="7"
+#!   NAME="NON-LINEAR"
+#!   POSITION="2105 -902"
+#!   BOUNDING_RECT="2105 -902 0 0"
+#!   COLLAPSED="false"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="1"
+#!   SOURCE_PORT_DESC="fo 1"
+#!   TARGET_PORT_DESC="fi 0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="1"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0"
+#!   TARGET_PORT_DESC="fi 0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 1"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 2"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 3"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 4"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 5"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 6"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! </SUBDOCUMENT>
+#! <SUBDOCUMENT
+#!   NAME="AzimuthCalculator"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   LEGAL_TERMS_CONDITIONS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright (c) 2012 Safe Software Inc.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Permission is granted to anyone, free of charge, to use, modify and distribute the object code form of this transformer for any purpose, subject to the following restrictions:&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1) The origin of this transformer and associated FME(R) software must not be misrepresented.&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2) This transformer may only be used in conjunction with a validly licensed copy of FME software.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;THIS SOFTWARE IS PROVIDED BY SAFE SOFTWARE INC. &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SAFE SOFTWARE INC. BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&#10;"
+#!   DOC_TOP_LEFT="3 -2026"
+#!   REQUIREMENTS_KEYWORD="none"
+#!   ZOOM_SCALE="81"
+#!   DESCRIPTION="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Calculates the angle and the azimuth of a line or a polyline.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;An Azimuth value can range from -180 to 180 With North as zero, South as -180, East as 90 and West as -90. &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Angles increase counterclockwise from the reference point of East (which represents zero degrees).&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For polylines it returns the angle and azimuth of a line connecting the first and the last verteices of the polyline. &lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The resultant lines have two new attributes - acAngle and acAzimuth.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For getting information about each segment of the polyline use PolylineAnalyzer.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This transformer uses an embedded version of &quot; LoopFilter &quot; custom transformer. &lt;/p&gt;&#10;"
+#!   FME_DOCUMENT_GUID="F2BD9680-0464-4355-A3C0-FB6DC0DF3F99"
+#!   TITLE="AzimuthCalculator"
+#!   VIEW_POSITION="0 -60"
+#!   SUPPRESS_UPGRADE="false"
+#!   REQUIREMENTS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;FME 2012+ &lt;/p&gt;&#10;"
+#!   DOC_EXTENTS="3153 2018"
+#!   DOC_DYNAMIC_INPUT_ATTRS="0"
+#!   USAGE=""
+#!   CATEGORY="Calculated Values"
+#!   IS_VISIBLE="false"
+#!   HISTORY="13-06-2005,Dean&lt;space&gt;Hintz,Original&lt;space&gt;Implementation,30-06-2005,Dmitri&lt;space&gt;Bagh,Minor&lt;space&gt;Edits,16-02-2012,Arash&lt;space&gt;Ouji,Updated&lt;space&gt;for&lt;space&gt;FME&lt;space&gt;Store"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   XFORM_DEPRECATED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   GUID="F2BD9680-0464-4355-A3C0-FB6DC0DF3F99"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #! >
 #! <GLOBAL_PARAMETERS>
 #! </GLOBAL_PARAMETERS>
@@ -2292,7 +2664,7 @@
 #!   BOUNDING_RECT="274 -8 1705 1144"
 #!   STICKY="true"
 #!   COLOUR="0.0666667,0.439216,0.764706"
-#!   CONTENTS="36 33 28 13 10 39 40 12 41 31 11 29 35 34 43 44 38 32 37 "
+#!   CONTENTS="35 38 44 31 33 12 10 39 13 29 28 40 11 34 37 32 43 36 41 "
 #! />
 #! <BOOKMARK
 #!   IDENTIFIER="48"
@@ -2303,7 +2675,7 @@
 #!   BOUNDING_RECT="1986 -348 1170 666"
 #!   STICKY="true"
 #!   COLOUR="0.458824,0.839216,0.309804"
-#!   CONTENTS="6 8 5 21 19 7 20 "
+#!   CONTENTS="6 7 8 5 21 19 20 "
 #! />
 #! <BOOKMARK
 #!   IDENTIFIER="49"
@@ -2314,7 +2686,7 @@
 #!   BOUNDING_RECT="279 -1227 1588 749"
 #!   STICKY="true"
 #!   COLOUR="1,0.501961,0.501961"
-#!   CONTENTS="26 17 18 2 3 4 16 1 "
+#!   CONTENTS="17 16 2 3 1 18 4 26 "
 #! />
 #! </BOOKMARKS>
 #! <TRANSFORMERS>
@@ -2341,10 +2713,10 @@
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acAzimuth" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="90 - &amp;acAngle"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_3"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="acAzimuth"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_3"/>
-#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="90 - &amp;acAngle"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="2"
@@ -2378,12 +2750,12 @@
 #!     <XFORM_ATTR ATTR_NAME="acZ2" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&amp;acAngle,&gt;,90"/>
-#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TESTER"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &amp;acAngle &gt; 90"/>
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
-#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &amp;acAngle &gt; 90"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TESTER"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="3"
@@ -2417,12 +2789,12 @@
 #!     <XFORM_ATTR ATTR_NAME="acZ2" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&amp;acAngle,&quot;&quot;&quot;&gt;&quot;&quot;&quot;,270"/>
-#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TESTER_2"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &amp;acAngle &quot;&gt;&quot; 270"/>
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
-#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &amp;acAngle &quot;&gt;&quot; 270"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TESTER_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="4"
@@ -2447,10 +2819,10 @@
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acAzimuth" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="450 - &amp;acAngle"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_5"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="acAzimuth"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_5"/>
-#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="450 - &amp;acAngle"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="5"
@@ -2474,10 +2846,10 @@
 #!     <XFORM_ATTR ATTR_NAME="acZ2" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="acos((&amp;acX2-&amp;acX1)/sqrt(pow((&amp;acY2-&amp;acY1),2) + pow((&amp;acX2-&amp;acX1),2)))* (180/3.1415926535897932)"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_2"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="acAngle"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_2"/>
-#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="acos((&amp;acX2-&amp;acX1)/sqrt(pow((&amp;acY2-&amp;acY1),2) + pow((&amp;acX2-&amp;acX1),2)))* (180/3.1415926535897932)"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="6"
@@ -2496,14 +2868,14 @@
 #!     <XFORM_ATTR ATTR_NAME="acX1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acY1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acZ1" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="Z_ATTR" PARM_VALUE="acZ1"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="COORDINATEFETCHER"/>
-#!     <XFORM_PARM PARM_NAME="Y_ATTR" PARM_VALUE="acY1"/>
 #!     <XFORM_PARM PARM_NAME="X_ATTR" PARM_VALUE="acX1"/>
-#!     <XFORM_PARM PARM_NAME="Z_DEFAULT" PARM_VALUE="-9999"/>
+#!     <XFORM_PARM PARM_NAME="Z_ATTR" PARM_VALUE="acZ1"/>
 #!     <XFORM_PARM PARM_NAME="IND" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="Y_ATTR" PARM_VALUE="acY1"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="COORDINATEFETCHER"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="Z_DEFAULT" PARM_VALUE="-9999"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="7"
@@ -2525,14 +2897,14 @@
 #!     <XFORM_ATTR ATTR_NAME="acX2" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acY2" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acZ2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="Z_ATTR" PARM_VALUE="acZ2"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="COORDINATEFETCHER_2"/>
-#!     <XFORM_PARM PARM_NAME="Y_ATTR" PARM_VALUE="acY2"/>
 #!     <XFORM_PARM PARM_NAME="X_ATTR" PARM_VALUE="acX2"/>
-#!     <XFORM_PARM PARM_NAME="Z_DEFAULT" PARM_VALUE="-9999"/>
+#!     <XFORM_PARM PARM_NAME="Z_ATTR" PARM_VALUE="acZ2"/>
 #!     <XFORM_PARM PARM_NAME="IND" PARM_VALUE="-1"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="Y_ATTR" PARM_VALUE="acY2"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="COORDINATEFETCHER_2"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="Z_DEFAULT" PARM_VALUE="-9999"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="8"
@@ -2556,10 +2928,10 @@
 #!     <XFORM_ATTR ATTR_NAME="acZ2" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="((&amp;acY2-&amp;acY1)&lt;0)?(360-&amp;acAngle):(&amp;acAngle)"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_6"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="acAngle"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="EXPRESSIONEVALUATOR_6"/>
-#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="((&amp;acY2-&amp;acY1)&lt;0)?(360-&amp;acAngle):(&amp;acAngle)"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="9"
@@ -2576,11 +2948,11 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="acAngle" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="acAzimuth" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_isLoop,acX1,acY1,acZ1,acX2,acY2,acZ2"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTEREMOVER"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTEREMOVER"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="10"
@@ -2593,10 +2965,10 @@
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="12254"
 #! >
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOGGER_2"/>
-#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="3"/>
-#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
 #!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature is a loop"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="3"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOGGER_2"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="11"
@@ -2620,10 +2992,10 @@
 #!     <XFORM_ATTR ATTR_NAME="fme_text_string" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rotation" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="fme_text_size" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LoopFilter"/>
 #!     <XFORM_PARM PARM_NAME="SUB_DOC_NAME" PARM_VALUE="LoopFilter"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LoopFilter"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="12"
@@ -2666,8 +3038,8 @@
 #!     <OUTPUT_FEAT NAME="INSTANCE"/>
 #!     <FEAT_COLLAPSED COLLAPSED="12"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="GeometryFilter"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="BREAK_AGG" PARM_VALUE="No"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
@@ -2935,375 +3307,6 @@
 #!   SOURCE_NODE="12"
 #!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="fo 11"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! </FEAT_LINKS>
-#! <BREAKPOINTS>
-#! </BREAKPOINTS>
-#! <ATTR_LINKS>
-#! </ATTR_LINKS>
-#! </SUBDOCUMENT>
-#! <SUBDOCUMENT
-#!   NAME="LoopFilter"
-#!   FME_PROCESS_GROUPS_ORDERED="No"
-#!   DOC_TOP_LEFT="35 -902"
-#!   TITLE="LoopFilter"
-#!   HISTORY="11-07-2005,Dmitri&lt;space&gt;Bagh,Original&lt;space&gt;Implementation"
-#!   CATEGORY="Filters"
-#!   LEGAL_TERMS_CONDITIONS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright (c) 2012 Safe Software Inc.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Permission is granted to anyone, free of charge, to use, modify and distribute the object code form of this transformer for any purpose, subject to the following restrictions:&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1) The origin of this transformer and associated FME(R) software must not be misrepresented.&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2) This transformer may only be used in conjunction with a validly licensed copy of FME software.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;THIS SOFTWARE IS PROVIDED BY SAFE SOFTWARE INC. &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SAFE SOFTWARE INC. BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&#10;"
-#!   REQUIREMENTS="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;FME 2012+ &lt;/p&gt;&#10;"
-#!   FME_DOCUMENT_PRIORGUID=""
-#!   ZOOM_SCALE="100"
-#!   REQUIREMENTS_KEYWORD="none"
-#!   FME_PROCESS_GROUP_BY=""
-#!   VIEW_POSITION="0 0"
-#!   IS_VISIBLE="false"
-#!   FME_DOCUMENT_GUID=""
-#!   DOC_EXTENTS="2070 890"
-#!   FME_PROCESS_COUNT="NO_PARALLELISM"
-#!   DOC_DYNAMIC_INPUT_ATTRS="1"
-#!   XFORM_DEPRECATED="No"
-#!   SUPPRESS_UPGRADE="false"
-#!   DESCRIPTION="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests whether a line is a loop, i.e. whether its end matches the beginning.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The transformers outputs loops through PASSED port, and non-loops through FAILED port.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;An isLoop attribute is added to each feature. 1 means the feature is loop, and zero means it is not.&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;"
-#!   USAGE=""
-#! >
-#! <GLOBAL_PARAMETERS>
-#! </GLOBAL_PARAMETERS>
-#! <COMMENTS>
-#! <COMMENT
-#!   IDENTIFIER="19"
-#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;LoopFilter&#13;&lt;br&gt;Dmitri Bagh&#13;&lt;br&gt;July 11, 2005&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="67 -836"
-#!   TOP_LEFT="67 -836"
-#!   BOTTOM_RIGHT="67 -836"
-#!   BOUNDING_RECT="67 -836 0 0"
-#!   ORDER="16"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   COLOUR="1,1,0.784314,0.192157"
-#!   SIZE_POLICY="10"
-#!   COMMENT_TYPE="REGULAR"
-#!   ANCHORED_NODE="0"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="20"
-#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;Evaluates to 0 if feature is loop, and 1, if it is not.&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="1150 -604"
-#!   TOP_LEFT="1150 -604"
-#!   BOTTOM_RIGHT="1150 -604"
-#!   BOUNDING_RECT="1150 -604 0 0"
-#!   ORDER="17"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   COLOUR="1,1,0.784314,0.192157"
-#!   SIZE_POLICY="8"
-#!   COMMENT_TYPE="REGULAR"
-#!   ANCHORED_NODE="1"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="21"
-#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;LoopTester [ExpressionEvaluator:1]&lt;br&gt;_isLoop = (@Coordinate(x,0)-@Coordinate(x,-1))||(@Coordinate(y,0)-@Coordinate(y,-1))&lt;br&gt;Version: 1&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="447 -35"
-#!   TOP_LEFT="447 -35"
-#!   BOTTOM_RIGHT="447 -35"
-#!   BOUNDING_RECT="447 -35 0 0"
-#!   ORDER="14"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="true"
-#!   COLOUR="0.666667,0.901961,1,0.294118"
-#!   COMMENT_TYPE="REGULAR"
-#!   ANCHORED_NODE="1"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="22"
-#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;TESTER [Tester:1]&lt;br&gt;Test Description: &amp;lt;not set&amp;gt;&lt;br&gt;TEST &amp;amp;_isLoop = 0&lt;br&gt;Condition: OR&lt;br&gt;Composite Test Expression: &amp;lt;not set&amp;gt;&lt;br&gt;Version: 1&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="1810 -12"
-#!   TOP_LEFT="1810 -12"
-#!   BOTTOM_RIGHT="1810 -12"
-#!   BOUNDING_RECT="1810 -12 0 0"
-#!   ORDER="15"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="true"
-#!   COLOUR="0.666667,0.901961,1,0.294118"
-#!   COMMENT_TYPE="REGULAR"
-#!   ANCHORED_NODE="3"
-#! />
-#! </COMMENTS>
-#! <CONSTANTS>
-#! </CONSTANTS>
-#! <BOOKMARKS>
-#! </BOOKMARKS>
-#! <TRANSFORMERS>
-#! <TRANSFORMER
-#!   IDENTIFIER="1"
-#!   TYPE="ExpressionEvaluator"
-#!   VERSION="1"
-#!   POSITION="1044 -236"
-#!   BOUNDING_RECT="1044 -236 0 0"
-#!   ORDER="11"
-#!   PARMS_EDITED="false"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="12254"
-#! >
-#!     <OUTPUT_FEAT NAME="OUTPUT"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_isLoop" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_isLoop"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LoopTester"/>
-#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="(@Coordinate(x,0)-@Coordinate(x,-1))||(@Coordinate(y,0)-@Coordinate(y,-1))"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="2"
-#!   TYPE="GeometryFilter"
-#!   VERSION="0"
-#!   POSITION="391 -224"
-#!   BOUNDING_RECT="391 -224 0 0"
-#!   ORDER="12"
-#!   PARMS_EDITED="false"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="12254"
-#! >
-#!     <OUTPUT_FEAT NAME="POINT"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <OUTPUT_FEAT NAME="LINE"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <OUTPUT_FEAT NAME="ARC"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <OUTPUT_FEAT NAME="AREA"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <OUTPUT_FEAT NAME="ELLIPSE"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <OUTPUT_FEAT NAME="TEXT"/>
-#!     <FEAT_COLLAPSED COLLAPSED="5"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="fme_text_string" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="fme_rotation" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="fme_text_size" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <OUTPUT_FEAT NAME="NULL"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LineFilter"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="3"
-#!   TYPE="Tester"
-#!   VERSION="1"
-#!   POSITION="1546 -242"
-#!   BOUNDING_RECT="1546 -242 0 0"
-#!   ORDER="13"
-#!   PARMS_EDITED="false"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="12254"
-#! >
-#!     <OUTPUT_FEAT NAME="PASSED"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_isLoop" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <OUTPUT_FEAT NAME="FAILED"/>
-#!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="display" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_chopped" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_remnant" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_isLoop" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&amp;_isLoop,=,0"/>
-#!     <XFORM_PARM PARM_NAME="TEST_DESCRIPTION" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TESTER"/>
-#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
-#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="Automatic"/>
-#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &amp;_isLoop = 0"/>
-#! </TRANSFORMER>
-#! </TRANSFORMERS>
-#! <SUBDOCUMENT_IOS>
-#! <SUBDOCUMENT_IO
-#!   IDENTIFIER="4"
-#!   NAME="LINE"
-#!   POSITION="35 -81"
-#!   BOUNDING_RECT="35 -81 0 0"
-#!   COLLAPSED="false"
-#!   PUBLISHED="true"
-#!   IS_SOURCE="true"
-#!   ATTR_MODE="0"
-#! >
-#! </SUBDOCUMENT_IO>
-#! <SUBDOCUMENT_IO
-#!   IDENTIFIER="5"
-#!   NAME="PASSED"
-#!   POSITION="2084 -229"
-#!   BOUNDING_RECT="2084 -229 0 0"
-#!   COLLAPSED="false"
-#!   IS_SOURCE="false"
-#!   ATTR_MODE="0"
-#! >
-#! </SUBDOCUMENT_IO>
-#! <SUBDOCUMENT_IO
-#!   IDENTIFIER="6"
-#!   NAME="FAILED"
-#!   POSITION="2084 -463"
-#!   BOUNDING_RECT="2084 -463 0 0"
-#!   COLLAPSED="false"
-#!   IS_SOURCE="false"
-#!   ATTR_MODE="0"
-#! >
-#! </SUBDOCUMENT_IO>
-#! <SUBDOCUMENT_IO
-#!   IDENTIFIER="7"
-#!   NAME="NON-LINEAR"
-#!   POSITION="2105 -902"
-#!   BOUNDING_RECT="2105 -902 0 0"
-#!   COLLAPSED="false"
-#!   IS_SOURCE="false"
-#!   ATTR_MODE="0"
-#! >
-#! </SUBDOCUMENT_IO>
-#! </SUBDOCUMENT_IOS>
-#! <FEAT_LINKS>
-#! <FEAT_LINK
-#!   IDENTIFIER="8"
-#!   SOURCE_NODE="4"
-#!   TARGET_NODE="2"
-#!   SOURCE_PORT_DESC="0"
-#!   TARGET_PORT_DESC="fi 0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="9"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="1"
-#!   SOURCE_PORT_DESC="fo 1"
-#!   TARGET_PORT_DESC="fi 0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="10"
-#!   SOURCE_NODE="1"
-#!   TARGET_NODE="3"
-#!   SOURCE_PORT_DESC="fo 0"
-#!   TARGET_PORT_DESC="fi 0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="11"
-#!   SOURCE_NODE="3"
-#!   TARGET_NODE="5"
-#!   SOURCE_PORT_DESC="fo 0"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="12"
-#!   SOURCE_NODE="3"
-#!   TARGET_NODE="6"
-#!   SOURCE_PORT_DESC="fo 1"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="13"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="7"
-#!   SOURCE_PORT_DESC="fo 0"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="14"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="7"
-#!   SOURCE_PORT_DESC="fo 2"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="15"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="7"
-#!   SOURCE_PORT_DESC="fo 3"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="16"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="7"
-#!   SOURCE_PORT_DESC="fo 4"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="17"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="7"
-#!   SOURCE_PORT_DESC="fo 5"
-#!   TARGET_PORT_DESC="0"
-#!   ENABLED="true"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="18"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="7"
-#!   SOURCE_PORT_DESC="fo 6"
 #!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXTRA_POINTS=""
@@ -3633,27 +3636,27 @@ MULTI_READER_CONTINUE_ON_READER_FAILURE No
 MACRO WORKSPACE_NAME SPS_LPS2postgres
 MACRO FME_VIEWER_APP fmedatainspector
 # -------------------------------------------------------------------------
-WFS_1_DEF standplaats   xml_type                     "xml_no_geom xml_point xml_line xml_area xml_arc xml_surface xml_solid xml_aggregate"   gml_parent_id                xml_buffer   gml_parent_property          xml_buffer   gml_id                       xml_buffer   msGeometry                   xml_geometry   id                           xml_buffer   type                         xml_buffer   display                      xml_buffer   uri                          xml_buffer
-# -------------------------------------------------------------------------
 WFS_1_DEF ligplaats   xml_type                     "xml_no_geom xml_point xml_line xml_area xml_arc xml_surface xml_solid xml_aggregate"   gml_parent_id                xml_buffer   gml_parent_property          xml_buffer   gml_id                       xml_buffer   msGeometry                   xml_geometry   id                           xml_buffer   type                         xml_buffer   display                      xml_buffer   uri                          xml_buffer
 # -------------------------------------------------------------------------
-
-FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD WFS_1   INPUT FEATURE_TYPE *    ROUTE WFS WFS_1::standplaats TO FME_GENERIC ::standplaats ALIAS_GEOMETRY    ROUTE WFS WFS_1::ligplaats TO FME_GENERIC ::ligplaats ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
-WFS_1_MERGE_DEF WFS_1::standplaats EXACT standplaats
-WFS_1_MERGE_DEF WFS_1::ligplaats EXACT ligplaats
+WFS_1_DEF standplaats   xml_type                     "xml_no_geom xml_point xml_line xml_area xml_arc xml_surface xml_solid xml_aggregate"   gml_parent_id                xml_buffer   gml_parent_property          xml_buffer   gml_id                       xml_buffer   msGeometry                   xml_geometry   id                           xml_buffer   type                         xml_buffer   display                      xml_buffer   uri                          xml_buffer
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * TeeFactory    FACTORY_NAME "standplaats (WFS_1) Splitter"    INPUT FEATURE_TYPE standplaats    OUTPUT FEATURE_TYPE standplaats_WFS_1_0_m2X9/rNz5Qg=    OUTPUT FEATURE_TYPE standplaats_WFS_1_1_pxvtyQ8jlIs=
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD WFS_1   INPUT FEATURE_TYPE *    ROUTE WFS WFS_1::ligplaats TO FME_GENERIC ::ligplaats ALIAS_GEOMETRY    ROUTE WFS WFS_1::standplaats TO FME_GENERIC ::standplaats ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+WFS_1_MERGE_DEF WFS_1::ligplaats EXACT ligplaats
+WFS_1_MERGE_DEF WFS_1::standplaats EXACT standplaats
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory    FACTORY_NAME "ligplaats (WFS_1) Splitter"    INPUT FEATURE_TYPE ligplaats    OUTPUT FEATURE_TYPE ligplaats_WFS_1_0_bXCtT3nlFpY=    OUTPUT FEATURE_TYPE ligplaats_WFS_1_1_sVT0/zXJvvI=    OUTPUT FEATURE_TYPE ligplaats_WFS_1_2_4O5GElhdHUk=
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "standplaats (WFS_1) Splitter"    INPUT FEATURE_TYPE standplaats    OUTPUT FEATURE_TYPE standplaats_WFS_1_0_m2X9/rNz5Qg=    OUTPUT FEATURE_TYPE standplaats_WFS_1_1_pxvtyQ8jlIs=
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 # -------------------------------------------------------------------------
 
 MACRO casemac
 INCLUDE [ if { {no} == {no} } { puts {MACRO casemac -nocase}} ]
-Tcl2 proc StringSearcher_82423149_5488_4de9_941f_584867a651d76_doGrep { stringToSearch regExp matchedChars matches matchedParts } {   set subMatches 1;   set results [FME_GetRegex $(casemac) [FME_DecodeText $regExp] [FME_DecodeText $stringToSearch]];   set attrName $matchedChars;   FME_SetAttribute $attrName [lindex [lindex [lindex $results 0] 0] 0];   set index 0;   set parts [lindex $results 1];   foreach part $parts {      if {[llength $matchedParts] > 0} {          set attrName "$matchedParts{$index}.part";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matchedParts{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      incr index;   };   set index 0;   set regexMatches [lindex $results 0];   foreach part $regexMatches {      if {[llength $matches] > 0} {          set attrName "$matches{$index}.match";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matches{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      set isFirstMatch 0;      incr index;   };   return $index; }
-FACTORY_DEF * TestFactory    FACTORY_NAME StringSearcher    INPUT  FEATURE_TYPE ligplaats_WFS_1_1_sVT0/zXJvvI=    TEST @Tcl2("StringSearcher_82423149_5488_4de9_941f_584867a651d76_doGrep {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>display<closeparen>,StringSearcher)} {<openbracket>0-9<closebracket>+<openbracket>A-Z<closebracket>|<openbracket>0-9<closebracket>+} {_first_match} {} {}") > 0    OUTPUT PASSED FEATURE_TYPE StringSearcher_MATCHED
+Tcl2 proc StringSearcher_f2df553b_6f92_494c_873f_2a673786bac90_doGrep { stringToSearch regExp matchedChars matches matchedParts } {   set subMatches 1;   set results [FME_GetRegex $(casemac) [FME_DecodeText $regExp] [FME_DecodeText $stringToSearch]];   set attrName $matchedChars;   FME_SetAttribute $attrName [lindex [lindex [lindex $results 0] 0] 0];   set index 0;   set parts [lindex $results 1];   foreach part $parts {      if {[llength $matchedParts] > 0} {          set attrName "$matchedParts{$index}.part";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matchedParts{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      incr index;   };   set index 0;   set regexMatches [lindex $results 0];   foreach part $regexMatches {      if {[llength $matches] > 0} {          set attrName "$matches{$index}.match";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matches{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      set isFirstMatch 0;      incr index;   };   return $index; }
+FACTORY_DEF * TestFactory    FACTORY_NAME StringSearcher    INPUT  FEATURE_TYPE ligplaats_WFS_1_0_bXCtT3nlFpY=    TEST @Tcl2("StringSearcher_f2df553b_6f92_494c_873f_2a673786bac90_doGrep {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>display<closeparen>,StringSearcher)} {<openbracket>0-9<closebracket>+<openbracket>A-Z<closebracket>|<openbracket>0-9<closebracket>+} {_first_match} {} {}") > 0    OUTPUT PASSED FEATURE_TYPE StringSearcher_MATCHED
 
 # -------------------------------------------------------------------------
 
@@ -3670,11 +3673,11 @@ FACTORY_DEF * TestFactory    FACTORY_NAME CenterPointReplacer_outputter    INPUT
 # -------------------------------------------------------------------------
 
 
-FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager_4    INPUT  FEATURE_TYPE ligplaats_WFS_1_0_bXCtT3nlFpY=    MULTI_FEATURE_MODE NO     NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    ATTR_ACTION "id" "BAGID" "" "RENAME_SET_VALUE"     ATTR_ACTION "uri" "uri" "" "REMOVE"     ATTR_ACTION "" "bestandsnaam" "BAG_Ligplaats" "SET_TO"     ATTR_ACTION "display" "display" "" "REMOVE"    OUTPUT OUTPUT FEATURE_TYPE AttributeManager_4_OUTPUT
+FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager_4    INPUT  FEATURE_TYPE ligplaats_WFS_1_2_4O5GElhdHUk=    MULTI_FEATURE_MODE NO     NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    ATTR_ACTION "id" "BAGID" "" "RENAME_SET_VALUE"     ATTR_ACTION "uri" "uri" "" "REMOVE"     ATTR_ACTION "" "bestandsnaam" "BAG_Ligplaats" "SET_TO"     ATTR_ACTION "display" "display" "" "REMOVE"    OUTPUT OUTPUT FEATURE_TYPE AttributeManager_4_OUTPUT
 
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * TeeFactory    FACTORY_NAME CenterLineReplacer    INPUT  FEATURE_TYPE ligplaats_WFS_1_2_4O5GElhdHUk=    OUTPUT FEATURE_TYPE ___TOREJECTOR___         @ConvertToLine(MEDIAL_AXIS, ___fme_rejection_code___)
+FACTORY_DEF * TeeFactory    FACTORY_NAME CenterLineReplacer    INPUT  FEATURE_TYPE ligplaats_WFS_1_1_sVT0/zXJvvI=    OUTPUT FEATURE_TYPE ___TOREJECTOR___         @ConvertToLine(MEDIAL_AXIS, ___fme_rejection_code___)
 FACTORY_DEF * TestFactory    FACTORY_NAME CenterLineReplacer_Rejector    INPUT FEATURE_TYPE ___TOREJECTOR___    TEST @Value(___fme_rejection_code___) != ""    OUTPUT FAILED FEATURE_TYPE CenterLineReplacer_CENTERLINE
 
 # -------------------------------------------------------------------------
@@ -3698,7 +3701,7 @@ MACRO $(AzimuthCalculator_WORKSPACE_NAME)___COMPOUND_PARAMETERS
 MACRO $(AzimuthCalculator_WORKSPACE_NAME)_SUB_DOC_NAME AzimuthCalculator
 DEFAULT_MACRO AzimuthCalculator_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(AzimuthCalculator_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(AzimuthCalculator_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_LINE1507559806 Input Splitter"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LINE"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LINE"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_LINE1508144740 Input Splitter"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LINE"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LINE"
 # -------------------------------------------------------------------------
 
 INCLUDE [    if {"No" == "Yes"} {       puts "MACRO COLLECTION_HANDLING *";    } else {       puts "MACRO COLLECTION_HANDLING NOT_THIS_TIME";    } ]
@@ -3732,9 +3735,9 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_Geo
 FACTORY_DEF * TestFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_InstanceTest    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___AllInput___    TEST @Geometry(IS_GEOMETRY_INSTANCE) == 1    OUTPUT FAILED FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___RestInput___
 FACTORY_DEF $(COLLECTION_HANDLING) TestFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_CollectionTest    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___RestInput___    TEST &fme_type == "fme_collection"    OUTPUT FAILED FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Not_Collection___    OUTPUT PASSED FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Collection___
 FACTORY_DEF $(COLLECTION_HANDLING) DeaggregateFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_Deagg    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Collection___    HOMOGENIZE_COLLECTIONS YES    RECURSIVE YES    SET_FME_TYPE YES    OUTPUT POINT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___HomogeneousAggregate___    OUTPUT LINE FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___HomogeneousAggregate___    OUTPUT POLYGON FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___HomogeneousAggregate___    OUTPUT DONUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___HomogeneousAggregate___    OUTPUT AGGREGATE FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___HomogeneousAggregate___
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_RouterPrepper    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___HomogeneousAggregate___    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Not_Collection___    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___RestInput___    OUTPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Prepped___        $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_53872440_7c91_499a_b3cc_fc509f492af56_targetFeatureType @Lookup($(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_RouterTable,&fme_type)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_RouterPrepper    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___HomogeneousAggregate___    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Not_Collection___    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___RestInput___    OUTPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Prepped___        $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_89fa4044_0e68_4543_ab00_90dca4e6f8be0_targetFeatureType @Lookup($(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_RouterTable,&fme_type)
 
-FACTORY_DEF * TestFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_Router    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Prepped___    TEST &$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_53872440_7c91_499a_b3cc_fc509f492af56_targetFeatureType != "x"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(&$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_53872440_7c91_499a_b3cc_fc509f492af56_targetFeatureType)                                 @RemoveAttributes($(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_53872440_7c91_499a_b3cc_fc509f492af56_targetFeatureType)
+FACTORY_DEF * TestFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_Router    INPUT FEATURE_TYPE $(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter___Prepped___    TEST &$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_89fa4044_0e68_4543_ab00_90dca4e6f8be0_targetFeatureType != "x"    OUTPUT PASSED FEATURE_TYPE * @FeatureType(&$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_89fa4044_0e68_4543_ab00_90dca4e6f8be0_targetFeatureType)                                 @RemoveAttributes($(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_89fa4044_0e68_4543_ab00_90dca4e6f8be0_targetFeatureType)
 
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter LINE Input Collector"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_LINE"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter_LINE"
@@ -3745,7 +3748,7 @@ MACRO $(LoopFilter_WORKSPACE_NAME)___COMPOUND_PARAMETERS
 MACRO $(LoopFilter_WORKSPACE_NAME)_SUB_DOC_NAME LoopFilter
 DEFAULT_MACRO LoopFilter_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(LoopFilter_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(LoopFilter_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_LINE1507559806 Input Splitter"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LINE"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LINE"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_LINE1508144740 Input Splitter"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LINE"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LINE"
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LoopFilter_WORKSPACE_NAME)_LineFilter_Splitter    INPUT  FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LINE"    OUTPUT FEATURE_TYPE ___TOFILTER___
@@ -3764,9 +3767,9 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(LoopFilter_WORKSPACE_NAME)_LoopTester
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TestFactory    FACTORY_NAME $(LoopFilter_WORKSPACE_NAME)_TESTER    INPUT  FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LoopTester_OUTPUT"    TEST "&_isLoop" = "0"    BOOLEAN_OPERATOR OR    OUTPUT PASSED FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_TESTER_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_TESTER_FAILED"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_PASSED1507559806 Output Collector"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_TESTER_PASSED"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_PASSED"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_FAILED1507559806 Output Collector"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_TESTER_FAILED"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_FAILED"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_NON-LINEAR1507559806 Output Collector"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_ELLIPSE"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_ARC"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_AREA"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_POINT"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_TEXT"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_NULL"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_NON-LINEAR"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_PASSED1508144740 Output Collector"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_TESTER_PASSED"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_PASSED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_FAILED1508144740 Output Collector"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_TESTER_FAILED"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_FAILED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LoopFilter_WORKSPACE_NAME)_NON-LINEAR1508144740 Output Collector"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_TEXT"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_AREA"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_POINT"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_NULL"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_ARC"   INPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_LineFilter_ELLIPSE"   OUTPUT FEATURE_TYPE "$(LoopFilter_WORKSPACE_NAME)_NON-LINEAR"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LoopFilter_WORKSPACE_NAME))}]
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter PASSED Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter_PASSED"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter_PASSED"
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter FAILED Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter_FAILED"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter_FAILED"
@@ -3795,7 +3798,7 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_TE
 FACTORY_DEF * TestFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_TESTER_2    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_TESTER_PASSED"    TEST "&acAngle" > "270"    BOOLEAN_OPERATOR OR    OUTPUT PASSED FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_TESTER_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_TESTER_2_FAILED"
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_3    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_TESTER_FAILED"    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_TESTER_2_FAILED"    OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_3_OUTPUT"         "acAzimuth" @Evaluate("90 - &acAngle")
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_3    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_TESTER_2_FAILED"    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_TESTER_FAILED"    OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_3_OUTPUT"         "acAzimuth" @Evaluate("90 - &acAngle")
 
 # -------------------------------------------------------------------------
 
@@ -3804,15 +3807,15 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_EXP
 # -------------------------------------------------------------------------
 
 INCLUDE [    set macroLine "MACRO $(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "{\[0-9\]+}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_5_OUTPUT"    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_3_OUTPUT"    OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER_OUTPUT"        @RemoveAttributes(_isLoop,acX1,acY1,acZ1,acX2,acY2,acZ2)        @RemoveAttributes(fme_regexp_match"$($(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER_LIST_EXP)")
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_3_OUTPUT"    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_EXPRESSIONEVALUATOR_5_OUTPUT"    OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER_OUTPUT"        @RemoveAttributes(_isLoop,acX1,acY1,acZ1,acX2,acY2,acZ2)        @RemoveAttributes(fme_regexp_match"$($(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER_LIST_EXP)")
 
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_LOGGER_2_Logger    INPUT  FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_LoopFilter_PASSED"    OUTPUT FEATURE_TYPE * @Log("Feature is a loop",3,20) @FeatureType(__NUKE_LOGGED__)
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(AzimuthCalculator_WORKSPACE_NAME)_LOGGER_2_Nuker    INPUT FEATURE_TYPE __NUKE_LOGGED__
 
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_Not_Line1507559806 Output Collector"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_NULL"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_RASTER"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_POINT"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_SOLID"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_ARC"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_POINTCLOUD"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_COLLECTION"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_TEXT"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_SURFACE"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_ELLIPSE"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_AREA"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_Not_Line"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_AZIMUTH1507559806 Output Collector"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER_OUTPUT"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_AZIMUTH"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_Not_Line1508144740 Output Collector"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_POINT"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_AREA"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_COLLECTION"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_POINTCLOUD"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_ARC"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_TEXT"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_RASTER"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_NULL"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_SURFACE"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_ELLIPSE"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_GeometryFilter_SOLID"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_Not_Line"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AzimuthCalculator_WORKSPACE_NAME)_AZIMUTH1508144740 Output Collector"   INPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_ATTRIBUTEREMOVER_OUTPUT"   OUTPUT FEATURE_TYPE "$(AzimuthCalculator_WORKSPACE_NAME)_AZIMUTH"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(AzimuthCalculator_WORKSPACE_NAME))}]
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AzimuthCalculator Not_Line Output Renamer/Nuker"   INPUT FEATURE_TYPE AzimuthCalculator_Not_Line
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AzimuthCalculator AZIMUTH Output Renamer/Nuker"   INPUT FEATURE_TYPE AzimuthCalculator_AZIMUTH   OUTPUT FEATURE_TYPE AzimuthCalculator_AZIMUTH
@@ -3826,12 +3829,12 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Tester    INPUT  FEATURE_TYPE PointOnL
 # -------------------------------------------------------------------------
 
 
-FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager    INPUT  FEATURE_TYPE Tester_FAILED    MULTI_FEATURE_MODE NO     NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    ATTR_ACTION "hoek" "hoek" "FME_CONDITIONAL:DEFAULT_VALUE'360-<at>Value<openparen>acAngle<closeparen>'BOOL_OP;OR;COMPOSITE_TEST;<Unused>;TEST <at>Value<openparen>hoek<closeparen> RANGE <openparen>90<comma>270<closeparen>'<at>Evaluate<openparen>360-<openparen><at>Value<openparen>acAngle<closeparen>+180<closeparen><closeparen>'FME_NUM_CONDITIONS2___" "SET_TO"     ATTR_ACTION "id" "id" "" "REMOVE"     ATTR_ACTION "uri" "uri" "" "REMOVE"     ATTR_ACTION "_chopped" "_chopped" "" "REMOVE"     ATTR_ACTION "_remnant" "_remnant" "" "REMOVE"     ATTR_ACTION "_length" "_length" "" "REMOVE"     ATTR_ACTION "acAngle" "acAngle" "" "REMOVE"     ATTR_ACTION "acAzimuth" "acAzimuth" "" "REMOVE"     ATTR_ACTION "_overlaps" "_overlaps" "" "REMOVE"    OUTPUT OUTPUT FEATURE_TYPE AttributeManager_OUTPUT
+FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager_5    INPUT  FEATURE_TYPE Tester_FAILED    MULTI_FEATURE_MODE NO     NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    ATTR_ACTION "hoek" "hoek" "FME_CONDITIONAL:DEFAULT_VALUE'<at>Value<openparen>acAngle<closeparen>'BOOL_OP;OR;COMPOSITE_TEST;<Unused>;TEST <at>Value<openparen>acAngle<closeparen> RANGE <openparen>90<comma>270<closeparen>'<at>Evaluate<openparen><at>Value<openparen>acAngle<closeparen>+180<closeparen>'FME_NUM_CONDITIONS2___" "SET_TO"     ATTR_ACTION "id" "id" "" "REMOVE"     ATTR_ACTION "uri" "uri" "" "REMOVE"     ATTR_ACTION "_chopped" "_chopped" "" "REMOVE"     ATTR_ACTION "_remnant" "_remnant" "" "REMOVE"     ATTR_ACTION "_length" "_length" "" "REMOVE"     ATTR_ACTION "acAngle" "acAngle" "" "REMOVE"     ATTR_ACTION "acAzimuth" "acAzimuth" "" "REMOVE"     ATTR_ACTION "_overlaps" "_overlaps" "" "REMOVE"    OUTPUT OUTPUT FEATURE_TYPE AttributeManager_5_OUTPUT
 
 # -------------------------------------------------------------------------
 
 Tcl2 proc AttributeRounder_round {places} {    set attrs [split {hoek} {,}];    foreach attr $attrs {   	  set original [FME_GetAttribute $attr];   	  if {$original == {} || [FME_IsAttributeNull $attr]}   	  {          FME_LogMessage fme_warn 917357 {AttributeRounder} $attr;   	  } elseif { [catch { 		           set multiplier [expr pow(10,$places)]; 		           set result [expr "ceil($original * $multiplier) / $multiplier"]; 		           if {$places == 0} { 		              set result [string replace $result end-1 end]; 		           }; 		        };] == 0 } { 		     FME_SetAttribute $attr $result; 		  } else { 		     FME_SetAttribute $attr $original; 		     FME_LogMessage fme_warn 917350 {AttributeRounder}; 		  };   }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeRounder    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    OUTPUT FEATURE_TYPE AttributeRounder_OUTPUT         @Tcl2("AttributeRounder_round 2")
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeRounder    INPUT  FEATURE_TYPE AttributeManager_5_OUTPUT    OUTPUT FEATURE_TYPE AttributeRounder_OUTPUT         @Tcl2("AttributeRounder_round 2")
 
 # -------------------------------------------------------------------------
 
@@ -3852,8 +3855,8 @@ FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager_3    INPUT  FEATUR
 
 MACRO casemac
 INCLUDE [ if { {no} == {no} } { puts {MACRO casemac -nocase}} ]
-Tcl2 proc StringSearcher_2_bc4e41aa_2dbe_41b3_971e_c165b5f2ecaf6_doGrep { stringToSearch regExp matchedChars matches matchedParts } {   set subMatches 1;   set results [FME_GetRegex $(casemac) [FME_DecodeText $regExp] [FME_DecodeText $stringToSearch]];   set attrName $matchedChars;   FME_SetAttribute $attrName [lindex [lindex [lindex $results 0] 0] 0];   set index 0;   set parts [lindex $results 1];   foreach part $parts {      if {[llength $matchedParts] > 0} {          set attrName "$matchedParts{$index}.part";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matchedParts{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      incr index;   };   set index 0;   set regexMatches [lindex $results 0];   foreach part $regexMatches {      if {[llength $matches] > 0} {          set attrName "$matches{$index}.match";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matches{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      set isFirstMatch 0;      incr index;   };   return $index; }
-FACTORY_DEF * TestFactory    FACTORY_NAME StringSearcher_2    INPUT  FEATURE_TYPE standplaats_WFS_1_0_m2X9/rNz5Qg=    TEST @Tcl2("StringSearcher_2_bc4e41aa_2dbe_41b3_971e_c165b5f2ecaf6_doGrep {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>display<closeparen>,StringSearcher_2)} {<openbracket>0-9<closebracket>+<openbracket>A-Z<closebracket>|<openbracket>0-9<closebracket>+} {_first_match} {} {}") > 0    OUTPUT PASSED FEATURE_TYPE StringSearcher_2_MATCHED
+Tcl2 proc StringSearcher_2_0167cb8a_6993_49e1_95ad_d06ea41d749d0_doGrep { stringToSearch regExp matchedChars matches matchedParts } {   set subMatches 1;   set results [FME_GetRegex $(casemac) [FME_DecodeText $regExp] [FME_DecodeText $stringToSearch]];   set attrName $matchedChars;   FME_SetAttribute $attrName [lindex [lindex [lindex $results 0] 0] 0];   set index 0;   set parts [lindex $results 1];   foreach part $parts {      if {[llength $matchedParts] > 0} {          set attrName "$matchedParts{$index}.part";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matchedParts{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      incr index;   };   set index 0;   set regexMatches [lindex $results 0];   foreach part $regexMatches {      if {[llength $matches] > 0} {          set attrName "$matches{$index}.match";          FME_SetAttribute $attrName [lindex $part 0];          set attrName "$matches{$index}.startIndex";          FME_SetAttribute $attrName [lindex $part 1];      };      set isFirstMatch 0;      incr index;   };   return $index; }
+FACTORY_DEF * TestFactory    FACTORY_NAME StringSearcher_2    INPUT  FEATURE_TYPE standplaats_WFS_1_0_m2X9/rNz5Qg=    TEST @Tcl2("StringSearcher_2_0167cb8a_6993_49e1_95ad_d06ea41d749d0_doGrep {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>display<closeparen>,StringSearcher_2)} {<openbracket>0-9<closebracket>+<openbracket>A-Z<closebracket>|<openbracket>0-9<closebracket>+} {_first_match} {} {}") > 0    OUTPUT PASSED FEATURE_TYPE StringSearcher_2_MATCHED
 
 # -------------------------------------------------------------------------
 
@@ -3869,15 +3872,15 @@ FACTORY_DEF * TestFactory    FACTORY_NAME CenterPointReplacer_2_outputter    INP
 
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_4_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.BAG_Ligplaats<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeRounder_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.lps_nummeraanduiding<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeRounder_2_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.lps_nummeraanduiding<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeManager_3_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.BAG_Standplaats<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC CenterPointReplacer_2_POINT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.sps_nummeraanduiding<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC CenterPointReplacer_2_POINT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.sps_nummeraanduiding<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeManager_3_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.BAG_Standplaats<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeManager_4_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.BAG_Ligplaats<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeRounder_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.lps_nummeraanduiding<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY    ROUTE FME_GENERIC AttributeRounder_2_OUTPUT TO POSTGIS __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>imgeo.lps_nummeraanduiding<closeparen> COORDINATE_SYSTEM EPSG:28992 GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
 
 # -------------------------------------------------------------------------
-POSTGIS_1_DEF imgeo.BAG_Standplaats   postgis_type                 postgis_geometry   postgis_mode                 ""   postgis_sql_key_columns      ""   postgis_drop_table           ""   postgis_truncate_table       ""   fme_feature_operation        INSERT   fme_table_handling           TRUNCATE_EXISTING   postgis_create_with_oids     NO   postgis_create_gist_index    YES   postgis_spatial_column_type  geometry   postgis_spatial_column       geometrie   postgis_srid                 ""   postgis_vacuum_analyze       NO   postgis_allow_serial_writing NO   BAGID                        varchar(18)   bestandsnaam                 varchar(15)
-# -------------------------------------------------------------------------
 POSTGIS_1_DEF imgeo.sps_nummeraanduiding   postgis_type                 postgis_geometry   postgis_mode                 ""   postgis_sql_key_columns      ""   postgis_drop_table           ""   postgis_truncate_table       ""   fme_feature_operation        INSERT   fme_table_handling           TRUNCATE_EXISTING   postgis_create_with_oids     NO   postgis_create_gist_index    YES   postgis_spatial_column_type  geometry   postgis_spatial_column       geometrie   postgis_srid                 ""   postgis_vacuum_analyze       NO   postgis_allow_serial_writing NO   BAGID                        varchar(18)   bestandsnaam                 varchar(40)   display                      text   tekst                        varchar(10)   hoek                         float4
+# -------------------------------------------------------------------------
+POSTGIS_1_DEF imgeo.BAG_Standplaats   postgis_type                 postgis_geometry   postgis_mode                 ""   postgis_sql_key_columns      ""   postgis_drop_table           ""   postgis_truncate_table       ""   fme_feature_operation        INSERT   fme_table_handling           TRUNCATE_EXISTING   postgis_create_with_oids     NO   postgis_create_gist_index    YES   postgis_spatial_column_type  geometry   postgis_spatial_column       geometrie   postgis_srid                 ""   postgis_vacuum_analyze       NO   postgis_allow_serial_writing NO   BAGID                        varchar(18)   bestandsnaam                 varchar(15)
 # -------------------------------------------------------------------------
 POSTGIS_2_DEF imgeo.BAG_Ligplaats   postgis_type                 postgis_geometry   postgis_mode                 ""   postgis_sql_key_columns      ""   postgis_drop_table           ""   postgis_truncate_table       ""   fme_feature_operation        INSERT   fme_table_handling           TRUNCATE_EXISTING   postgis_create_with_oids     NO   postgis_create_gist_index    YES   postgis_spatial_column_type  geometry   postgis_spatial_column       geometrie   postgis_srid                 ""   postgis_vacuum_analyze       NO   postgis_allow_serial_writing NO   BAGID                        varchar(18)   bestandsnaam                 varchar(15)
 # -------------------------------------------------------------------------
