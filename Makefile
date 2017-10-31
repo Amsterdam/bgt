@@ -38,6 +38,7 @@ clean: test_clean
 		-or -iname "Thumbs.db" \
 		-or -iname "__MACOSX__" \
 		-or -iname ".DS_Store" \
+		-or -iname "__pycache__" \
 		\) -delete
 
 
