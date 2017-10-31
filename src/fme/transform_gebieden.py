@@ -21,5 +21,6 @@ def start_transformation_gebieden():
             "NMDirectives": {"successTopics": [], "failureTopics": []},
             "TMDirectives": {"tag": "linux", "description": "DB BGT kaartbladen"},
             "publishedParameters": [{"name": "DestDataset_POSTGIS_4", "value": "bgt"},
-                                    {"name": "bron_BGT_kaartbladen",
-                                     "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/BGT_kaartbladen.shp"]}]})
+                                    {"name": "bron_BGT_kaartbladen", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/BGT_kaartbladen.shp"]},
+                                    {"name": "DestDataset_ESRISHAPE", "value": ["$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling"]},
+                                    {"name": "DestDataset_DGNV8", "value": ["$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling/PDOK_Indeling.dgn"]}]})
