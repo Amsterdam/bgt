@@ -7,7 +7,6 @@ import subprocess
 import psycopg2
 import psycopg2.extensions
 
-logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 

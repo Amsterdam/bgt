@@ -4,7 +4,6 @@ from datetime import datetime
 import fme.fme_utils as fme_utils
 from objectstore.objectstore import ObjectStore
 
-logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
@@ -22,10 +21,16 @@ def start_transformation_gebieden():
             "FMEDirectives": {},
             "NMDirectives": {"successTopics": [], "failureTopics": []},
             "TMDirectives": {"tag": "linux", "description": "DB BGT kaartbladen"},
-            "publishedParameters": [{"name": "DestDataset_POSTGIS_4", "value": "bgt"},
-                                    {"name": "bron_BGT_kaartbladen", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/BGT_kaartbladen.shp"]},
-                                    {"name": "DestDataset_ESRISHAPE", "value": ["$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling"]},
-                                    {"name": "DestDataset_DGNV8", "value": ["$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling/PDOK_Indeling.dgn"]}]})
+            "publishedParameters": [
+                {"name": "DestDataset_POSTGIS_4", "value": "bgt"},
+                {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"]},
+                {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)resources/DGNv8_seed.dgn"},
+                {"name": "bron_BGT_kaartbladen", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/BGT_kaartbladen.shp"]},
+                {"name": "DestDataset_ESRISHAPE", "value": "$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling"},
+                {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling/PDOK_Indeling.dgn"}
+            ]
+        }
+    )
 
 
 def upload_gebieden():
@@ -39,7 +44,7 @@ def upload_gebieden():
         'BGT_Gebiedsindeling{timestamp}.shx',
         'PDOK_Indeling{timestamp}.dgn',
     }
-    download_folder = 'Gebieden'
+    download_folder = 'Kaartbladindeling'
     timestamp = datetime.now().strftime('-%Y%m%d%H%M%S')
     for filename in filenames:
         download_path = "{download_folder}/{filename}".format(

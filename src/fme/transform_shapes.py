@@ -10,7 +10,6 @@ import bgt_setup
 import fme.fme_utils as fme_utils
 from objectstore.objectstore import ObjectStore
 
-logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 shape_object_types = [

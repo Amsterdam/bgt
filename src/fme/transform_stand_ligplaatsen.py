@@ -2,7 +2,6 @@ import logging
 
 import fme.fme_utils as fme_utils
 
-logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 

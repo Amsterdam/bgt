@@ -23,7 +23,7 @@ from fme.transform_shapes import start_transformation_shapes
 from fme.transform_stand_ligplaatsen import start_transformation_stand_ligplaatsen
 from objectstore.objectstore import ObjectStore
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 
@@ -96,23 +96,30 @@ def upload_over_onderbouw_backup():
 
     # determine the latest upload filename
     latest_upload = sorted(
-        [c['name'] for c in store._get_full_container_list([]) if c['name'].endswith('_GBKA_OVERBOUW.zip')])[-1]
+        [
+            c['name'] for c in store._get_full_container_list([])
+                if c['name'].endswith('_BGT_OVERBOUW.zip')
+        ]
+    )[-1]
 
     if not os.path.exists('/tmp/data'):
         os.makedirs('/tmp/data')
 
     # download the latest `GBKA_OVERBOUW.dat` zipfile and temporary store it
-    with open("/tmp/data/GBKA_OVERBOUW.dat.zip", 'wb') as f:
+    with open(f'/tmp/data/{latest_upload}', 'wb') as f:
         f.write(store.get_store_object(latest_upload))
 
     # unzip the GBKA_OVERBOUW.dat.zip file
-    with ZipFile('/tmp/data/GBKA_OVERBOUW.dat.zip', 'r') as myzip:
+    with ZipFile(f'/tmp/data/{latest_upload}', 'r') as myzip:
         myzip.extractall('/tmp/data/')
 
-    # get the data and process
-    data = open("/tmp/data/Alle_Producten/GBKA_A/Objecten/WKT/GBKA_OVERBOUW.dat").read()
+    # get the data and process.
+    # Zip-file XXX.zip will contain a file called XXX.dat:
+    dat_filename = latest_upload[0:-4] + '.dat'
+    data = open(f'/tmp/data/{dat_filename}').read()
     # cut column [0:4], create sql insert statements and exec.
     db = create_fme_sql_connection()
+    log.info("Running INSERT statements...")
     for line in str(data).split(os.linesep):
         fields = line.split('|')[1:]
         if len(fields) > 0:
@@ -285,40 +292,40 @@ def run_before_after_comparisons():
 
 
 def run_all():
-    # download_bgt()
-    #
-    # # upload data and FMW scripts
-    # upload_data()
-    # upload_script_resources()
-    #
-    # create_fme_dbschema()
-    # upload_over_onderbouw_backup()
-    # create_fme_shape_views()
-    #
-    # fme_utils.wait_for_job_to_complete(start_transformation_db())
+    download_bgt()
+
+    # upload data and FMW scripts
+    upload_data()
+    upload_script_resources()
+
+    create_fme_dbschema()
+    upload_over_onderbouw_backup()
+    create_fme_shape_views()
+
+    fme_utils.wait_for_job_to_complete(start_transformation_db())
     fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
-    # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
-    #
-    # # create coordinate search envelopes
-    # fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
-    #
-    # # run the `aanmaak_esrishape_uit_DB_BGT` script
-    # start_transformation_shapes()
-    #
-    # # run transformation to `NLCS` and `DGN` format
-    # last_job_in_queue = {}
-    # for a in retrieve_chunk_coordinates():
-    #     start_transformation_nlcs_chunk(*a)
-    #     last_job_in_queue = start_transformation_dgn(*a)
-    # fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
-    #
-    # # upload the resulting shapes an the source GML zip to objectstore
+    fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
+
+    # create coordinate search envelopes
+    fme_utils.wait_for_job_to_complete(resolve_chunk_coordinates())
+
+    # run the `aanmaak_esrishape_uit_DB_BGT` script
+    start_transformation_shapes()
+
+    # run transformation to `NLCS` and `DGN` format
+    last_job_in_queue = {}
+    for a in retrieve_chunk_coordinates():
+        start_transformation_nlcs_chunk(*a)
+        last_job_in_queue = start_transformation_dgn(*a)
+    fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
+
+    # upload the resulting shapes an the source GML zip to objectstore
     upload_gebieden()
-    # upload_pdok_zip_to_objectstore()
-    # upload_nlcs_lijnen_files()
-    # upload_nlcs_vlakken_files()
-    # upload_dgn_files()
-    # run_before_after_comparisons()
+    upload_pdok_zip_to_objectstore()
+    upload_nlcs_lijnen_files()
+    upload_nlcs_vlakken_files()
+    upload_dgn_files()
+    run_before_after_comparisons()
 
 
 def main() -> int:
@@ -326,7 +333,6 @@ def main() -> int:
     This function is defined as an **entry-point** in :file:`setup.py`.
 
     """
-    logging.basicConfig(level='DEBUG')
     logging.getLogger('requests').setLevel('WARNING')
     log.info("Starting import script")
     server_manager = fme_server.FMEServer(

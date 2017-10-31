@@ -9,7 +9,6 @@ import psycopg2
 import bgt_setup
 import fme.sql_utils as fme_sql_utils
 
-logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
