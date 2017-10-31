@@ -296,7 +296,7 @@ def run_all():
     # create_fme_shape_views()
     #
     # fme_utils.wait_for_job_to_complete(start_transformation_db())
-    # fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
+    fme_utils.wait_for_job_to_complete(start_transformation_gebieden())
     # fme_utils.wait_for_job_to_complete(start_transformation_stand_ligplaatsen())
     #
     # # create coordinate search envelopes
