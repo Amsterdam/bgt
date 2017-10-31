@@ -13,6 +13,7 @@
 #          --DestDataset_DGNV8 "C:\datapunt\code\bgt\app\source_data\fme\kaartindeling\kaartbladindeling\PDOK_Indeling.dgn"
 #          --DestDataset_POSTGIS_4 "bgt_dev_local"
 #          --P_SEED "C:\datapunt\code\bgt\app\source_data\aanmaak_producten_bgt\resource\DGNv8_seed.dgn"
+#          --P_CEL "C:\datapunt\code\bgt\app\source_data\aanmaak_producten_bgt\resource\NLCS.cel"
 #    
 #    
 #!   USAGE=""
@@ -53,8 +54,8 @@
 #!   FME_DOCUMENT_PRIORGUID="224426e2-e94e-490f-acfc-6b54f1b8514a,346f2c93-79f2-4eed-95c2-27a2a0a8c417,e8310046-4235-480e-8b49-13dfc42fb559,c7176007-e80d-4dd8-a700-d55a231fe3ce,4f772332-9bf3-4174-99fe-ff479b417765,e6b2b60b-a6c2-4297-9f56-ff6679ed06c6,937be1fe-52b7-4327-8313-ad86b52a5108,0ff9cf96-26e1-4e1a-902c-dd38c6befc9d,54e6a293-be23-4bda-87c2-5d83d7189d52,8abf47ab-9047-463d-a1ef-067173c725cf,19d0bb54-f3bf-4882-ad24-fea10a75ea7d,fe412419-54e7-4d8b-99b4-322449aa3314,abc7c2ec-b281-4322-975a-faffa0a3fed3,d40db1ac-b84c-45eb-b021-38ebe54882cf,937b1c2c-f9eb-4363-9e38-0054d3aee057,c6a7b76c-7425-4ccc-aa68-b0251310e3d3,9020bc57-5d7a-4f26-9d2c-d1c8adc7927f,b8e75c8b-19e1-4349-82b3-b5251d2aec7b,06595962-f1cb-4ea1-a374-28bc54c1e9cb,ff197670-f4b9-423e-818e-762cf0478e21,bf4f494a-d760-46af-bbaf-9fc5f34fe4d0,79d60e09-e4dc-494a-b5e2-a2f531100ee8,c8825b0a-2075-42d5-bea0-f6c2df965f2c,81820564-7d83-4fe1-a549-d4267c5d2026,77cfe015-dec3-4eb1-b749-a967bb267d50,f56d88d1-7515-44a1-ba2f-ecdaea4d9995,3113fdd7-d569-4ce1-a7a2-e42683ee3700"
 #!   REQUIREMENTS=""
 #!   DESTINATION="NONE"
-#!   LAST_SAVE_DATE="2017-10-31T17:43:20"
-#!   VIEW_POSITION="773.445 1463.56"
+#!   LAST_SAVE_DATE="2017-10-31T17:52:15"
+#!   VIEW_POSITION="768.237 1463.56"
 #!   REDIRECT_TERMINATORS="NONE"
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   SOURCE_ROUTING_FILE=""
@@ -2018,6 +2019,11 @@
 #!   DEFAULT_VALUE="C:\datapunt\code\bgt\app\source_data\aanmaak_producten_bgt\resource\DGNv8_seed.dgn"
 #!   IS_STAND_ALONE="true"
 #! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL MULTIFILE P_CEL Cell_Library_Files(*.cel)|*.cel|All_files(*.*)|*.* Cell Library File:"
+#!   DEFAULT_VALUE="C:\datapunt\code\bgt\app\source_data\aanmaak_producten_bgt\resource\NLCS.cel"
+#!   IS_STAND_ALONE="true"
+#! />
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
@@ -3137,6 +3143,8 @@ DEFAULT_MACRO DestDataset_POSTGIS_4 bgt_dev_local
 GUI NAMED_DB_CONNECTION_ENCODED DestDataset_POSTGIS_4 FMT:POSTGRES%FAMILY:PostgreSQL Connection:
 DEFAULT_MACRO P_SEED C:\datapunt\code\bgt\app\source_data\aanmaak_producten_bgt\resource\DGNv8_seed.dgn
 GUI OPTIONAL FILENAME P_SEED Design_Files(*.dgn)|*.dgn|All_files(*.*)|*.* Seed File (V8only):
+DEFAULT_MACRO P_CEL C:\datapunt\code\bgt\app\source_data\aanmaak_producten_bgt\resource\NLCS.cel
+GUI OPTIONAL MULTIFILE P_CEL Cell_Library_Files(*.cel)|*.cel|All_files(*.*)|*.* Cell Library File:
 INCLUDE [ if {{$(bron_BGT_kaartbladen)} == {}} { puts_real {Parameter 'bron_BGT_kaartbladen' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(SourceDataset_WFS)} == {}} { puts_real {Parameter 'SourceDataset_WFS' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(SourceDataset_WFS_3)} == {}} { puts_real {Parameter 'SourceDataset_WFS_3' must be given a value.}; exit 1; }; ]
@@ -3722,7 +3730,7 @@ GUI CHOICE DGNV8_OUT_ALLOW_FILL_DGNV8_1 YES%NO Allow Area Fills
 DEFAULT_MACRO DGNV8_OUT_WRITE_TAGS_DGNV8_1 NO
 DGNV8_1_WRITE_TAGS "$(DGNV8_OUT_WRITE_TAGS_DGNV8_1)"
 GUI CHOICE DGNV8_OUT_WRITE_TAGS_DGNV8_1 YES%NO Write tags
-DEFAULT_MACRO DGNV8_OUT_CELL_LIBRARY_DGNV8_1 G:\DBI\Uitwissel\Geo\BGT_uitwissel\Microstation\BGT_NLCS.cel
+DEFAULT_MACRO DGNV8_OUT_CELL_LIBRARY_DGNV8_1 $(P_CEL)
 DGNV8_1_CELL_LIBRARY "$(DGNV8_OUT_CELL_LIBRARY_DGNV8_1)"
 GUI OPTIONAL MULTIFILE DGNV8_OUT_CELL_LIBRARY_DGNV8_1 Cell_Library_Files(*.cel)|*.cel|All_files(*)|* Cell Library File:
 # ============================================================================
@@ -3899,21 +3907,21 @@ FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager    INPUT  FEATURE_
 
 MACRO casemac
 INCLUDE [ if { {NO} == {NO} } { puts {MACRO casemac -nocase}} ]
-Tcl2 proc StringReplacer_2_396c2719_8e13_4afe_af5e_b150b1e1e86c0_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_2    INPUT  FEATURE_TYPE Tester_2_FAILED    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_2_OUTPUT         @Tcl2("StringReplacer_2_396c2719_8e13_4afe_af5e_b150b1e1e86c0_replacer {<space>} {_} {_FME_NO_OP_}")
+Tcl2 proc StringReplacer_2_396c2719_8e13_4afe_af5e_b150b1e1e86c1_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_2    INPUT  FEATURE_TYPE Tester_2_FAILED    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_2_OUTPUT         @Tcl2("StringReplacer_2_396c2719_8e13_4afe_af5e_b150b1e1e86c1_replacer {<space>} {_} {_FME_NO_OP_}")
 
 # -------------------------------------------------------------------------
 
 MACRO casemac
 INCLUDE [ if { {NO} == {NO} } { puts {MACRO casemac -nocase}} ]
-Tcl2 proc StringReplacer_3_24ff5fe9_70b2_4fa5_b477_0dde108478de0_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_3    INPUT  FEATURE_TYPE StringReplacer_2_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_3_OUTPUT         @Tcl2("StringReplacer_3_24ff5fe9_70b2_4fa5_b477_0dde108478de0_replacer {-} {} {_FME_NO_OP_}")
+Tcl2 proc StringReplacer_3_24ff5fe9_70b2_4fa5_b477_0dde108478de1_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_3    INPUT  FEATURE_TYPE StringReplacer_2_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_3_OUTPUT         @Tcl2("StringReplacer_3_24ff5fe9_70b2_4fa5_b477_0dde108478de1_replacer {-} {} {_FME_NO_OP_}")
 
 # -------------------------------------------------------------------------
 
-INCLUDE [    set macroLine "MACRO AttributeKeeper_af083716_3403_4c41_86d3_13322d3a87f70_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+INCLUDE [    set macroLine "MACRO AttributeKeeper_af083716_3403_4c41_86d3_13322d3a87f71_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 
-FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE StringReplacer_3_OUTPUT    OUTPUT FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,NAAM,big_id,fme_pcre_match,"^fme_$(AttributeKeeper_af083716_3403_4c41_86d3_13322d3a87f70_LIST_EXP)")
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE StringReplacer_3_OUTPUT    OUTPUT FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,NAAM,big_id,fme_pcre_match,"^fme_$(AttributeKeeper_af083716_3403_4c41_86d3_13322d3a87f71_LIST_EXP)")
 
 # -------------------------------------------------------------------------
 
@@ -3924,22 +3932,22 @@ FACTORY_DEF * AttrSetFactory    FACTORY_NAME AttributeManager_GME_3    INPUT  FE
 
 MACRO casemac
 INCLUDE [ if { {NO} == {NO} } { puts {MACRO casemac -nocase}} ]
-Tcl2 proc StringReplacer_5_34547d98_9758_4b17_b0ca_e576f8de25980_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_5    INPUT  FEATURE_TYPE AttributeManager_GME_3_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_5_OUTPUT         @Tcl2("StringReplacer_5_34547d98_9758_4b17_b0ca_e576f8de25980_replacer {<apos>} {} {_FME_NO_OP_}")
+Tcl2 proc StringReplacer_5_34547d98_9758_4b17_b0ca_e576f8de25981_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_5    INPUT  FEATURE_TYPE AttributeManager_GME_3_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_5_OUTPUT         @Tcl2("StringReplacer_5_34547d98_9758_4b17_b0ca_e576f8de25981_replacer {<apos>} {} {_FME_NO_OP_}")
 
 # -------------------------------------------------------------------------
 
 MACRO casemac
 INCLUDE [ if { {NO} == {NO} } { puts {MACRO casemac -nocase}} ]
-Tcl2 proc StringReplacer_c79e854d_63f3_4168_a00c_0617e85476370_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer    INPUT  FEATURE_TYPE StringReplacer_5_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_OUTPUT         @Tcl2("StringReplacer_c79e854d_63f3_4168_a00c_0617e85476370_replacer {<space>} {_} {_FME_NO_OP_}")
+Tcl2 proc StringReplacer_c79e854d_63f3_4168_a00c_0617e85476371_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer    INPUT  FEATURE_TYPE StringReplacer_5_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_OUTPUT         @Tcl2("StringReplacer_c79e854d_63f3_4168_a00c_0617e85476371_replacer {<space>} {_} {_FME_NO_OP_}")
 
 # -------------------------------------------------------------------------
 
 MACRO casemac
 INCLUDE [ if { {NO} == {NO} } { puts {MACRO casemac -nocase}} ]
-Tcl2 proc StringReplacer_4_90e7f0ca_c6d2_40ca_b2cd_481bbd6a21620_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_4    INPUT  FEATURE_TYPE StringReplacer_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_4_OUTPUT         @Tcl2("StringReplacer_4_90e7f0ca_c6d2_40ca_b2cd_481bbd6a21620_replacer {-} {} {_FME_NO_OP_}")
+Tcl2 proc StringReplacer_4_90e7f0ca_c6d2_40ca_b2cd_481bbd6a21621_replacer { findText replaceText invalidValue} {     set attrs [split \"NAAM\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME StringReplacer_4    INPUT  FEATURE_TYPE StringReplacer_OUTPUT    OUTPUT FEATURE_TYPE StringReplacer_4_OUTPUT         @Tcl2("StringReplacer_4_90e7f0ca_c6d2_40ca_b2cd_481bbd6a21621_replacer {-} {} {_FME_NO_OP_}")
 
 # -------------------------------------------------------------------------
 
