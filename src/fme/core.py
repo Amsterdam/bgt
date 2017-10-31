@@ -16,7 +16,7 @@ import fme.fme_utils as fme_utils
 import fme.sql_utils as fme_sql_utils
 from fme.transform_db import start_transformation_db
 from fme.transform_dgn import start_transformation_dgn, upload_dgn_files
-from fme.transform_gebieden import start_transformation_gebieden
+from fme.transform_gebieden import start_transformation_gebieden, upload_gebieden
 from fme.transform_nlcs import (
     start_transformation_nlcs_chunk, upload_nlcs_lijnen_files, upload_nlcs_vlakken_files)
 from fme.transform_shapes import start_transformation_shapes
@@ -252,7 +252,7 @@ def create_fme_shape_views():
     """
     aanmaak db-views shapes_bgt
     :return:
-    
+
     """
     fme_pgsql = create_fme_sql_connection()
     fme_pgsql.run_sql_script("{app}/fme_source_sql/090_aanmaak_DB_views_BGT.sql".format(app=bgt_setup.SCRIPT_ROOT))
@@ -264,7 +264,7 @@ def create_fme_shape_views():
 def run_before_after_comparisons():
     """
     Import controle db using :file:`/tmp/data/*.gml`.
-    
+
     Make sure sql connections are up
     """
     loc_pgsql = create_fme_sql_connection()
@@ -313,6 +313,7 @@ def run_all():
     fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
 
     # upload the resulting shapes an the source GML zip to objectstore
+    upload_gebieden()
     upload_pdok_zip_to_objectstore()
     upload_nlcs_lijnen_files()
     upload_nlcs_vlakken_files()
