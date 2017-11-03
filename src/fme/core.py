@@ -105,18 +105,23 @@ def upload_over_onderbouw_backup():
     if not os.path.exists('/tmp/data'):
         os.makedirs('/tmp/data')
 
-    # download the latest `GBKA_OVERBOUW.dat` zipfile and temporary store it
-    with open(f'/tmp/data/{latest_upload}', 'wb') as f:
+    # download the latest `BGT_OVERBOUW.dat` zipfile and temporary store it
+    #with open(f'/tmp/data/{latest_upload}', 'wb') as f:
+    with open("/tmp/data/BGT_OVERBOUW.zip", 'wb') as f:
         f.write(store.get_store_object(latest_upload))
 
-    # unzip the GBKA_OVERBOUW.dat.zip file
-    with ZipFile(f'/tmp/data/{latest_upload}', 'r') as myzip:
+    # unzip the BGT_OVERBOUW.zip file
+    #with ZipFile(f'/tmp/data/{latest_upload}', 'r') as myzip:
+    #    myzip.extractall('/tmp/data/')
+    with ZipFile('/tmp/data/BGT_OVERBOUW.zip', 'r') as myzip:
         myzip.extractall('/tmp/data/')
 
     # get the data and process.
     # Zip-file XXX.zip will contain a file called XXX.dat:
-    dat_filename = latest_upload[0:-4] + '.dat'
-    data = open(f'/tmp/data/{dat_filename}').read()
+    #dat_filename = latest_upload[0:-4] + '.dat'
+    data = open("/tmp/data/BGT_OVERBOUW.dat").read()
+    #data = open(f'/tmp/data/{dat_filename}').read()
+
     # cut column [0:4], create sql insert statements and exec.
     db = create_fme_sql_connection()
     log.info("Running INSERT statements...")
