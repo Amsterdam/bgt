@@ -40,7 +40,6 @@ def _compare_counts(host, port, dbname, user, password):
         'bgt_ondersteunendwaterdeel': ['ondersteunendwaterdeel', 'bgt_ondersteunendwaterdeel'],
         'bgt_ondersteunendwegdeel': ['auxiliarytrafficarea', 'bgt_ondersteunendwegdeel'],
         'bgt_ongeclassificeerdobject': ['ongeclassificeerdobject', 'bgt_ongeclassificeerdobject'],
-        'bgt_openbareruimtelabel': ['openbareruimtelabel', 'bgt_openbareruimtelabel'],
         'bgt_overbruggingsdeel': ['bridgeconstructionelement', 'bgt_overbruggingsdeel'],
         'bgt_pand': ['buildingpart', 'bgt_pand'],
         'bgt_plaatsbepalingspunt': ['plaatsbepalingspunt', 'bgt_plaatsbepalingspunt'],
