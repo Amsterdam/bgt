@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='datapunt-bgt',
@@ -12,7 +12,7 @@ setup(
     },
     include_package_data=True,
     packages=['fme'],
-    url='https://github.com/DatapuntAmsterdam/bgt',
+    url='https://github.com/Amsterdam/bgt',
     license='LICENSE.rst',
     description="Datapunt BGT transformaties in FME-cloud",
     long_description=open('README.rst').read(),
@@ -45,9 +45,9 @@ setup(
             'requests-mock',
         ],
     },
-    setup_requires=[
-        'setuptools_git'
-    ],
+    # setup_requires=[
+    #     'setuptools_git'
+    # ],
     python_requires='~=3.6',
     entry_points={
         'console_scripts': [

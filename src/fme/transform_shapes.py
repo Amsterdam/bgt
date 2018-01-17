@@ -158,10 +158,16 @@ def zip_upload_and_cleanup_shape_results():
 
     os.chdir('/tmp/data/shaperesults')
     log.info("Upload Zip Shape results")
-    for folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
-        zipfile_name = f"/tmp/data/shaperesults/{folder}.zip"
-        with ZipFile(f'{folder}.zip', "w") as zf:
-            for dirname, subdirs, files in os.walk(folder):
+
+    for source_folder, destination_folder in {
+        'ASCII_totaal':         'BGT_Totaal/ASCII',
+        'Esri_Shape_totaal':    'BGT_Totaal/Ersi_Shape',
+        'ASCII_gebieden':       'BGT_Gebieden/ASCII',
+        'Esri_Shape_gebieden':  'BGT_Gebieden/Esri_Shape'
+    }.items():
+        zipfile_name = f"/tmp/data/shaperesults/{source_folder}.zip"
+        with ZipFile(f'{source_folder}.zip', "w") as zf:
+            for dirname, subdirs, files in os.walk(source_folder):
                 zf.write(dirname)
                 for filename in files:
                     zf.write(os.path.join(dirname, filename))
@@ -170,7 +176,7 @@ def zip_upload_and_cleanup_shape_results():
             log.info(f"upload {zipfile_name}:{name} to object store")
             with open(zipfile_name, 'rb') as uploadfile:
                 store.put_to_objectstore(
-                    'products/{}-{}.zip'.format(folder, name),
+                    '{}/{}-{}.zip'.format(destination_folder, source_folder, name),
                     uploadfile,
                     'application/octet-stream')
 

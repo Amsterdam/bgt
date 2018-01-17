@@ -53,6 +53,8 @@ def upload_nlcs_vlakken_files():
     url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
           'FME_SHAREDRESOURCE_DATA/filesys/DGNv8_vlakken_NLCS/BGT_NLCS_V?accept=json&depth=1&detail=low'
 
+    if not os.path.exists('/tmp/data'):
+        os.makedirs('/tmp/data')
     zip_filename = '/tmp/data/NLCS_vlakken.zip'
     zf = ZipFile(zip_filename, mode='w')
 
@@ -73,13 +75,15 @@ def upload_nlcs_vlakken_files():
         with open(zip_filename, mode='rb') as f:
             log.info("store latest")
             store.put_to_objectstore(
-                'products/NLCS_vlakken-latest.zip', f.read(), 'application/octet-stream')
+                'BGT_Kaartbladen/NLCS_Vlak/NLCS_vlakken-latest.zip', f.read(), 'application/octet-stream')
         with open(zip_filename, mode='rb') as f:
             log.info("store timestamped")
             store.put_to_objectstore(
-                f'products/NLCS_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
+                f'BGT_Kaartbladen/NLCS_Vlak/NLCS_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
+    else:
+        response.raise_for_status()
     log.info("ZIP and upload NLCS vlakken products to BGT objectstore done")
 
 
@@ -116,11 +120,13 @@ def upload_nlcs_lijnen_files():
         with open(zip_filename, mode='rb') as f:
             log.info("store latest")
             store.put_to_objectstore(
-                'products/NLCS_lijnen-latest.zip', f.read(), 'application/octet-stream')
+                'BGT_Kaartbladen/NLCS_Lijn/NLCS_lijnen-latest.zip', f.read(), 'application/octet-stream')
         with open(zip_filename, mode='rb') as f:
             log.info("store timestamped")
             store.put_to_objectstore(
-                f'products/NLCS_lijnen-{timestamp}.zip', f.read(), 'application/octet-stream')
+                f'BGT_Kaartbladen/NLCS_Lijn/NLCS_lijnen-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
+    else:
+        response.raise_for_status()
     log.info("ZIP and upload NLCS lijnen products to BGT objectstore done")

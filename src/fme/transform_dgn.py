@@ -47,7 +47,8 @@ def upload_dgn_files():
     }
     url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
           'FME_SHAREDRESOURCE_DATA/filesys/DGNv8?accept=json&depth=1&detail=low'
-
+    if not os.path.exists('/tmp/data'):
+        os.makedirs('/tmp/data')
     zip_filename = '/tmp/data/DGNv8_DGN.zip'
     zf = ZipFile(zip_filename, mode='w')
 
@@ -67,10 +68,12 @@ def upload_dgn_files():
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
-                'products/DGNv8-latest.zip', f.read(), 'application/octet-stream')
+                'BGT_Kaartbladen/DGNv8/DGNv8-latest.zip', f.read(), 'application/octet-stream')
         with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
-                f'products/DGNv8-{timestamp}.zip', f.read(), 'application/octet-stream')
+                f'BGT_Kaartbladen/DGNv8/DGNv8-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
+    else:
+        response.raise_for_status()
     log.info("ZIP and upload DGNv8 products to BGT objectstore done")

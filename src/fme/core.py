@@ -73,9 +73,11 @@ def upload_pdok_zip_to_objectstore():
     content = open('extract_bgt.zip', 'rb').read()
 
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-    filename = 'bron-gml/extract_bgt-{}.zip'.format(timestamp)
+#   filename = 'bron-gml/extract_bgt-{}.zip'.format(timestamp)
+    filename = 'BGT_Totaal/GML/extract_bgt-{}.zip'.format(timestamp)
     store.put_to_objectstore(filename, content, 'application/octet-stream')
-    log.info("Uploaded {} to objectstore BGT/bron-gml".format(filename))
+#   log.info("Uploaded {} to objectstore BGT/bron-gml".format(filename))
+    log.info("Uploaded {} to objectstore BGT/BGT_Totaal/GML".format(filename))
 
 
 def upload_over_onderbouw_backup():
@@ -353,8 +355,9 @@ def main() -> int:
         log.exception("Could not process server jobs {}".format(e))
         raise e
     finally:
-        log.info("Stopping FME service")
-        server_manager.stop()
+        pass
+        #log.info("Stopping FME service")
+        #server_manager.stop()
     return 0
 
 

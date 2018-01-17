@@ -56,7 +56,7 @@ def upload_gebieden():
         log.info(f"Download file {download_path}")
         file_content = fme_utils.download(download_path, text=False)
         log.info(f"Upload {filename}")
-        upload_path_template = f'products/{filename}'
+        upload_path_template = f'Kaartbladindeling/{filename}'
         store.put_to_objectstore(
             upload_path_template.format(timestamp=timestamp),
             file_content,

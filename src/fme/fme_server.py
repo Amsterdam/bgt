@@ -60,7 +60,7 @@ class FMEServer(object):
             res = requests.put(self._url("/start"), headers=self._headers())
             res.raise_for_status()
 
-            while self.get_status() in ['PENDING', 'STOPPING']:
+            while self.get_status() in ['PENDING', 'STOPPING', 'PAUSED']:
                 time.sleep(1)
 
             if self.get_status() == 'RUNNING':
