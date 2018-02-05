@@ -35,4 +35,4 @@ __pycache__
 /.venv
 
 # Credentials: --PvB
-/keys.env
+/keys.sh

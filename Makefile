@@ -1,4 +1,4 @@
-.PHONY: test test_clean docs_*
+.PHONY: test test_clean clean
 
 RM = rm -rf
 
@@ -40,7 +40,3 @@ clean: test_clean
 		-or -iname ".DS_Store" \
 		-or -iname "__pycache__" \
 		\) -delete
-
-
-docs_%:
-	$(MAKE) -C docs $*

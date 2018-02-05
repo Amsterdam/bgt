@@ -33,10 +33,10 @@ setup(
         'Babel'
     ],
     extras_require={
-        'doc': [
-            'Sphinx',
-            'sphinx-rtd-theme',
-            'sphinx-autobuild'
+        'docs': [
+            'sphinx',
+            'sphinx-autobuild',
+            'sphinx_rtd_theme',
         ],
         'test': [
             'pytest',
