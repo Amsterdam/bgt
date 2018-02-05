@@ -353,7 +353,6 @@ def main() -> int:
         log.exception("Could not process server jobs {}".format(e))
         raise e
     finally:
-        pass
         log.info("Stopping FME service")
         server_manager.stop()
     return 0
