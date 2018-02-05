@@ -30,9 +30,3 @@ __pycache__
 /.idea
 /*.iml
 /.editorconfig
-
-# Python venv: --PvB
-/.venv
-
-# Credentials: --PvB
-/keys.sh
