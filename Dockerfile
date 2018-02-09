@@ -12,11 +12,11 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN mkdir /data /app /src /dump
+RUN mkdir /data /bgt /dump
 
 COPY ./ /bgt
 WORKDIR /bgt
 RUN pip3 install -e .[test] \
-    && chmod -R 755 app/*.sh
+    && chmod -R 755 *.sh
 
 ENV PGCLIENTENCODING='UTF-8'

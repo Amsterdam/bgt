@@ -4,7 +4,6 @@
 #
 set -e
 set -u
-cd src
-echo "import of bgt started"
-export PYTHONPATH=`pwd` # $PYTHONPATH:
+cd "$(dirname $0)/src"
+export PYTHONPATH="$PWD"
 python3 fme/core.py
