@@ -20,7 +20,7 @@ def start_transformation_stand_ligplaatsen():
             "NMDirectives": {"successTopics": [], "failureTopics": []},
             "TMDirectives": {"tag": "linux", "description": "Stand- en ligplaatsen -> DB"},
             "publishedParameters": [
-                {"name": "SourceDataset_WFS", "value": "https://map.datapunt.amsterdam.nl:443/maps/bag"},
+                {"name": "SourceDataset_WFS", "value": "https://map.data.amsterdam.nl:443/maps/bag"},
                 {"name": "_API_PAGESIZE", "value": "3000"},
                 {"name": "DestDataset_POSTGIS_5", "value": "bgt"},
                 {"name": "DestDataset_POSTGIS_7", "value": "bgt"}]})

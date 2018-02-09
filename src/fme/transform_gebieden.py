@@ -45,7 +45,6 @@ def upload_gebieden():
         'PDOK_Indeling{timestamp}.dgn',
     }
     download_folder = 'Kaartbladindeling'
-    timestamp = datetime.now().strftime('-%Y%m%d%H%M%S')
     for filename in filenames:
         download_path = "{download_folder}/{filename}".format(
             download_folder=download_folder,
@@ -57,11 +56,6 @@ def upload_gebieden():
         file_content = fme_utils.download(download_path, text=False)
         log.info(f"Upload {filename}")
         upload_path_template = f'Kaartbladindeling/{filename}'
-        store.put_to_objectstore(
-            upload_path_template.format(timestamp=timestamp),
-            file_content,
-            'application/octet-stream'
-        )
         store.put_to_objectstore(
             upload_path_template.format(timestamp='-latest'),
             file_content,

@@ -71,15 +71,10 @@ def upload_nlcs_vlakken_files():
         finally:
             zf.close()
 
-        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             log.info("store latest")
             store.put_to_objectstore(
                 'BGT_Kaartbladen/NLCS_Vlak/NLCS_vlakken-latest.zip', f.read(), 'application/octet-stream')
-        with open(zip_filename, mode='rb') as f:
-            log.info("store timestamped")
-            store.put_to_objectstore(
-                f'BGT_Kaartbladen/NLCS_Vlak/NLCS_vlakken-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
     else:
@@ -116,15 +111,10 @@ def upload_nlcs_lijnen_files():
         finally:
             zf.close()
 
-        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             log.info("store latest")
             store.put_to_objectstore(
                 'BGT_Kaartbladen/NLCS_Lijn/NLCS_lijnen-latest.zip', f.read(), 'application/octet-stream')
-        with open(zip_filename, mode='rb') as f:
-            log.info("store timestamped")
-            store.put_to_objectstore(
-                f'BGT_Kaartbladen/NLCS_Lijn/NLCS_lijnen-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
     else:

@@ -153,7 +153,7 @@ def remove_shape_results(shape_type):
 
 def zip_upload_and_cleanup_shape_results():
     store = ObjectStore('BGT')
-    names = [datetime.now().strftime('%Y%m%d%H%M%S'), "latest"]
+    names = ["latest"]
     cwd = os.getcwd()
 
     os.chdir('/tmp/data/shaperesults')
@@ -162,8 +162,8 @@ def zip_upload_and_cleanup_shape_results():
     for source_folder, destination_folder in {
         'ASCII_totaal':         'BGT_Totaal/ASCII',
         'Esri_Shape_totaal':    'BGT_Totaal/Esri_Shape',
-        'ASCII_gebieden':       'BGT_Gebieden/ASCII',
-        'Esri_Shape_gebieden':  'BGT_Gebieden/Esri_Shape'
+        'ASCII_gebieden':       'BGT_Gebieden',
+        'Esri_Shape_gebieden':  'BGT_Gebieden'
     }.items():
         zipfile_name = f"/tmp/data/shaperesults/{source_folder}.zip"
         with ZipFile(f'{source_folder}.zip', "w") as zf:

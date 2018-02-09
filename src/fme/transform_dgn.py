@@ -65,13 +65,9 @@ def upload_dgn_files():
         finally:
             zf.close()
 
-        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
         with open(zip_filename, mode='rb') as f:
             store.put_to_objectstore(
                 'BGT_Kaartbladen/DGNv8/DGNv8-latest.zip', f.read(), 'application/octet-stream')
-        with open(zip_filename, mode='rb') as f:
-            store.put_to_objectstore(
-                f'BGT_Kaartbladen/DGNv8/DGNv8-{timestamp}.zip', f.read(), 'application/octet-stream')
 
         os.remove(zip_filename)
     else:
