@@ -160,8 +160,8 @@ def zip_upload_and_cleanup_shape_results():
     log.info("Upload Zip Shape results")
 
     for source_folder, destination_folder in {
-        'ASCII_totaal':         'BGT_Totaal/ASCII',
-        'Esri_Shape_totaal':    'BGT_Totaal/Esri_Shape',
+        'ASCII_totaal':         'BGT_Totaal',
+        'Esri_Shape_totaal':    'BGT_Totaal',
         'ASCII_gebieden':       'BGT_Gebieden',
         'Esri_Shape_gebieden':  'BGT_Gebieden'
     }.items():
