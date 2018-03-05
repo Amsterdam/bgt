@@ -73,9 +73,9 @@ def upload_pdok_zip_to_objectstore():
     content = open('extract_bgt.zip', 'rb').read()
 
     # timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-    filename = 'BGT_Totaal/GML/GML_totaal-latest.zip'
+    filename = 'BGT_Totaal/GML_totaal-latest.zip'
     store.put_to_objectstore(filename, content, 'application/octet-stream')
-    log.info("Uploaded {} to objectstore BGT/BGT_Totaal/GML".format(filename))
+    log.info("Uploaded {} to objectstore BGT/BGT_Totaal/".format(filename))
 
 
 def upload_over_onderbouw_backup():
