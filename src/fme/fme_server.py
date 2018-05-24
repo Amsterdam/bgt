@@ -31,7 +31,7 @@ class FMEServer(object):
         Returns the auth header
         :return: dict
         """
-        return {'Authorization': 'bearer {FME_SERVER_API}'.format(FME_SERVER_API=self.api_token)}
+        return {'Authorization': 'Bearer {FME_SERVER_API}'.format(FME_SERVER_API=self.api_token)}
 
     def _url(self, path=None) -> str:
         """
