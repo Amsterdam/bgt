@@ -33,6 +33,7 @@ class FMEServer(object):
         """
         return {'Authorization': 'bearer {FME_SERVER_API}'.format(FME_SERVER_API=self.api_token)}
 
+
     def _url(self, path=None) -> str:
         """
         Returns the FME server management uinstance url
