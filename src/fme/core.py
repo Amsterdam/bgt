@@ -297,11 +297,11 @@ def run_before_after_comparisons():
 
 
 def run_all():
-    download_bgt()
-
-    # upload data and FMW scripts
-    upload_data()
-    upload_script_resources()
+    # download_bgt()
+    #
+    # # upload data and FMW scripts
+    # upload_data()
+    # upload_script_resources()
 
     create_fme_dbschema()
     upload_over_onderbouw_backup()
