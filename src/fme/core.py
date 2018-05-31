@@ -330,7 +330,7 @@ def run_all():
     upload_nlcs_lijnen_files()
     upload_nlcs_vlakken_files()
     upload_dgn_files()
-    run_before_after_comparisons()
+    # run_before_after_comparisons()
 
 
 def main() -> int:

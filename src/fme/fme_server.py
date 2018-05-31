@@ -1,6 +1,7 @@
 import logging
 import socket
 import time
+from urllib.parse import urlparse
 
 import requests
 
@@ -12,6 +13,7 @@ class FMEServer(object):
         self.api_token = api_token
         self.instance_id = instance_id
         self.server_name = server_name
+        self.server_url = urlparse(server_name)
 
     def _in_dns(self) -> bool:
         """
@@ -19,7 +21,7 @@ class FMEServer(object):
         :return: bool
         """
         try:
-            socket.gethostbyname(self.server_name.split('//')[-1])
+            socket.gethostbyname(self.server_url.hostname)
             log.debug('DNS is available for server')
             return True
         except socket.gaierror:
