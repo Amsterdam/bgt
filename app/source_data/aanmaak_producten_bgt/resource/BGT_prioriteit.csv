@@ -1,4 +1,56 @@
 BGT_Object;bgt;plus;prioriteit
+bgt_pand;;;3000
+CFT_Overbouw;CFT_Overbouw;onbekend;2995
+CFT_Onderbouw;CFT_Onderbouw;onbekend;2994
+BAG_Standplaats;BAG_Standplaats;onbekend;2990
+BAG_Ligplaats;BAG_Ligplaats;onbekend;2985
+imgeo_overigbouwwerk;overkapping;onbekend;2900
+imgeo_overigbouwwerk;open loods;onbekend;2895
+imgeo_overigbouwwerk;opslagtank;onbekend;2890
+imgeo_overigbouwwerk;bezinkbak;onbekend;2885
+imgeo_overigbouwwerk;windturbine;onbekend;2880
+imgeo_overigbouwwerk;lage trafo;onbekend;2875
+imgeo_overigbouwwerk;bassin;onbekend;2870
+imgeo_overigbouwwerk;niet-bgt;bunker;2865
+imgeo_overigbouwwerk;niet-bgt;voedersilo;2860
+imgeo_overigbouwwerk;niet-bgt;schuur;2855
+imgeo_overigbouwwerk;transitie;onbekend;2850
+imgeo_gebouwinstallatie;niet-bgt;bordes;2800
+imgeo_gebouwinstallatie;niet-bgt;luifel;2795
+imgeo_gebouwinstallatie;niet-bgt;toegangstrap;2790
+imgeo_gebouwinstallatie;niet-bgt;onbekend;2785
+imgeo_functioneelgebied;niet-bgt;bushalte;2780
+imgeo_functioneelgebied;niet-bgt;halte;2780
+bgt_overbruggingsdeel;;dek;2700
+bgt_overbruggingsdeel;;landhoofd;2695
+bgt_overbruggingsdeel;;pijler;2690
+bgt_overbruggingsdeel;;sloof;2685
+bgt_overbruggingsdeel;;pyloon;2680
+bgt_overbruggingsdeel;;onbekend;2675
+imgeo_kunstwerkdeel;hoogspanningsmast;onbekend;2600
+imgeo_kunstwerkdeel;gemaal;onbekend;2595
+imgeo_kunstwerkdeel;perron;onbekend;2590
+imgeo_kunstwerkdeel;sluis;onbekend;2585
+imgeo_kunstwerkdeel;strekdam;onbekend;2580
+imgeo_kunstwerkdeel;steiger;onbekend;2575
+imgeo_kunstwerkdeel;stuw;onbekend;2570
+imgeo_kunstwerkdeel;niet-bgt;keermuur;2560
+imgeo_kunstwerkdeel;niet-bgt;overkluizing;2555
+imgeo_kunstwerkdeel;niet-bgt;duiker;2545
+imgeo_kunstwerkdeel;niet-bgt;faunavoorziening;2540
+imgeo_kunstwerkdeel;niet-bgt;vispassage;2535
+imgeo_kunstwerkdeel;niet-bgt;bodemval;2530
+imgeo_kunstwerkdeel;niet-bgt;coupure;2525
+imgeo_kunstwerkdeel;niet-bgt;ponton;2520
+imgeo_kunstwerkdeel;niet-bgt;voorde;2515
+imgeo_kunstwerkdeel;transitie;onbekend;2510
+imgeo_scheiding;muur;onbekend;2500
+imgeo_scheiding;kademuur;onbekend;2495
+imgeo_scheiding;hek;onbekend;2490
+imgeo_overigescheiding;niet-bgt;muur;2400
+imgeo_overigescheiding;niet-bgt;kademuur;2395
+imgeo_overigescheiding;niet-bgt;onbekend;2390
+bgt_tunneldeel;;;2305
 bgt_wegdeel;gesloten verharding;onbekend;2300
 bgt_wegdeel;gesloten verharding;asfalt;2295
 bgt_wegdeel;gesloten verharding;cementbeton;2290
@@ -18,6 +70,12 @@ bgt_wegdeel;onverhard;onbekend;2225
 bgt_wegdeel;onverhard;boomschors;2220
 bgt_wegdeel;onverhard;zand;2215
 bgt_wegdeel;transitie;onbekend;2210
+imgeo_weginrichtingselement;niet-bgt;wegmarkering;2209
+imgeo_weginrichtingselement;niet-bgt;wildrooster;2208
+imgeo_weginrichtingselement;niet-bgt;rooster;2206
+imgeo_weginrichtingselement;niet-bgt;geleideconstructie;2204
+imgeo_weginrichtingselement;niet-bgt;boomspiegel;2203
+imgeo_weginrichtingselement;niet-bgt;onbekend;2201
 bgt_ondersteunendwegdeel;gesloten verharding;onbekend;2200
 bgt_ondersteunendwegdeel;gesloten verharding;asfalt;2198
 bgt_ondersteunendwegdeel;gesloten verharding;cementbeton;2196
@@ -119,45 +177,6 @@ bgt_waterdeel;transitie;onbekend;1840
 bgt_ondersteunendwaterdeel;oever, slootkant;onbekend;1800
 bgt_ondersteunendwaterdeel;slik;onbekend;1795
 bgt_ondersteunendwaterdeel;transitie;onbekend;1790
-bgt_pand;;;3000
-imgeo_overigbouwwerk;overkapping;onbekend;2900
-imgeo_overigbouwwerk;open loods;onbekend;2895
-imgeo_overigbouwwerk;opslagtank;onbekend;2890
-imgeo_overigbouwwerk;bezinkbak;onbekend;2885
-imgeo_overigbouwwerk;windturbine;onbekend;2880
-imgeo_overigbouwwerk;lage trafo;onbekend;2875
-imgeo_overigbouwwerk;bassin;onbekend;2870
-imgeo_overigbouwwerk;niet-bgt;bunker;2865
-imgeo_overigbouwwerk;niet-bgt;voedersilo;2860
-imgeo_overigbouwwerk;niet-bgt;schuur;2855
-imgeo_overigbouwwerk;transitie;onbekend;2850
-bgt_overbruggingsdeel;;dek;2700
-bgt_overbruggingsdeel;;landhoofd;2695
-bgt_overbruggingsdeel;;pijler;2690
-bgt_overbruggingsdeel;;sloof;2685
-bgt_overbruggingsdeel;;pyloon;2680
-bgt_overbruggingsdeel;;onbekend;2675
-bgt_tunneldeel;;;2305
-imgeo_kunstwerkdeel;hoogspanningsmast;onbekend;2600
-imgeo_kunstwerkdeel;gemaal;onbekend;2595
-imgeo_kunstwerkdeel;perron;onbekend;2590
-imgeo_kunstwerkdeel;sluis;onbekend;2585
-imgeo_kunstwerkdeel;strekdam;onbekend;2580
-imgeo_kunstwerkdeel;steiger;onbekend;2575
-imgeo_kunstwerkdeel;stuw;onbekend;2570
-imgeo_kunstwerkdeel;niet-bgt;keermuur;2560
-imgeo_kunstwerkdeel;niet-bgt;overkluizing;2555
-imgeo_kunstwerkdeel;niet-bgt;duiker;2545
-imgeo_kunstwerkdeel;niet-bgt;faunavoorziening;2540
-imgeo_kunstwerkdeel;niet-bgt;vispassage;2535
-imgeo_kunstwerkdeel;niet-bgt;bodemval;2530
-imgeo_kunstwerkdeel;niet-bgt;coupure;2525
-imgeo_kunstwerkdeel;niet-bgt;ponton;2520
-imgeo_kunstwerkdeel;niet-bgt;voorde;2515
-imgeo_kunstwerkdeel;transitie;onbekend;2510
-imgeo_scheiding;muur;onbekend;2500
-imgeo_scheiding;kademuur;onbekend;2495
-imgeo_scheiding;hek;onbekend;2490
 imgeo_functioneelgebied;kering;onbekend;1600
 imgeo_functioneelgebied;niet-bgt;bedrijvigheid;1598
 imgeo_functioneelgebied;niet-bgt;natuur en landschap;1596
@@ -177,27 +196,9 @@ imgeo_functioneelgebied;niet-bgt;recreatie: sportterrein;1570
 imgeo_functioneelgebied;niet-bgt;recreatie: camping;1568
 imgeo_functioneelgebied;niet-bgt;recreatie: bungalowpark;1566
 imgeo_functioneelgebied;niet-bgt;recreatie: volkstuin;1564
-imgeo_functioneelgebied;niet-bgt;bushalte;1562
 imgeo_functioneelgebied;niet-bgt;carpoolplaats;1560
 imgeo_functioneelgebied;niet-bgt;benzinestation;1558
 imgeo_functioneelgebied;niet-bgt;verzorgingsplaats;1556
 imgeo_functioneelgebied;niet-bgt;onbekend;1554
-imgeo_overigescheiding;niet-bgt;muur;2400
-imgeo_overigescheiding;niet-bgt;kademuur;2395
-imgeo_overigescheiding;niet-bgt;onbekend;2390
-imgeo_gebouwinstallatie;niet-bgt;bordes;2800
-imgeo_gebouwinstallatie;niet-bgt;luifel;2795
-imgeo_gebouwinstallatie;niet-bgt;toegangstrap;2790
-imgeo_gebouwinstallatie;niet-bgt;onbekend;2785
-imgeo_weginrichtingselement;niet-bgt;wegmarkering;2209
-imgeo_weginrichtingselement;niet-bgt;wildrooster;2208
-imgeo_weginrichtingselement;niet-bgt;rooster;2206
-imgeo_weginrichtingselement;niet-bgt;geleideconstructie;2204
-imgeo_weginrichtingselement;niet-bgt;boomspiegel;2203
-imgeo_weginrichtingselement;niet-bgt;onbekend;2201
 imgeo_vegetatieobject;niet-bgt;haag;1500
 imgeo_vegetatieobject;niet-bgt;onbekend;1495
-CFT_Overbouw;CFT_Overbouw;onbekend;2995
-CFT_Onderbouw;CFT_Onderbouw;onbekend;2994
-BAG_Standplaats;BAG_Standplaats;onbekend;2990
-BAG_Ligplaats;BAG_Ligplaats;onbekend;2985
