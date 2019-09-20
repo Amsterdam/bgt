@@ -152,8 +152,9 @@ def unzip_pdok_file():
     log.info("Unzip complete")
 
 
-def pdok_url():
+def pdok_url(fme_test_run=False):
     """
+    PARAM: fme_test_run: set tot True for testing one tile to speed up integration test
     Returns the PDOK url for `now`
     :return:
     """
@@ -170,6 +171,10 @@ def pdok_url():
         38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
         38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
         38309, 38320, 38322, 38305, 38669, 38473, 38123, 38519, 38286, 38296, 38297]
+
+    if fme_test_run:
+        tile_codes = [
+            38095]
 
     tiles = {
         "layers": [
@@ -296,8 +301,9 @@ def run_before_after_comparisons():
     )
 
 
-def run_all():
-    download_bgt()
+def run_all(fme_run_test):
+
+    download_bgt(fme_run_test)
 
     # upload data and FMW scripts
     upload_data()
@@ -319,12 +325,12 @@ def run_all():
 
     # run transformation to `NLCS` and `DGN` format
     last_job_in_queue = {}
+    last_job_in_queue = start_transformation_dgn(*a)
+fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
+
+# upload the resulting shapes an the source GML zip to objectstore
     for a in retrieve_chunk_coordinates():
         start_transformation_nlcs_chunk(*a)
-        last_job_in_queue = start_transformation_dgn(*a)
-    fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
-
-    # upload the resulting shapes an the source GML zip to objectstore
     upload_gebieden()
     upload_pdok_zip_to_objectstore()
     upload_nlcs_lijnen_files()
@@ -348,7 +354,7 @@ def main() -> int:
 
         # start the fme server
         server_manager.start()
-        run_all()
+        run_all(bgt_setup.FME_TEST_RUN)
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e
