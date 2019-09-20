@@ -198,10 +198,10 @@ def is_bgt_updated():
     print(res)
 
 
-def download_bgt():
+def download_bgt(fme_test_run=False):
     target = "extract_bgt.zip"
-    log.info("Starting download from %s to %s", pdok_url(), target)
-    response = requests.get(pdok_url(), stream=True)
+    log.info("Starting download from %s to %s", pdok_url(fme_test_run), target)
+    response = requests.get(pdok_url(fme_test_run), stream=True)
     start = time.clock()
     # total_length = response.headers.get('content-length')
     downloaded_length = 0
