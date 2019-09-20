@@ -6,10 +6,10 @@ SCRIPT_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'
 
 BGT_OBJECTSTORE_PASSWORD = os.getenv('BGT_OBJECTSTORE_PASSWORD', 'insecure')
 
-FME_SERVER_API = os.getenv('FMESERVERAPI', 'secret')
-FME_API = os.getenv('FMEAPI', 'secret')
-FME_SERVER = os.getenv('FMESERVER', 'secret')
-INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
+FME_CLOUD_API_TOKEN = os.getenv('FMESERVERAPI', 'secret')
+FME_INSTANCE_API_TOKEN = os.getenv('FMEAPI', 'secret')
+FME_BASE_URL = os.getenv('FMESERVER', 'secret')
+FME_INSTANCE_ID = os.getenv('FMEINSTANCE', 'secret')
 FME_DBPASS = os.getenv('FMEDBPASS', 'secret')
 
 DB_FME_HOST = os.getenv('DATABASE_PORT_5432_TCP_ADDR', 'localhost')

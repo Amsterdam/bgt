@@ -7,13 +7,13 @@ import time
 
 import requests
 
-from bgt_setup import FME_API, FME_SERVER
+from bgt_setup import FME_INSTANCE_API_TOKEN, FME_BASE_URL
 
 log = logging.getLogger(__name__)
 
 
-def fme_api_auth():
-    return {'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)}
+def fme_instance_api_auth():
+    return {'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=FME_INSTANCE_API_TOKEN)}
 
 
 def delete_directory(directory):
@@ -24,9 +24,9 @@ def delete_directory(directory):
     """
     log.info("Delete directory %s", directory)
     url = (
-        '{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/{directory}?detail=low'.format(
-            FME_SERVER=FME_SERVER, directory=directory))
-    repository_res = requests.delete(url, headers=fme_api_auth())
+        '{FME_BASE_URL}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/{directory}?detail=low'.format(
+            FME_BASE_URL=FME_BASE_URL, directory=directory))
+    repository_res = requests.delete(url, headers=fme_instance_api_auth())
     if repository_res.status_code == 404:
         log.debug("Directory not found")
         return repository_res.status_code
@@ -42,8 +42,8 @@ def delete_repository(repo):
     :return:
     """
     log.info("Delete repository %s", repo)
-    url = ('{FME_SERVER}/fmerest/v2/repositories/{repo}?detail=low'.format(FME_SERVER=FME_SERVER, repo=repo))
-    repository_res = requests.delete(url, headers=fme_api_auth())
+    url = ('{FME_BASE_URL}/fmerest/v2/repositories/{repo}?detail=low'.format(FME_BASE_URL=FME_BASE_URL, repo=repo))
+    repository_res = requests.delete(url, headers=fme_instance_api_auth())
     if repository_res.status_code == 404:
         log.debug("Repository not found")
         return repository_res.status_code
@@ -59,9 +59,9 @@ def create_directory(directory):
     :return:
     """
     log.info("Create directory %s", directory)
-    url = ('{FME_SERVER}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA'
-           '/filesys/?detail=low'.format(FME_SERVER=FME_SERVER))
-    res = requests.post(url, headers=fme_api_auth(), data={'directoryname': directory, 'type': 'DIR', })
+    url = ('{FME_BASE_URL}/fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA'
+           '/filesys/?detail=low'.format(FME_BASE_URL=FME_BASE_URL))
+    res = requests.post(url, headers=fme_instance_api_auth(), data={'directoryname': directory, 'type': 'DIR', })
     res.raise_for_status()
     log.debug("Directory created")
 
@@ -73,8 +73,8 @@ def create_repository(repo):
     :return:
     """
     log.info("Create repository %s", repo)
-    url = ('{FME_SERVER}/fmerest/v2/repositories/?detail=low'.format(FME_SERVER=FME_SERVER))
-    res = requests.post(url, headers=fme_api_auth(), data={'name': repo})
+    url = ('{FME_BASE_URL}/fmerest/v2/repositories/?detail=low'.format(FME_BASE_URL=FME_BASE_URL))
+    res = requests.post(url, headers=fme_instance_api_auth(), data={'name': repo})
 
     res.raise_for_status()
     log.debug("Directory created")
@@ -92,7 +92,7 @@ def _post_file(url, full_path, filename, payload):
     headers = {
         'Content-Disposition': 'attachment; filename="{}"'.format(filename),
         'Content-Type': "application/octet-stream",
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=FME_INSTANCE_API_TOKEN),
     }
     log.debug('Uploading {} to {}'.format(full_path, filename))
     repository_res = requests.post(url, data=payload, headers=headers)
@@ -110,12 +110,12 @@ def _register_fmejobsubmitter_service(repo_name, filename):
     url_repositories = 'fmerest/v2/repositories'
 
     log.debug("Register `fmejobsubmitter` service")
-    reg_service_url = '{FME_SERVER}/{url_connect}/{repo_name}/items/{filename}/services?detail=low&accept=json'.format(
-        FME_SERVER=FME_SERVER, url_connect=url_repositories, repo_name=repo_name, filename=filename)
+    reg_service_url = '{FME_BASE_URL}/{url_connect}/{repo_name}/items/{filename}/services?detail=low&accept=json'.format(
+        FME_BASE_URL=FME_BASE_URL, url_connect=url_repositories, repo_name=repo_name, filename=filename)
     reg_service_headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API)
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=FME_INSTANCE_API_TOKEN)
     }
     reg_service_res = requests.post(
         reg_service_url, headers=reg_service_headers, data="services=fmejobsubmitter")
@@ -130,11 +130,11 @@ def download(path, disposition='inline', text=True):
 
     headers = {
         'Content-Type': "application/json",
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=FME_API),
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=FME_INSTANCE_API_TOKEN),
     }
 
     url_connect = f'fmerest/v2/resources/connections/FME_SHAREDRESOURCE_DATA/filesys/'
-    url = f'{FME_SERVER}/{url_connect}{path}?disposition={disposition}&accept=contents'
+    url = f'{FME_BASE_URL}/{url_connect}{path}?disposition={disposition}&accept=contents'
 
     try:
         response = requests.get(url, headers=headers)
@@ -162,7 +162,7 @@ def upload(source_directory, repo, directory, files, recreate_dir=True):
         delete_directory(directory)
         create_directory(directory)
 
-    url = f'{FME_SERVER}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{directory}? \
+    url = f'{FME_BASE_URL}/{url_connect}/FME_SHAREDRESOURCE_DATA/filesys/{directory}? \
           createDirectories=false&detail=low&overwrite=true'
 
     for infile in glob.glob(os.path.join(source_directory, files)):
@@ -192,8 +192,8 @@ def upload_repository(source_directory, directory, files, recreate_repo=True, re
     for infile in glob.glob(os.path.join(source_directory, files)):
         print(infile)
         with open(infile, 'rb') as f:
-            url = '{FME_SERVER}/{url_connect}/items?detail=low&accept=json'.format(
-                FME_SERVER=FME_SERVER, url_connect=url_connect)
+            url = '{FME_BASE_URL}/{url_connect}/items?detail=low&accept=json'.format(
+                FME_BASE_URL=FME_BASE_URL, url_connect=url_connect)
             _post_file(url, infile, os.path.split(infile)[-1], f)
             if register_fmejob:
                 _register_fmejobsubmitter_service(directory, os.path.split(infile)[-1])
@@ -210,15 +210,15 @@ def run_transformation_job(repository, workspace, params):
     :return:
     """
     urltransform = 'fmerest/v2/transformations'
-    target_url = '{FME_SERVER}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
-        FME_SERVER=FME_SERVER, urltransform=urltransform, repository=repository, workspace=workspace)
+    target_url = '{FME_BASE_URL}/{urltransform}/commands/submit/{repository}/{workspace}?detail=low&accept=json'.format(
+        FME_BASE_URL=FME_BASE_URL, urltransform=urltransform, repository=repository, workspace=workspace)
     try:
         response = requests.post(
             url=target_url,
             headers={
-                "Referer": "{FME_SERVER}/fmerest/v2/apidoc/".format(FME_SERVER=FME_SERVER),
-                "Origin": "{FME_SERVER}".format(FME_SERVER=FME_SERVER),
-                "Authorization": "fmetoken token={FME_API}".format(FME_API=FME_API),
+                "Referer": "{FME_BASE_URL}/fmerest/v2/apidoc/".format(FME_BASE_URL=FME_BASE_URL),
+                "Origin": "{FME_BASE_URL}".format(FME_BASE_URL=FME_BASE_URL),
+                "Authorization": "fmetoken token={FME_INSTANCE_API_TOKEN}".format(FME_INSTANCE_API_TOKEN=FME_INSTANCE_API_TOKEN),
                 "Content-Type": "application/json",
                 "Accept": "application/json"},
             data=json.dumps(params))
@@ -239,9 +239,9 @@ def fetch_log_for_job(job):
     :param job:
     :return:
     """
-    url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}/log?detail=low'.format(
-        FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
-    res = requests.get(url, headers=fme_api_auth())
+    url = '{FME_BASE_URL}/{urltransform}/jobs/id/{jobid}/log?detail=low'.format(
+        FME_BASE_URL=FME_BASE_URL, urltransform=job['urltransform'], jobid=job['jobid'])
+    res = requests.get(url, headers=fme_instance_api_auth())
     res.raise_for_status()
     return res.content.decode(encoding='utf-8')
 
@@ -252,9 +252,9 @@ def get_job_status(job):
     :param job:
     :return:
     """
-    url = '{FME_SERVER}/{urltransform}/jobs/id/{jobid}?detail=low'.format(
-        FME_SERVER=FME_SERVER, urltransform=job['urltransform'], jobid=job['jobid'])
-    res = requests.get(url, headers=fme_api_auth())
+    url = '{FME_BASE_URL}/{urltransform}/jobs/id/{jobid}?detail=low'.format(
+        FME_BASE_URL=FME_BASE_URL, urltransform=job['urltransform'], jobid=job['jobid'])
+    res = requests.get(url, headers=fme_instance_api_auth())
     res.raise_for_status()
     log.debug("Status for job %s: %s", job, res.json()['status'])
     return res.json()['status']

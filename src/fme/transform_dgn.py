@@ -43,10 +43,11 @@ def upload_dgn_files():
     store = ObjectStore('BGT')
     headers = {
         'Content-Type': "application/json",
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=bgt_setup.FME_INSTANCE_API_TOKEN),
     }
-    url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
-          'FME_SHAREDRESOURCE_DATA/filesys/DGNv8?accept=json&depth=1&detail=low'
+    url = '{FME_BASE_URL}/fmerest/v2/resources/connections/' \
+          'FME_SHAREDRESOURCE_DATA/filesys/{folder}?' \
+          'accept=json&depth=1&detail=low'.format(FME_BASE_URL=bgt_setup.FME_BASE_URL, folder='DGNv8')
     if not os.path.exists('/tmp/data'):
         os.makedirs('/tmp/data')
     zip_filename = '/tmp/data/DGNv8_DGN.zip'

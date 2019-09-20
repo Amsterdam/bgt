@@ -91,7 +91,7 @@ def upload_over_onderbouw_backup():
     store = ObjectStore('BGT')
     headers = {
         'Content-Type': "application/json",
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=bgt_setup.FME_INSTANCE_API_TOKEN),
     }
 
     # determine the latest upload filename
@@ -217,7 +217,7 @@ def download_bgt(fme_test_run=False):
 def create_fme_sql_connection():
     log.info("create dbconnection for FME database")
     return fme_sql_utils.SQLRunner(
-        host=bgt_setup.FME_SERVER.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
+        host=bgt_setup.FME_BASE_URL.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
         user=bgt_setup.DB_FME_USER, password=bgt_setup.FME_DBPASS)
 
 
@@ -347,7 +347,7 @@ def main() -> int:
     logging.getLogger('requests').setLevel('WARNING')
     log.info("Starting import script")
     server_manager = fme_server.FMEServer(
-        bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
+        bgt_setup.FME_BASE_URL, bgt_setup.FME_INSTANCE_ID, bgt_setup.FME_CLOUD_API_TOKEN)
 
     try:
         log.info("Starting script, current server status is %s", server_manager.get_status())
