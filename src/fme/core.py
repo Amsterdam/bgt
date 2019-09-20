@@ -326,9 +326,9 @@ def run_all(fme_run_test):
     # run transformation to `NLCS` and `DGN` format
     last_job_in_queue = {}
     last_job_in_queue = start_transformation_dgn(*a)
-fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
+    fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
 
-# upload the resulting shapes an the source GML zip to objectstore
+    # upload the resulting shapes an the source GML zip to objectstore
     for a in retrieve_chunk_coordinates():
         start_transformation_nlcs_chunk(*a)
     upload_gebieden()
