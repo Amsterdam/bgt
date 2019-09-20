@@ -129,7 +129,7 @@ def collect_shape_files_to_fetch():
               'accept=json&depth=4&detail=low'.format(FME_BASE_URL=bgt_setup.FME_BASE_URL, folder=fme_folder)
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
-            if '_gebieden' in folder:
+            if '_gebieden' in fme_folder:
                 files_to_fetch += get_paths2(response.json()['contents'])
             else:
                 files_to_fetch += get_paths(response.json()['contents'])
@@ -148,9 +148,9 @@ def remove_shape_results(shape_type):
               'accept=json&depth=4&detail=low'.format(FME_BASE_URL=bgt_setup.FME_BASE_URL, folder=fme_folder)
         response = requests.delete(url, headers=headers)
         if response.status_code == 204:
-            log.info(f"removed folder {folder}")
+            log.info(f"removed folder {fme_folder}")
         else:
-            log.info(f"Removing folder {folder} failed {response.status_code}")
+            log.info(f"Removing folder {fme_folder} failed {response.status_code}")
 
 
 def zip_upload_and_cleanup_shape_results():
