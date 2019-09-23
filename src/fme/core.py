@@ -301,6 +301,7 @@ def run_before_after_comparisons():
     )
 
 
+# noinspection PyInterpreter
 def run_all(fme_run_test=0):
 
     download_bgt(fme_run_test)
@@ -325,12 +326,12 @@ def run_all(fme_run_test=0):
 
     # run transformation to `NLCS` and `DGN` format
     last_job_in_queue = {}
+    for a in retrieve_chunk_coordinates():
+        start_transformation_nlcs_chunk(*a)
     last_job_in_queue = start_transformation_dgn(*a)
     fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
 
     # upload the resulting shapes an the source GML zip to objectstore
-    for a in retrieve_chunk_coordinates():
-        start_transformation_nlcs_chunk(*a)
     upload_gebieden()
     upload_pdok_zip_to_objectstore()
     upload_nlcs_lijnen_files()
