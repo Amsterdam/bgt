@@ -328,7 +328,7 @@ def run_all(fme_run_test=0):
     last_job_in_queue = {}
     for a in retrieve_chunk_coordinates():
         start_transformation_nlcs_chunk(*a)
-    last_job_in_queue = start_transformation_dgn(*a)
+        last_job_in_queue = start_transformation_dgn(*a)
     fme_utils.wait_for_job_to_complete(last_job_in_queue, sleep_time=20)
 
     # upload the resulting shapes an the source GML zip to objectstore
