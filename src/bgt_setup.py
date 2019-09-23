@@ -18,4 +18,4 @@ DB_FME_PW = os.getenv('DATABASE_ENV_POSTGRES_PASSWORD', 'insecure')
 DB_FME_PORT = os.getenv('DATABASE_PORT_5432_TCP_PORT', '5401')
 DB_FME_USER = os.getenv('BGT_DATABASE_ENV_POSTGRES_USER', 'dbuser')
 
-FME_TEST_RUN = os.getenv('FME_TEST_RUN', False)
+FME_TEST_RUN = os.getenv('FME_TEST_RUN', False) == '1'

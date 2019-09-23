@@ -152,7 +152,7 @@ def unzip_pdok_file():
     log.info("Unzip complete")
 
 
-def pdok_url(fme_test_run=False):
+def pdok_url(fme_test_run=0):
     """
     PARAM: fme_test_run: set tot True for testing one tile to speed up integration test
     Returns the PDOK url for `now`
@@ -172,9 +172,9 @@ def pdok_url(fme_test_run=False):
         38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
         38309, 38320, 38322, 38305, 38669, 38473, 38123, 38519, 38286, 38296, 38297]
 
-    if fme_test_run:
+    if fme_test_run == 1:
         tile_codes = [
-            38095]
+            38117,38095]
 
     tiles = {
         "layers": [
@@ -198,7 +198,7 @@ def is_bgt_updated():
     print(res)
 
 
-def download_bgt(fme_test_run=False):
+def download_bgt(fme_test_run=0):
     target = "extract_bgt.zip"
     log.info("Starting download from %s to %s", pdok_url(fme_test_run), target)
     response = requests.get(pdok_url(fme_test_run), stream=True)
@@ -301,7 +301,7 @@ def run_before_after_comparisons():
     )
 
 
-def run_all(fme_run_test):
+def run_all(fme_run_test=0):
 
     download_bgt(fme_run_test)
 
