@@ -119,16 +119,17 @@ def collect_shape_files_to_fetch():
 
     headers = {
         'Content-Type': "application/json",
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=bgt_setup.FME_INSTANCE_API_TOKEN),
     }
     files_to_fetch = []
 
-    for folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
-        url = 'https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/' \
-              'FME_SHAREDRESOURCE_DATA/filesys/{}?accept=json&depth=4&detail=low'.format(folder)
+    for fme_folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
+        url = '{FME_BASE_URL}/fmerest/v2/resources/connections/' \
+              'FME_SHAREDRESOURCE_DATA/filesys/{folder}?' \
+              'accept=json&depth=4&detail=low'.format(FME_BASE_URL=bgt_setup.FME_BASE_URL, folder=fme_folder)
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
-            if '_gebieden' in folder:
+            if '_gebieden' in fme_folder:
                 files_to_fetch += get_paths2(response.json()['contents'])
             else:
                 files_to_fetch += get_paths(response.json()['contents'])
@@ -139,16 +140,17 @@ def remove_shape_results(shape_type):
     log.info(f"remove results for {shape_type}")
     headers = {
         'Content-Type': "application/json",
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=bgt_setup.FME_INSTANCE_API_TOKEN),
     }
-    for folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
-        url = "https://bgt-vicrea-amsterdam-2016.fmecloud.com/fmerest/v2/resources/connections/" \
-              "FME_SHAREDRESOURCE_DATA/filesys/{}?detail=low".format(folder)
+    for fme_folder in ['ASCII_totaal', 'Esri_Shape_totaal', 'ASCII_gebieden', 'Esri_Shape_gebieden']:
+        url = '{FME_BASE_URL}/fmerest/v2/resources/connections/' \
+              'FME_SHAREDRESOURCE_DATA/filesys/{folder}?' \
+              'accept=json&depth=4&detail=low'.format(FME_BASE_URL=bgt_setup.FME_BASE_URL, folder=fme_folder)
         response = requests.delete(url, headers=headers)
         if response.status_code == 204:
-            log.info(f"removed folder {folder}")
+            log.info(f"removed folder {fme_folder}")
         else:
-            log.info(f"Removing folder {folder} failed {response.status_code}")
+            log.info(f"Removing folder {fme_folder} failed {response.status_code}")
 
 
 def zip_upload_and_cleanup_shape_results():

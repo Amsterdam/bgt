@@ -10,6 +10,7 @@ services:
       FMEINSTANCE: ${FMEINSTANCE:-2493}
       DEBUG: ${DEBUG:-0}
       BGT_OBJECTSTORE_PASSWORD: ${BGT_OBJECTSTORE_PASSWORD:-insecure}
+      FME_TEST_RUN: ${FME_TEST_RUN:-0}
     #volumes:
     #  - /tmp/data:/tmp/data
     command: >

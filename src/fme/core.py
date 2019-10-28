@@ -91,7 +91,7 @@ def upload_over_onderbouw_backup():
     store = ObjectStore('BGT')
     headers = {
         'Content-Type': "application/json",
-        'Authorization': 'fmetoken token={FME_API}'.format(FME_API=bgt_setup.FME_API),
+        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=bgt_setup.FME_INSTANCE_API_TOKEN),
     }
 
     # determine the latest upload filename
@@ -152,8 +152,9 @@ def unzip_pdok_file():
     log.info("Unzip complete")
 
 
-def pdok_url():
+def pdok_url(fme_test_run=0):
     """
+    PARAM: fme_test_run: set tot True for testing one tile to speed up integration test
     Returns the PDOK url for `now`
     :return:
     """
@@ -169,7 +170,11 @@ def pdok_url():
         38480, 38138, 38136, 38483, 38481, 38139, 38140, 38142, 38484, 38486, 38487, 38485, 38143, 38141,
         38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
         38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
-        38309, 38320, 38322, 38305, 38669, 38473, 38123, 38519, 38286]
+        38309, 38320, 38322, 38305, 38669, 38473, 38123, 38519, 38286, 38296, 38297]
+
+    if fme_test_run == 1:
+        tile_codes = [
+            38117,38095]
 
     tiles = {
         "layers": [
@@ -193,10 +198,10 @@ def is_bgt_updated():
     print(res)
 
 
-def download_bgt():
+def download_bgt(fme_test_run=0):
     target = "extract_bgt.zip"
-    log.info("Starting download from %s to %s", pdok_url(), target)
-    response = requests.get(pdok_url(), stream=True)
+    log.info("Starting download from %s to %s", pdok_url(fme_test_run), target)
+    response = requests.get(pdok_url(fme_test_run), stream=True)
     start = time.clock()
     # total_length = response.headers.get('content-length')
     downloaded_length = 0
@@ -212,7 +217,7 @@ def download_bgt():
 def create_fme_sql_connection():
     log.info("create dbconnection for FME database")
     return fme_sql_utils.SQLRunner(
-        host=bgt_setup.FME_SERVER.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
+        host=bgt_setup.FME_BASE_URL.split('//')[-1], dbname=bgt_setup.DB_FME_DBNAME,
         user=bgt_setup.DB_FME_USER, password=bgt_setup.FME_DBPASS)
 
 
@@ -296,8 +301,10 @@ def run_before_after_comparisons():
     )
 
 
-def run_all():
-    download_bgt()
+# noinspection PyInterpreter
+def run_all(fme_run_test=0):
+
+    download_bgt(fme_run_test)
 
     # upload data and FMW scripts
     upload_data()
@@ -330,7 +337,7 @@ def run_all():
     upload_nlcs_lijnen_files()
     upload_nlcs_vlakken_files()
     upload_dgn_files()
-    run_before_after_comparisons()
+    # run_before_after_comparisons()
 
 
 def main() -> int:
@@ -341,14 +348,14 @@ def main() -> int:
     logging.getLogger('requests').setLevel('WARNING')
     log.info("Starting import script")
     server_manager = fme_server.FMEServer(
-        bgt_setup.FME_SERVER, bgt_setup.INSTANCE_ID, bgt_setup.FME_SERVER_API)
+        bgt_setup.FME_BASE_URL, bgt_setup.FME_INSTANCE_ID, bgt_setup.FME_CLOUD_API_TOKEN)
 
     try:
         log.info("Starting script, current server status is %s", server_manager.get_status())
 
         # start the fme server
         server_manager.start()
-        run_all()
+        run_all(bgt_setup.FME_TEST_RUN)
     except Exception as e:
         log.exception("Could not process server jobs {}".format(e))
         raise e

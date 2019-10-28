@@ -5,6 +5,22 @@ Basiskaart Grootschalige Topografie
 
 .. highlight:: bash
 
+FMEcloud
+===================================
+We maken gebuik van de FME cloud API en de FME instance API.
+FMEcloud: https://api.fmecloud.safe.com/api_documentation/v1
+FME instance API: https://docs.safe.com/fme/2016.1/html/FME_REST/v2/apidoc/
+FME_BASE_URL is een variabel met de URL naar de FME instance.
+Er wordt een Database "bgt" in de FME instance aangemaakt met bijbehoordde schema's, tabellen en views.
+De transformatie vindplaats op de FME instance en alle producten, Esri_shape, csv, DGNv8 en worden op de BGT objectstore gedownload.
+
+Het gebied dat periodiek wordt verwerkt is binnen de gegevensverzameling op te delen in:
+
+    De landelijk verplichte verzameling van gegevens conform IMGEO: BGT
+    De 'verplichte' verzameling gegevens aanvullend op BGT zoals gedefinieerd door de bronhouder Gemeente Amsterdam: BGT+
+    De niet-verplichte en vooraf niet bekende verzameling van gegevens: IMGEO-rest
+
+
 
 Development environment
 -----------------------

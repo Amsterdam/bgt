@@ -5,54 +5,54 @@
 #    Command-line to run this workspace:
 #    
 #    
-#    "C:\Program Files\FME2016_0\fme.exe" C:\BGT\bgt\app\source_data\aanmaak_producten_bgt\00_kaartbladen_coordinatenbepaler.fmw
-#          --SourceDataset_POSTGIS_3 "bgt_dev_lokaal"
-#          --DestDataset_CSV "G:\DBI\Uitwissel\Geo\BGT_uitwissel"
+#    "C:\Program Files\FME\fme.exe" C:\datapunt\code\BGT\app\source_data\aanmaak_producten_bgt\00_kaartbladen_coordinatenbepaler.fmw
+#          --SourceDataset_POSTGIS_3 "bgt_dev_local"
+#          --DestDataset_CSV "C:\datapunt\code\BGT\app\source_data\aanmaak_producten_bgt\resource"
 #    
 #    
-#!   SHOW_INFO_NODES="true"
-#!   CATEGORY=""
-#!   REQUIREMENTS_KEYWORD=""
-#!   TITLE=""
-#!   HISTORY=""
-#!   LOG_MAX_RECORDED_FEATURES="200"
-#!   BEGIN_TCL=""
-#!   IGNORE_READER_FAILURE="No"
-#!   FME_SERVER_SERVICES=""
-#!   VIEW_POSITION="753.133 490.63"
-#!   FME_BUILD_NUM="16178"
-#!   FME_DOCUMENT_PRIORGUID="7e684c72-3abd-4fbc-bcd3-d871dc23ac22,021b1f10-1dbe-4727-a800-5eb0a3f9669b,2ee726b2-6c84-4e0d-960a-d7e3e742dd7c"
-#!   LOG_FILE=""
-#!   FME_DOCUMENT_GUID="e79e5c67-e340-41bc-bfa2-575b36425e01"
-#!   DESCRIPTION=""
-#!   DOC_EXTENTS="3186.66 338.9"
-#!   PYTHON_COMPATIBILITY="27"
-#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
-#!   FME_GEOMETRY_HANDLING="Enhanced"
-#!   WARN_INVALID_XFORM_PARAM="Yes"
-#!   FME_REPROJECTION_ENGINE="FME"
-#!   LAST_SAVE_BUILD="FME(R) 2016.0.1.2 (20160318 - Build 16178 - WIN64)"
-#!   LAST_SAVE_DATE="2017-03-02T11:27:52"
 #!   USAGE=""
-#!   DESTINATION_ROUTING_FILE=""
-#!   ZOOM_SCALE="100"
-#!   SOURCE_ROUTING_FILE=""
-#!   ATTR_TYPE_ENCODING="SDF"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_REPROJECTION_ENGINE="FME"
 #!   LEGAL_TERMS_CONDITIONS=""
-#!   REQUIREMENTS=""
-#!   SOURCE="NONE"
-#!   SHOW_ANNOTATIONS="true"
-#!   WORKSPACE_VERSION="1"
-#!   DESTINATION="NONE"
-#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   SOURCE_ROUTING_FILE=""
 #!   REDIRECT_TERMINATORS="NONE"
+#!   END_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   WORKSPACE_VERSION="1"
+#!   TITLE=""
+#!   VIEW_POSITION="-1565.64 1656.27"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   BEGIN_TCL=""
+#!   SHOW_ANNOTATIONS="true"
+#!   IGNORE_READER_FAILURE="No"
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   ZOOM_SCALE="100"
+#!   REQUIREMENTS_KEYWORD=""
+#!   DOC_TOP_LEFT="461.101 -935"
 #!   FME_STROKE_MAX_DEVIATION="0"
+#!   LAST_SAVE_BUILD="FME(R) 2016.0.1.2 (20160318 - Build 16178 - WIN64)"
+#!   FME_SERVER_SERVICES=""
+#!   MAX_LOG_FEATURES="200"
+#!   FME_BUILD_NUM="16178"
+#!   REQUIREMENTS=""
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   SHOW_INFO_NODES="true"
+#!   LOG_FILE=""
+#!   DESTINATION_ROUTING_FILE=""
+#!   HISTORY=""
+#!   PYTHON_COMPATIBILITY="27"
+#!   PASSWORD=""
+#!   DOC_EXTENTS="3831.32 409.9"
+#!   LAST_SAVE_DATE="2019-01-21T17:00:06"
+#!   FME_DOCUMENT_GUID="eaf29b41-669a-4aa7-b0dd-36a7d304390f"
 #!   BEGIN_PYTHON=""
 #!   END_PYTHON=""
-#!   DOC_TOP_LEFT="461.101 -864"
-#!   END_TCL=""
-#!   PASSWORD=""
-#!   MAX_LOG_FEATURES="200"
+#!   DESTINATION="NONE"
+#!   SOURCE="NONE"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   FME_DOCUMENT_PRIORGUID="7e684c72-3abd-4fbc-bcd3-d871dc23ac22,021b1f10-1dbe-4727-a800-5eb0a3f9669b,2ee726b2-6c84-4e0d-960a-d7e3e742dd7c,e79e5c67-e340-41bc-bfa2-575b36425e01,6a6d1c6e-f409-4ce9-a20f-80ab6bfcfa34"
 #! >
 #! <DATASETS>
 #! <DATASET
@@ -68,7 +68,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="postgis_sql_where_clause &quot;&quot; postgis_sql_statement &quot;&quot;"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_feature_type char(50) fme_geometry fme_char(50) multi_reader_keyword char(50) fme_rotation float8 fme_color char(50) fme_primary_axis float8 postgis_collection_id int4 fme_secondary_axis float8 postgis_type char(50) fme_type char(50) multi_reader_type char(50) fme_start_angle float8 fme_sweep_angle float8 fme_basename char(50) postgis_collection_part_id int4 multi_reader_id int4 postgres_oid int4 fme_text_string char(50) fme_dataset char(50) fme_fill_color char(50) multi_reader_full_id int4 fme_text_size float8"
+#!   EXPOSABLE_ATTRS="fme_start_angle float8 fme_secondary_axis float8 multi_reader_type char(50) fme_sweep_angle float8 fme_dataset char(50) postgis_type char(50) fme_feature_type char(50) fme_color char(50) fme_text_string char(50) fme_rotation float8 fme_basename char(50) postgres_oid int4 multi_reader_full_id int4 fme_fill_color char(50) fme_primary_axis float8 postgis_collection_id int4 fme_geometry fme_char(50) postgis_collection_part_id int4 fme_type char(50) multi_reader_keyword char(50) multi_reader_id int4 fme_text_size float8"
 #!   DEFLINE_PARMS="&quot;GUI NAMEDGROUP  postgis_query_settings_group postgis_sql_where_clause%postgis_sql_statement Table Settings&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT_SQL_CFG postgis_sql_where_clause MODE,WHERE WHERE Clause&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT_SQL_CFG postgis_sql_statement MODE,SQL SELECT Statement&quot; &quot;&quot; "
 #!   ATTR_INDEX_TYPES="BTREE RTREE HASH PRIKEY"
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -77,28 +77,20 @@
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
 #!   DATASET_TYPE="DATABASE"
 #!   GENERATE_FME_BUILD_NUM="16178"
+#!   MAX_FEATURES=""
 #!   MIN_FEATURES=""
 #!   MAX_FEATURES_PER_FEATURE_TYPE=""
 #!   COORDSYS=""
 #!   START_FEATURE=""
 #!   FEATURE_TYPES=""
-#!   MAX_FEATURES=""
 #! >
-#! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="Table1"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="NETWORK_AUTHENTICATION"
-#!   VALUE="NO"
-#! />
 #! <METAFILE_PARAMETER
 #!   NAME="ADVANCED_PARMS"
 #!   VALUE="POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_NAME"
-#!   VALUE="Table"
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="NETWORK_PROXY"
@@ -107,6 +99,14 @@
 #! <METAFILE_PARAMETER
 #!   NAME="DATASET_NAME"
 #!   VALUE="Database"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="NETWORK_AUTHENTICATION"
+#!   VALUE="NO"
 #! />
 #! </DATASET>
 #! <DATASET
@@ -122,7 +122,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="csv_append_mode INHERIT_FROM_WRITER csv_field_names INHERIT_FROM_WRITER"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="csv_type char(50) fme_basename text fme_feature_type text fme_text_string text fme_color text fme_type text fme_geometry fme_char(50) fme_dataset text fme_rotation float fme_secondary_axis float fme_fill_color text fme_text_size float fme_start_angle float fme_primary_axis float fme_sweep_angle float"
+#!   EXPOSABLE_ATTRS="fme_dataset text fme_text_string text fme_rotation float fme_feature_type text fme_text_size float fme_start_angle float fme_secondary_axis float fme_sweep_angle float fme_type text fme_fill_color text fme_primary_axis float fme_geometry fme_char(50) fme_color text csv_type char(50) fme_basename text"
 #!   DEFLINE_PARMS="&quot;GUI NAMEDGROUP csv_layer_group csv_append_mode%csv_field_names File Settings&quot; &quot;&quot; &quot;GUI OPTIONAL CHOICE csv_append_mode INHERIT_FROM_WRITER%yes%no Append to File&quot; INHERIT_FROM_WRITER &quot;GUI OPTIONAL CHOICE csv_field_names INHERIT_FROM_WRITER%yes%no Output Field Names&quot; INHERIT_FROM_WRITER "
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS="&quot;*{}$"
@@ -131,45 +131,45 @@
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
 #!   DATASET_TYPE="FILEDIR"
 #!   GENERATE_FME_BUILD_NUM="16178"
+#!   FANOUT_EXPRESSION="&lt;Unused&gt;"
 #!   FANOUT_GROUP="NO"
 #!   COORDSYS="EPSG:28992"
-#!   FANOUT_EXPRESSION=""
 #! >
-#! <METAFILE_PARAMETER
-#!   NAME="MIME_TYPE"
-#!   VALUE="text/csv ADD_DISPOSITION"
-#! />
 #! <METAFILE_PARAMETER
 #!   NAME="WRITER_DATASET_HINT"
 #!   VALUE="Specify a folder for the CSV file"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="DEFAULT_ATTR_TYPE"
-#!   VALUE="auto"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="File1"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="READER_DATASET_HINT"
 #!   VALUE="Select the CSV file(s)"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="READER_FEATURE_TYPE_EDITING"
-#!   VALUE="NO"
-#! />
-#! <METAFILE_PARAMETER
 #!   NAME="ADVANCED_PARMS"
 #!   VALUE="_ENCODING CSV_OUT_ENCODING _WRITE_UTF8_BOM"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="File1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="csv file"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_NAME"
 #!   VALUE="CSV File"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="DATASET_NAME"
-#!   VALUE="csv file"
+#!   NAME="MIME_TYPE"
+#!   VALUE="text/csv ADD_DISPOSITION"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="auto"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_FEATURE_TYPE_EDITING"
+#!   VALUE="NO"
 #! />
 #! </DATASET>
 #! </DATASETS>
@@ -845,7 +845,7 @@
 #!   IDENTIFIER="11"
 #!   FEAT_GEOMTYPE="All"
 #!   POSITION="3647.76 -864"
-#!   BOUNDING_RECT="3647.76 -864 -1 -1"
+#!   BOUNDING_RECT="3647.76 -864 644.658 71"
 #!   ORDER="5e+14"
 #!   COLLAPSED="true"
 #!   KEYWORD="CSV_1"
@@ -857,9 +857,9 @@
 #!     <FEAT_ATTRIBUTE ATTR_NAME="ENVELOPE_MINY" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="ENVELOPE_MAXX" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
 #!     <FEAT_ATTRIBUTE ATTR_NAME="ENVELOPE_MAXY" ATTR_TYPE="auto" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_field_names" PARM_VALUE="INHERIT_FROM_WRITER"/>
 #!     <DEFLINE_PARM PARM_NAME="csv_append_mode" PARM_VALUE="INHERIT_FROM_WRITER"/>
 #!     <DEFLINE_PARM PARM_NAME="csv_layer_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="csv_field_names" PARM_VALUE="INHERIT_FROM_WRITER"/>
 #! </FEATURE_TYPE>
 #! </FEATURE_TYPES>
 #! <FMESERVER>
@@ -867,12 +867,12 @@
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI NAMED_DB_CONNECTION_ENCODED SourceDataset_POSTGIS_3 FMT:POSTGRES%FAMILY:PostgreSQL Connection:"
-#!   DEFAULT_VALUE="bgt_dev_lokaal"
+#!   DEFAULT_VALUE="bgt_dev_local"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME DestDataset_CSV Destination CSV (CommaSeparatedValue) Folder:"
-#!   DEFAULT_VALUE="G:\DBI\Uitwissel\Geo\BGT_uitwissel"
+#!   DEFAULT_VALUE="$(FME_MF_DIR)resource"
 #!   IS_STAND_ALONE="false"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -902,7 +902,7 @@
 #!   ORDER="5e+14"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
-#!   COLOUR="1,1,0.784314,0.196078"
+#!   COLOUR="1,1,0.784314,0.192157"
 #!   SIZE_POLICY="8"
 #!   COMMENT_TYPE="REGULAR"
 #!   ANCHORED_NODE="3"
@@ -917,7 +917,7 @@
 #!   ORDER="5e+14"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
-#!   COLOUR="1,1,0.784314,0.196078"
+#!   COLOUR="1,1,0.784314,0.192157"
 #!   SIZE_POLICY="8"
 #!   COMMENT_TYPE="REGULAR"
 #!   ANCHORED_NODE="13"
@@ -932,7 +932,7 @@
 #!   ORDER="5e+14"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
-#!   COLOUR="1,1,0.784314,0.196078"
+#!   COLOUR="1,1,0.784314,0.192157"
 #!   SIZE_POLICY="8"
 #!   COMMENT_TYPE="REGULAR"
 #!   ANCHORED_NODE="15"
@@ -974,10 +974,10 @@
 #!     <FEAT_COLLAPSED COLLAPSED="4"/>
 #!     <XFORM_ATTR ATTR_NAME="naam" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="big_id" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeFilter"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_VALUES" PARM_VALUE="&lt;lt&gt;EMPTY&lt;gt&gt;,&lt;lt&gt;MISSING&lt;gt&gt;,&lt;lt&gt;NULL&lt;gt&gt;,&lt;lt&gt;UNFILTERED&lt;gt&gt;,1"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeFilter"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_NAME" PARM_VALUE="big_id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUES" PARM_VALUE="&lt;lt&gt;EMPTY&lt;gt&gt;,&lt;lt&gt;MISSING&lt;gt&gt;,&lt;lt&gt;NULL&lt;gt&gt;,&lt;lt&gt;UNFILTERED&lt;gt&gt;,1"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="13"
@@ -1001,14 +1001,14 @@
 #!     <XFORM_ATTR ATTR_NAME="_zmax" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_zmin" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="BoundsExtractor"/>
-#!     <XFORM_PARM PARM_NAME="ZMAX" PARM_VALUE="_zmax"/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XMIN" PARM_VALUE="ENVELOPE_MINX"/>
-#!     <XFORM_PARM PARM_NAME="ZMIN" PARM_VALUE="_zmin"/>
-#!     <XFORM_PARM PARM_NAME="YMIN" PARM_VALUE="ENVELOPE_MINY"/>
 #!     <XFORM_PARM PARM_NAME="YMAX" PARM_VALUE="ENVELOPE_MAXY"/>
+#!     <XFORM_PARM PARM_NAME="XMIN" PARM_VALUE="ENVELOPE_MINX"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XMAX" PARM_VALUE="ENVELOPE_MAXX"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ZMAX" PARM_VALUE="_zmax"/>
+#!     <XFORM_PARM PARM_NAME="YMIN" PARM_VALUE="ENVELOPE_MINY"/>
+#!     <XFORM_PARM PARM_NAME="ZMIN" PARM_VALUE="_zmin"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="15"
@@ -1032,10 +1032,10 @@
 #!     <XFORM_ATTR ATTR_NAME="_zmax" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_zmin" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRounder"/>
-#!     <XFORM_PARM PARM_NAME="PLACES" PARM_VALUE="0"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ROUND_TYPE" PARM_VALUE="nearest"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PLACES" PARM_VALUE="0"/>
 #!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="ENVELOPE_MINY,ENVELOPE_MAXY,ENVELOPE_MAXX,ENVELOPE_MINX"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
@@ -1088,9 +1088,9 @@
 #! </WORKSPACE>
 FME_PYTHON_VERSION 27
 GUI IGNORE SourceDataset_POSTGIS_1,POSTGIS_IN_EXPOSE_ATTRS_GROUP_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1,POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1,POSTGIS_IN_SEARCH_METHOD_POSTGIS_1,POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_1,POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_1,POSTGIS_IN_BEGIN_SQL_POSTGIS_1,POSTGIS_IN_END_SQL_POSTGIS_1,DestDataset_CSV_1,CSV_OUT_EXTENSION_CSV_1,CSV_OUT_APPEND_CSV_1,CSV_OUT_FIELD_NAMES_CSV_1,CSV_OUT_WRITE_SCHEMA_FILE_CSV_1,CSV_OUT_PREPEND_SCHEMA_FILE_CSV_1,CSV_OUT_SEPARATOR_CSV_1,CSV_OUT_ENCODING_CSV_1,CSV_OUT_WRITE_UTF8_BOM_CSV_1,CSV_OUT_QUOTE_OUTPUT_CSV_1,CSV_OUT_QUOTE_FIELD_NAMES_CSV_1,CSV_OUT_END_OF_LINE_CSV_1
-DEFAULT_MACRO SourceDataset_POSTGIS_3 bgt_dev_lokaal
+DEFAULT_MACRO SourceDataset_POSTGIS_3 bgt_dev_local
 GUI NAMED_DB_CONNECTION_ENCODED SourceDataset_POSTGIS_3 FMT:POSTGRES%FAMILY:PostgreSQL Connection:
-DEFAULT_MACRO DestDataset_CSV G:\DBI\Uitwissel\Geo\BGT_uitwissel
+DEFAULT_MACRO DestDataset_CSV $(FME_MF_DIR)resource
 GUI DIRNAME DestDataset_CSV Destination CSV (CommaSeparatedValue) Folder:
 INCLUDE [ if {{$(SourceDataset_POSTGIS_3)} == {}} { puts_real {Parameter 'SourceDataset_POSTGIS_3' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(DestDataset_CSV)} == {}} { puts_real {Parameter 'DestDataset_CSV' must be given a value.}; exit 1; }; ]
@@ -1221,7 +1221,7 @@ CSV_1_WRITE_SCHEMA_FILE "$(CSV_OUT_WRITE_SCHEMA_FILE_CSV_1)"
 GUI ACTIVECHOICE CSV_OUT_WRITE_SCHEMA_FILE_CSV_1 Yes%No,CSV_OUT_PREPEND_SCHEMA_FILE Write Schema Configuration File
 # ============================================================================
 # Allows for appending to existing schema.ini file (PR#58638)
-DEFAULT_MACRO CSV_OUT_PREPEND_SCHEMA_FILE_CSV_1 <Unused>
+DEFAULT_MACRO CSV_OUT_PREPEND_SCHEMA_FILE_CSV_1 Yes
 CSV_1_PREPEND_SCHEMA_FILE "$(CSV_OUT_PREPEND_SCHEMA_FILE_CSV_1)"
 GUI CHOICE CSV_OUT_PREPEND_SCHEMA_FILE_CSV_1 Yes%No Prepend To Existing Schema Configuration File
 # ============================================================================
