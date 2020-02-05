@@ -4,6 +4,7 @@ import os
 import time
 import urllib.parse
 import urllib.request
+import csv
 from datetime import datetime
 from zipfile import ZipFile
 
@@ -78,67 +79,54 @@ def upload_pdok_zip_to_objectstore():
     log.info("Uploaded {} to objectstore BGT/BGT_Totaal/".format(filename))
 
 
-def upload_over_onderbouw_backup():
+def get_gob_over_onderbouw_files():
     """
-    Upload Over- en Onderbouw data
-
-    :return:
+    Downloads overbouw and onderbouw files from GOB objectstore.
+    Returns locations of stored files
     """
-
-    # 1. fetch latest `GBKA_OVERBOUW.dat from objectstore
-    log.info("ZIP and upload DGNv8 lijnen products to BGT objectstore")
-
-    store = ObjectStore('BGT')
-    headers = {
-        'Content-Type': "application/json",
-        'Authorization': 'fmetoken token={FME_INSTANCE_API_TOKEN}'.format(FME_INSTANCE_API_TOKEN=bgt_setup.FME_INSTANCE_API_TOKEN),
-    }
-
-    # determine the latest upload filename
-    latest_upload = sorted(
-        [
-            c['name'] for c in store._get_full_container_list([])
-                if c['name'].endswith('_BGT_OVERBOUW.zip')
-        ]
-    )[-1]
+    store = ObjectStore('GOB', bgt_setup.GOB_OBJECTSTORE_CONTAINER)
 
     if not os.path.exists('/tmp/data'):
         os.makedirs('/tmp/data')
 
-    # download the latest `BGT_OVERBOUW.dat` zipfile and temporary store it
-    #with open(f'/tmp/data/{latest_upload}', 'wb') as f:
-    with open("/tmp/data/BGT_OVERBOUW.zip", 'wb') as f:
-        f.write(store.get_store_object(latest_upload))
+    files = [
+        # Filename, object type
+        ('CFT_onderbouw.csv', 'CFT_Onderbouw'),
+        ('CFT_overbouw.csv', 'CFT_Overbouw'),
+    ]
 
-    # unzip the BGT_OVERBOUW.zip file
-    #with ZipFile(f'/tmp/data/{latest_upload}', 'r') as myzip:
-    #    myzip.extractall('/tmp/data/')
-    with ZipFile('/tmp/data/BGT_OVERBOUW.zip', 'r') as myzip:
-        myzip.extractall('/tmp/data/')
+    def file_objectstore_location(filename: str):
+        return f"bgt/CSV_Actueel/{filename}"
 
-    # get the data and process.
-    # Zip-file XXX.zip will contain a file called XXX.dat:
-    #dat_filename = latest_upload[0:-4] + '.dat'
-    data = open("/tmp/data/BGT_OVERBOUW.dat").read()
-    #data = open(f'/tmp/data/{dat_filename}').read()
+    def file_write_location(filename: str):
+        return f"/tmp/data/{filename}"
 
-    # cut column [0:4], create sql insert statements and exec.
-    db = create_fme_sql_connection()
+    for filename, _ in files:
+        with open(file_write_location(filename), "wb") as f:
+            f.write(store.get_store_object(file_objectstore_location(filename)))
+
+    return [(file_write_location(filename), typestr) for filename, typestr in files]
+
+
+def upload_over_onderbouw_backup():
+    log.info("Get onderbouw and overbouw files from GOB objectstore")
+    files = get_gob_over_onderbouw_files()
+
     log.info("Running INSERT statements...")
-    for line in str(data).split(os.linesep):
-        fields = line.split('|')[1:]
-        if len(fields) > 0:
-            if int(fields[2]) > 0:
-                # overbouw
-                sql = "insert into imgeo.\"CFT_Overbouw\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
-                      "values ('{}', {}, 'CFT_Overbouw', ST_GeomFromText('{}', 28992));".format(
-                    fields[0].replace('$$', ''), int(fields[2]), fields[3])
-            else:
-                # onderbouw
-                sql = "insert into imgeo.\"CFT_Onderbouw\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
-                      "values ('{}', {}, 'CFT_Onderbouw', ST_GeomFromText('{}', 28992));".format(
-                    fields[0].replace('$$', ''), int(fields[2]), fields[3])
-            db.run_sql(sql)
+    db = create_fme_sql_connection()
+
+    for file_location, object_type in files:
+        with open(file_location, 'r') as f:
+            reader = csv.reader(f, delimiter=';')
+
+            # Skip header
+            next(reader)
+            for row in reader:
+                guid, begin_geldigheid, eind_geldigheid, relatievehoogteligging, geometrie = row
+                sql = f"INSERT INTO imgeo.\"{object_type}\" (guid, relatievehoogteligging, bestandsnaam, geometrie) " \
+                      f"VALUES ('{guid.replace('$$', '')}', {relatievehoogteligging}, '{object_type}', " \
+                      f"ST_GeomFromText('{geometrie}', 28992));"
+                db.run_sql(sql)
 
 
 def unzip_pdok_file():
