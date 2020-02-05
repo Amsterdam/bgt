@@ -1,6 +1,6 @@
 import logging
 from swiftclient.client import Connection
-import bgt_setup
+from bgt_setup import OBJECTSTORES
 
 log = logging.getLogger(__name__)
 
@@ -8,27 +8,13 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 logging.getLogger("swiftclient").setLevel(logging.WARNING)
 
-OBJECTSTORE = {
-    'auth_version': '2.0',
-    'authurl': 'https://identity.stack.cloudvps.com/v2.0',
-    'user': 'basiskaart',
-    'key': bgt_setup.BGT_OBJECTSTORE_PASSWORD,
-    'tenant_name': 'BGE000081_BGT',
-    'os_options': {
-        'tenant_id': '1776010a62684386a08b094d89ce08d9',
-        'region_name': 'NL',
-        # 'endpoint_type': 'internalURL'
-    }}
-
-bgt_connection = Connection(**OBJECTSTORE)
-
 
 class ObjectStore():
     RESP_LIMIT = 10000  # serverside limit of the response
 
-    def __init__(self, container):
-        self.conn = Connection(**OBJECTSTORE)
-        self.container = container
+    def __init__(self, objectstore_id, container=None):
+        self.conn = Connection(**OBJECTSTORES[objectstore_id])
+        self.container = container if container else objectstore_id
 
     def get_store_object(self, name):
         """
