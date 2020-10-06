@@ -51,3 +51,6 @@ OBJECTSTORES = {
         }
     }
 }
+
+PDOK_DOWNLOAD_API_HOST = "https://api.pdok.nl"
+PDOK_DOWNLOAD_API = f"{PDOK_DOWNLOAD_API_HOST}/lv/bgt/download/v1_0"
