@@ -15,6 +15,7 @@ import fme.comparison as fme_comparison
 import fme.fme_server as fme_server
 import fme.fme_utils as fme_utils
 import fme.sql_utils as fme_sql_utils
+import fme.polygon as polygon
 from fme.transform_db import start_transformation_db
 from fme.transform_dgn import start_transformation_dgn, upload_dgn_files
 from fme.transform_gebieden import start_transformation_gebieden, upload_gebieden
@@ -140,56 +141,57 @@ def unzip_pdok_file():
     log.info("Unzip complete")
 
 
-def pdok_url(fme_test_run=0):
-    """
-    PARAM: fme_test_run: set tot True for testing one tile to speed up integration test
-    Returns the PDOK url for `now`
-    :return:
-    """
-    pdok_extract = "https://www.pdok.nl/download/service/extract.zip"
-    tile_codes = [
-        38121, 38115, 38120, 38077, 38076, 38078, 38079, 38421, 38423, 38429, 38431, 38474, 38475, 38478,
-        38479, 38490, 38491, 38494, 38516, 38518, 38690, 38525, 38696, 38688, 38666, 38667, 38670, 38671,
-        38682, 38680, 38681, 38675, 38673, 38331, 38329, 38323, 38321, 38299, 38298, 38287, 38285, 38284,
-        38281, 38275, 38274, 38103, 38109, 38280, 38108, 38105, 38104, 38093, 38092, 38094, 38116, 38674,
-        38672, 38330, 38328, 38317, 38476, 38477, 38488, 38489, 38492, 38493, 38495, 38664, 38665, 38668,
-        38517, 38466, 38467, 38118, 38119, 38117, 38095, 38106, 38107, 38110, 38111, 38282, 38283, 38316,
-        38319, 38472, 38464, 38465, 38122, 38470, 38471, 38468, 38469, 38126, 38127, 38124, 38125, 38482,
-        38480, 38138, 38136, 38483, 38481, 38139, 38140, 38142, 38484, 38486, 38487, 38485, 38143, 38141,
-        38134, 38132, 38133, 38135, 38306, 38304, 38312, 38314, 38130, 38128, 38129, 38131, 38137, 38313,
-        38307, 38308, 38310, 38315, 38318, 38656, 38658, 38659, 38657, 38662, 38660, 38661, 38663, 38311,
-        38309, 38320, 38322, 38305, 38669, 38473, 38123, 38519, 38286, 38296, 38297]
+def get_pdok_feature_types():
+    """Returns all available feature types from PDOK using the /dataset API endpoint.
 
-    if fme_test_run == 1:
-        tile_codes = [
-            38117,38095]
+    """
+    r = requests.get(f"{bgt_setup.PDOK_DOWNLOAD_API}/dataset")
+    r.raise_for_status()
 
-    tiles = {
-        "layers": [
-            {"aggregateLevel": 0,
-             "codes": tile_codes}]}
-    tiles_as_json = json.dumps(tiles)
-    datum = datetime.now().strftime("%d-%m-%Y")
-    return pdok_extract + "?" + urllib.parse.urlencode({
-        "extractset": "citygml",
-        "excludedtypes": "plaatsbepalingspunt",
-        "history": "false",
-        "enddate": datum,
-        "tiles": tiles_as_json})
+    return [item['featuretype'] for item in r.json()['timeliness']]
 
 
-def is_bgt_updated():
+def pdok_url(fme_test_run=0) -> str:
+    """Requests a download with PDOK and returns the download URL.
+
     """
-    Check new pdok.nl functionality / for the moment we get 500 server errors form pdok.
-    """
-    res = requests.head(pdok_url())
-    print(res)
+    exclude_feature_types = [
+        'plaatsbepalingspunt'
+    ]
+
+    body = {
+        'featuretypes': [ftype for ftype in get_pdok_feature_types() if ftype not in exclude_feature_types],
+        'format': 'citygml',
+        'geofilter': polygon.full if not fme_test_run else polygon.test
+    }
+
+    # Request a new custom download
+    log.info("Requesting PDOK download")
+    r = requests.post(f"{bgt_setup.PDOK_DOWNLOAD_API}/full/custom", json=body)
+    r.raise_for_status()
+
+    download_request_id = r.json()['downloadRequestId']
+    log.info(f"PDOK download request id is {download_request_id}")
+
+    while True:
+        # Periodically check if download is ready. Return download URL when it is.
+        time.sleep(5)
+
+        r = requests.get(f"{bgt_setup.PDOK_DOWNLOAD_API}/full/custom/{download_request_id}/status")
+        r.raise_for_status()
+
+        if r.status_code == 201:
+            log.info(f"Download ready")
+            return f"{bgt_setup.PDOK_DOWNLOAD_API_HOST}{r.json()['_links']['download']['href']}"
+        elif r.status_code == 200:
+            log.info(f"Download generation in progress: {r.json()['progress']}%")
 
 
 def download_bgt(fme_test_run=0):
+    url = pdok_url(fme_test_run)
     target = "extract_bgt.zip"
-    log.info("Starting download from %s to %s", pdok_url(fme_test_run), target)
-    response = requests.get(pdok_url(fme_test_run), stream=True)
+    log.info("Starting download from %s to %s", url, target)
+    response = requests.get(url, stream=True)
     start = time.clock()
     # total_length = response.headers.get('content-length')
     downloaded_length = 0
