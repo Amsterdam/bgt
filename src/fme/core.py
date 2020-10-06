@@ -214,7 +214,7 @@ def upload_data():
     fme_utils.upload('/tmp/data', 'resources/connections', 'Import_GML', '*.*')
     fme_utils.upload('{app}/source_data/xsd'.format(app=bgt_setup.SCRIPT_ROOT),
                      'resources/connections', 'Import_XSD', 'imgeo.xsd')
-    fme_utils.upload('{app}/source_data/bron_shapes'.format(app=bgt_setup.SCRIPT_ROOT),
+    fme_utils.upload('{app}/source_data/bron_csv'.format(app=bgt_setup.SCRIPT_ROOT),
                      'resources/connections', 'Import_kaartbladen', '*.*')
     fme_utils.upload('{app}/source_data/aanmaak_producten_bgt/resource'.format(app=bgt_setup.SCRIPT_ROOT),
                      'resources/connections', 'resources', '*.*')

@@ -25,7 +25,8 @@ def start_transformation_gebieden():
                 {"name": "DestDataset_POSTGIS_4", "value": "bgt"},
                 {"name": "P_CEL", "value": ["$(FME_SHAREDRESOURCE_DATA)resources/NLCS.cel"]},
                 {"name": "P_SEED", "value": "$(FME_SHAREDRESOURCE_DATA)resources/DGNv8_seed.dgn"},
-                {"name": "bron_BGT_kaartbladen", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/BGT_kaartbladen.shp"]},
+                {"name": "SourceDataset_Kaartbladen", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/bgt_kaartbladen.csv"]},
+                {"name": "SourceDataset_Gemeentes", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/gemeentes.csv"]},
                 {"name": "DestDataset_ESRISHAPE", "value": "$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling"},
                 {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling/PDOK_Indeling.dgn"}
             ]

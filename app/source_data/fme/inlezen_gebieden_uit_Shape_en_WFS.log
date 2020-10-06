@@ -1,0 +1,442 @@
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME 2019.1.2.0 (20190829 - Build 19630 - linux-x64)
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME_HOME is '/opt/fme-desktop-2019/'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Home Edition (node locked-crc)
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Serial Number: 0
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Temporary License: 347 days left.
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Machine host name is: rondmc
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|START - ProcessID: 9679, peak process memory usage: 16863 kB, current process memory usage: 16863 kB
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Command line arguments are `/opt/fme-desktop-2019//bin/fme' `/home/ronux/projects/bgt/app/source_data/fme/wb-xlate-1601889364412_8934' `LOG_STANDARDOUT' `YES' `LogCountServerName' `{9dcdfc85-4783-42ea-957a-6280ac8b1507}'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Connection Storage: '/home/ronux//.Safe Software/FME/'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Shared folders for formats are : /opt/fme-desktop-2019/datasources;/home/ronux/.fme/Formats
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Shared folders for transformers are : /home/ronux/.Safe Software/FME/Packages/19630-linux-x64/transformers;/opt/fme-desktop-2019/transformers
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Shared folders for coordinate systems are : /home/ronux/.fme/CoordinateSystems
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Shared folders for coordinate system exceptions are : /home/ronux/.fme/CoordinateSystemExceptions
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Shared folders for coordinate system grid overrides are : /home/ronux/.fme/CoordinateSystemGridOverrides
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Shared folders for CS-MAP transformation exceptions are : /home/ronux/.fme/CsmapTransformationExceptions
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Shared folders for transformer categories are : /home/ronux/.fme/TransformerCategories
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Reader Keyword is `MULTI_READER'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Writer Keyword is `MULTI_WRITER'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Writer Group Definition Keyword is `MULTI_WRITER_DEF'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Reader type is `MULTI_READER'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Writer type is `MULTI_WRITER'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: No destination coordinate system set
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Current working folder is `/home/ronux/projects/bgt/app/source_data/fme'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Temporary folder is in the system location `/tmp'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: FME_HOME is `/opt/fme-desktop-2019/'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: FME_BASE is 'no'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: FME_MF_DIR is '/home/ronux/projects/bgt/app/source_data/fme/'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: FME_MF_NAME is 'inlezen_gebieden_uit_Shape_en_WFS.fmw'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: FME_PRODUCT_NAME is 'FME(R) 2019.1.2.0'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|System Status: 151.83 GB of disk space available in the FME temporary folder (/tmp)
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|System Status: 14.84 GB of virtual memory available
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Operating System: Ubuntu 18.04.5 LTS (Bionic Beaver)
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Platform: linux-x64
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|The memory allocator being used by FME is : `/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4'
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|Locale: en_US
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Process limit is 15.46 GB of physical memory
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Start freeing memory when process usage exceeds 13.67 GB of virtual memory
+2020-10-05 11:16:06|   0.0|  0.0|INFORM|FME Configuration: Stop freeing memory when process usage is below 10.25 GB of virtual memory
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|Creating writer for format: 
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|Creating reader for format: 
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|MULTI_READER(MULTI_READER): Will fail with first member reader failure
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|MULTI_READER(MULTI_READER): Adding WFS Reader with keyword WFS_1
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|MULTI_READER(MULTI_READER): Adding WFS Reader with keyword WFS_2
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|MULTI_READER(MULTI_READER): Adding CSV2 Reader with keyword CSV2_1
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|MULTI_READER(MULTI_READER): Adding CSV2 Reader with keyword CSV2_2
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|Using Multi Reader with keyword `MULTI_READER' to read multiple datasets
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|Creating reader for format: WFS (Web Feature Service)
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|Trying to find a DYNAMIC plugin for reader named `WFS'
+2020-10-05 11:16:06|   0.1|  0.0|INFORM|LD_LIBRARY_PATH is '/opt/fme-desktop-2019//fmecore:/opt/fme-desktop-2019:/opt/fme-desktop-2019/fmecore'
+2020-10-05 11:16:06|   0.2|  0.1|INFORM|Loaded module 'WFS' from file '/opt/fme-desktop-2019/plugins/wfs.so'
+2020-10-05 11:16:07|   0.5|  0.4|INFORM|FME API version of module 'WFS' matches current internal version (3.8 20190621)
+2020-10-05 11:16:07|   0.5|  0.0|INFORM|<WFS> Capabilities URL: `https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=1.1.0'
+2020-10-05 11:16:07|   0.5|  0.0|INFORM|HTTP/FTP Transfer: Downloading resource 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=1.1.0' to local file '/tmp/WFSCapability_1601889367132_9679.xml'
+2020-10-05 11:16:07|   0.5|  0.0|INFORM|HTTP transfer summary - status code: 200, download size: '26241 bytes', DNS lookup time: '0.00095 seconds', total transfer time: '0.173773 seconds', url: 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=1.1.0'
+2020-10-05 11:16:07|   0.7|  0.1|INFORM|FME Configuration: Using FME Reprojection Engine
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|CS-MAP Reprojector: Transformation will be automatically selected for 'LL84' -> 'EPSG:28992', and is not guaranteed to remain the same in future releases of FME
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Reprojector: Using transformation `Amersfoort-RD-2008_to_WGS84_FME,Inverse(Seven Parameter)' when reprojecting from LL84 to EPSG:28992
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|<WFS> DescribeFeatureType URL: `https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29'
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|<WFS> GetFeature URL: `https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29&MAXFEATURES=30000'
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Creating reader for format: GML (Geography Markup Language)
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Trying to find a DYNAMIC plugin for reader named `GML'
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Loaded module 'GML' from file '/opt/fme-desktop-2019/plugins/gml.so'
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|FME API version of module 'GML' matches current internal version (3.8 20190621)
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Using MultiWriter with keyword `MULTI_WRITER' to output data (ID_ATTRIBUTE is `multi_writer_id')
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Writer output will be ordered by value of multi_writer_id
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Loaded module 'LogCount_func' from file '/opt/fme-desktop-2019/plugins/logcount_func.so'
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|FME API version of module 'LogCount_func' matches current internal version (3.8 20190621)
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Loaded module 'OGCGeometry_func' from file '/opt/fme-desktop-2019/plugins/ogcgeometry_func.so'
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|FME API version of module 'OGCGeometry_func' matches current internal version (3.8 20190621)
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|<R_1 - GML  Reader> - Opening the R_1 - GML  Reader reader with source dataset 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29&MAXFEATURES=30000'
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_citygml.xml' is being used to map from URI to URI
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_sosi.xml' is being used to map from URI to URI
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_inspire.xml' is being used to map from URI to URI
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_aixm.xml' is being used to map from URI to URI
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_urimap.xml' is being used to map from URI to URI
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Sending HTTP 'GET' request to 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29&MAXFEATURES=30000', waiting for response ...
+2020-10-05 11:16:07|   0.7|  0.0|INFORM|Parsing XML document 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29&MAXFEATURES=30000'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'HTTP/1.1 200 '
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Date: Mon, 05 Oct 2020 09:16:09 GMT'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Content-Disposition: inline; filename=geoserver-GetFeature.text'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Content-Type: text/xml; subtype=gml/3.1.1'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'X-Cnection: close'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Access-Control-Allow-Origin: *'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Access-Control-Allow-Methods: POST, GET, OPTIONS, HEAD'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Access-Control-Max-Age: 1000'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Access-Control-Allow-Headers: SOAPAction,X-Requested-With,Content-Type,Origin,Authorization,Accept'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'X-Cnection: close'
+2020-10-05 11:16:09|   0.7|  0.0|INFORM|Received HTTP response header: 'Transfer-Encoding: chunked'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|URI 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29' mapped to 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29' mapped to '/home/ronux/.validationFactory_schema_cache/FME_XSD_CACHE/fmexsd_1601889131875_9545.xml'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|Parsing schema document '/home/ronux/.validationFactory_schema_cache/FME_XSD_CACHE/fmexsd_1601889131875_9545.xml' ...
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from 'http://schemas.opengis.net/gml/3.1.0/xlink/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from 'http://schemas.opengis.net/gml/3.1.0/xlink/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|URI 'wfs.xsd' mapped to 'file:////opt/fme-desktop-2019/xml/schemas/wfs/1.1.0/wfs.xsd'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|Parsing schema document 'file:////opt/fme-desktop-2019/xml/schemas/wfs/1.1.0/wfs.xsd' ...
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from '../../xlink/1.0.0/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from '../../xlink/1.0.0/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|<R_1 - GML  Reader> - Using the current GML 3.2.1 reader to read v3.1.1 and v2.1.2 documents.
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|<R_1 - GML  Reader> - Map Embedded Object as: 'ATTRIBUTES'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|<R_1 - GML  Reader> - Map Predefined Properties: 'NO'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|<R_1 - GML  Reader> - Map All Substitutable Properties: 'YES'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|<R_1 - GML  Reader> - Map Complex Properties as: 'NESTED_ATTRIBUTES'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|<R_1 - GML  Reader> - Add XML Namespace Prefix to: 'UNSET'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|<R_1 - GML  Reader> - Limit Number of Lists in Nested Attributes: 'UNSET'
+2020-10-05 11:16:10|   0.8|  0.0|INFORM|Using XSD semantics configuration file 'file:////opt/fme-desktop-2019/xml/gml_v3.2/gml_config.xml'.
+2020-10-05 11:16:10|   0.9|  0.1|INFORM|Pre-processing xfMap '/tmp/WFS_Auto_Gen_xfmap1601889367434_9679.xml' with macro stylesheet '/opt/fme-desktop-2019/xfmap/xfmap_macro.xslt' into '/tmp/NOMACRO_XFMAP_1601889370129_9679.xml'
+2020-10-05 11:16:10|   0.9|  0.1|INFORM|The XML Reader is using xfMap '/tmp/NOMACRO_XFMAP_1601889370129_9679.xml'
+2020-10-05 11:16:10|   1.0|  0.0|INFORM|FME Configuration: Source coordinate system for reader R_1[GML] set to `EPSG:28992' as read from input data
+2020-10-05 11:16:10|   1.0|  0.0|INFORM|Coordinate System `EPSG:28992' parameters: CS_NAME=`Netherlands-RDNew-2008' DESC_NM=`Netherlands, Amersfoort RD 2008 datum, New System' DT_NAME=`Amersfoort-RD-2008' GROUP=`EUROPE' MAP_SCL=`1' ORG_LAT=`52.15616055555556' ORG_LNG=`5.387638888888889' PROJ=`OSTERO' QUAD=`1' SCL_RED=`0.9999079' SOURCE=`Kadaster' UNIT=`METER' X_OFF=`155000' Y_OFF=`463000'
+2020-10-05 11:16:10|   1.0|  0.0|INFORM|FME Configuration: Source coordinate system for reader WFS_1[WFS] set to `EPSG:28992' as read from input data
+2020-10-05 11:16:10|   1.0|  0.0|INFORM|Coordinate System `EPSG:28992' parameters: CS_NAME=`Netherlands-RDNew-2008' DESC_NM=`Netherlands, Amersfoort RD 2008 datum, New System' DT_NAME=`Amersfoort-RD-2008' GROUP=`EUROPE' MAP_SCL=`1' ORG_LAT=`52.15616055555556' ORG_LNG=`5.387638888888889' PROJ=`OSTERO' QUAD=`1' SCL_RED=`0.9999079' SOURCE=`Kadaster' UNIT=`METER' X_OFF=`155000' Y_OFF=`463000'
+2020-10-05 11:16:10|   1.0|  0.0|INFORM|HTTP response - so far received: 0.38 MB
+2020-10-05 11:16:10|   1.0|  0.0|INFORM|HTTP response - so far received: 0.74 MB
+2020-10-05 11:16:10|   1.1|  0.1|INFORM|HTTP response - so far received: 1.10 MB
+2020-10-05 11:16:10|   1.1|  0.0|INFORM|HTTP response - so far received: 1.46 MB
+2020-10-05 11:16:10|   1.2|  0.1|INFORM|HTTP response - so far received: 1.84 MB
+2020-10-05 11:16:11|   1.2|  0.0|INFORM|HTTP response - so far received: 2.25 MB
+2020-10-05 11:16:11|   1.3|  0.0|INFORM|HTTP response - so far received: 2.65 MB
+2020-10-05 11:16:11|   1.4|  0.1|INFORM|HTTP response - so far received: 3.04 MB
+2020-10-05 11:16:11|   1.4|  0.1|INFORM|HTTP response - so far received: 3.46 MB
+2020-10-05 11:16:11|   1.5|  0.1|INFORM|HTTP response - so far received: 3.87 MB
+2020-10-05 11:16:11|   1.5|  0.1|INFORM|HTTP response - so far received: 4.28 MB
+2020-10-05 11:16:12|   1.6|  0.1|INFORM|HTTP response - so far received: 4.66 MB
+2020-10-05 11:16:12|   1.7|  0.1|INFORM|HTTP response - so far received: 5.07 MB
+2020-10-05 11:16:12|   1.7|  0.0|INFORM|HTTP response - so far received: 5.47 MB
+2020-10-05 11:16:12|   1.8|  0.1|INFORM|HTTP response - so far received: 5.88 MB
+2020-10-05 11:16:12|   1.8|  0.0|INFORM|HTTP response - so far received: 6.29 MB
+2020-10-05 11:16:12|   1.9|  0.0|INFORM|HTTP response - so far received: 6.69 MB
+2020-10-05 11:16:12|   1.9|  0.0|INFORM|HTTP response - so far received: 7.12 MB
+2020-10-05 11:16:13|   1.9|  0.0|INFORM|HTTP response - so far received: 7.51 MB
+2020-10-05 11:16:13|   2.0|  0.1|INFORM|HTTP response - so far received: 7.92 MB
+2020-10-05 11:16:13|   2.1|  0.1|INFORM|HTTP response - so far received: 8.32 MB
+2020-10-05 11:16:13|   2.1|  0.1|INFORM|HTTP response - so far received: 8.73 MB
+2020-10-05 11:16:13|   2.2|  0.0|INFORM|HTTP response - so far received: 9.13 MB
+2020-10-05 11:16:13|   2.2|  0.1|INFORM|HTTP response - so far received: 9.52 MB
+2020-10-05 11:16:13|   2.3|  0.0|INFORM|HTTP response - so far received: 9.91 MB
+2020-10-05 11:16:14|   2.3|  0.1|INFORM|HTTP response - so far received: 10.30 MB
+2020-10-05 11:16:14|   2.4|  0.1|INFORM|HTTP response - so far received: 10.69 MB
+2020-10-05 11:16:14|   2.5|  0.0|INFORM|HTTP response - so far received: 11.09 MB
+2020-10-05 11:16:14|   2.5|  0.1|INFORM|HTTP response - so far received: 11.50 MB
+2020-10-05 11:16:14|   2.6|  0.1|INFORM|HTTP response - so far received: 11.89 MB
+2020-10-05 11:16:15|   2.7|  0.1|INFORM|HTTP response - so far received: 12.29 MB
+2020-10-05 11:16:15|   2.7|  0.1|INFORM|HTTP response - so far received: 12.70 MB
+2020-10-05 11:16:15|   2.8|  0.1|INFORM|HTTP response - so far received: 13.10 MB
+2020-10-05 11:16:16|   2.9|  0.1|INFORM|HTTP response - so far received: 13.52 MB
+2020-10-05 11:16:16|   2.9|  0.1|INFORM|HTTP response - so far received: 13.92 MB
+2020-10-05 11:16:16|   3.0|  0.1|INFORM|HTTP response - so far received: 14.31 MB
+2020-10-05 11:16:16|   3.1|  0.1|INFORM|HTTP response - so far received: 14.70 MB
+2020-10-05 11:16:16|   3.1|  0.1|INFORM|HTTP response - so far received: 15.09 MB
+2020-10-05 11:16:16|   3.1|  0.0|INFORM|HTTP transfer summary - download-size: '15254242 bytes', download-time: '9.339471 seconds', url: 'https://geodata.nationaalgeoregister.nl:443/bestuurlijkegrenzen/wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=bestuurlijkegrenzen%3Agemeenten&NAMESPACE=xmlns%28bestuurlijkegrenzen%3Dhttp%3A%2F%2Fbestuurlijkegrenzen.geonovum.nl%29&MAXFEATURES=30000'
+2020-10-05 11:16:16|   3.2|  0.0|INFORM|Creating reader for format: WFS (Web Feature Service)
+2020-10-05 11:16:16|   3.2|  0.0|INFORM|Trying to find a DYNAMIC plugin for reader named `WFS'
+2020-10-05 11:16:16|   3.2|  0.0|INFORM|FME API version of module 'WFS' matches current internal version (3.8 20190621)
+2020-10-05 11:16:16|   3.2|  0.0|INFORM|<WFS> Capabilities URL: `https://map.data.amsterdam.nl:443/maps/gebieden?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=1.1.0'
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|HTTP/FTP Transfer: Downloading resource 'https://map.data.amsterdam.nl:443/maps/gebieden?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=1.1.0' to local file '/tmp/WFSCapability_1601889376859_9679.xml'
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|HTTP transfer summary - status code: 200, download size: '2680 bytes', DNS lookup time: '0.000719 seconds', total transfer time: '0.529689 seconds', url: 'https://map.data.amsterdam.nl:443/maps/gebieden?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=1.1.0'
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|<WFS> DescribeFeatureType URL: `https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1'
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|<WFS> GetFeature URL: `https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1&MAXFEATURES=500000'
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|Creating reader for format: GML (Geography Markup Language)
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|Trying to find a DYNAMIC plugin for reader named `GML'
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|FME API version of module 'GML' matches current internal version (3.8 20190621)
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|<R_2 - GML  Reader> - Opening the R_2 - GML  Reader reader with source dataset 'https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1&MAXFEATURES=500000'
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_citygml.xml' is being used to map from URI to URI
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_sosi.xml' is being used to map from URI to URI
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_inspire.xml' is being used to map from URI to URI
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_aixm.xml' is being used to map from URI to URI
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|The uri-map document '/opt/fme-desktop-2019/xml/urimap/gml_urimap.xml' is being used to map from URI to URI
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|Sending HTTP 'GET' request to 'https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1&MAXFEATURES=500000', waiting for response ...
+2020-10-05 11:16:17|   3.2|  0.0|INFORM|Parsing XML document 'https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1&MAXFEATURES=500000'
+2020-10-05 11:16:18|   3.2|  0.0|INFORM|Received HTTP response header: 'HTTP/1.1 200 OK'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Date: Mon, 05 Oct 2020 09:16:18 GMT'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Access-Control-Allow-Origin: *'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Access-Control-Allow-Methods: POST, GET, OPTIONS'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Access-Control-Allow-Headers: Authorization, kbn-version, Origin, X-Requested-With, Content-Type, Accept, Client-Security-Token'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Vary: Accept-Encoding'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Content-Encoding: gzip'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Connection: close'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Transfer-Encoding: chunked'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Content-Type: text/xml; subtype=gml/3.1.1; charset=UTF-8'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Referrer-Policy: strict-origin'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'X-Content-Type-Options: nosniff'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'X-XSS-Protection: 1; mode=block'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'X-Frame-Options: SAMEORIGIN'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Content-Security-Policy: frame-ancestors 'self';'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Received HTTP response header: 'Access-Control-Allow-Credentials: true'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|URI 'https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1' mapped to 'https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|'https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1' mapped to '/home/ronux/.validationFactory_schema_cache/FME_XSD_CACHE/fmexsd_1601889141339_9545.xml'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Parsing schema document '/home/ronux/.validationFactory_schema_cache/FME_XSD_CACHE/fmexsd_1601889141339_9545.xml' ...
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from 'http://schemas.opengis.net/gml/3.1.0/xlink/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from 'http://schemas.opengis.net/gml/3.1.0/xlink/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|URI 'wfs.xsd' mapped to 'file:////opt/fme-desktop-2019/xml/schemas/wfs/1.1.0/wfs.xsd'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Parsing schema document 'file:////opt/fme-desktop-2019/xml/schemas/wfs/1.1.0/wfs.xsd' ...
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from '../../xlink/1.0.0/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|A <schemaLocation> in the uri-map is overriding the namespace 'http://www.w3.org/1999/xlink' xsd location from '../../xlink/1.0.0/xlinks.xsd' to 'xlink.xsd'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|<R_2 - GML  Reader> - Using the current GML 3.2.1 reader to read v3.1.1 and v2.1.2 documents.
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|<R_2 - GML  Reader> - Map Embedded Object as: 'ATTRIBUTES'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|<R_2 - GML  Reader> - Map Predefined Properties: 'NO'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|<R_2 - GML  Reader> - Map All Substitutable Properties: 'YES'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|<R_2 - GML  Reader> - Map Complex Properties as: 'NESTED_ATTRIBUTES'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|<R_2 - GML  Reader> - Add XML Namespace Prefix to: 'UNSET'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|<R_2 - GML  Reader> - Limit Number of Lists in Nested Attributes: 'UNSET'
+2020-10-05 11:16:18|   3.3|  0.0|INFORM|Using XSD semantics configuration file 'file:////opt/fme-desktop-2019/xml/gml_v3.2/gml_config.xml'.
+2020-10-05 11:16:18|   3.4|  0.1|INFORM|Pre-processing xfMap '/tmp/WFS_Auto_Gen_xfmap1601889377414_9679.xml' with macro stylesheet '/opt/fme-desktop-2019/xfmap/xfmap_macro.xslt' into '/tmp/NOMACRO_XFMAP_1601889378771_9679.xml'
+2020-10-05 11:16:18|   3.5|  0.1|INFORM|The XML Reader is using xfMap '/tmp/NOMACRO_XFMAP_1601889378771_9679.xml'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|FME Configuration: Source coordinate system for reader R_2[GML] set to `EPSG:28992' as read from input data
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|Coordinate System `EPSG:28992' parameters: CS_NAME=`Netherlands-RDNew-2008' DESC_NM=`Netherlands, Amersfoort RD 2008 datum, New System' DT_NAME=`Amersfoort-RD-2008' GROUP=`EUROPE' MAP_SCL=`1' ORG_LAT=`52.15616055555556' ORG_LNG=`5.387638888888889' PROJ=`OSTERO' QUAD=`1' SCL_RED=`0.9999079' SOURCE=`Kadaster' UNIT=`METER' X_OFF=`155000' Y_OFF=`463000'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|FME Configuration: Source coordinate system for reader WFS_2[WFS] set to `EPSG:28992' as read from input data
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|Coordinate System `EPSG:28992' parameters: CS_NAME=`Netherlands-RDNew-2008' DESC_NM=`Netherlands, Amersfoort RD 2008 datum, New System' DT_NAME=`Amersfoort-RD-2008' GROUP=`EUROPE' MAP_SCL=`1' ORG_LAT=`52.15616055555556' ORG_LNG=`5.387638888888889' PROJ=`OSTERO' QUAD=`1' SCL_RED=`0.9999079' SOURCE=`Kadaster' UNIT=`METER' X_OFF=`155000' Y_OFF=`463000'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|HTTP transfer summary - download-size: '67213 bytes', download-time: '1.392281 seconds', url: 'https://map.data.amsterdam.nl:443/cgi-bin/mapserv?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&map=%2Fsrv%2Fmapserver%2Fgebieden.map&TYPENAME=stadsdeel&NAMESPACE=xmlns%28%3Dhttp%3A%2F%2Fwww.opengis.net%2Fwfs%29&OUTPUTFORMAT=text%2Fxml%3B%20subtype%3Dgml%2F3.1.1&MAXFEATURES=500000'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|Creating reader for format: CSV (Comma Separated Value)
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|Trying to find a DYNAMIC plugin for reader named `CSV2'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|Loaded module 'CSV2' from file '/opt/fme-desktop-2019/plugins/csv2.so'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|FME API version of module 'CSV2' matches current internal version (3.8 20190621)
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Opening dataset '/home/ronux/projects/bgt/app/source_data/bron_csv/gemeentes.csv'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_DELIMITER' has the value 'auto'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_FIELD_NAMES_LINE' has the value '1'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_DATA_START_LINE' has the value '2'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SCAN_MAX_ROWS' has the value '1000'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_READ_SKIPPED_LINES' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_ENCODING' has the value 'windows-1252'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SKIP_DUPLICATE_DELIMITERS' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_FIELD_QUALIFIER_CHARACTER' has the value '"'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_FIELD_QUALIFIER_ESCAPE_CHARACTER' has the value '"'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_TRIM_FIELD_NAME_QUALIFIERS' has the value 'Yes'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_TRIM_FIELD_VALUE_QUALIFIERS' has the value 'Yes'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_PRESERVE_SOURCE_ENCODING' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_CASE_SENSITIVE_FIELD_NAMES' has the value 'Yes'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_ENFORCE_STRICT_SCHEMA' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SCAN_TYPES' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SCAN_ADDITIONAL_FIELDS' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|FeatureMerger (ReferenceFactory): Splitting feature table
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|Creating reader for format: CSV (Comma Separated Value)
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|Trying to find a DYNAMIC plugin for reader named `CSV2'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|FME API version of module 'CSV2' matches current internal version (3.8 20190621)
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Opening dataset '/home/ronux/projects/bgt/app/source_data/bron_csv/bgt_kaartbladen.csv'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_DELIMITER' has the value ';'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_FIELD_NAMES_LINE' has the value '1'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_DATA_START_LINE' has the value '2'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SCAN_MAX_ROWS' has the value '1000'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_READ_SKIPPED_LINES' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_ENCODING' has the value 'windows-1252'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SKIP_DUPLICATE_DELIMITERS' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_FIELD_QUALIFIER_CHARACTER' has the value '"'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_FIELD_QUALIFIER_ESCAPE_CHARACTER' has the value '"'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_TRIM_FIELD_NAME_QUALIFIERS' has the value 'Yes'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_TRIM_FIELD_VALUE_QUALIFIERS' has the value 'Yes'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_PRESERVE_SOURCE_ENCODING' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_CASE_SENSITIVE_FIELD_NAMES' has the value 'Yes'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_ENFORCE_STRICT_SCHEMA' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SCAN_TYPES' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|CSV reader: Directive '_SCAN_ADDITIONAL_FIELDS' has the value 'No'
+2020-10-05 11:16:18|   3.5|  0.0|INFORM|GeometryReplacer: Splitting feature table
+2020-10-05 11:16:19|   4.0|  0.4|INFORM|MULTI_READER(MULTI_READER): Done reading 26736 features from 4 readers
+2020-10-05 11:16:19|   4.0|  0.0|INFORM|Emptying factory pipeline
+2020-10-05 11:16:19|   4.0|  0.0|STATS |Router and Unexpected Input Remover (RoutingFactory): Tested 26736 input feature(s), wrote 26736 output feature(s): 26736 matched merge filters, 26736 were routed to output, 0 could not be routed.
+2020-10-05 11:16:19|   4.0|  0.0|STATS |Unexpected Input Remover Nuker (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |CSV (CSV2_2) Splitter (TeeFactory): Cloned 26334 input feature(s) into 26334 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |CSV_CSV2_2 Feature Counter -1 116 (TeeFactory): Cloned 26334 input feature(s) into 26334 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |gemeenten (WFS_1) Splitter (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |gemeenten_WFS_1 Feature Counter -1 74 (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |CSV (CSV2_1) Splitter (TeeFactory): Cloned 39 input feature(s) into 39 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |CSV_CSV2_1 Feature Counter -1 128 (TeeFactory): Cloned 39 input feature(s) into 39 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |stadsdeel (WFS_2) Splitter (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |stadsdeel_WFS_2 Feature Counter -1 93 (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |AttributeManager_kbd_OUTPUT Feature Counter -1 117 (TeeFactory): Cloned 26334 input feature(s) into 26334 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |GeometryReplacer (TeeFactory): Cloned 26334 input feature(s) into 26334 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |GeometryReplacer_Rejector (TestFactory): Tested 26334 input feature(s) -- 0 feature(s) passed and 26334 feature(s) failed
+2020-10-05 11:16:19|   4.0|  0.0|STATS |GeometryReplacer_OUTPUT Feature Counter -1 120 (TeeFactory): Cloned 26334 input feature(s) into 26334 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |GeometryReplacer_<REJECTED> Feature Counter -1 2147680371 (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |AttributeManager_2_OUTPUT Feature Counter -1 94 (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |Tester_2 (TestFactory): Tested 8 input feature(s) -- 1 feature(s) passed and 7 feature(s) failed
+2020-10-05 11:16:19|   4.0|  0.0|STATS |Tester_2_PASSED Feature Counter -1 45 (TeeFactory): Cloned 1 input feature(s) into 1 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |Tester_2_FAILED Feature Counter -1 65 (TeeFactory): Cloned 7 input feature(s) into 7 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |AttributeManager_OUTPUT Feature Counter -1 66 (TeeFactory): Cloned 1 input feature(s) into 1 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_2 (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_2_OUTPUT Feature Counter -1 60 (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_3 (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_3_OUTPUT Feature Counter -1 101 (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |AttributeKeeper (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |AttributeKeeper_OUTPUT Feature Counter -1 102 (TeeFactory): Cloned 8 input feature(s) into 8 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |AttributeManager_GME_3_OUTPUT Feature Counter -1 77 (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_5 (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_5_OUTPUT Feature Counter -1 50 (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_OUTPUT Feature Counter -1 62 (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_4 (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |StringReplacer_4_OUTPUT Feature Counter -1 132 (TeeFactory): Cloned 355 input feature(s) into 355 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|INFORM|Dissolver_2 (PolygonDissolveFactory): Continuing to process geometric dissolving tasks.  At number: 1
+2020-10-05 11:16:19|   4.0|  0.0|STATS |FeatureMerger (ReferenceFactory): Total Results: 39 Complete Feature(s), 0 Incomplete Feature(s), 0 Referenced Feature(s), 0 Unreferenced Feature(s), 0 Referencer Feature(s) (NO REFERENCES), 0 Referencee Feature(s) (NO Referencee fields defined), and 0 Duplicate Referencee Feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |FeatureMerger MERGED Splitter (TeeFactory): Cloned 39 input feature(s) into 78 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |FeatureMerger_MERGED_0_tY5W/3lY1K0= Feature Counter -1 129 (TeeFactory): Cloned 39 input feature(s) into 39 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |FeatureMerger_MERGED_1_Qz7KETrKJsY= Feature Counter -1 138 (TeeFactory): Cloned 39 input feature(s) into 39 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |FeatureMerger_<REJECTED> Feature Counter -1 2147876989 (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:19|   4.0|  0.0|STATS |Tester_3 (TestFactory): Tested 39 input feature(s) -- 1 feature(s) passed and 38 feature(s) failed
+2020-10-05 11:16:19|   4.0|  0.0|STATS |Tester_3_FAILED Feature Counter -1 47 (TeeFactory): Cloned 38 input feature(s) into 38 output feature(s)
+2020-10-05 11:16:19|   4.2|  0.2|INFORM|Creating writer for format: Esri Shapefile
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|FME Configuration: Destination coordinate system set to `EPSG:28992'
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Coordinate System `EPSG:28992' parameters: CS_NAME=`Netherlands-RDNew-2008' DESC_NM=`Netherlands, Amersfoort RD 2008 datum, New System' DT_NAME=`Amersfoort-RD-2008' GROUP=`EUROPE' MAP_SCL=`1' ORG_LAT=`52.15616055555556' ORG_LNG=`5.387638888888889' PROJ=`OSTERO' QUAD=`1' SCL_RED=`0.9999079' SOURCE=`Kadaster' UNIT=`METER' X_OFF=`155000' Y_OFF=`463000'
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Using Shape Writer to write shape files to folder `/home/ronux/bgt/kaartbladindeling'
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Shape Writer: Allowing attribute names with mixed case
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Shape Writer: Enabling Strict compatibility
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Writer `ESRISHAPE_1' of type `ESRISHAPE' using group definition keyword `ESRISHAPE_1_DEF'
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Shape Writer: Writing shape file using character encoding `SYSTEM'
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Opened Shape File '/home/ronux/bgt/kaartbladindeling/BGT_Gebiedsindeling.shp' for output
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Opened DBF file '/home/ronux/bgt/kaartbladindeling/BGT_Gebiedsindeling.dbf' for output
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|DBF Writer: Writing DBF file using character encoding `SYSTEM'
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Detected shape_polygon geometry from first feature when writing the shape file
+2020-10-05 11:16:19|   4.2|  0.0|INFORM|Detected 2d dimension when writing the shape file
+2020-10-05 11:16:19|   4.3|  0.1|STATS |TopologyBuilder AREA Splitter (TeeFactory): Cloned 46 input feature(s) into 92 output feature(s)
+2020-10-05 11:16:19|   4.3|  0.0|STATS |TopologyBuilder_AREA_0_ta6dau7kYnI= Feature Counter -1 88 (TeeFactory): Cloned 46 input feature(s) into 46 output feature(s)
+2020-10-05 11:16:19|   4.3|  0.0|STATS |TopologyBuilder_AREA_1_PuLVKS7c2Kc= Feature Counter -1 87 (TeeFactory): Cloned 46 input feature(s) into 46 output feature(s)
+2020-10-05 11:16:19|   4.3|  0.0|STATS |TopologyBuilder_<REJECTED> Feature Counter -1 2147876910 (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:19|   4.3|  0.0|INFORM|Dissolver_2 (PolygonDissolveFactory): Dissolving with an automatic tolerance of 1.0456573799999998e-9
+2020-10-05 11:16:19|   4.6|  0.3|INFORM|Dissolver_2 (PolygonDissolveFactory): PolygonDissolveFactory: Continuing to restore attributes. 2.5% complete
+2020-10-05 11:16:19|   4.6|  0.0|INFORM|Dissolver_2 (PolygonDissolveFactory): PolygonDissolveFactory: Continuing to restore attributes. 100% complete
+2020-10-05 11:16:19|   4.6|  0.0|STATS |Dissolver_2 AREA Splitter (TeeFactory): Cloned 1 input feature(s) into 2 output feature(s)
+2020-10-05 11:16:19|   4.6|  0.0|STATS |Dissolver_2_AREA_0_spj0EUP0+Zc= Feature Counter -1 130 (TeeFactory): Cloned 1 input feature(s) into 1 output feature(s)
+2020-10-05 11:16:19|   4.6|  0.0|STATS |Dissolver_2_AREA_0_spj0EUP0+Zc= Disabled Nuker -1 130 (TeeFactory): Cloned 1 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:19|   4.6|  0.0|STATS |Dissolver_2_AREA_1_f/sO+LKyGg4= Feature Counter -1 83 (TeeFactory): Cloned 1 input feature(s) into 1 output feature(s)
+2020-10-05 11:16:19|   4.6|  0.0|STATS |Dissolver_2_<REJECTED> Feature Counter -1 2147745918 (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:19|   4.6|  0.0|INFORM|SpatialFilter_2 (SpatialFilterFactory): 1Processed 'Candidate' 26334 / %2
+2020-10-05 11:16:20|   4.8|  0.2|INFORM|SpatialFilter_2 (SpatialFilterFactory): 26334Processed 'Candidate' 26334 / %2
+2020-10-05 11:16:20|   4.8|  0.0|STATS |SpatialFilter_2 (SpatialFilterFactory): Total: Processed 26335 input feature(s): 1 'Filter' feature(s) and 26334 'Candidate' feature(s). 842 feature(s) PASSED
+2020-10-05 11:16:20|   4.8|  0.0|STATS |SpatialFilter_2 PASSED Splitter (TeeFactory): Cloned 842 input feature(s) into 2526 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |SpatialFilter_2_PASSED_0_vevlZznZMak= Feature Counter -1 114 (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |SpatialFilter_2_PASSED_1_oRROS85A+Jk= Feature Counter -1 76 (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |SpatialFilter_2_PASSED_2_ED2vrvUidaI= Feature Counter -1 89 (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |SpatialFilter_2_<REJECTED> Feature Counter -1 2147745874 (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |CenterPointReplacer_2 (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |CenterPointReplacer_2_router (TestFactory): Tested 0 input feature(s) -- 0 feature(s) passed and 0 feature(s) failed
+2020-10-05 11:16:20|   4.8|  0.0|STATS |CenterPointReplacer_2_outputter (TestFactory): Tested 842 input feature(s) -- 0 feature(s) passed and 842 feature(s) failed
+2020-10-05 11:16:20|   4.8|  0.0|STATS |CenterPointReplacer_2_POINT Feature Counter -1 111 (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |CenterPointReplacer_2_UNTOUCHED Feature Counter -1 2147680365 (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |LabelPointReplacer_3_Splitter (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |LabelPointReplacer_3_StrokeFilter (TestFactory): Tested 0 input feature(s) -- 0 feature(s) passed and 0 feature(s) failed
+2020-10-05 11:16:20|   4.8|  0.0|STATS |LabelPointReplacer_3_Pointer (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |LabelPointReplacer_3_Liner (LabelFactory): Processed 0 input feature(s).  Output 0 Point feature(s) and a total of 0 features
+2020-10-05 11:16:20|   4.8|  0.0|STATS |LabelPointReplacer_3_PipCreator (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|LabelPointReplacer_3_PipSplitter (PIPComponentsFactory): Split 0 point and polygon features into separate points and polygons
+2020-10-05 11:16:20|   4.8|  0.0|STATS |LabelPointReplacer_3_LabelPoint Feature Counter -1 112 (TeeFactory): Cloned 842 input feature(s) into 842 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |LabelPointReplacer_3_<REJECTED> Feature Counter -1 2147680366 (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|STATS |Destination Feature Type Routing Correlator (RoutingFactory): Tested 2618 input feature(s), wrote 2618 output feature(s): 0 matched merge filters, 2618 were routed to output, 0 could not be routed.
+2020-10-05 11:16:20|   4.8|  0.0|STATS |Final Output Nuker (TeeFactory): Cloned 0 input feature(s) into 0 output feature(s)
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|                     'GlobalVariable' Final State Summary
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|==============================================================================
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|Total Number of Global Variables:                                            0
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|Feature output statistics for `ESRISHAPE' writer using keyword `ESRISHAPE_1':
+2020-10-05 11:16:20|   4.8|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.8|  0.0|STATS |                               Features Written
+2020-10-05 11:16:20|   4.8|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.8|  0.0|STATS |BGT_Gebiedsindeling (BGT_Gebiedsindeling)                                   46
+2020-10-05 11:16:20|   4.8|  0.0|STATS |==============================================================================
+2020-10-05 11:16:20|   4.8|  0.0|STATS |Total Features Written                                                      46
+2020-10-05 11:16:20|   4.8|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|MULTI_WRITER: multi_writer_id `1': Started outputting features
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|Creating writer for format: Bentley MicroStation Design (V8)
+2020-10-05 11:16:20|   4.8|  0.0|INFORM|Trying to find a DYNAMIC plugin for writer named `DGNV8'
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|Loaded module 'DGNV8' from file '/opt/fme-desktop-2019/plugins/dgnv8.so'
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|FME API version of module 'DGNV8' matches current internal version (3.8 20190621)
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|FME Configuration: No destination coordinate system set
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|FME API version of module 'DGNV8' matches current internal version (3.8 20190621)
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|Writer `DGNV8_1' of type `DGNV8' using group definition keyword `DGNV8_1_DEF'
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|FME API version of module 'DGNV8' matches current internal version (3.8 20190621)
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|DESIGN WRITER: Opened /home/ronux/bgt/kaartbladindeling/PDOK_Indeling.dgn successfully for DGNV8 writing
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|DESIGN WRITER: V8 Seed File, Model 'Default' Coordinate Information:
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|        10 UOR(s) per subunit and 1000 subunit per master unit
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|        Global origin X: 2147483648 Y: 2147483648 Z: 2147483648
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|DESIGN WRITER: V8 Seed File UOR value: 10000
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|DESIGN WRITER: The cells read from the cell file '/home/ronux/projects/bgt/app/source_data/aanmaak_producten_bgt/resource/NLCS.cel' are as follows: Default SRI-DRAIN_PUT-SO SIE-WEG_BOOM_BESCHERMBEUGEL B-SIE-WEG_LICHTMAST-SO SIE-KUNSTOBJECT-SO SGR-BOOM_01 SVW-MARKERING_PIJL_COMBI_RD_LA_5.0 SIE-DIJKPAAL-SO SIE-WATER_MEERPAAL SIE-WATER_BOEI-SO SIE-SIRENE-SO SIE-WATER_BOLDER SIE-WEG_ABRI SIE-WATER_WATERSTANDMETER-SO SIE-WEG_AFVALBAK-SO SKL-DATA_TELPAAL-SO SIE-WEG_DRINKBAK-SO SIE-WEG_CONTAINER_ALGEMEEN SIE-WEG_BRIEVENBUS SIE-WEG_FLITSPAAL-SO SIE-WEG_FIETSKLEM_SCHUIN SIE-WEG_PARKEERAUTOMAAT SKL-DATA_RADARMAST-SO SIE-WEG_STROOIRESERVOIR-SO SIE-WEG_RECLAMEZUIL-SO SIE-WEG_VLAGGENMAST-SO SKL-DATA_SIGNAALGEVER_RADARDETECTIE-SO SKL-DATA_SIGNAALGEVER_DRIP-SO SKL-DATA_STRAALZENDER-SO SKL-GMS_DOORVERBINDINGKAST-SO SKL-ET_LS_MAST-SO SKL-DATA_ZENDMAST-SO SKL-DATA_TERREINKAST-SO SKL-ET_HS_MAST-SO SKL-GAS_PUT-SO SKL-ET_TERREINKAST-SO SKL-GAS_TERREINKAST-SO SKL-VRI_TERREINKAST-SO SKL-POMP-SO SKL-GMS_TEMPERATUURSENSOR-SO SKL-TELECOM_TERREINKAST-SO SKL-WTB_PUT-SO SKL-WATER_BRANDHYDRANT-SO SOG-HOOGTEPUNT-SO SGR-HEIDE-SO SGR-BOOMGAARD_WIJN-SO SVW-POLLER-SO SVW-BEWEGWIJZERING-SO SVH-ROOSTER-SO SRI-PUT_INSPECTIE-SO SVW-AFSLUITPAAL-SO SVW-HALTEPAAL-SO SVW-BEWEGWIJZERING_DRAAGCONSTRUCTIE_PORTAAL_ANWB SVW-HECTOMETERPAAL-SO SGR-BODEMBEDEKKER-SO SVW-VERKEERSTEKEN_BORD_PLAATSNAAM-SO SVW-VERKEERSTEKEN_BORD_INFORMATIE-SO SVW-VERKEERSTEKEN_BORD_STRAATNAAM-SO SGR-BOOMGAARD_KLEINFRUIT-SO SGR-BOOMGAARD_HOOGSTAM-SO SGR-BOOMGAARD_LAAGSTAM-SO SGR-BOUWLAND_BOLLENTEELT-SO SGR-BOS_NAALD-SO SGR-BOS_GEMENGD-SO SGR-BOOMTEELT-SO SGR-BOS_LOOF-SO SGR-BOUWLAND-SO SGR-BOSPLANTSOEN-SO SGR-BOUWLAND_AKKERBOUW-SO SGR-GRAS_01-SO SGR-DUIN-SO SGR-BOUWLAND_VOLLEGRONDSTEELT-SO SGR-FRUITTEELT-SO SGR-HEESTER_01 SGR-GRAS_02-SO SGR-HEESTERS-SO SVH-FUNDERING_ZAND-SO SIE-WEG_SPEELTOESTEL-SO SGR-ROOS-SO SGR-KWELDER-SO SGR-HOUTWAL-SO SGR-HOUTOPSTAND_LOOF-SO SGR-KRUIDEN-SO SGR-PLANTENBAK SGR-MOERAS-SO SGR-RIETLAND-SO SIE-WEG_PAAL_GRENSPAAL SIE-WATER_MERKPAAL_LEIDING-SO SGR-VASTEPLANTEN-SO SIE-WEG_PAAL_ALGEMEEN_TYPE_01-SO SIE-WEG_SCHIJNWERPER-SO SIE-WEG_PRAATPAAL-SO SIE-WEG_SCHRIKHEK SOG-ERF-SO SIE-WEG_ZITBANK-D SIE-WEG_VERKEERSBORD_ROND-SO SIE-WEG_TELEFOONCEL-SO SIE-WEG_WINDZAK-SO SKL-ET_LICHTGEVOELIGE CEL-SO SIE-ZONNEPANEEL-SO SKL-MONITORING_CAMERA_VIDEO-SO B-SRI-KOLK_COMBINATIE-SO SOG-STRAND-SO SOG-ZANDVERSTUIVING-SO SVH-ASFALT-SO V-SRI-DRAIN_PUT-SO SVH-BETON-SO SIE-WEG_SLAGBOOM SVH-PUINVERHARDING-SO SVH-HALFVERHARDING_01-SO SVH-GRAVEL-SO SVH-GRASBETONSTEEN_01-SO SVH-GRIND-SO SVH-HALFVERHARDING_SCHELPEN-SO SVH-HALFVERHARDING_02-SO SVH-HOUTSNIPPERS-SO SVH-VERHARDING_OPEN-SO SVH-VERHARDING_GESLOTEN-SO SVH-SIERBESTRATING_01-SO SVH-VERHARDING_ONVERHARD-SO SGR-GROENVOORZIENING-SO SVW-VRI_DRUKKNOPSMAST-SO SIE-WEG_HOOGSPANNINGSMAST SIE-WATER_DEBIETMETER-SO SOG-WATER_HAVEN-SO SOG-WATER_BEEK-SO SOG-SLIK-SO SKL-TELKAST-SO SOG-SLOOTKANT-SO SOG-WATER_GRACHT-SO SOG-WATER_BRON-SO SOG-WATER_GREPPEL-SO SOG-WATER_RIVIER-SO SOG-WATER_KWELDER-SO SOG-WATER_KANAAL-SO SOG-WATER_MEER-SO SRI-TERREINKAST-SO SOG-WATER_SLOOT-SO SOG-WATER-SO SIE-WEG_VERKEERSTEKEN_BORD-SO SIE-OPENBAARTOILET-SO SIE-HERDENKINGSMONUMENT-SO SIE-FIETSENKLUIS-SO SIE-HOOGTEDETECTIEMETER-SO SVW-BEWEGWIJZERING_DRAAGCONSTRUCTIE_PORTAAL_COMBI SIE-WEG_ZITBANK_MET_LEUNING SIE-WEG_VERKEERSLICHT-SO SGR-VEGETATIE_OPEN-SO SIE-WEG_PARKEERMAATREGEL_POEF_ROND SKL-VRI_PAAL-SO SGR-VEGETATIE_GESLOTEN-SO SVH-TEGEL-SO SVH-BSS-SO SOG-ONBEGROEID-SO SVH-SBS-SO SIE-WEG_FONTEIN-SO SVH-BETONPLAAT-SO SGR-BOOMSPIEGEL-SO SIE-GELEIDECONSTRUCTIE-SO SIE-WEG_CONTAINER_AFVAL SGW-TALUD_STIJL-SO 
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|MULTI_WRITER: multi_writer_id `1': Writing feature 1000 
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|Feature output statistics for `DGNV8' writer using keyword `DGNV8_1':
+2020-10-05 11:16:20|   4.9|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.9|  0.0|STATS |                               Features Written
+2020-10-05 11:16:20|   4.9|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.9|  0.0|STATS |Bladnummers                                                                842
+2020-10-05 11:16:20|   4.9|  0.0|STATS |Kaartbladen                                                                842
+2020-10-05 11:16:20|   4.9|  0.0|STATS |==============================================================================
+2020-10-05 11:16:20|   4.9|  0.0|STATS |Total Features Written                                                    1684
+2020-10-05 11:16:20|   4.9|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|MULTI_WRITER: multi_writer_id `1': done writing 1684 feature(s) 
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|MULTI_WRITER: multi_writer_id `2': Started outputting features
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|FME Configuration: Using connection values from 'bgt_local' for POSTGIS_1
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|Creating writer for format: PostGIS
+2020-10-05 11:16:20|   4.9|  0.0|INFORM|Trying to find a DYNAMIC plugin for writer named `POSTGIS'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Loaded module 'POSTGIS' from file '/opt/fme-desktop-2019/plugins/postgis.so'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|FME API version of module 'POSTGIS' matches current internal version (3.8 20190621)
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|FME Configuration: Destination coordinate system set to `EPSG:28992'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Coordinate System `EPSG:28992' parameters: CS_NAME=`Netherlands-RDNew-2008' DESC_NM=`Netherlands, Amersfoort RD 2008 datum, New System' DT_NAME=`Amersfoort-RD-2008' GROUP=`EUROPE' MAP_SCL=`1' ORG_LAT=`52.15616055555556' ORG_LNG=`5.387638888888889' PROJ=`OSTERO' QUAD=`1' SCL_RED=`0.9999079' SOURCE=`Kadaster' UNIT=`METER' X_OFF=`155000' Y_OFF=`463000'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|FME API version of module 'POSTGIS' matches current internal version (3.8 20190621)
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Writer `POSTGIS_1' of type `POSTGIS' using group definition keyword `POSTGIS_1_DEF'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|FME API version of module 'POSTGIS' matches current internal version (3.8 20190621)
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Opening POSTGIS writer for dataset 'bgt_dev_local'...
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|PostGIS client encoding: 'UTF8'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|PostgreSQL 10.14 (Ubuntu 10.14-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|2.4 USE_GEOS=1 USE_PROJ=1 USE_STATS=1
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Testing for the existence of table 'imgeo.pdt_kaartblad'...
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Truncating existing table 'imgeo.pdt_kaartblad'...
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Using existing table 'imgeo.pdt_kaartblad'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|POSTGIS Writer: Creating 'unquoted WKB' geometry processor for feature type 'imgeo.pdt_kaartblad'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|POSTGIS Writer: Creating 'streaming Bulk Copy' feature type processor for feature type 'imgeo.pdt_kaartblad'
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Vacuuming and analyzing table 'imgeo.pdt_kaartblad'...
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Successfully closed POSTGIS database writer
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Feature output statistics for `POSTGIS' writer using keyword `POSTGIS_1':
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|STATS |                               Features Written
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|STATS |imgeo.pdt_kaartblad                                                        888
+2020-10-05 11:16:20|   5.0|  0.0|STATS |==============================================================================
+2020-10-05 11:16:20|   5.0|  0.0|STATS |Total Features Written                                                     888
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|MULTI_WRITER: multi_writer_id `2': done writing 888 feature(s) 
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|STATS |                            Features Read Summary
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|STATS |CSV                                                                      26373
+2020-10-05 11:16:20|   5.0|  0.0|STATS |gemeenten                                                                  355
+2020-10-05 11:16:20|   5.0|  0.0|STATS |stadsdeel                                                                    8
+2020-10-05 11:16:20|   5.0|  0.0|STATS |==============================================================================
+2020-10-05 11:16:20|   5.0|  0.0|STATS |Total Features Read                                                      26736
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|STATS |                           Features Written Summary
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|STATS |BGT_Gebiedsindeling                                                         46
+2020-10-05 11:16:20|   5.0|  0.0|STATS |Bladnummers                                                                842
+2020-10-05 11:16:20|   5.0|  0.0|STATS |Kaartbladen                                                                842
+2020-10-05 11:16:20|   5.0|  0.0|STATS |imgeo.pdt_kaartblad                                                        888
+2020-10-05 11:16:20|   5.0|  0.0|STATS |==============================================================================
+2020-10-05 11:16:20|   5.0|  0.0|STATS |Total Features Written                                                    2618
+2020-10-05 11:16:20|   5.0|  0.0|STATS |=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|Translation was SUCCESSFUL with 0 warning(s) (2618 feature(s) output)
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|FME Session Duration: 14.0 seconds. (CPU: 4.6s user, 0.4s system)
+2020-10-05 11:16:20|   5.0|  0.0|INFORM|END - ProcessID: 9679, peak process memory usage: 116408 kB, current process memory usage: 61358 kB
