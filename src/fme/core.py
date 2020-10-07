@@ -229,7 +229,7 @@ def upload_script_resources():
     """
     fme_utils.upload_repository(
         '{app}/source_data/fme'.format(app=bgt_setup.SCRIPT_ROOT),
-        'BGT-DB', '*.*', register_fmejob=True)
+        'BGT-DB', '*.fmw', register_fmejob=True)
 
     fme_utils.upload_repository(
         '{app}/source_data/aanmaak_producten_bgt'.format(app=bgt_setup.SCRIPT_ROOT),
