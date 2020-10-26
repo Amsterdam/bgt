@@ -28,7 +28,8 @@ def start_transformation_gebieden():
                 {"name": "SourceDataset_Kaartbladen", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/bgt_kaartbladen.csv"]},
                 {"name": "SourceDataset_Gemeentes", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/gemeentes.csv"]},
                 {"name": "DestDataset_ESRISHAPE", "value": "$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling"},
-                {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling/PDOK_Indeling.dgn"}
+                {"name": "DestDataset_DGNV8", "value": "$(FME_SHAREDRESOURCE_DATA)Kaartbladindeling/PDOK_Indeling.dgn"},
+                {"name": "SourceDataset_WKT", "value": ["$(FME_SHAREDRESOURCE_DATA)Import_kaartbladen/oude_polygoon_bgt.csv"]}
             ]
         }
     )
